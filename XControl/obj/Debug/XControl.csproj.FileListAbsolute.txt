@@ -1,0 +1,10 @@
+H:\重构\XControl\XControl\bin\Debug\XControl.exe.config
+H:\重构\XControl\XControl\bin\Debug\XControl.exe
+H:\重构\XControl\XControl\bin\Debug\XControl.pdb
+H:\重构\XControl\XControl\obj\Debug\XControl.csprojResolveAssemblyReference.cache
+H:\重构\XControl\XControl\obj\Debug\XControl.Properties.Resources.resources
+H:\重构\XControl\XControl\obj\Debug\XControl.csproj.GenerateResource.Cache
+H:\重构\XControl\XControl\obj\Debug\XControl.exe
+H:\重构\XControl\XControl\obj\Debug\XControl.pdb
+H:\重构\XControl\XControl\obj\Debug\XControl.MainForm.resources
+H:\重构\XControl\XControl\bin\Debug\MccDaq.dll
