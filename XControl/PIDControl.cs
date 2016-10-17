@@ -69,7 +69,23 @@ namespace PID_WinForm
             return PID_OUT;
         }
 
+        public int ConvertAccordToPropotation(int num,int circle,int FirstProportion)
+        {
 
+            num = num * circle / FirstProportion;
+
+            if (num > circle || num < -circle)
+            {
+                num = circle;
+                return num;
+            }
+            else if (num < 0)
+            {
+                return -num;
+            }
+            else return num;
+
+        }
 
     }
 }

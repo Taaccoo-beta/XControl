@@ -121,13 +121,13 @@ namespace XControl
         /// <summary>
         /// portNumber from 0-7
         /// </summary>
-        /// <param name="portNumber"></param>
-        /// <returns>return MccDaq.DigitalLogicState type</returns>
-        public MccDaq.DigitalLogicState DigitInput(int portNumber)
+        /// <param name="portNumber">port number</param>
+        /// <returns>return int type which 1 express High and 0 express Low</returns>
+        public int DigitInput(int portNumber)
         {
             MccDaq.DigitalLogicState bitValue;
             MccDaq.ErrorInfo ULStat = DaqBoard.DBitIn(BitPort, portNumber, out bitValue);
-            return bitValue;
+            return int.Parse(bitValue.ToString());
         }
 
 
