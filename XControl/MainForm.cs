@@ -174,16 +174,23 @@ namespace XControl
             /*
              * set the sampling rate to 10ms 
             */
-            timer_1.Interval = 10;
-            timer_2.Interval = 10;
-            timer_3.Interval = 10;
-            timer_4.Interval = 10;
-            timer_5.Interval = 10;
-            timer_6.Interval = 10;
-            timer_7.Interval = 10;
-            timer_8.Interval = 10;
+            timer_1.Interval = 60;
+            timer_2.Interval = 60;
+            timer_3.Interval = 60;
+            timer_4.Interval = 60;
+            timer_5.Interval = 60;
+            timer_6.Interval = 60;
+            timer_7.Interval = 60;
+            timer_8.Interval = 60;
 
             btnSimInput_1 = true;
+            btnSimInput_2 = true;
+            btnSimInput_3 = true;
+            btnSimInput_4 = true;
+            btnSimInput_5 = true;
+            btnSimInput_6 = true;
+            btnSimInput_7 = true;
+            btnSimInput_8 = true;
 
         }
 
@@ -453,7 +460,7 @@ namespace XControl
                 PID_Count_3 = 0;
                 lblTState_3.Text = "Off";
                 GC.TDown(3);
-                circle = 30;
+                circle = 10;
                 PID_3 = new PIDControl(7, 0.1, 0.5, confortableT);
                 //   System.IO.File.AppendAllText("e:\\result_3.txt", "舒适：" + "Kp:" + tbDownKp.Text + "  Ki" + tbDownKi.Text + "  Kd" + tbDownKd.Text + "\r\n");
             }
@@ -1593,6 +1600,19 @@ namespace XControl
 
                 System.IO.File.AppendAllText("e:\\result_8.txt", temperatureValue_8.ToString("00.00") + "\r\n");
             }
+        }
+
+        private void btnClearAll_Click(object sender, EventArgs e)
+        {
+            GC.clearALL();
+            timer_1.Stop();
+            timer_2.Stop();
+            timer_3.Stop();
+            timer_4.Stop();
+            timer_5.Stop();
+            timer_6.Stop();
+            timer_7.Stop();
+            timer_8.Stop();
         }
     }
 }

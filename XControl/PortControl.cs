@@ -163,7 +163,7 @@ namespace XControl
         {
             MccDaq.TempScale MccScale = MccDaq.TempScale.Celsius;
             float TempValue = 0.0f;
-            MccDaq.ThermocoupleOptions Options = MccDaq.ThermocoupleOptions.Filter;
+            MccDaq.ThermocoupleOptions Options = MccDaq.ThermocoupleOptions.WaitForNewData;
             MccDaq.ErrorInfo ULStat = DaqBoard.TIn(Chan, MccScale, out TempValue, Options);
 
             return  TempValue;

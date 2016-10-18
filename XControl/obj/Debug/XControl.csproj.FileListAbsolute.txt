@@ -18,3 +18,13 @@ H:\github\xcontrol\XControl\obj\Debug\XControl.MainForm.resources
 H:\github\xcontrol\XControl\obj\Debug\XControl.Properties.Resources.resources
 H:\github\xcontrol\XControl\obj\Debug\XControl.csproj.GenerateResource.Cache
 H:\github\xcontrol\XControl\obj\Debug\XControl.csprojResolveAssemblyReference.cache
+D:\GitHub\xcontrol\XControl\bin\Debug\XControl.exe.config
+D:\GitHub\xcontrol\XControl\obj\Debug\XControl.exe
+D:\GitHub\xcontrol\XControl\obj\Debug\XControl.pdb
+D:\GitHub\xcontrol\XControl\bin\Debug\XControl.exe
+D:\GitHub\xcontrol\XControl\bin\Debug\XControl.pdb
+D:\GitHub\xcontrol\XControl\bin\Debug\MccDaq.dll
+D:\GitHub\xcontrol\XControl\obj\Debug\XControl.csprojResolveAssemblyReference.cache
+D:\GitHub\xcontrol\XControl\obj\Debug\XControl.MainForm.resources
+D:\GitHub\xcontrol\XControl\obj\Debug\XControl.Properties.Resources.resources
+D:\GitHub\xcontrol\XControl\obj\Debug\XControl.csproj.GenerateResource.Cache
