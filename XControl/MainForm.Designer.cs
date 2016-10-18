@@ -35,53 +35,53 @@
             this.自动ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.手动ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbGroup_1 = new System.Windows.Forms.GroupBox();
-            this.lblShowT_1 = new System.Windows.Forms.Label();
-            this.lblTValue_1 = new System.Windows.Forms.Label();
-            this.lblTState_1 = new System.Windows.Forms.Label();
-            this.btnTestByHand_1 = new System.Windows.Forms.Button();
             this.btnGetParam_1 = new System.Windows.Forms.Button();
+            this.btnTestByHand_1 = new System.Windows.Forms.Button();
+            this.lblTState_1 = new System.Windows.Forms.Label();
+            this.lblTValue_1 = new System.Windows.Forms.Label();
+            this.lblShowT_1 = new System.Windows.Forms.Label();
             this.gbGroup_2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.btnGetParam_2 = new System.Windows.Forms.Button();
+            this.btnTestByHand_2 = new System.Windows.Forms.Button();
+            this.lblTState_2 = new System.Windows.Forms.Label();
+            this.lblTValue_2 = new System.Windows.Forms.Label();
+            this.lblShowT_2 = new System.Windows.Forms.Label();
             this.gbGroup_3 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.btnGetParam_3 = new System.Windows.Forms.Button();
+            this.btnTestByHand_3 = new System.Windows.Forms.Button();
+            this.lblTState_3 = new System.Windows.Forms.Label();
+            this.lblTValue_3 = new System.Windows.Forms.Label();
+            this.lblShowT_3 = new System.Windows.Forms.Label();
             this.gbGroup_4 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.btnGetParam_4 = new System.Windows.Forms.Button();
+            this.btnTestByHand_4 = new System.Windows.Forms.Button();
+            this.lblTState_4 = new System.Windows.Forms.Label();
+            this.lblTValue_4 = new System.Windows.Forms.Label();
+            this.lblShowT_4 = new System.Windows.Forms.Label();
             this.gbGroup_8 = new System.Windows.Forms.GroupBox();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.btnGetParam_8 = new System.Windows.Forms.Button();
+            this.btnTestByHand_8 = new System.Windows.Forms.Button();
+            this.lblTState_8 = new System.Windows.Forms.Label();
+            this.lblTValue_8 = new System.Windows.Forms.Label();
+            this.lblShowT_8 = new System.Windows.Forms.Label();
             this.gbGroup_7 = new System.Windows.Forms.GroupBox();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.btnGetParam_7 = new System.Windows.Forms.Button();
+            this.btnTestByHand_7 = new System.Windows.Forms.Button();
+            this.lblTState_7 = new System.Windows.Forms.Label();
+            this.lblTValue_7 = new System.Windows.Forms.Label();
+            this.lblShowT_7 = new System.Windows.Forms.Label();
             this.gbGroup_6 = new System.Windows.Forms.GroupBox();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
+            this.btnGetParam_6 = new System.Windows.Forms.Button();
+            this.btnTestByHand_6 = new System.Windows.Forms.Button();
+            this.lblTState_6 = new System.Windows.Forms.Label();
+            this.lblTValue_6 = new System.Windows.Forms.Label();
+            this.lblShowT_6 = new System.Windows.Forms.Label();
             this.gbGroup_5 = new System.Windows.Forms.GroupBox();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
+            this.btnGetParam_5 = new System.Windows.Forms.Button();
+            this.btnTestByHand_5 = new System.Windows.Forms.Button();
+            this.lblTState_5 = new System.Windows.Forms.Label();
+            this.lblTValue_5 = new System.Windows.Forms.Label();
+            this.lblShowT_5 = new System.Windows.Forms.Label();
             this.timer_1 = new System.Windows.Forms.Timer(this.components);
             this.timer_2 = new System.Windows.Forms.Timer(this.components);
             this.timer_3 = new System.Windows.Forms.Timer(this.components);
@@ -94,6 +94,10 @@
             this.tbPunishTValue = new System.Windows.Forms.TextBox();
             this.tbConfortTValue = new System.Windows.Forms.TextBox();
             this.lblConfortT = new System.Windows.Forms.Label();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip2 = new System.Windows.Forms.StatusStrip();
+            this.lblDebug = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
             this.gbGroup_1.SuspendLayout();
             this.gbGroup_2.SuspendLayout();
@@ -103,6 +107,7 @@
             this.gbGroup_7.SuspendLayout();
             this.gbGroup_6.SuspendLayout();
             this.gbGroup_5.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -147,45 +152,6 @@
             this.gbGroup_1.TabStop = false;
             this.gbGroup_1.Text = "Group-1";
             // 
-            // lblShowT_1
-            // 
-            this.lblShowT_1.AutoSize = true;
-            this.lblShowT_1.Location = new System.Drawing.Point(21, 31);
-            this.lblShowT_1.Name = "lblShowT_1";
-            this.lblShowT_1.Size = new System.Drawing.Size(17, 13);
-            this.lblShowT_1.TabIndex = 0;
-            this.lblShowT_1.Text = "T:";
-            // 
-            // lblTValue_1
-            // 
-            this.lblTValue_1.AutoSize = true;
-            this.lblTValue_1.Location = new System.Drawing.Point(53, 31);
-            this.lblTValue_1.Name = "lblTValue_1";
-            this.lblTValue_1.Size = new System.Drawing.Size(35, 13);
-            this.lblTValue_1.TabIndex = 1;
-            this.lblTValue_1.Text = "NULL";
-            // 
-            // lblTState_1
-            // 
-            this.lblTState_1.AutoSize = true;
-            this.lblTState_1.Location = new System.Drawing.Point(104, 31);
-            this.lblTState_1.Name = "lblTState_1";
-            this.lblTState_1.Size = new System.Drawing.Size(35, 13);
-            this.lblTState_1.TabIndex = 2;
-            this.lblTState_1.Text = "NULL";
-            // 
-            // btnTestByHand_1
-            // 
-            this.btnTestByHand_1.AccessibleDescription = "";
-            this.btnTestByHand_1.Enabled = false;
-            this.btnTestByHand_1.Location = new System.Drawing.Point(19, 55);
-            this.btnTestByHand_1.Name = "btnTestByHand_1";
-            this.btnTestByHand_1.Size = new System.Drawing.Size(56, 23);
-            this.btnTestByHand_1.TabIndex = 2;
-            this.btnTestByHand_1.Text = "Click";
-            this.btnTestByHand_1.UseVisualStyleBackColor = true;
-            this.btnTestByHand_1.Click += new System.EventHandler(this.btnTestByHand_1_Click);
-            // 
             // btnGetParam_1
             // 
             this.btnGetParam_1.Enabled = false;
@@ -196,13 +162,51 @@
             this.btnGetParam_1.Text = "Click";
             this.btnGetParam_1.UseVisualStyleBackColor = true;
             // 
+            // btnTestByHand_1
+            // 
+            this.btnTestByHand_1.AccessibleDescription = "";
+            this.btnTestByHand_1.Location = new System.Drawing.Point(19, 55);
+            this.btnTestByHand_1.Name = "btnTestByHand_1";
+            this.btnTestByHand_1.Size = new System.Drawing.Size(56, 23);
+            this.btnTestByHand_1.TabIndex = 2;
+            this.btnTestByHand_1.Text = "Click";
+            this.btnTestByHand_1.UseVisualStyleBackColor = true;
+            this.btnTestByHand_1.Click += new System.EventHandler(this.btnTestByHand_1_Click);
+            // 
+            // lblTState_1
+            // 
+            this.lblTState_1.AutoSize = true;
+            this.lblTState_1.Location = new System.Drawing.Point(104, 31);
+            this.lblTState_1.Name = "lblTState_1";
+            this.lblTState_1.Size = new System.Drawing.Size(35, 13);
+            this.lblTState_1.TabIndex = 2;
+            this.lblTState_1.Text = "NULL";
+            // 
+            // lblTValue_1
+            // 
+            this.lblTValue_1.AutoSize = true;
+            this.lblTValue_1.Location = new System.Drawing.Point(53, 31);
+            this.lblTValue_1.Name = "lblTValue_1";
+            this.lblTValue_1.Size = new System.Drawing.Size(35, 13);
+            this.lblTValue_1.TabIndex = 1;
+            this.lblTValue_1.Text = "NULL";
+            // 
+            // lblShowT_1
+            // 
+            this.lblShowT_1.AutoSize = true;
+            this.lblShowT_1.Location = new System.Drawing.Point(21, 31);
+            this.lblShowT_1.Name = "lblShowT_1";
+            this.lblShowT_1.Size = new System.Drawing.Size(17, 13);
+            this.lblShowT_1.TabIndex = 0;
+            this.lblShowT_1.Text = "T:";
+            // 
             // gbGroup_2
             // 
-            this.gbGroup_2.Controls.Add(this.button1);
-            this.gbGroup_2.Controls.Add(this.button2);
-            this.gbGroup_2.Controls.Add(this.label1);
-            this.gbGroup_2.Controls.Add(this.label2);
-            this.gbGroup_2.Controls.Add(this.label3);
+            this.gbGroup_2.Controls.Add(this.btnGetParam_2);
+            this.gbGroup_2.Controls.Add(this.btnTestByHand_2);
+            this.gbGroup_2.Controls.Add(this.lblTState_2);
+            this.gbGroup_2.Controls.Add(this.lblTValue_2);
+            this.gbGroup_2.Controls.Add(this.lblShowT_2);
             this.gbGroup_2.Location = new System.Drawing.Point(210, 136);
             this.gbGroup_2.Name = "gbGroup_2";
             this.gbGroup_2.Size = new System.Drawing.Size(155, 84);
@@ -210,60 +214,60 @@
             this.gbGroup_2.TabStop = false;
             this.gbGroup_2.Text = "Group-2";
             // 
-            // button1
+            // btnGetParam_2
             // 
-            this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(81, 55);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(58, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Click";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnGetParam_2.Enabled = false;
+            this.btnGetParam_2.Location = new System.Drawing.Point(81, 55);
+            this.btnGetParam_2.Name = "btnGetParam_2";
+            this.btnGetParam_2.Size = new System.Drawing.Size(58, 23);
+            this.btnGetParam_2.TabIndex = 3;
+            this.btnGetParam_2.Text = "Click";
+            this.btnGetParam_2.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnTestByHand_2
             // 
-            this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(19, 55);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(56, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Click";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnTestByHand_2.Location = new System.Drawing.Point(19, 55);
+            this.btnTestByHand_2.Name = "btnTestByHand_2";
+            this.btnTestByHand_2.Size = new System.Drawing.Size(56, 23);
+            this.btnTestByHand_2.TabIndex = 2;
+            this.btnTestByHand_2.Text = "Click";
+            this.btnTestByHand_2.UseVisualStyleBackColor = true;
+            this.btnTestByHand_2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label1
+            // lblTState_2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(104, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "NULL";
+            this.lblTState_2.AutoSize = true;
+            this.lblTState_2.Location = new System.Drawing.Point(104, 31);
+            this.lblTState_2.Name = "lblTState_2";
+            this.lblTState_2.Size = new System.Drawing.Size(35, 13);
+            this.lblTState_2.TabIndex = 2;
+            this.lblTState_2.Text = "NULL";
             // 
-            // label2
+            // lblTValue_2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(53, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "NULL";
+            this.lblTValue_2.AutoSize = true;
+            this.lblTValue_2.Location = new System.Drawing.Point(53, 31);
+            this.lblTValue_2.Name = "lblTValue_2";
+            this.lblTValue_2.Size = new System.Drawing.Size(35, 13);
+            this.lblTValue_2.TabIndex = 1;
+            this.lblTValue_2.Text = "NULL";
             // 
-            // label3
+            // lblShowT_2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 31);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(17, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "T:";
+            this.lblShowT_2.AutoSize = true;
+            this.lblShowT_2.Location = new System.Drawing.Point(21, 31);
+            this.lblShowT_2.Name = "lblShowT_2";
+            this.lblShowT_2.Size = new System.Drawing.Size(17, 13);
+            this.lblShowT_2.TabIndex = 0;
+            this.lblShowT_2.Text = "T:";
             // 
             // gbGroup_3
             // 
-            this.gbGroup_3.Controls.Add(this.button3);
-            this.gbGroup_3.Controls.Add(this.button4);
-            this.gbGroup_3.Controls.Add(this.label4);
-            this.gbGroup_3.Controls.Add(this.label5);
-            this.gbGroup_3.Controls.Add(this.label6);
+            this.gbGroup_3.Controls.Add(this.btnGetParam_3);
+            this.gbGroup_3.Controls.Add(this.btnTestByHand_3);
+            this.gbGroup_3.Controls.Add(this.lblTState_3);
+            this.gbGroup_3.Controls.Add(this.lblTValue_3);
+            this.gbGroup_3.Controls.Add(this.lblShowT_3);
             this.gbGroup_3.Location = new System.Drawing.Point(399, 136);
             this.gbGroup_3.Name = "gbGroup_3";
             this.gbGroup_3.Size = new System.Drawing.Size(155, 84);
@@ -271,60 +275,60 @@
             this.gbGroup_3.TabStop = false;
             this.gbGroup_3.Text = "Group-3";
             // 
-            // button3
+            // btnGetParam_3
             // 
-            this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(81, 55);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(58, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Click";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnGetParam_3.Enabled = false;
+            this.btnGetParam_3.Location = new System.Drawing.Point(81, 55);
+            this.btnGetParam_3.Name = "btnGetParam_3";
+            this.btnGetParam_3.Size = new System.Drawing.Size(58, 23);
+            this.btnGetParam_3.TabIndex = 3;
+            this.btnGetParam_3.Text = "Click";
+            this.btnGetParam_3.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnTestByHand_3
             // 
-            this.button4.Enabled = false;
-            this.button4.Location = new System.Drawing.Point(19, 55);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(56, 23);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Click";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnTestByHand_3.Location = new System.Drawing.Point(19, 55);
+            this.btnTestByHand_3.Name = "btnTestByHand_3";
+            this.btnTestByHand_3.Size = new System.Drawing.Size(56, 23);
+            this.btnTestByHand_3.TabIndex = 2;
+            this.btnTestByHand_3.Text = "Click";
+            this.btnTestByHand_3.UseVisualStyleBackColor = true;
+            this.btnTestByHand_3.Click += new System.EventHandler(this.btnTestByHand_3_Click);
             // 
-            // label4
+            // lblTState_3
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(104, 31);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "NULL";
+            this.lblTState_3.AutoSize = true;
+            this.lblTState_3.Location = new System.Drawing.Point(104, 31);
+            this.lblTState_3.Name = "lblTState_3";
+            this.lblTState_3.Size = new System.Drawing.Size(35, 13);
+            this.lblTState_3.TabIndex = 2;
+            this.lblTState_3.Text = "NULL";
             // 
-            // label5
+            // lblTValue_3
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(53, 31);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "NULL";
+            this.lblTValue_3.AutoSize = true;
+            this.lblTValue_3.Location = new System.Drawing.Point(53, 31);
+            this.lblTValue_3.Name = "lblTValue_3";
+            this.lblTValue_3.Size = new System.Drawing.Size(35, 13);
+            this.lblTValue_3.TabIndex = 1;
+            this.lblTValue_3.Text = "NULL";
             // 
-            // label6
+            // lblShowT_3
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(21, 31);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(17, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "T:";
+            this.lblShowT_3.AutoSize = true;
+            this.lblShowT_3.Location = new System.Drawing.Point(21, 31);
+            this.lblShowT_3.Name = "lblShowT_3";
+            this.lblShowT_3.Size = new System.Drawing.Size(17, 13);
+            this.lblShowT_3.TabIndex = 0;
+            this.lblShowT_3.Text = "T:";
             // 
             // gbGroup_4
             // 
-            this.gbGroup_4.Controls.Add(this.button5);
-            this.gbGroup_4.Controls.Add(this.button6);
-            this.gbGroup_4.Controls.Add(this.label7);
-            this.gbGroup_4.Controls.Add(this.label8);
-            this.gbGroup_4.Controls.Add(this.label9);
+            this.gbGroup_4.Controls.Add(this.btnGetParam_4);
+            this.gbGroup_4.Controls.Add(this.btnTestByHand_4);
+            this.gbGroup_4.Controls.Add(this.lblTState_4);
+            this.gbGroup_4.Controls.Add(this.lblTValue_4);
+            this.gbGroup_4.Controls.Add(this.lblShowT_4);
             this.gbGroup_4.Location = new System.Drawing.Point(586, 136);
             this.gbGroup_4.Name = "gbGroup_4";
             this.gbGroup_4.Size = new System.Drawing.Size(155, 84);
@@ -332,60 +336,60 @@
             this.gbGroup_4.TabStop = false;
             this.gbGroup_4.Text = "Group-4";
             // 
-            // button5
+            // btnGetParam_4
             // 
-            this.button5.Enabled = false;
-            this.button5.Location = new System.Drawing.Point(81, 55);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(58, 23);
-            this.button5.TabIndex = 3;
-            this.button5.Text = "Click";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnGetParam_4.Enabled = false;
+            this.btnGetParam_4.Location = new System.Drawing.Point(81, 55);
+            this.btnGetParam_4.Name = "btnGetParam_4";
+            this.btnGetParam_4.Size = new System.Drawing.Size(58, 23);
+            this.btnGetParam_4.TabIndex = 3;
+            this.btnGetParam_4.Text = "Click";
+            this.btnGetParam_4.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnTestByHand_4
             // 
-            this.button6.Enabled = false;
-            this.button6.Location = new System.Drawing.Point(19, 55);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(56, 23);
-            this.button6.TabIndex = 2;
-            this.button6.Text = "Click";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnTestByHand_4.Location = new System.Drawing.Point(19, 55);
+            this.btnTestByHand_4.Name = "btnTestByHand_4";
+            this.btnTestByHand_4.Size = new System.Drawing.Size(56, 23);
+            this.btnTestByHand_4.TabIndex = 2;
+            this.btnTestByHand_4.Text = "Click";
+            this.btnTestByHand_4.UseVisualStyleBackColor = true;
+            this.btnTestByHand_4.Click += new System.EventHandler(this.btnTestByHand_4_Click);
             // 
-            // label7
+            // lblTState_4
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(104, 31);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "NULL";
+            this.lblTState_4.AutoSize = true;
+            this.lblTState_4.Location = new System.Drawing.Point(104, 31);
+            this.lblTState_4.Name = "lblTState_4";
+            this.lblTState_4.Size = new System.Drawing.Size(35, 13);
+            this.lblTState_4.TabIndex = 2;
+            this.lblTState_4.Text = "NULL";
             // 
-            // label8
+            // lblTValue_4
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(53, 31);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 13);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "NULL";
+            this.lblTValue_4.AutoSize = true;
+            this.lblTValue_4.Location = new System.Drawing.Point(53, 31);
+            this.lblTValue_4.Name = "lblTValue_4";
+            this.lblTValue_4.Size = new System.Drawing.Size(35, 13);
+            this.lblTValue_4.TabIndex = 1;
+            this.lblTValue_4.Text = "NULL";
             // 
-            // label9
+            // lblShowT_4
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(21, 31);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(17, 13);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "T:";
+            this.lblShowT_4.AutoSize = true;
+            this.lblShowT_4.Location = new System.Drawing.Point(21, 31);
+            this.lblShowT_4.Name = "lblShowT_4";
+            this.lblShowT_4.Size = new System.Drawing.Size(17, 13);
+            this.lblShowT_4.TabIndex = 0;
+            this.lblShowT_4.Text = "T:";
             // 
             // gbGroup_8
             // 
-            this.gbGroup_8.Controls.Add(this.button7);
-            this.gbGroup_8.Controls.Add(this.button8);
-            this.gbGroup_8.Controls.Add(this.label10);
-            this.gbGroup_8.Controls.Add(this.label11);
-            this.gbGroup_8.Controls.Add(this.label12);
+            this.gbGroup_8.Controls.Add(this.btnGetParam_8);
+            this.gbGroup_8.Controls.Add(this.btnTestByHand_8);
+            this.gbGroup_8.Controls.Add(this.lblTState_8);
+            this.gbGroup_8.Controls.Add(this.lblTValue_8);
+            this.gbGroup_8.Controls.Add(this.lblShowT_8);
             this.gbGroup_8.Location = new System.Drawing.Point(586, 253);
             this.gbGroup_8.Name = "gbGroup_8";
             this.gbGroup_8.Size = new System.Drawing.Size(155, 84);
@@ -393,60 +397,60 @@
             this.gbGroup_8.TabStop = false;
             this.gbGroup_8.Text = "Group-8";
             // 
-            // button7
+            // btnGetParam_8
             // 
-            this.button7.Enabled = false;
-            this.button7.Location = new System.Drawing.Point(81, 55);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(58, 23);
-            this.button7.TabIndex = 3;
-            this.button7.Text = "Click";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnGetParam_8.Enabled = false;
+            this.btnGetParam_8.Location = new System.Drawing.Point(81, 55);
+            this.btnGetParam_8.Name = "btnGetParam_8";
+            this.btnGetParam_8.Size = new System.Drawing.Size(58, 23);
+            this.btnGetParam_8.TabIndex = 3;
+            this.btnGetParam_8.Text = "Click";
+            this.btnGetParam_8.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // btnTestByHand_8
             // 
-            this.button8.Enabled = false;
-            this.button8.Location = new System.Drawing.Point(19, 55);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(56, 23);
-            this.button8.TabIndex = 2;
-            this.button8.Text = "Click";
-            this.button8.UseVisualStyleBackColor = true;
+            this.btnTestByHand_8.Location = new System.Drawing.Point(19, 55);
+            this.btnTestByHand_8.Name = "btnTestByHand_8";
+            this.btnTestByHand_8.Size = new System.Drawing.Size(56, 23);
+            this.btnTestByHand_8.TabIndex = 2;
+            this.btnTestByHand_8.Text = "Click";
+            this.btnTestByHand_8.UseVisualStyleBackColor = true;
+            this.btnTestByHand_8.Click += new System.EventHandler(this.btnTestByHand_8_Click);
             // 
-            // label10
+            // lblTState_8
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(104, 31);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 13);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "NULL";
+            this.lblTState_8.AutoSize = true;
+            this.lblTState_8.Location = new System.Drawing.Point(104, 31);
+            this.lblTState_8.Name = "lblTState_8";
+            this.lblTState_8.Size = new System.Drawing.Size(35, 13);
+            this.lblTState_8.TabIndex = 2;
+            this.lblTState_8.Text = "NULL";
             // 
-            // label11
+            // lblTValue_8
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(53, 31);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(35, 13);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "NULL";
+            this.lblTValue_8.AutoSize = true;
+            this.lblTValue_8.Location = new System.Drawing.Point(53, 31);
+            this.lblTValue_8.Name = "lblTValue_8";
+            this.lblTValue_8.Size = new System.Drawing.Size(35, 13);
+            this.lblTValue_8.TabIndex = 1;
+            this.lblTValue_8.Text = "NULL";
             // 
-            // label12
+            // lblShowT_8
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(21, 31);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(17, 13);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "T:";
+            this.lblShowT_8.AutoSize = true;
+            this.lblShowT_8.Location = new System.Drawing.Point(21, 31);
+            this.lblShowT_8.Name = "lblShowT_8";
+            this.lblShowT_8.Size = new System.Drawing.Size(17, 13);
+            this.lblShowT_8.TabIndex = 0;
+            this.lblShowT_8.Text = "T:";
             // 
             // gbGroup_7
             // 
-            this.gbGroup_7.Controls.Add(this.button9);
-            this.gbGroup_7.Controls.Add(this.button10);
-            this.gbGroup_7.Controls.Add(this.label13);
-            this.gbGroup_7.Controls.Add(this.label14);
-            this.gbGroup_7.Controls.Add(this.label15);
+            this.gbGroup_7.Controls.Add(this.btnGetParam_7);
+            this.gbGroup_7.Controls.Add(this.btnTestByHand_7);
+            this.gbGroup_7.Controls.Add(this.lblTState_7);
+            this.gbGroup_7.Controls.Add(this.lblTValue_7);
+            this.gbGroup_7.Controls.Add(this.lblShowT_7);
             this.gbGroup_7.Location = new System.Drawing.Point(399, 253);
             this.gbGroup_7.Name = "gbGroup_7";
             this.gbGroup_7.Size = new System.Drawing.Size(155, 84);
@@ -454,60 +458,60 @@
             this.gbGroup_7.TabStop = false;
             this.gbGroup_7.Text = "Group-7";
             // 
-            // button9
+            // btnGetParam_7
             // 
-            this.button9.Enabled = false;
-            this.button9.Location = new System.Drawing.Point(81, 55);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(58, 23);
-            this.button9.TabIndex = 3;
-            this.button9.Text = "Click";
-            this.button9.UseVisualStyleBackColor = true;
+            this.btnGetParam_7.Enabled = false;
+            this.btnGetParam_7.Location = new System.Drawing.Point(81, 55);
+            this.btnGetParam_7.Name = "btnGetParam_7";
+            this.btnGetParam_7.Size = new System.Drawing.Size(58, 23);
+            this.btnGetParam_7.TabIndex = 3;
+            this.btnGetParam_7.Text = "Click";
+            this.btnGetParam_7.UseVisualStyleBackColor = true;
             // 
-            // button10
+            // btnTestByHand_7
             // 
-            this.button10.Enabled = false;
-            this.button10.Location = new System.Drawing.Point(19, 55);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(56, 23);
-            this.button10.TabIndex = 2;
-            this.button10.Text = "Click";
-            this.button10.UseVisualStyleBackColor = true;
+            this.btnTestByHand_7.Location = new System.Drawing.Point(19, 55);
+            this.btnTestByHand_7.Name = "btnTestByHand_7";
+            this.btnTestByHand_7.Size = new System.Drawing.Size(56, 23);
+            this.btnTestByHand_7.TabIndex = 2;
+            this.btnTestByHand_7.Text = "Click";
+            this.btnTestByHand_7.UseVisualStyleBackColor = true;
+            this.btnTestByHand_7.Click += new System.EventHandler(this.btnTestByHand_7_Click);
             // 
-            // label13
+            // lblTState_7
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(104, 31);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(35, 13);
-            this.label13.TabIndex = 2;
-            this.label13.Text = "NULL";
+            this.lblTState_7.AutoSize = true;
+            this.lblTState_7.Location = new System.Drawing.Point(104, 31);
+            this.lblTState_7.Name = "lblTState_7";
+            this.lblTState_7.Size = new System.Drawing.Size(35, 13);
+            this.lblTState_7.TabIndex = 2;
+            this.lblTState_7.Text = "NULL";
             // 
-            // label14
+            // lblTValue_7
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(53, 31);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(35, 13);
-            this.label14.TabIndex = 1;
-            this.label14.Text = "NULL";
+            this.lblTValue_7.AutoSize = true;
+            this.lblTValue_7.Location = new System.Drawing.Point(53, 31);
+            this.lblTValue_7.Name = "lblTValue_7";
+            this.lblTValue_7.Size = new System.Drawing.Size(35, 13);
+            this.lblTValue_7.TabIndex = 1;
+            this.lblTValue_7.Text = "NULL";
             // 
-            // label15
+            // lblShowT_7
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(21, 31);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(17, 13);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "T:";
+            this.lblShowT_7.AutoSize = true;
+            this.lblShowT_7.Location = new System.Drawing.Point(21, 31);
+            this.lblShowT_7.Name = "lblShowT_7";
+            this.lblShowT_7.Size = new System.Drawing.Size(17, 13);
+            this.lblShowT_7.TabIndex = 0;
+            this.lblShowT_7.Text = "T:";
             // 
             // gbGroup_6
             // 
-            this.gbGroup_6.Controls.Add(this.button11);
-            this.gbGroup_6.Controls.Add(this.button12);
-            this.gbGroup_6.Controls.Add(this.label16);
-            this.gbGroup_6.Controls.Add(this.label17);
-            this.gbGroup_6.Controls.Add(this.label18);
+            this.gbGroup_6.Controls.Add(this.btnGetParam_6);
+            this.gbGroup_6.Controls.Add(this.btnTestByHand_6);
+            this.gbGroup_6.Controls.Add(this.lblTState_6);
+            this.gbGroup_6.Controls.Add(this.lblTValue_6);
+            this.gbGroup_6.Controls.Add(this.lblShowT_6);
             this.gbGroup_6.Location = new System.Drawing.Point(210, 253);
             this.gbGroup_6.Name = "gbGroup_6";
             this.gbGroup_6.Size = new System.Drawing.Size(155, 84);
@@ -515,60 +519,60 @@
             this.gbGroup_6.TabStop = false;
             this.gbGroup_6.Text = "Group-6";
             // 
-            // button11
+            // btnGetParam_6
             // 
-            this.button11.Enabled = false;
-            this.button11.Location = new System.Drawing.Point(81, 55);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(58, 23);
-            this.button11.TabIndex = 3;
-            this.button11.Text = "Click";
-            this.button11.UseVisualStyleBackColor = true;
+            this.btnGetParam_6.Enabled = false;
+            this.btnGetParam_6.Location = new System.Drawing.Point(81, 55);
+            this.btnGetParam_6.Name = "btnGetParam_6";
+            this.btnGetParam_6.Size = new System.Drawing.Size(58, 23);
+            this.btnGetParam_6.TabIndex = 3;
+            this.btnGetParam_6.Text = "Click";
+            this.btnGetParam_6.UseVisualStyleBackColor = true;
             // 
-            // button12
+            // btnTestByHand_6
             // 
-            this.button12.Enabled = false;
-            this.button12.Location = new System.Drawing.Point(19, 55);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(56, 23);
-            this.button12.TabIndex = 2;
-            this.button12.Text = "Click";
-            this.button12.UseVisualStyleBackColor = true;
+            this.btnTestByHand_6.Location = new System.Drawing.Point(19, 55);
+            this.btnTestByHand_6.Name = "btnTestByHand_6";
+            this.btnTestByHand_6.Size = new System.Drawing.Size(56, 23);
+            this.btnTestByHand_6.TabIndex = 2;
+            this.btnTestByHand_6.Text = "Click";
+            this.btnTestByHand_6.UseVisualStyleBackColor = true;
+            this.btnTestByHand_6.Click += new System.EventHandler(this.btnTestByHand_6_Click);
             // 
-            // label16
+            // lblTState_6
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(104, 31);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(35, 13);
-            this.label16.TabIndex = 2;
-            this.label16.Text = "NULL";
+            this.lblTState_6.AutoSize = true;
+            this.lblTState_6.Location = new System.Drawing.Point(104, 31);
+            this.lblTState_6.Name = "lblTState_6";
+            this.lblTState_6.Size = new System.Drawing.Size(35, 13);
+            this.lblTState_6.TabIndex = 2;
+            this.lblTState_6.Text = "NULL";
             // 
-            // label17
+            // lblTValue_6
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(53, 31);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(35, 13);
-            this.label17.TabIndex = 1;
-            this.label17.Text = "NULL";
+            this.lblTValue_6.AutoSize = true;
+            this.lblTValue_6.Location = new System.Drawing.Point(53, 31);
+            this.lblTValue_6.Name = "lblTValue_6";
+            this.lblTValue_6.Size = new System.Drawing.Size(35, 13);
+            this.lblTValue_6.TabIndex = 1;
+            this.lblTValue_6.Text = "NULL";
             // 
-            // label18
+            // lblShowT_6
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(21, 31);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(17, 13);
-            this.label18.TabIndex = 0;
-            this.label18.Text = "T:";
+            this.lblShowT_6.AutoSize = true;
+            this.lblShowT_6.Location = new System.Drawing.Point(21, 31);
+            this.lblShowT_6.Name = "lblShowT_6";
+            this.lblShowT_6.Size = new System.Drawing.Size(17, 13);
+            this.lblShowT_6.TabIndex = 0;
+            this.lblShowT_6.Text = "T:";
             // 
             // gbGroup_5
             // 
-            this.gbGroup_5.Controls.Add(this.button13);
-            this.gbGroup_5.Controls.Add(this.button14);
-            this.gbGroup_5.Controls.Add(this.label19);
-            this.gbGroup_5.Controls.Add(this.label20);
-            this.gbGroup_5.Controls.Add(this.label21);
+            this.gbGroup_5.Controls.Add(this.btnGetParam_5);
+            this.gbGroup_5.Controls.Add(this.btnTestByHand_5);
+            this.gbGroup_5.Controls.Add(this.lblTState_5);
+            this.gbGroup_5.Controls.Add(this.lblTValue_5);
+            this.gbGroup_5.Controls.Add(this.lblShowT_5);
             this.gbGroup_5.Location = new System.Drawing.Point(26, 253);
             this.gbGroup_5.Name = "gbGroup_5";
             this.gbGroup_5.Size = new System.Drawing.Size(155, 84);
@@ -576,56 +580,84 @@
             this.gbGroup_5.TabStop = false;
             this.gbGroup_5.Text = "Group-5";
             // 
-            // button13
+            // btnGetParam_5
             // 
-            this.button13.Enabled = false;
-            this.button13.Location = new System.Drawing.Point(81, 55);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(58, 23);
-            this.button13.TabIndex = 3;
-            this.button13.Text = "Click";
-            this.button13.UseVisualStyleBackColor = true;
+            this.btnGetParam_5.Enabled = false;
+            this.btnGetParam_5.Location = new System.Drawing.Point(81, 55);
+            this.btnGetParam_5.Name = "btnGetParam_5";
+            this.btnGetParam_5.Size = new System.Drawing.Size(58, 23);
+            this.btnGetParam_5.TabIndex = 3;
+            this.btnGetParam_5.Text = "Click";
+            this.btnGetParam_5.UseVisualStyleBackColor = true;
             // 
-            // button14
+            // btnTestByHand_5
             // 
-            this.button14.Enabled = false;
-            this.button14.Location = new System.Drawing.Point(19, 55);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(56, 23);
-            this.button14.TabIndex = 2;
-            this.button14.Text = "Click";
-            this.button14.UseVisualStyleBackColor = true;
+            this.btnTestByHand_5.Location = new System.Drawing.Point(19, 55);
+            this.btnTestByHand_5.Name = "btnTestByHand_5";
+            this.btnTestByHand_5.Size = new System.Drawing.Size(56, 23);
+            this.btnTestByHand_5.TabIndex = 2;
+            this.btnTestByHand_5.Text = "Click";
+            this.btnTestByHand_5.UseVisualStyleBackColor = true;
+            this.btnTestByHand_5.Click += new System.EventHandler(this.btnTestByHand_5_Click);
             // 
-            // label19
+            // lblTState_5
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(104, 31);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(35, 13);
-            this.label19.TabIndex = 2;
-            this.label19.Text = "NULL";
+            this.lblTState_5.AutoSize = true;
+            this.lblTState_5.Location = new System.Drawing.Point(104, 31);
+            this.lblTState_5.Name = "lblTState_5";
+            this.lblTState_5.Size = new System.Drawing.Size(35, 13);
+            this.lblTState_5.TabIndex = 2;
+            this.lblTState_5.Text = "NULL";
             // 
-            // label20
+            // lblTValue_5
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(53, 31);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(35, 13);
-            this.label20.TabIndex = 1;
-            this.label20.Text = "NULL";
+            this.lblTValue_5.AutoSize = true;
+            this.lblTValue_5.Location = new System.Drawing.Point(53, 31);
+            this.lblTValue_5.Name = "lblTValue_5";
+            this.lblTValue_5.Size = new System.Drawing.Size(35, 13);
+            this.lblTValue_5.TabIndex = 1;
+            this.lblTValue_5.Text = "NULL";
             // 
-            // label21
+            // lblShowT_5
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(21, 31);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(17, 13);
-            this.label21.TabIndex = 0;
-            this.label21.Text = "T:";
+            this.lblShowT_5.AutoSize = true;
+            this.lblShowT_5.Location = new System.Drawing.Point(21, 31);
+            this.lblShowT_5.Name = "lblShowT_5";
+            this.lblShowT_5.Size = new System.Drawing.Size(17, 13);
+            this.lblShowT_5.TabIndex = 0;
+            this.lblShowT_5.Text = "T:";
             // 
             // timer_1
             // 
             this.timer_1.Tick += new System.EventHandler(this.timer_1_Tick);
+            // 
+            // timer_2
+            // 
+            this.timer_2.Tick += new System.EventHandler(this.timer_2_Tick);
+            // 
+            // timer_3
+            // 
+            this.timer_3.Tick += new System.EventHandler(this.timer_3_Tick);
+            // 
+            // timer_4
+            // 
+            this.timer_4.Tick += new System.EventHandler(this.timer_4_Tick);
+            // 
+            // timer_5
+            // 
+            this.timer_5.Tick += new System.EventHandler(this.timer_5_Tick);
+            // 
+            // timer_6
+            // 
+            this.timer_6.Tick += new System.EventHandler(this.timer_6_Tick);
+            // 
+            // timer_7
+            // 
+            this.timer_7.Tick += new System.EventHandler(this.timer_7_Tick);
+            // 
+            // timer_8
+            // 
+            this.timer_8.Tick += new System.EventHandler(this.timer_8_Tick);
             // 
             // lblPunishT
             // 
@@ -661,11 +693,47 @@
             this.lblConfortT.TabIndex = 12;
             this.lblConfortT.Text = "LowT:";
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 572);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(787, 22);
+            this.statusStrip1.TabIndex = 14;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            // 
+            // statusStrip2
+            // 
+            this.statusStrip2.Location = new System.Drawing.Point(0, 550);
+            this.statusStrip2.Name = "statusStrip2";
+            this.statusStrip2.Size = new System.Drawing.Size(787, 22);
+            this.statusStrip2.TabIndex = 15;
+            this.statusStrip2.Text = "statusStrip2";
+            // 
+            // lblDebug
+            // 
+            this.lblDebug.AutoSize = true;
+            this.lblDebug.Location = new System.Drawing.Point(104, 120);
+            this.lblDebug.Name = "lblDebug";
+            this.lblDebug.Size = new System.Drawing.Size(35, 13);
+            this.lblDebug.TabIndex = 16;
+            this.lblDebug.Text = "NULL";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(787, 594);
+            this.Controls.Add(this.lblDebug);
+            this.Controls.Add(this.statusStrip2);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tbConfortTValue);
             this.Controls.Add(this.lblConfortT);
             this.Controls.Add(this.tbPunishTValue);
@@ -679,7 +747,6 @@
             this.Controls.Add(this.gbGroup_2);
             this.Controls.Add(this.gbGroup_1);
             this.Controls.Add(this.menuStrip);
-            this.Enabled = false;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
@@ -703,6 +770,8 @@
             this.gbGroup_6.PerformLayout();
             this.gbGroup_5.ResumeLayout(false);
             this.gbGroup_5.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -721,47 +790,47 @@
         private System.Windows.Forms.Label lblTValue_1;
         private System.Windows.Forms.Label lblShowT_1;
         private System.Windows.Forms.GroupBox gbGroup_2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnGetParam_2;
+        private System.Windows.Forms.Button btnTestByHand_2;
+        private System.Windows.Forms.Label lblTState_2;
+        private System.Windows.Forms.Label lblTValue_2;
+        private System.Windows.Forms.Label lblShowT_2;
         private System.Windows.Forms.GroupBox gbGroup_3;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnGetParam_3;
+        private System.Windows.Forms.Button btnTestByHand_3;
+        private System.Windows.Forms.Label lblTState_3;
+        private System.Windows.Forms.Label lblTValue_3;
+        private System.Windows.Forms.Label lblShowT_3;
         private System.Windows.Forms.GroupBox gbGroup_4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnGetParam_4;
+        private System.Windows.Forms.Button btnTestByHand_4;
+        private System.Windows.Forms.Label lblTState_4;
+        private System.Windows.Forms.Label lblTValue_4;
+        private System.Windows.Forms.Label lblShowT_4;
         private System.Windows.Forms.GroupBox gbGroup_8;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button btnGetParam_8;
+        private System.Windows.Forms.Button btnTestByHand_8;
+        private System.Windows.Forms.Label lblTState_8;
+        private System.Windows.Forms.Label lblTValue_8;
+        private System.Windows.Forms.Label lblShowT_8;
         private System.Windows.Forms.GroupBox gbGroup_7;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btnGetParam_7;
+        private System.Windows.Forms.Button btnTestByHand_7;
+        private System.Windows.Forms.Label lblTState_7;
+        private System.Windows.Forms.Label lblTValue_7;
+        private System.Windows.Forms.Label lblShowT_7;
         private System.Windows.Forms.GroupBox gbGroup_6;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button btnGetParam_6;
+        private System.Windows.Forms.Button btnTestByHand_6;
+        private System.Windows.Forms.Label lblTState_6;
+        private System.Windows.Forms.Label lblTValue_6;
+        private System.Windows.Forms.Label lblShowT_6;
         private System.Windows.Forms.GroupBox gbGroup_5;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Button btnGetParam_5;
+        private System.Windows.Forms.Button btnTestByHand_5;
+        private System.Windows.Forms.Label lblTState_5;
+        private System.Windows.Forms.Label lblTValue_5;
+        private System.Windows.Forms.Label lblShowT_5;
         private System.Windows.Forms.Timer timer_1;
         private System.Windows.Forms.Timer timer_2;
         private System.Windows.Forms.Timer timer_3;
@@ -774,6 +843,10 @@
         private System.Windows.Forms.TextBox tbPunishTValue;
         private System.Windows.Forms.TextBox tbConfortTValue;
         private System.Windows.Forms.Label lblConfortT;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.StatusStrip statusStrip2;
+        private System.Windows.Forms.Label lblDebug;
     }
 }
 

@@ -17,3 +17,4 @@ H:\github\xcontrol\XControl\bin\Debug\MccDaq.dll
 H:\github\xcontrol\XControl\obj\Debug\XControl.MainForm.resources
 H:\github\xcontrol\XControl\obj\Debug\XControl.Properties.Resources.resources
 H:\github\xcontrol\XControl\obj\Debug\XControl.csproj.GenerateResource.Cache
+H:\github\xcontrol\XControl\obj\Debug\XControl.csprojResolveAssemblyReference.cache
