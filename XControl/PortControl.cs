@@ -64,47 +64,42 @@ namespace XControl
 
 
 
-        public PortControl()
+        public PortControl(int boardNum)
         {
-            MccDaq.DaqDeviceManager.IgnoreInstaCal();
+           
             InitUL();
-            MccDaq.DaqDeviceDescriptor[] inventory = MccDaq.DaqDeviceManager.GetDaqDeviceInventory(MccDaq.DaqDeviceInterface.Any);
+            AcutalRange = Range.Bip2Volts;
+            DaqBoard = new MccDaq.MccBoard(boardNum);
+            IsCorrectCreate = DaqBoard.BoardNum.ToString();
 
-            int numDevDiscovered = inventory.Length;
-            
-            if (numDevDiscovered > 0)
-            {
 
-                try
-                {
-                    //    Create a new MccBoard object for Board and assign a board number 
-                    //    to the specified DAQ device with CreateDaqDevice()
-
-                    //    Parameters:
-                    //        BoardNum			: board number to be assigned to the specified DAQ device
-                    //        DeviceDescriptor	: device descriptor of the DAQ device 
-
-                    DaqBoard = MccDaq.DaqDeviceManager.CreateDaqDevice(0, inventory[0]);
-                    IsCorrectCreate = DaqBoard.Descriptor.UniqueID.ToString();
-                }
-                catch(ULException ule) 
-                {
-                    IsCorrectCreate = ule.ToString();
-                }
-            }
         }
-        
+
 
         /// <summary>
         /// Config the port to the Output
         /// </summary>
-        public void DigitConfiguration()
+        public void DigitalConfigurationOut()
         {
             DigitalIO.clsDigitalIO DioProps = new DigitalIO.clsDigitalIO();
             PortType = clsDigitalIO.PORTOUT;
             NumPort = DioProps.FindPortsOfType(DaqBoard, PortType, out ProgAbility,
                out PortNum, out NumBits, out FirstBit);
-            
+            MccDaq.DigitalPortDirection Direction = MccDaq.DigitalPortDirection.DigitalOut;
+            ULStat = DaqBoard.DConfigPort(PortNum, Direction);
+        }
+
+        /// <summary>
+        /// config the port to the input
+        /// </summary>
+        public void DigitalConfigurationIn()
+        {
+            DigitalIO.clsDigitalIO DioProps = new DigitalIO.clsDigitalIO();
+            PortType = clsDigitalIO.PORTIN;
+            NumPort = DioProps.FindPortsOfType(DaqBoard, PortType, out ProgAbility,
+               out PortNum, out NumBits, out FirstBit);
+            MccDaq.DigitalPortDirection Direction = MccDaq.DigitalPortDirection.DigitalIn;
+            ULStat = DaqBoard.DConfigPort(PortNum, Direction);
         }
 
         /// <summary>
