@@ -71,8 +71,15 @@ namespace PID_WinForm
 
         public int ConvertAccordToPropotation(int num,int circle,int FirstProportion)
         {
+            try
+            {
+                num = num * circle / FirstProportion;
+            }
+            catch
+            {
+                num = num * circle / 1;
+            }
 
-            num = num * circle / FirstProportion;
 
             if (num > circle || num < -circle)
             {

@@ -122,7 +122,14 @@ namespace XControl
         {
             MccDaq.DigitalLogicState bitValue;
             MccDaq.ErrorInfo ULStat = DaqBoard.DBitIn(BitPort, portNumber, out bitValue);
-            return int.Parse(bitValue.ToString());
+            if (bitValue == DigitalLogicState.High)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
 

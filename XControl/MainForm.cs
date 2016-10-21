@@ -14,8 +14,8 @@ namespace XControl
     public partial class MainForm : Form
     {
 
-        private GroupControl GC;
-
+        private GroupControl Board_1;
+        private GroupControl Board_2;
 
 
         //PID period
@@ -39,14 +39,14 @@ namespace XControl
         /*
          * variable which store the Temperature
          */
-        float temperatureValue_1;
-        float temperatureValue_2;
-        float temperatureValue_3;
-        float temperatureValue_4;
-        float temperatureValue_5;
-        float temperatureValue_6;
-        float temperatureValue_7;
-        float temperatureValue_8;
+        double temperatureValue_1;
+        double temperatureValue_2;
+        double temperatureValue_3;
+        double temperatureValue_4;
+        double temperatureValue_5;
+        double temperatureValue_6;
+        double temperatureValue_7;
+        double temperatureValue_8;
 
 
         /*
@@ -159,7 +159,59 @@ namespace XControl
         bool btnSimInput_8;
 
 
+        /*
+         * if the is tested by hand
+         */
+        bool isTestByHand_1;
+        bool isTestByHand_2;
+        bool isTestByHand_3;
+        bool isTestByHand_4;
+        bool isTestByHand_5;
+        bool isTestByHand_6;
+        bool isTestByHand_7;
+        bool isTestByHand_8;
 
+        /*
+         * if execute the control moduel
+         */
+
+        bool isExecuteControlModel_1;
+        bool isExecuteControlModel_2;
+        bool isExecuteControlModel_3;
+        bool isExecuteControlModel_4;
+        bool isExecuteControlModel_5;
+        bool isExecuteControlModel_6;
+        bool isExecuteControlModel_7;
+        bool isExecuteControlModel_8;
+
+
+        bool isFirstChangeUp_1;
+        bool isFirstChangeDown_1;
+        bool isFirstChangeUp_2;
+        bool isFirstChangeDown_2;
+        bool isFirstChangeUp_3;
+        bool isFirstChangeDown_3;
+        bool isFirstChangeUp_4;
+        bool isFirstChangeDown_4;
+        bool isFirstChangeUp_5;
+        bool isFirstChangeDown_5;
+        bool isFirstChangeUp_6;
+        bool isFirstChangeDown_6;
+        bool isFirstChangeUp_7;
+        bool isFirstChangeDown_7;
+        bool isFirstChangeUp_8;
+        bool isFirstChangeDown_8;
+        /*
+         * if the isTestByHand button is clicked
+         */
+        bool isTestByHandClick_1;
+        bool isTestByHandClick_2;
+        bool isTestByHandClick_3;
+        bool isTestByHandClick_4;
+        bool isTestByHandClick_5;
+        bool isTestByHandClick_6;
+        bool isTestByHandClick_7;
+        bool isTestByHandClick_8;
 
         public MainForm()
         {
@@ -168,20 +220,25 @@ namespace XControl
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            GC = new GroupControl();
-            
+            //board_1 use to output
+            Board_1 = new GroupControl(0,false);
+           
+            //board_2 use to input
+            Board_2 = new GroupControl(1, true);
 
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
             /*
              * set the sampling rate to 10ms 
             */
-            timer_1.Interval = 60;
-            timer_2.Interval = 60;
-            timer_3.Interval = 60;
-            timer_4.Interval = 60;
-            timer_5.Interval = 60;
-            timer_6.Interval = 60;
-            timer_7.Interval = 60;
-            timer_8.Interval = 60;
+            timer_1.Interval = 10;
+            timer_2.Interval = 10;
+            timer_3.Interval = 10;
+            timer_4.Interval = 10;
+            timer_5.Interval = 10;
+            timer_6.Interval = 10;
+            timer_7.Interval = 10;
+            timer_8.Interval = 10;
 
             btnSimInput_1 = true;
             btnSimInput_2 = true;
@@ -199,8 +256,65 @@ namespace XControl
             //digitalControlSingal_1 = GC.getSingal(1);
             //lblTState_1.Text = digitalControlSingal_1 == 1 ? "On" : "OFF";
 
-            temperatureValue_1 = GC.getT(1);
+            temperatureValue_1 = Board_1.getT(1);
             lblTValue_1.Text = temperatureValue_1.ToString("00.00");
+
+            if (isTestByHand_1 == false)
+            {
+                digitalControlSingal_1 = Board_2.getSingal(1);
+            }
+
+
+
+            if (isExecuteControlModel_1 == true)
+            {
+                if (digitalControlSingal_1 == 1 && isFirstChangeUp_1 == true)
+                {
+                    digitalControlSingal_1 = 1;
+                    btnTestByHand_1.Text = "Off";
+                    btnSimInput_1 = false;
+                    lblTState_1.Text = "On";
+
+                    isFirstChangeUp_1 = false;
+                    isFirstChangeDown_1 = true;
+                    isUp_1 = true;
+                    isDown_1 = false;
+
+                    isStartPID_1 = true;
+                    PID_Count_1 = 0;
+
+                    //isFirstPor = true;
+                    Board_1.TUp(1);
+                    startPID_1 = false;
+                    circle = 10;
+                    PID_1 = new PIDControl(3, 0.1, 0.5, punishmentT);
+                    //  System.IO.File.AppendAllText("e:\\result_1.txt", "惩罚：" + "Kp:" + tbKp.Text + "  Ki" + tbKi.Text + "  Kd" + tbKd.Text + "\r\n");
+                }
+                else if (digitalControlSingal_1 == 0 && isFirstChangeDown_1 == true)
+                {
+                    digitalControlSingal_1 = 0;
+                    btnTestByHand_1.Text = "ON";
+                    btnSimInput_1 = true;
+                    isDown_1 = true;
+                    isStartPID_1 = true;
+
+                    isFirstChangeDown_1 = false;
+                    isFirstChangeUp_1 = true;
+
+                    startPID_1 = false;
+                    isUp_1 = false;
+                    PID_Count_1 = 0;
+                    lblTState_1.Text = "Off";
+                    Board_1.TDown(1);
+                    circle = 10;
+                    PID_1 = new PIDControl(7, 0.1, 0.5, confortableT);
+                    //   System.IO.File.AppendAllText("e:\\result_1.txt", "舒适：" + "Kp:" + tbDownKp.Text + "  Ki" + tbDownKi.Text + "  Kd" + tbDownKd.Text + "\r\n");
+                }
+                else
+                {
+                    ;
+                }
+            }
 
 
 
@@ -217,7 +331,7 @@ namespace XControl
                     proportion_1 = PID_1.ConvertAccordToPropotation(proportion_1,circle,FirstProportion_1);
                     
                     PID_Count_1 = 0;
-                    GC.TUp(1);
+                    Board_1.TUp(1);
                     lblDebug.Text = "up-";
 
                 }
@@ -228,7 +342,7 @@ namespace XControl
 
                 if (PID_Count_1 == proportion_1 && startPID_1 == true)
                 {
-                    GC.TNature(1);
+                    Board_1.TNature(1);
                 }
 
 
@@ -251,12 +365,12 @@ namespace XControl
                     if (result_1 > 0)
                     {
 
-                        GC.TUp(1);
+                        Board_1.TUp(1);
 
                     }
                     else
                     {
-                        GC.TDown(1);
+                        Board_1.TDown(1);
                     }
 
                     proportion_1 = PID_1.ConvertAccordToPropotation(proportion_1, circle, FirstProportion_1);
@@ -279,7 +393,7 @@ namespace XControl
                     proportion_1 = Convert.ToInt32(result_1);
                     proportion_1 = PID_1.ConvertAccordToPropotation(proportion_1,circle,FirstProportion_1);
                     PID_Count_1 = 0;
-                    GC.TDown(1);
+                    Board_1.TDown(1);
                     lblDebug.Text = "down-";
                 }
 
@@ -289,7 +403,7 @@ namespace XControl
 
                 if (PID_Count_1 == proportion_1 && startPID_1 == true)
                 {
-                    GC.TNature(1);
+                    Board_1.TNature(1);
                 }
 
                 if (startPID_1 == true)
@@ -305,11 +419,11 @@ namespace XControl
                     PID_Count_1 = 0;
                     if (result_1 > 0)
                     {
-                        GC.TUp(1);
+                        Board_1.TUp(1);
                     }
                     else
                     {
-                        GC.TDown(1);
+                        Board_1.TDown(1);
                     }
 
                     proportion_1 = PID_1.ConvertAccordToPropotation(proportion_1,circle,FirstProportion_1);
@@ -323,50 +437,24 @@ namespace XControl
 
         private void btnTestByHand_1_Click(object sender, EventArgs e)
         {
-            punishmentT = float.Parse(tbPunishTValue.Text);
-            confortableT = float.Parse(tbConfortTValue.Text);
+
+            //digitalControlSingal_1 = Board_2.getSingal(1);
             
 
-
-
-            if (btnSimInput_1 == true)
+            isTestByHand_1 = true;
+            if (isTestByHandClick_1 == true)
             {
+                isTestByHandClick_1 = false;
                 digitalControlSingal_1 = 1;
-                btnTestByHand_1.Text = "Off";
-                btnSimInput_1 = false;
-                lblTState_1.Text = "On";
-
-                isUp_1 = true;
-                isDown_1 = false;
-               
-                isStartPID_1 = true;
-                PID_Count_1 = 0;
-                
-                //isFirstPor = true;
-                GC.TUp(1);
-                startPID_1 = false;
-                circle = 10;
-                PID_1 = new PIDControl(3, 0.1, 0.5, punishmentT);
-              //  System.IO.File.AppendAllText("e:\\result_1.txt", "惩罚：" + "Kp:" + tbKp.Text + "  Ki" + tbKi.Text + "  Kd" + tbKd.Text + "\r\n");
             }
             else
             {
+                isTestByHandClick_1 = true;
                 digitalControlSingal_1 = 0;
-                btnTestByHand_1.Text = "ON";
-                btnSimInput_1 = true;
-                isDown_1 = true;
-                isStartPID_1 = true;
-               
-                startPID_1 = false;
-                isUp_1 = false;
-                PID_Count_1 = 0;
-                lblTState_1.Text = "Off";
-                GC.TDown(1);
-                circle = 10;
-                PID_1 = new PIDControl(7, 0.1, 0.5, confortableT);
-             //   System.IO.File.AppendAllText("e:\\result_1.txt", "舒适：" + "Kp:" + tbDownKp.Text + "  Ki" + tbDownKi.Text + "  Kd" + tbDownKd.Text + "\r\n");
             }
-
+            isExecuteControlModel_1 = true;
+            isFirstChangeUp_1 = true;
+            isFirstChangeDown_1 = true;
             timer_1.Start();
         }
 
@@ -378,44 +466,7 @@ namespace XControl
 
 
 
-            if (btnSimInput_2 == true)
-            {
-                digitalControlSingal_2 = 1;
-                btnTestByHand_2.Text = "Off";
-                btnSimInput_2 = false;
-                lblTState_2.Text = "On";
-
-                isUp_2 = true;
-                isDown_2 = false;
-
-                isStartPID_2 = true;
-                PID_Count_2 = 0;
-
-                //isFirstPor = true;
-                GC.TUp(2);
-                startPID_2 = false;
-                circle = 10;
-                PID_2 = new PIDControl(3, 0.1, 0.5, punishmentT);
-                //  System.IO.File.AppendAllText("e:\\result_1.txt", "惩罚：" + "Kp:" + tbKp.Text + "  Ki" + tbKi.Text + "  Kd" + tbKd.Text + "\r\n");
-            }
-            else
-            {
-                digitalControlSingal_2 = 0;
-                btnTestByHand_2.Text = "ON";
-                btnSimInput_2 = true;
-                isDown_2 = true;
-                isStartPID_2 = true;
-
-                startPID_2 = false;
-                isUp_2 = false;
-                PID_Count_2 = 0;
-                lblTState_2.Text = "Off";
-                GC.TDown(2);
-                circle = 10;
-                PID_2 = new PIDControl(7, 0.1, 0.5, confortableT);
-                //   System.IO.File.AppendAllText("e:\\result_2.txt", "舒适：" + "Kp:" + tbDownKp.Text + "  Ki" + tbDownKi.Text + "  Kd" + tbDownKd.Text + "\r\n");
-            }
-
+           
             timer_2.Start();
         }
 
@@ -427,43 +478,7 @@ namespace XControl
 
 
 
-            if (btnSimInput_3 == true)
-            {
-                digitalControlSingal_3 = 1;
-                btnTestByHand_3.Text = "Off";
-                btnSimInput_3 = false;
-                lblTState_3.Text = "On";
-
-                isUp_3 = true;
-                isDown_3 = false;
-
-                isStartPID_3 = true;
-                PID_Count_3 = 0;
-
-                //isFirstPor = true;
-                GC.TUp(3);
-                startPID_3 = false;
-                circle = 10;
-                PID_3 = new PIDControl(3, 0.1, 0.5, punishmentT);
-                //  System.IO.File.AppendAllText("e:\\result_3.txt", "惩罚：" + "Kp:" + tbKp.Text + "  Ki" + tbKi.Text + "  Kd" + tbKd.Text + "\r\n");
-            }
-            else
-            {
-                digitalControlSingal_3 = 0;
-                btnTestByHand_3.Text = "ON";
-                btnSimInput_3 = true;
-                isDown_3 = true;
-                isStartPID_3 = true;
-
-                startPID_3 = false;
-                isUp_3 = false;
-                PID_Count_3 = 0;
-                lblTState_3.Text = "Off";
-                GC.TDown(3);
-                circle = 10;
-                PID_3 = new PIDControl(7, 0.1, 0.5, confortableT);
-                //   System.IO.File.AppendAllText("e:\\result_3.txt", "舒适：" + "Kp:" + tbDownKp.Text + "  Ki" + tbDownKi.Text + "  Kd" + tbDownKd.Text + "\r\n");
-            }
+           
 
             timer_3.Start();
         }
@@ -476,44 +491,7 @@ namespace XControl
 
 
 
-            if (btnSimInput_4 == true)
-            {
-                digitalControlSingal_4 = 1;
-                btnTestByHand_4.Text = "Off";
-                btnSimInput_4 = false;
-                lblTState_4.Text = "On";
-
-                isUp_4 = true;
-                isDown_4 = false;
-
-                isStartPID_4 = true;
-                PID_Count_4 = 0;
-
-                //isFirstPor = true;
-                GC.TUp(4);
-                startPID_4 = false;
-                circle = 10;
-                PID_4 = new PIDControl(3, 0.1, 0.5, punishmentT);
-                //  System.IO.File.AppendAllText("e:\\result_4.txt", "惩罚：" + "Kp:" + tbKp.Text + "  Ki" + tbKi.Text + "  Kd" + tbKd.Text + "\r\n");
-            }
-            else
-            {
-                digitalControlSingal_4 = 0;
-                btnTestByHand_4.Text = "ON";
-                btnSimInput_4 = true;
-                isDown_4 = true;
-                isStartPID_4 = true;
-
-                startPID_4 = false;
-                isUp_4 = false;
-                PID_Count_4 = 0;
-                lblTState_4.Text = "Off";
-                GC.TDown(4);
-                circle = 10;
-                PID_4 = new PIDControl(7, 0.1, 0.5, confortableT);
-                //   System.IO.File.AppendAllText("e:\\result_4.txt", "舒适：" + "Kp:" + tbDownKp.Text + "  Ki" + tbDownKi.Text + "  Kd" + tbDownKd.Text + "\r\n");
-            }
-
+           
             timer_4.Start();
         }
 
@@ -525,44 +503,7 @@ namespace XControl
 
 
 
-            if (btnSimInput_5 == true)
-            {
-                digitalControlSingal_5 = 1;
-                btnTestByHand_5.Text = "Off";
-                btnSimInput_5 = false;
-                lblTState_5.Text = "On";
-
-                isUp_5 = true;
-                isDown_5 = false;
-
-                isStartPID_5 = true;
-                PID_Count_5 = 0;
-
-                //isFirstPor = true;
-                GC.TUp(5);
-                startPID_5 = false;
-                circle = 10;
-                PID_5 = new PIDControl(3, 0.1, 0.5, punishmentT);
-                //  System.IO.File.AppendAllText("e:\\result_5.txt", "惩罚：" + "Kp:" + tbKp.Text + "  Ki" + tbKi.Text + "  Kd" + tbKd.Text + "\r\n");
-            }
-            else
-            {
-                digitalControlSingal_5 = 0;
-                btnTestByHand_5.Text = "ON";
-                btnSimInput_5 = true;
-                isDown_5 = true;
-                isStartPID_5 = true;
-
-                startPID_5 = false;
-                isUp_5 = false;
-                PID_Count_5 = 0;
-                lblTState_5.Text = "Off";
-                GC.TDown(5);
-                circle = 10;
-                PID_5 = new PIDControl(7, 0.1, 0.5, confortableT);
-                //   System.IO.File.AppendAllText("e:\\result_5.txt", "舒适：" + "Kp:" + tbDownKp.Text + "  Ki" + tbDownKi.Text + "  Kd" + tbDownKd.Text + "\r\n");
-            }
-
+            
             timer_5.Start();
         }
 
@@ -574,43 +515,7 @@ namespace XControl
 
 
 
-            if (btnSimInput_6 == true)
-            {
-                digitalControlSingal_6 = 1;
-                btnTestByHand_6.Text = "Off";
-                btnSimInput_6 = false;
-                lblTState_6.Text = "On";
-
-                isUp_6 = true;
-                isDown_6 = false;
-
-                isStartPID_6 = true;
-                PID_Count_6 = 0;
-
-                //isFirstPor = true;
-                GC.TUp(6);
-                startPID_6 = false;
-                circle = 10;
-                PID_6 = new PIDControl(3, 0.1, 0.5, punishmentT);
-                //  System.IO.File.AppendAllText("e:\\result_6.txt", "惩罚：" + "Kp:" + tbKp.Text + "  Ki" + tbKi.Text + "  Kd" + tbKd.Text + "\r\n");
-            }
-            else
-            {
-                digitalControlSingal_6 = 0;
-                btnTestByHand_6.Text = "ON";
-                btnSimInput_6 = true;
-                isDown_6 = true;
-                isStartPID_6 = true;
-
-                startPID_6 = false;
-                isUp_6 = false;
-                PID_Count_6 = 0;
-                lblTState_6.Text = "Off";
-                GC.TDown(6);
-                circle = 10;
-                PID_6 = new PIDControl(7, 0.1, 0.5, confortableT);
-                //   System.IO.File.AppendAllText("e:\\result_6.txt", "舒适：" + "Kp:" + tbDownKp.Text + "  Ki" + tbDownKi.Text + "  Kd" + tbDownKd.Text + "\r\n");
-            }
+            
 
             timer_6.Start();
         }
@@ -622,45 +527,7 @@ namespace XControl
 
 
 
-
-            if (btnSimInput_7 == true)
-            {
-                digitalControlSingal_7 =1;
-                btnTestByHand_7.Text = "Off";
-                btnSimInput_7 = false;
-                lblTState_7.Text = "On";
-
-                isUp_7 = true;
-                isDown_7 = false;
-
-                isStartPID_7 = true;
-                PID_Count_7 = 0;
-
-                //isFirstPor = true;
-                GC.TUp(7);
-                startPID_7 = false;
-                circle = 10;
-                PID_7 = new PIDControl(3, 0.1, 0.5, punishmentT);
-                //  System.IO.File.AppendAllText("e:\\result_7.txt", "惩罚：" + "Kp:" + tbKp.Text + "  Ki" + tbKi.Text + "  Kd" + tbKd.Text + "\r\n");
-            }
-            else
-            {
-                digitalControlSingal_7 = 0;
-                btnTestByHand_7.Text = "ON";
-                btnSimInput_7 = true;
-                isDown_7 = true;
-                isStartPID_7 = true;
-
-                startPID_7 = false;
-                isUp_7 = false;
-                PID_Count_7 = 0;
-                lblTState_7.Text = "Off";
-                GC.TDown(7);
-                circle = 10;
-                PID_7 = new PIDControl(7, 0.1, 0.5, confortableT);
-                //   System.IO.File.AppendAllText("e:\\result_7.txt", "舒适：" + "Kp:" + tbDownKp.Text + "  Ki" + tbDownKi.Text + "  Kd" + tbDownKd.Text + "\r\n");
-            }
-
+            
             timer_7.Start();
         }
 
@@ -672,44 +539,7 @@ namespace XControl
 
 
 
-            if (btnSimInput_8 == true)
-            {
-                digitalControlSingal_8 =1;
-                btnTestByHand_8.Text = "Off";
-                btnSimInput_8 = false;
-                lblTState_8.Text = "On";
-
-                isUp_8 = true;
-                isDown_8 = false;
-
-                isStartPID_8 = true;
-                PID_Count_8 = 0;
-
-                //isFirstPor = true;
-                GC.TUp(8);
-                startPID_8 = false;
-                circle = 10;
-                PID_8 = new PIDControl(3, 0.1, 0.5, punishmentT);
-                //  System.IO.File.AppendAllText("e:\\result_8.txt", "惩罚：" + "Kp:" + tbKp.Text + "  Ki" + tbKi.Text + "  Kd" + tbKd.Text + "\r\n");
-            }
-            else
-            {
-                digitalControlSingal_8 = 0;
-                btnTestByHand_8.Text = "ON";
-                btnSimInput_8 = true;
-                isDown_8 = true;
-                isStartPID_8 = true;
-
-                startPID_8 = false;
-                isUp_8 = false;
-                PID_Count_8 = 0;
-                lblTState_8.Text = "Off";
-                GC.TDown(8);
-                circle = 10;
-                PID_8 = new PIDControl(7, 0.1, 0.5, confortableT);
-                //   System.IO.File.AppendAllText("e:\\result_8.txt", "舒适：" + "Kp:" + tbDownKp.Text + "  Ki" + tbDownKi.Text + "  Kd" + tbDownKd.Text + "\r\n");
-            }
-
+           
             timer_8.Start();
         }
 
@@ -718,8 +548,64 @@ namespace XControl
             //digitalControlSingal_1 = GC.getSingal(1);
             //lblTState_1.Text = digitalControlSingal_1 == 1 ? "On" : "OFF";
 
-            temperatureValue_2 = GC.getT(2);
+            temperatureValue_2 = Board_1.getT(2);
             lblTValue_2.Text = temperatureValue_2.ToString("00.00");
+
+            if (isTestByHand_2 == false)
+            {
+                digitalControlSingal_2 = Board_2.getSingal(2);
+            }
+
+            if (isExecuteControlModel_2 == true)
+            {
+                if (digitalControlSingal_2 == 1 && isFirstChangeUp_2 == true)
+                {
+                    digitalControlSingal_2 = 1;
+                    btnTestByHand_2.Text = "Off";
+                    btnSimInput_2 = false;
+                    lblTState_2.Text = "On";
+
+                    isFirstChangeUp_2 = false;
+                    isFirstChangeDown_2 = true;
+
+                    isUp_2 = true;
+                    isDown_2 = false;
+
+                    isStartPID_2 = true;
+                    PID_Count_2 = 0;
+
+                    //isFirstPor = true;
+                    Board_1.TUp(2);
+                    startPID_2 = false;
+                    circle = 10;
+                    PID_2 = new PIDControl(3, 0.1, 0.5, punishmentT);
+                    //  System.IO.File.AppendAllText("e:\\result_1.txt", "惩罚：" + "Kp:" + tbKp.Text + "  Ki" + tbKi.Text + "  Kd" + tbKd.Text + "\r\n");
+                }
+                else if (digitalControlSingal_2 == 0 && isFirstChangeDown_2 == true)
+                {
+                    digitalControlSingal_2 = 0;
+                    btnTestByHand_2.Text = "ON";
+                    btnSimInput_2 = true;
+                    isDown_2 = true;
+                    isStartPID_2 = true;
+
+                    isFirstChangeDown_2 = false;
+                    isFirstChangeUp_2 = true;
+
+                    startPID_2 = false;
+                    isUp_2 = false;
+                    PID_Count_2 = 0;
+                    lblTState_2.Text = "Off";
+                    Board_1.TDown(2);
+                    circle = 10;
+                    PID_2 = new PIDControl(7, 0.1, 0.5, confortableT);
+                    //   System.IO.File.AppendAllText("e:\\result_2.txt", "舒适：" + "Kp:" + tbDownKp.Text + "  Ki" + tbDownKi.Text + "  Kd" + tbDownKd.Text + "\r\n");
+                }
+                else
+                {
+                    ;
+                }
+            }
 
 
 
@@ -736,7 +622,7 @@ namespace XControl
                     proportion_2 = PID_2.ConvertAccordToPropotation(proportion_2, circle, FirstProportion_2);
 
                     PID_Count_2 = 0;
-                    GC.TUp(2);
+                    Board_1.TUp(2);
                     lblDebug.Text = "up-";
 
                 }
@@ -747,7 +633,7 @@ namespace XControl
 
                 if (PID_Count_2 == proportion_2 && startPID_2 == true)
                 {
-                    GC.TNature(2);
+                    Board_1.TNature(2);
                 }
 
 
@@ -770,12 +656,12 @@ namespace XControl
                     if (result_2 > 0)
                     {
 
-                        GC.TUp(2);
+                        Board_1.TUp(2);
 
                     }
                     else
                     {
-                        GC.TDown(2);
+                        Board_1.TDown(2);
                     }
 
                     proportion_2 = PID_2.ConvertAccordToPropotation(proportion_2, circle, FirstProportion_2);
@@ -798,7 +684,7 @@ namespace XControl
                     proportion_2 = Convert.ToInt32(result_2);
                     proportion_2 = PID_2.ConvertAccordToPropotation(proportion_2, circle, FirstProportion_2);
                     PID_Count_2 = 0;
-                    GC.TDown(2);
+                    Board_1.TDown(2);
                     lblDebug.Text = "down-";
                 }
 
@@ -808,7 +694,7 @@ namespace XControl
 
                 if (PID_Count_2 == proportion_2 && startPID_2 == true)
                 {
-                    GC.TNature(2);
+                    Board_1.TNature(2);
                 }
 
                 if (startPID_2 == true)
@@ -824,11 +710,11 @@ namespace XControl
                     PID_Count_2 = 0;
                     if (result_2 > 0)
                     {
-                        GC.TUp(2);
+                        Board_1.TUp(2);
                     }
                     else
                     {
-                        GC.TDown(2);
+                        Board_1.TDown(2);
                     }
 
                     proportion_2 = PID_2.ConvertAccordToPropotation(proportion_2, circle, FirstProportion_2);
@@ -845,8 +731,64 @@ namespace XControl
             //digitalControlSingal_1 = GC.getSingal(1);
             //lblTState_1.Text = digitalControlSingal_1 == 1 ? "On" : "OFF";
 
-            temperatureValue_3 = GC.getT(3);
+            temperatureValue_3 = Board_1.getT(3);
             lblTValue_3.Text = temperatureValue_3.ToString("00.00");
+
+            if (isTestByHand_3 == false)
+            {
+                digitalControlSingal_3 = Board_2.getSingal(3);
+            }
+
+
+            if (isExecuteControlModel_3 == true)
+            {
+                if (digitalControlSingal_3 == 1 && isFirstChangeUp_3 == true)
+                {
+                    digitalControlSingal_3 = 1;
+                    btnTestByHand_3.Text = "Off";
+                    btnSimInput_3 = false;
+                    lblTState_3.Text = "On";
+
+                    isFirstChangeUp_3 = false;
+                    isFirstChangeDown_3 = true;
+                    isUp_3 = true;
+                    isDown_3 = false;
+
+                    isStartPID_3 = true;
+                    PID_Count_3 = 0;
+
+                    //isFirstPor = true;
+                    Board_1.TUp(3);
+                    startPID_3 = false;
+                    circle = 10;
+                    PID_3 = new PIDControl(3, 0.1, 0.5, punishmentT);
+                    //  System.IO.File.AppendAllText("e:\\result_3.txt", "惩罚：" + "Kp:" + tbKp.Text + "  Ki" + tbKi.Text + "  Kd" + tbKd.Text + "\r\n");
+                }
+                else if (digitalControlSingal_3 == 0 && isFirstChangeDown_3 == true)
+                {
+                    digitalControlSingal_3 = 0;
+                    btnTestByHand_3.Text = "ON";
+                    btnSimInput_3 = true;
+                    isDown_3 = true;
+                    isStartPID_3 = true;
+
+                    isFirstChangeDown_3 = false;
+                    isFirstChangeUp_3 = true;
+
+                    startPID_3 = false;
+                    isUp_3 = false;
+                    PID_Count_3 = 0;
+                    lblTState_3.Text = "Off";
+                    Board_1.TDown(3);
+                    circle = 10;
+                    PID_3 = new PIDControl(7, 0.1, 0.5, confortableT);
+                    //   System.IO.File.AppendAllText("e:\\result_3.txt", "舒适：" + "Kp:" + tbDownKp.Text + "  Ki" + tbDownKi.Text + "  Kd" + tbDownKd.Text + "\r\n");
+                }
+                else
+                {
+                    ;
+                }
+            }
 
 
 
@@ -863,7 +805,7 @@ namespace XControl
                     proportion_3 = PID_3.ConvertAccordToPropotation(proportion_3, circle, FirstProportion_3);
 
                     PID_Count_3 = 0;
-                    GC.TUp(3);
+                    Board_1.TUp(3);
                     lblDebug.Text = "up-";
 
                 }
@@ -874,7 +816,7 @@ namespace XControl
 
                 if (PID_Count_3 == proportion_3 && startPID_3 == true)
                 {
-                    GC.TNature(3);
+                    Board_1.TNature(3);
                 }
 
 
@@ -897,12 +839,12 @@ namespace XControl
                     if (result_3 > 0)
                     {
 
-                        GC.TUp(3);
+                        Board_1.TUp(3);
 
                     }
                     else
                     {
-                        GC.TDown(3);
+                        Board_1.TDown(3);
                     }
 
                     proportion_3 = PID_3.ConvertAccordToPropotation(proportion_3, circle, FirstProportion_3);
@@ -925,7 +867,7 @@ namespace XControl
                     proportion_3 = Convert.ToInt32(result_3);
                     proportion_3 = PID_3.ConvertAccordToPropotation(proportion_3, circle, FirstProportion_3);
                     PID_Count_3 = 0;
-                    GC.TDown(3);
+                    Board_1.TDown(3);
                     lblDebug.Text = "down-";
                 }
 
@@ -935,7 +877,7 @@ namespace XControl
 
                 if (PID_Count_3 == proportion_3 && startPID_3 == true)
                 {
-                    GC.TNature(3);
+                    Board_1.TNature(3);
                 }
 
                 if (startPID_3 == true)
@@ -951,11 +893,11 @@ namespace XControl
                     PID_Count_3 = 0;
                     if (result_3 > 0)
                     {
-                        GC.TUp(3);
+                        Board_1.TUp(3);
                     }
                     else
                     {
-                        GC.TDown(3);
+                        Board_1.TDown(3);
                     }
 
                     proportion_3 = PID_3.ConvertAccordToPropotation(proportion_3, circle, FirstProportion_3);
@@ -972,8 +914,60 @@ namespace XControl
             //digitalControlSingal_1 = GC.getSingal(1);
             //lblTState_1.Text = digitalControlSingal_1 == 1 ? "On" : "OFF";
 
-            temperatureValue_4 = GC.getT(4);
+            temperatureValue_4 = Board_1.getT(4);
             lblTValue_4.Text = temperatureValue_4.ToString("00.00");
+
+            if (isTestByHand_4 == false)
+            {
+                digitalControlSingal_4 = Board_2.getSingal(4);
+            }
+
+            if (isExecuteControlModel_4 == true)
+            {
+                if (digitalControlSingal_4 == 1 && isFirstChangeUp_4 == true)
+                {
+                    digitalControlSingal_4 = 1;
+                    btnTestByHand_4.Text = "Off";
+                    btnSimInput_4 = false;
+                    lblTState_4.Text = "On";
+
+                    isUp_4 = true;
+                    isDown_4 = false;
+                    isFirstChangeUp_4 = false;
+                    isFirstChangeDown_4 = true;
+                    isStartPID_4 = true;
+                    PID_Count_4 = 0;
+
+                    //isFirstPor = true;
+                    Board_1.TUp(4);
+                    startPID_4 = false;
+                    circle = 10;
+                    PID_4 = new PIDControl(3, 0.1, 0.5, punishmentT);
+                    //  System.IO.File.AppendAllText("e:\\result_4.txt", "惩罚：" + "Kp:" + tbKp.Text + "  Ki" + tbKi.Text + "  Kd" + tbKd.Text + "\r\n");
+                }
+                else if (digitalControlSingal_4 == 0 && isFirstChangeDown_4 == true)
+                {
+                    digitalControlSingal_4 = 0;
+                    btnTestByHand_4.Text = "ON";
+                    btnSimInput_4 = true;
+                    isDown_4 = true;
+                    isStartPID_4 = true;
+                    isFirstChangeDown_4 = false;
+                    isFirstChangeUp_4 = true;
+                    startPID_4 = false;
+                    isUp_4 = false;
+                    PID_Count_4 = 0;
+                    lblTState_4.Text = "Off";
+                    Board_1.TDown(4);
+                    circle = 10;
+                    PID_4 = new PIDControl(7, 0.1, 0.5, confortableT);
+                    //   System.IO.File.AppendAllText("e:\\result_4.txt", "舒适：" + "Kp:" + tbDownKp.Text + "  Ki" + tbDownKi.Text + "  Kd" + tbDownKd.Text + "\r\n");
+                }
+                else
+                {
+                    ;
+                }
+            }
 
 
 
@@ -990,7 +984,7 @@ namespace XControl
                     proportion_4 = PID_4.ConvertAccordToPropotation(proportion_4, circle, FirstProportion_4);
 
                     PID_Count_4 = 0;
-                    GC.TUp(4);
+                    Board_1.TUp(4);
                     lblDebug.Text = "up-";
 
                 }
@@ -1001,7 +995,7 @@ namespace XControl
 
                 if (PID_Count_4 == proportion_4 && startPID_4 == true)
                 {
-                    GC.TNature(4);
+                    Board_1.TNature(4);
                 }
 
 
@@ -1024,12 +1018,12 @@ namespace XControl
                     if (result_4 > 0)
                     {
 
-                        GC.TUp(4);
+                        Board_1.TUp(4);
 
                     }
                     else
                     {
-                        GC.TDown(4);
+                        Board_1.TDown(4);
                     }
 
                     proportion_4 = PID_4.ConvertAccordToPropotation(proportion_4, circle, FirstProportion_4);
@@ -1052,7 +1046,7 @@ namespace XControl
                     proportion_4 = Convert.ToInt32(result_4);
                     proportion_4 = PID_4.ConvertAccordToPropotation(proportion_4, circle, FirstProportion_4);
                     PID_Count_4 = 0;
-                    GC.TDown(4);
+                    Board_1.TDown(4);
                     lblDebug.Text = "down-";
                 }
 
@@ -1062,7 +1056,7 @@ namespace XControl
 
                 if (PID_Count_4 == proportion_4 && startPID_4 == true)
                 {
-                    GC.TNature(4);
+                    Board_1.TNature(4);
                 }
 
                 if (startPID_4 == true)
@@ -1078,11 +1072,11 @@ namespace XControl
                     PID_Count_4 = 0;
                     if (result_4 > 0)
                     {
-                        GC.TUp(4);
+                        Board_1.TUp(4);
                     }
                     else
                     {
-                        GC.TDown(4);
+                        Board_1.TDown(4);
                     }
 
                     proportion_4 = PID_4.ConvertAccordToPropotation(proportion_4, circle, FirstProportion_4);
@@ -1099,8 +1093,60 @@ namespace XControl
             //digitalControlSingal_1 = GC.getSingal(1);
             //lblTState_1.Text = digitalControlSingal_1 == 1 ? "On" : "OFF";
 
-            temperatureValue_5 = GC.getT(5);
+            temperatureValue_5 = Board_2.getT(5);
             lblTValue_5.Text = temperatureValue_5.ToString("00.00");
+
+            if (isTestByHand_5 == false)
+            {
+                digitalControlSingal_5 = Board_2.getSingal(5);
+            }
+
+            if (isExecuteControlModel_5 == true)
+            {
+                if (digitalControlSingal_5 == 1 && isFirstChangeUp_5 == true)
+                {
+                    digitalControlSingal_5 = 1;
+                    btnTestByHand_5.Text = "Off";
+                    btnSimInput_5 = false;
+                    lblTState_5.Text = "On";
+
+                    isUp_5 = true;
+                    isDown_5 = false;
+
+                    isStartPID_5 = true;
+                    PID_Count_5 = 0;
+                    isFirstChangeUp_5 = false;
+                    isFirstChangeDown_5 = true;
+                    //isFirstPor = true;
+                    Board_1.TUp(5);
+                    startPID_5 = false;
+                    circle = 10;
+                    PID_5 = new PIDControl(3, 0.1, 0.5, punishmentT);
+                    //  System.IO.File.AppendAllText("e:\\result_5.txt", "惩罚：" + "Kp:" + tbKp.Text + "  Ki" + tbKi.Text + "  Kd" + tbKd.Text + "\r\n");
+                }
+                else if (digitalControlSingal_5 == 0 && isFirstChangeDown_5 == true)
+                {
+                    digitalControlSingal_5 = 0;
+                    btnTestByHand_5.Text = "ON";
+                    btnSimInput_5 = true;
+                    isDown_5 = true;
+                    isStartPID_5 = true;
+                    isFirstChangeDown_5 = false;
+                    isFirstChangeUp_5 = true;
+                    startPID_5 = false;
+                    isUp_5 = false;
+                    PID_Count_5 = 0;
+                    lblTState_5.Text = "Off";
+                    Board_1.TDown(5);
+                    circle = 10;
+                    PID_5 = new PIDControl(7, 0.1, 0.5, confortableT);
+                    //   System.IO.File.AppendAllText("e:\\result_5.txt", "舒适：" + "Kp:" + tbDownKp.Text + "  Ki" + tbDownKi.Text + "  Kd" + tbDownKd.Text + "\r\n");
+                }
+                else
+                {
+                    ;
+                }
+            }
 
 
 
@@ -1117,7 +1163,7 @@ namespace XControl
                     proportion_5 = PID_5.ConvertAccordToPropotation(proportion_5, circle, FirstProportion_5);
 
                     PID_Count_5 = 0;
-                    GC.TUp(5);
+                    Board_1.TUp(5);
                     lblDebug.Text = "up-";
 
                 }
@@ -1128,7 +1174,7 @@ namespace XControl
 
                 if (PID_Count_5 == proportion_5 && startPID_5 == true)
                 {
-                    GC.TNature(5);
+                    Board_1.TNature(5);
                 }
 
 
@@ -1151,12 +1197,12 @@ namespace XControl
                     if (result_5 > 0)
                     {
 
-                        GC.TUp(5);
+                        Board_1.TUp(5);
 
                     }
                     else
                     {
-                        GC.TDown(5);
+                        Board_1.TDown(5);
                     }
 
                     proportion_5 = PID_5.ConvertAccordToPropotation(proportion_5, circle, FirstProportion_5);
@@ -1179,7 +1225,7 @@ namespace XControl
                     proportion_5 = Convert.ToInt32(result_5);
                     proportion_5 = PID_5.ConvertAccordToPropotation(proportion_5, circle, FirstProportion_5);
                     PID_Count_5 = 0;
-                    GC.TDown(5);
+                    Board_1.TDown(5);
                     lblDebug.Text = "down-";
                 }
 
@@ -1189,7 +1235,7 @@ namespace XControl
 
                 if (PID_Count_5 == proportion_5 && startPID_5 == true)
                 {
-                    GC.TNature(5);
+                    Board_1.TNature(5);
                 }
 
                 if (startPID_5 == true)
@@ -1205,11 +1251,11 @@ namespace XControl
                     PID_Count_5 = 0;
                     if (result_5 > 0)
                     {
-                        GC.TUp(5);
+                        Board_1.TUp(5);
                     }
                     else
                     {
-                        GC.TDown(5);
+                        Board_1.TDown(5);
                     }
 
                     proportion_5 = PID_5.ConvertAccordToPropotation(proportion_5, circle, FirstProportion_5);
@@ -1226,8 +1272,61 @@ namespace XControl
             //digitalControlSingal_1 = GC.getSingal(1);
             //lblTState_1.Text = digitalControlSingal_1 == 1 ? "On" : "OFF";
 
-            temperatureValue_6 = GC.getT(6);
+            temperatureValue_6 = Board_2.getT(6);
             lblTValue_6.Text = temperatureValue_6.ToString("00.00");
+
+
+            if (isTestByHand_6 == false)
+            {
+                digitalControlSingal_6 = Board_2.getSingal(6);
+            }
+
+            if (isExecuteControlModel_6 == true)
+            {
+                if (digitalControlSingal_6 == 1 && isFirstChangeUp_6 == true)
+                {
+                    digitalControlSingal_6 = 1;
+                    btnTestByHand_6.Text = "Off";
+                    btnSimInput_6 = false;
+                    lblTState_6.Text = "On";
+
+                    isUp_6 = true;
+                    isDown_6 = false;
+                    isFirstChangeUp_6 = false;
+                    isFirstChangeDown_6 = true;
+                    isStartPID_6 = true;
+                    PID_Count_6 = 0;
+
+                    //isFirstPor = true;
+                    Board_1.TUp(6);
+                    startPID_6 = false;
+                    circle = 10;
+                    PID_6 = new PIDControl(3, 0.1, 0.5, punishmentT);
+                    //  System.IO.File.AppendAllText("e:\\result_6.txt", "惩罚：" + "Kp:" + tbKp.Text + "  Ki" + tbKi.Text + "  Kd" + tbKd.Text + "\r\n");
+                }
+                else if (digitalControlSingal_6 == 0 && isFirstChangeDown_6 == true)
+                {
+                    digitalControlSingal_6 = 0;
+                    btnTestByHand_6.Text = "ON";
+                    btnSimInput_6 = true;
+                    isDown_6 = true;
+                    isStartPID_6 = true;
+                    isFirstChangeDown_6 = false;
+                    isFirstChangeUp_6 = true;
+                    startPID_6 = false;
+                    isUp_6 = false;
+                    PID_Count_6 = 0;
+                    lblTState_6.Text = "Off";
+                    Board_1.TDown(6);
+                    circle = 10;
+                    PID_6 = new PIDControl(7, 0.1, 0.5, confortableT);
+                    //   System.IO.File.AppendAllText("e:\\result_6.txt", "舒适：" + "Kp:" + tbDownKp.Text + "  Ki" + tbDownKi.Text + "  Kd" + tbDownKd.Text + "\r\n");
+                }
+                else
+                {
+                    ;
+                }
+            }
 
 
 
@@ -1244,7 +1343,7 @@ namespace XControl
                     proportion_6 = PID_6.ConvertAccordToPropotation(proportion_6, circle, FirstProportion_6);
 
                     PID_Count_6 = 0;
-                    GC.TUp(6);
+                    Board_1.TUp(6);
                     lblDebug.Text = "up-";
 
                 }
@@ -1255,7 +1354,7 @@ namespace XControl
 
                 if (PID_Count_6 == proportion_6 && startPID_6 == true)
                 {
-                    GC.TNature(6);
+                    Board_1.TNature(6);
                 }
 
 
@@ -1278,12 +1377,12 @@ namespace XControl
                     if (result_6 > 0)
                     {
 
-                        GC.TUp(6);
+                        Board_1.TUp(6);
 
                     }
                     else
                     {
-                        GC.TDown(6);
+                        Board_1.TDown(6);
                     }
 
                     proportion_6 = PID_6.ConvertAccordToPropotation(proportion_6, circle, FirstProportion_6);
@@ -1306,7 +1405,7 @@ namespace XControl
                     proportion_6 = Convert.ToInt32(result_6);
                     proportion_6 = PID_6.ConvertAccordToPropotation(proportion_6, circle, FirstProportion_6);
                     PID_Count_6 = 0;
-                    GC.TDown(6);
+                    Board_1.TDown(6);
                     lblDebug.Text = "down-";
                 }
 
@@ -1316,7 +1415,7 @@ namespace XControl
 
                 if (PID_Count_6 == proportion_6 && startPID_6 == true)
                 {
-                    GC.TNature(6);
+                    Board_1.TNature(6);
                 }
 
                 if (startPID_6 == true)
@@ -1332,11 +1431,11 @@ namespace XControl
                     PID_Count_6 = 0;
                     if (result_6 > 0)
                     {
-                        GC.TUp(6);
+                        Board_1.TUp(6);
                     }
                     else
                     {
-                        GC.TDown(6);
+                        Board_1.TDown(6);
                     }
 
                     proportion_6 = PID_6.ConvertAccordToPropotation(proportion_6, circle, FirstProportion_6);
@@ -1353,10 +1452,61 @@ namespace XControl
             //digitalControlSingal_7 = GC.getSingal(7);
             //lblTState_7.Text = digitalControlSingal_7 == 7 ? "On" : "OFF";
 
-            temperatureValue_7 = GC.getT(7);
+            temperatureValue_7 = Board_2.getT(7);
             lblTValue_7.Text = temperatureValue_7.ToString("00.00");
 
+            if (isTestByHand_7 == false)
+            {
+                digitalControlSingal_7 = Board_2.getSingal(7);
+            }
 
+
+            if (isExecuteControlModel_7 == true)
+            {
+                if (digitalControlSingal_7 == 1 && isFirstChangeUp_7 == true)
+                {
+                    digitalControlSingal_7 = 1;
+                    btnTestByHand_7.Text = "Off";
+                    btnSimInput_7 = false;
+                    lblTState_7.Text = "On";
+
+                    isUp_7 = true;
+                    isDown_7 = false;
+                    isFirstChangeUp_7 = false;
+                    isFirstChangeDown_7 = true;
+                    isStartPID_7 = true;
+                    PID_Count_7 = 0;
+                    isFirstChangeDown_7 = false;
+                    isFirstChangeUp_7 = true;
+                    //isFirstPor = true;
+                    Board_1.TUp(7);
+                    startPID_7 = false;
+                    circle = 10;
+                    PID_7 = new PIDControl(3, 0.1, 0.5, punishmentT);
+                    //  System.IO.File.AppendAllText("e:\\result_7.txt", "惩罚：" + "Kp:" + tbKp.Text + "  Ki" + tbKi.Text + "  Kd" + tbKd.Text + "\r\n");
+                }
+                else if (digitalControlSingal_7 == 0 && isFirstChangeDown_7 == true)
+                {
+                    digitalControlSingal_7 = 0;
+                    btnTestByHand_7.Text = "ON";
+                    btnSimInput_7 = true;
+                    isDown_7 = true;
+                    isStartPID_7 = true;
+
+                    startPID_7 = false;
+                    isUp_7 = false;
+                    PID_Count_7 = 0;
+                    lblTState_7.Text = "Off";
+                    Board_1.TDown(7);
+                    circle = 10;
+                    PID_7 = new PIDControl(7, 0.1, 0.5, confortableT);
+                    //   System.IO.File.AppendAllText("e:\\result_7.txt", "舒适：" + "Kp:" + tbDownKp.Text + "  Ki" + tbDownKi.Text + "  Kd" + tbDownKd.Text + "\r\n");
+                }
+                else
+                {
+                    ;
+                }
+            }
 
             if (isUp_7 == true)
             {
@@ -1371,7 +1521,7 @@ namespace XControl
                     proportion_7 = PID_7.ConvertAccordToPropotation(proportion_7, circle, FirstProportion_7);
 
                     PID_Count_7 = 0;
-                    GC.TUp(7);
+                    Board_1.TUp(7);
                     lblDebug.Text = "up-";
 
                 }
@@ -1382,7 +1532,7 @@ namespace XControl
 
                 if (PID_Count_7 == proportion_7 && startPID_7 == true)
                 {
-                    GC.TNature(7);
+                    Board_1.TNature(7);
                 }
 
 
@@ -1405,12 +1555,12 @@ namespace XControl
                     if (result_7 > 0)
                     {
 
-                        GC.TUp(7);
+                        Board_1.TUp(7);
 
                     }
                     else
                     {
-                        GC.TDown(7);
+                        Board_1.TDown(7);
                     }
 
                     proportion_7 = PID_7.ConvertAccordToPropotation(proportion_7, circle, FirstProportion_7);
@@ -1433,7 +1583,7 @@ namespace XControl
                     proportion_7 = Convert.ToInt32(result_7);
                     proportion_7 = PID_7.ConvertAccordToPropotation(proportion_7, circle, FirstProportion_7);
                     PID_Count_7 = 0;
-                    GC.TDown(7);
+                    Board_1.TDown(7);
                     lblDebug.Text = "down-";
                 }
 
@@ -1443,7 +1593,7 @@ namespace XControl
 
                 if (PID_Count_7 == proportion_7 && startPID_7 == true)
                 {
-                    GC.TNature(7);
+                    Board_1.TNature(7);
                 }
 
                 if (startPID_7 == true)
@@ -1459,11 +1609,11 @@ namespace XControl
                     PID_Count_7 = 0;
                     if (result_7 > 0)
                     {
-                        GC.TUp(7);
+                        Board_1.TUp(7);
                     }
                     else
                     {
-                        GC.TDown(7);
+                        Board_1.TDown(7);
                     }
 
                     proportion_7 = PID_7.ConvertAccordToPropotation(proportion_7, circle, FirstProportion_7);
@@ -1480,8 +1630,61 @@ namespace XControl
             //digitalControlSingal_1 = GC.getSingal(1);
             //lblTState_1.Text = digitalControlSingal_1 == 1 ? "On" : "OFF";
 
-            temperatureValue_8 = GC.getT(8);
+            temperatureValue_8 = Board_2.getT(8);
             lblTValue_8.Text = temperatureValue_8.ToString("00.00");
+
+
+            if (isTestByHand_8 == false)
+            {
+                digitalControlSingal_8 = Board_2.getSingal(8);
+            }
+
+            if (isExecuteControlModel_8 == true)
+            {
+                if (digitalControlSingal_8 == 1 && isFirstChangeUp_8 == true)
+                {
+                    digitalControlSingal_8 = 1;
+                    btnTestByHand_8.Text = "Off";
+                    btnSimInput_8 = false;
+                    lblTState_8.Text = "On";
+
+                    isUp_8 = true;
+                    isDown_8 = false;
+
+                    isStartPID_8 = true;
+                    PID_Count_8 = 0;
+                    isFirstChangeUp_8 = false;
+                    isFirstChangeDown_8 = true;
+                    //isFirstPor = true;
+                    Board_1.TUp(8);
+                    startPID_8 = false;
+                    circle = 10;
+                    PID_8 = new PIDControl(3, 0.1, 0.5, punishmentT);
+                    //  System.IO.File.AppendAllText("e:\\result_8.txt", "惩罚：" + "Kp:" + tbKp.Text + "  Ki" + tbKi.Text + "  Kd" + tbKd.Text + "\r\n");
+                }
+                else if (digitalControlSingal_8 == 0 && isFirstChangeDown_8 == true)
+                {
+                    digitalControlSingal_8 = 0;
+                    btnTestByHand_8.Text = "ON";
+                    btnSimInput_8 = true;
+                    isDown_8 = true;
+                    isStartPID_8 = true;
+                    isFirstChangeDown_8 = false;
+                    isFirstChangeUp_8 = true;
+                    startPID_8 = false;
+                    isUp_8 = false;
+                    PID_Count_8 = 0;
+                    lblTState_8.Text = "Off";
+                    Board_1.TDown(8);
+                    circle = 10;
+                    PID_8 = new PIDControl(7, 0.1, 0.5, confortableT);
+                    //   System.IO.File.AppendAllText("e:\\result_8.txt", "舒适：" + "Kp:" + tbDownKp.Text + "  Ki" + tbDownKi.Text + "  Kd" + tbDownKd.Text + "\r\n");
+                }
+                else
+                {
+                    ;
+                }
+            }
 
 
 
@@ -1498,7 +1701,7 @@ namespace XControl
                     proportion_8 = PID_8.ConvertAccordToPropotation(proportion_8, circle, FirstProportion_8);
 
                     PID_Count_8 = 0;
-                    GC.TUp(8);
+                    Board_1.TUp(8);
                     lblDebug.Text = "up-";
 
                 }
@@ -1509,7 +1712,7 @@ namespace XControl
 
                 if (PID_Count_8 == proportion_8 && startPID_8 == true)
                 {
-                    GC.TNature(8);
+                    Board_1.TNature(8);
                 }
 
 
@@ -1532,12 +1735,12 @@ namespace XControl
                     if (result_8 > 0)
                     {
 
-                        GC.TUp(8);
+                        Board_1.TUp(8);
 
                     }
                     else
                     {
-                        GC.TDown(8);
+                        Board_1.TDown(8);
                     }
 
                     proportion_8 = PID_8.ConvertAccordToPropotation(proportion_8, circle, FirstProportion_8);
@@ -1560,7 +1763,7 @@ namespace XControl
                     proportion_8 = Convert.ToInt32(result_8);
                     proportion_8 = PID_8.ConvertAccordToPropotation(proportion_8, circle, FirstProportion_8);
                     PID_Count_8 = 0;
-                    GC.TDown(8);
+                    Board_1.TDown(8);
                     lblDebug.Text = "down-";
                 }
 
@@ -1570,7 +1773,7 @@ namespace XControl
 
                 if (PID_Count_8 == proportion_8 && startPID_8 == true)
                 {
-                    GC.TNature(8);
+                    Board_1.TNature(8);
                 }
 
                 if (startPID_8 == true)
@@ -1586,11 +1789,11 @@ namespace XControl
                     PID_Count_8 = 0;
                     if (result_8 > 0)
                     {
-                        GC.TUp(8);
+                        Board_1.TUp(8);
                     }
                     else
                     {
-                        GC.TDown(8);
+                        Board_1.TDown(8);
                     }
 
                     proportion_8 = PID_8.ConvertAccordToPropotation(proportion_8, circle, FirstProportion_8);
@@ -1604,7 +1807,7 @@ namespace XControl
 
         private void btnClearAll_Click(object sender, EventArgs e)
         {
-            GC.clearALL();
+            Board_1.clearALL();
             timer_1.Stop();
             timer_2.Stop();
             timer_3.Stop();

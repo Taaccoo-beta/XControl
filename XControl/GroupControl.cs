@@ -18,6 +18,60 @@ namespace XControl
         private PortControl Board;
         private bool isIn;
         string DeviceDescript;
+
+
+        /// <summary>
+        /// the parametes which convert voltage to temperature
+        /// </summary>
+        private double p1_1, p2_1;
+        private double p1_2, p2_2;
+        private double p1_3, p2_3;
+        private double p1_4, p2_4;
+        private double p1_5, p2_5;
+        private double p1_6, p2_6;
+        private double p1_7, p2_7;
+        private double p1_8, p2_8;
+
+
+
+
+
+
+        public void SetTConvertParam(double P1_1, double P2_1, double P1_2, double P2_2,
+            double P1_3, double P2_3, double P1_4, double P2_4, double P1_5, double P2_5, double P1_6, double P2_6, double P1_7, double P2_7, double P1_8, double P2_8)
+
+        {
+            this.p1_1 = P1_1;
+            this.p2_1 = P2_1;
+
+            this.p1_2 = P1_2;
+            this.p2_2 = P2_2;
+
+            this.p1_3 = P1_3;
+            this.p2_3 = P2_3;
+
+            this.p1_4 = P1_4;
+            this.p2_4 = P2_4;
+
+            this.p1_5 = P1_5;
+            this.p2_5 = P2_5;
+
+            this.p1_6 = P1_6;
+            this.p2_6 = P2_6;
+
+            this.p1_7 = P1_7;
+            this.p2_7 = P2_7;
+
+            this.p1_8 = P1_8;
+            this.p2_8 = P2_8;
+
+
+        }
+
+
+
+
+
         /// <summary>
         /// initial a board
         /// </summary>
@@ -44,11 +98,9 @@ namespace XControl
         /// group number
         /// </summary>
         /// <param name="groupNumber">from 1 to 8</param>
-        public void TUp(int groupNumber,bool isIn)
+        public void TUp(int groupNumber)
         {
-            if (!isIn)
-            {
-                switch (groupNumber)
+            switch (groupNumber)
                 {
                     case 1:
                         Board.DigitOutput(1, MccDaq.DigitalLogicState.Low);
@@ -83,11 +135,7 @@ namespace XControl
                         Board.DigitOutput(14, MccDaq.DigitalLogicState.High);
                         break;
                 }
-            }
-            else
-            {
-                MessageBox.Show("you Cant output in this board");
-            }
+          
         }
 
 
@@ -95,10 +143,9 @@ namespace XControl
         /// temperature down 
         /// </summary>
         /// <param name="groupNumber">protNumber form 1 to 8</param>
-        public void TDown(int groupNumber,bool isIn)
+        public void TDown(int groupNumber)
         {
-            if (!isIn)
-            {
+           
                 switch (groupNumber)
                 {
                     case 1:
@@ -135,11 +182,7 @@ namespace XControl
                         break;
 
                 }
-            }
-            else
-            {
-                MessageBox.Show("you can't out put in this Board");
-            }
+            
         }
 
         /// <summary>
@@ -147,10 +190,9 @@ namespace XControl
         /// the temperature will not control by computer
         /// </summary>
         /// <param name="groupNumber">port number</param>
-        public void TNature(int groupNumber ,bool isIn)
+        public void TNature(int groupNumber)
         {
-            if (!isIn)
-            {
+            
                 switch (groupNumber)
                 {
                     case 1:
@@ -187,8 +229,7 @@ namespace XControl
                         break;
 
                 }
-            }
-            else { MessageBox.Show("you can't output in this board"); }
+          
         }
 
         /// <summary>
@@ -196,32 +237,34 @@ namespace XControl
         /// </summary>
         /// <param name="groupNumber">the port number</param>
         /// <returns>float type of temperature</returns>
-        public float getT(int groupNumber)
+        public double getT(int groupNumber)
         {
             switch (groupNumber)
             {
-                case 1:
-                    return Board.ReadTemperature(0);                    
+                case 1:               
+                    return double.Parse(Board.AnalogInput(0)) * p1_1 - p2_1;
                 case 2:
-                    return Board.ReadTemperature(1);
+                    return double.Parse(Board.AnalogInput(1)) * p1_2 - p2_2;
                 case 3:
-                    return Board.ReadTemperature(2);
+                    return double.Parse(Board.AnalogInput(2)) * p1_3 - p2_3;
                 case 4:
-                    return Board.ReadTemperature(3);
+                    return double.Parse(Board.AnalogInput(3)) * p1_4 - p2_4;
                 case 5:
-                    return Board.ReadTemperature(4);
+                    return double.Parse(Board.AnalogInput(0)) * p1_5 - p2_5;
                 case 6:
-                    return Board.ReadTemperature(5);
+                    return double.Parse(Board.AnalogInput(1)) * p1_6 - p2_6;
                 case 7:
-                    return Board.ReadTemperature(6);
+                    return double.Parse(Board.AnalogInput(2)) * p1_7 - p2_7;
                 case 8:
-                    return Board.ReadTemperature(7);
+                    return double.Parse(Board.AnalogInput(3)) * p1_8 - p2_8;
+                default:
+                    return -1;
             }
-
-            return -1;
-
-
+            
         }
+
+        
+
 
         /// <summary>
         /// get the sinnal from the digital port from 0 to 7
@@ -229,10 +272,9 @@ namespace XControl
         /// <param name="groupNumber"></param>
         /// <param name="isIn">you can get input only isIn is true</param>
         /// <returns>0 expresss low and 1 express high</returns>
-        public int getSingal(int groupNumber,bool isIn)
+        public int getSingal(int groupNumber)
         {
-            if (isIn)
-            {
+            
                 switch (groupNumber)
                 {
                     case 1:
@@ -254,21 +296,15 @@ namespace XControl
                     default:
                         return -1;
                 }
-            }
-            else
-            {
-                return -1;
-            }
+          
 
         }
 
         /// <summary>
         /// make all of temperature sensor to a nature state
         /// </summary>
-        public void clearALL(bool isIn)
+        public void clearALL()
         {
-            if (!isIn)
-            {
                 Board.DigitOutput(1, MccDaq.DigitalLogicState.High);
 
 
@@ -291,8 +327,7 @@ namespace XControl
 
                 Board.DigitOutput(15, MccDaq.DigitalLogicState.High);
 
-            }
-            else { MessageBox.Show("you can't clear all the board in this board"); }
+          
         }
 
 
