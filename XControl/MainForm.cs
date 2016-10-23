@@ -270,8 +270,8 @@ namespace XControl
             {
                 if (digitalControlSingal_1 == 1 && isFirstChangeUp_1 == true)
                 {
-                    digitalControlSingal_1 = 1;
-                    btnTestByHand_1.Text = "Off";
+                    
+                   
                     btnSimInput_1 = false;
                     lblTState_1.Text = "On";
 
@@ -292,8 +292,7 @@ namespace XControl
                 }
                 else if (digitalControlSingal_1 == 0 && isFirstChangeDown_1 == true)
                 {
-                    digitalControlSingal_1 = 0;
-                    btnTestByHand_1.Text = "ON";
+                   
                     btnSimInput_1 = true;
                     isDown_1 = true;
                     isStartPID_1 = true;
