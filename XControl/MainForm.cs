@@ -255,6 +255,13 @@ namespace XControl
             Board_1.SetTConvertParam(0.26, 480, 0.26, 480, 0.2, 700, 0.2, 700, 0.2, 700, 0.2, 700, 0.2, 700, 0.2, 700);
 
             isTestByHandClick_1 = true;
+            isTestByHandClick_2 = true;
+            isTestByHandClick_3 = true;
+            isTestByHandClick_4 = true;
+            isTestByHandClick_5 = true;
+            isTestByHandClick_6 = true;
+            isTestByHandClick_7 = true;
+            isTestByHandClick_8 = true;
 
         }
 
@@ -466,86 +473,162 @@ namespace XControl
 
         private void button2_Click(object sender, EventArgs e)
         {
-            punishmentT = float.Parse(tbPunishTValue.Text);
-            confortableT = float.Parse(tbConfortTValue.Text);
+            isTestByHand_2 = true;
+            if (isTestByHandClick_2 == true)
+            {
+                isTestByHandClick_2 = false;
+                digitalControlSingal_2 = 1;
+            }
+            else
+            {
+                isTestByHandClick_2 = true;
+                digitalControlSingal_2 = 0;
+            }
+            isExecuteControlModel_2 = true;
+            isFirstChangeUp_2 = true;
+            isFirstChangeDown_2 = true;
+            
 
 
 
 
-           
+
             timer_2.Start();
         }
 
         private void btnTestByHand_3_Click(object sender, EventArgs e)
         {
-            punishmentT = float.Parse(tbPunishTValue.Text);
-            confortableT = float.Parse(tbConfortTValue.Text);
+            isTestByHand_3 = true;
+            if (isTestByHandClick_3 == true)
+            {
+                isTestByHandClick_3 = false;
+                digitalControlSingal_3 = 1;
+            }
+            else
+            {
+                isTestByHandClick_3 = true;
+                digitalControlSingal_3 = 0;
+            }
+            isExecuteControlModel_3 = true;
+            isFirstChangeUp_3 = true;
+            isFirstChangeDown_3 = true;
 
 
 
 
-           
+
 
             timer_3.Start();
         }
 
         private void btnTestByHand_4_Click(object sender, EventArgs e)
         {
-            punishmentT = float.Parse(tbPunishTValue.Text);
-            confortableT = float.Parse(tbConfortTValue.Text);
+            isTestByHand_4 = true;
+            if (isTestByHandClick_4 == true)
+            {
+                isTestByHandClick_4 = false;
+                digitalControlSingal_4 = 1;
+            }
+            else
+            {
+                isTestByHandClick_4 = true;
+                digitalControlSingal_4 = 0;
+            }
+            isExecuteControlModel_4 = true;
+            isFirstChangeUp_4 = true;
+            isFirstChangeDown_4 = true;
 
 
 
 
-           
+
             timer_4.Start();
         }
 
         private void btnTestByHand_5_Click(object sender, EventArgs e)
         {
-            punishmentT = float.Parse(tbPunishTValue.Text);
-            confortableT = float.Parse(tbConfortTValue.Text);
+            isTestByHand_5 = true;
+            if (isTestByHandClick_5 == true)
+            {
+                isTestByHandClick_5 = false;
+                digitalControlSingal_5 = 1;
+            }
+            else
+            {
+                isTestByHandClick_5 = true;
+                digitalControlSingal_5 = 0;
+            }
+            isExecuteControlModel_5 = true;
+            isFirstChangeUp_5 = true;
+            isFirstChangeDown_5 = true;
 
 
 
 
-            
+
             timer_5.Start();
         }
 
         private void btnTestByHand_6_Click(object sender, EventArgs e)
         {
-            punishmentT = float.Parse(tbPunishTValue.Text);
-            confortableT = float.Parse(tbConfortTValue.Text);
+            isTestByHand_6 = true;
+            if (isTestByHandClick_6 == true)
+            {
+                isTestByHandClick_6 = false;
+                digitalControlSingal_6 = 1;
+            }
+            else
+            {
+                isTestByHandClick_6 = true;
+                digitalControlSingal_6 = 0;
+            }
+            isExecuteControlModel_6 = true;
+            isFirstChangeUp_6 = true;
+            isFirstChangeDown_6 = true;
 
-
-
-
-            
 
             timer_6.Start();
         }
 
         private void btnTestByHand_7_Click(object sender, EventArgs e)
         {
-            punishmentT = float.Parse(tbPunishTValue.Text);
-            confortableT = float.Parse(tbConfortTValue.Text);
+            isTestByHand_7 = true;
+            if (isTestByHandClick_7 == true)
+            {
+                isTestByHandClick_7 = false;
+                digitalControlSingal_7 = 1;
+            }
+            else
+            {
+                isTestByHandClick_7 = true;
+                digitalControlSingal_7 = 0;
+            }
+            isExecuteControlModel_7 = true;
+            isFirstChangeUp_7 = true;
+            isFirstChangeDown_7 = true;
 
 
 
-            
             timer_7.Start();
         }
 
         private void btnTestByHand_8_Click(object sender, EventArgs e)
         {
-            punishmentT = float.Parse(tbPunishTValue.Text);
-            confortableT = float.Parse(tbConfortTValue.Text);
-
-
-
-
-           
+            isTestByHand_8 = true;
+            if (isTestByHandClick_8 == true)
+            {
+                isTestByHandClick_8 = false;
+                digitalControlSingal_8 = 1;
+            }
+            else
+            {
+                isTestByHandClick_8 = true;
+                digitalControlSingal_8 = 0;
+            }
+            isExecuteControlModel_8 = true;
+            isFirstChangeUp_8 = true;
+            isFirstChangeDown_8 = true;
+            
             timer_8.Start();
         }
 
@@ -566,8 +649,7 @@ namespace XControl
             {
                 if (digitalControlSingal_2 == 1 && isFirstChangeUp_2 == true)
                 {
-                    digitalControlSingal_2 = 1;
-                    btnTestByHand_2.Text = "Off";
+                    
                     btnSimInput_2 = false;
                     lblTState_2.Text = "On";
 
@@ -589,8 +671,8 @@ namespace XControl
                 }
                 else if (digitalControlSingal_2 == 0 && isFirstChangeDown_2 == true)
                 {
-                    digitalControlSingal_2 = 0;
-                    btnTestByHand_2.Text = "ON";
+                   
+                 
                     btnSimInput_2 = true;
                     isDown_2 = true;
                     isStartPID_2 = true;
@@ -750,8 +832,7 @@ namespace XControl
             {
                 if (digitalControlSingal_3 == 1 && isFirstChangeUp_3 == true)
                 {
-                    digitalControlSingal_3 = 1;
-                    btnTestByHand_3.Text = "Off";
+                    
                     btnSimInput_3 = false;
                     lblTState_3.Text = "On";
 
@@ -772,8 +853,7 @@ namespace XControl
                 }
                 else if (digitalControlSingal_3 == 0 && isFirstChangeDown_3 == true)
                 {
-                    digitalControlSingal_3 = 0;
-                    btnTestByHand_3.Text = "ON";
+                   
                     btnSimInput_3 = true;
                     isDown_3 = true;
                     isStartPID_3 = true;
@@ -932,8 +1012,7 @@ namespace XControl
             {
                 if (digitalControlSingal_4 == 1 && isFirstChangeUp_4 == true)
                 {
-                    digitalControlSingal_4 = 1;
-                    btnTestByHand_4.Text = "Off";
+                   
                     btnSimInput_4 = false;
                     lblTState_4.Text = "On";
 
@@ -953,8 +1032,7 @@ namespace XControl
                 }
                 else if (digitalControlSingal_4 == 0 && isFirstChangeDown_4 == true)
                 {
-                    digitalControlSingal_4 = 0;
-                    btnTestByHand_4.Text = "ON";
+                   
                     btnSimInput_4 = true;
                     isDown_4 = true;
                     isStartPID_4 = true;
@@ -1111,8 +1189,7 @@ namespace XControl
             {
                 if (digitalControlSingal_5 == 1 && isFirstChangeUp_5 == true)
                 {
-                    digitalControlSingal_5 = 1;
-                    btnTestByHand_5.Text = "Off";
+                   
                     btnSimInput_5 = false;
                     lblTState_5.Text = "On";
 
@@ -1132,8 +1209,7 @@ namespace XControl
                 }
                 else if (digitalControlSingal_5 == 0 && isFirstChangeDown_5 == true)
                 {
-                    digitalControlSingal_5 = 0;
-                    btnTestByHand_5.Text = "ON";
+                   
                     btnSimInput_5 = true;
                     isDown_5 = true;
                     isStartPID_5 = true;
@@ -1291,8 +1367,7 @@ namespace XControl
             {
                 if (digitalControlSingal_6 == 1 && isFirstChangeUp_6 == true)
                 {
-                    digitalControlSingal_6 = 1;
-                    btnTestByHand_6.Text = "Off";
+                   
                     btnSimInput_6 = false;
                     lblTState_6.Text = "On";
 
@@ -1312,8 +1387,7 @@ namespace XControl
                 }
                 else if (digitalControlSingal_6 == 0 && isFirstChangeDown_6 == true)
                 {
-                    digitalControlSingal_6 = 0;
-                    btnTestByHand_6.Text = "ON";
+                   
                     btnSimInput_6 = true;
                     isDown_6 = true;
                     isStartPID_6 = true;
@@ -1471,8 +1545,7 @@ namespace XControl
             {
                 if (digitalControlSingal_7 == 1 && isFirstChangeUp_7 == true)
                 {
-                    digitalControlSingal_7 = 1;
-                    btnTestByHand_7.Text = "Off";
+                   
                     btnSimInput_7 = false;
                     lblTState_7.Text = "On";
 
@@ -1493,8 +1566,7 @@ namespace XControl
                 }
                 else if (digitalControlSingal_7 == 0 && isFirstChangeDown_7 == true)
                 {
-                    digitalControlSingal_7 = 0;
-                    btnTestByHand_7.Text = "ON";
+                   
                     btnSimInput_7 = true;
                     isDown_7 = true;
                     isStartPID_7 = true;
@@ -1649,8 +1721,7 @@ namespace XControl
             {
                 if (digitalControlSingal_8 == 1 && isFirstChangeUp_8 == true)
                 {
-                    digitalControlSingal_8 = 1;
-                    btnTestByHand_8.Text = "Off";
+                  
                     btnSimInput_8 = false;
                     lblTState_8.Text = "On";
 
@@ -1670,8 +1741,7 @@ namespace XControl
                 }
                 else if (digitalControlSingal_8 == 0 && isFirstChangeDown_8 == true)
                 {
-                    digitalControlSingal_8 = 0;
-                    btnTestByHand_8.Text = "ON";
+                   
                     btnSimInput_8 = true;
                     isDown_8 = true;
                     isStartPID_8 = true;
