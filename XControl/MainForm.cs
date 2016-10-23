@@ -49,6 +49,19 @@ namespace XControl
         double temperatureValue_8;
 
 
+
+
+
+        /*
+         * menu of test by hand 
+         * checked or unchecked
+         * and many turn of control variable
+         */
+        bool isMenuByHandChecked = false;
+        bool isTotalStartBtnTrue = true;
+
+
+
         /*
          * high T and low T
          */
@@ -76,23 +89,23 @@ namespace XControl
          * 
          */
 
-        bool isUp_1 ;
-        bool isUp_2 ;
-        bool isUp_3 ;
-        bool isUp_4 ;
-        bool isUp_5 ;
-        bool isUp_6 ;
-        bool isUp_7 ;
-        bool isUp_8 ;
+        bool isUp_1 = false ;
+        bool isUp_2 = false;
+        bool isUp_3 = false ;
+        bool isUp_4 = false;
+        bool isUp_5 = false;
+        bool isUp_6 = false;
+        bool isUp_7 = false;
+        bool isUp_8 = false;
 
-        bool isDown_1;
-        bool isDown_2;
-        bool isDown_3;
-        bool isDown_4;
-        bool isDown_5;
-        bool isDown_6;
-        bool isDown_7;
-        bool isDown_8;
+        bool isDown_1 = false;
+        bool isDown_2 = false;
+        bool isDown_3 = false;
+        bool isDown_4 = false;
+        bool isDown_5 = false;
+        bool isDown_6 = false;
+        bool isDown_7 = false;
+        bool isDown_8 = false;
 
         bool isStartPID_1;
         bool isStartPID_2;
@@ -149,14 +162,7 @@ namespace XControl
         int PID_Count_8;
 
 
-        bool btnSimInput_1;
-        bool btnSimInput_2;
-        bool btnSimInput_3;
-        bool btnSimInput_4;
-        bool btnSimInput_5;
-        bool btnSimInput_6;
-        bool btnSimInput_7;
-        bool btnSimInput_8;
+       
 
 
         /*
@@ -222,11 +228,9 @@ namespace XControl
         {
             //board_1 use to output
             Board_1 = new GroupControl(0,false);
-           
+            Board_1.clearALL();
             //board_2 use to input
             Board_2 = new GroupControl(1, true);
-
-
            
             punishmentT = float.Parse(tbPunishTValue.Text);
             confortableT = float.Parse(tbConfortTValue.Text);
@@ -242,15 +246,27 @@ namespace XControl
             timer_7.Interval = 10;
             timer_8.Interval = 10;
 
-            btnSimInput_1 = true;
-            btnSimInput_2 = true;
-            btnSimInput_3 = true;
-            btnSimInput_4 = true;
-            btnSimInput_5 = true;
-            btnSimInput_6 = true;
-            btnSimInput_7 = true;
-            btnSimInput_8 = true;
+            
 
+
+            isFirstChangeUp_1 = true;
+            isFirstChangeUp_2 = true;
+            isFirstChangeUp_3 = true;
+            isFirstChangeUp_4 = true;
+            isFirstChangeUp_5 = true;
+            isFirstChangeUp_6 = true;
+            isFirstChangeUp_7 = true;
+            isFirstChangeUp_8 = true;
+            isFirstChangeDown_1 = true;
+            isFirstChangeDown_2 = true;
+            isFirstChangeDown_3 = true;
+            isFirstChangeDown_4 = true;
+            isFirstChangeDown_5 = true;
+            isFirstChangeDown_6 = true;
+            isFirstChangeDown_7 = true;
+            isFirstChangeDown_8 = true;
+
+            
 
             Board_1.SetTConvertParam(0.2,660 , 0.2,660, 0.2, 660, 0.2, 660, 0.2, 660, 0.2, 660, 0.2, 660, 0.2, 660);
             Board_2.SetTConvertParam(0.2, 660, 0.2, 660, 0.2, 660, 0.2, 660, 0.2, 660, 0.2, 660, 0.2, 660, 0.2, 660);
@@ -264,7 +280,16 @@ namespace XControl
             isTestByHandClick_7 = true;
             isTestByHandClick_8 = true;
 
-            Board_1.clearALL();
+
+            timer_1.Start();
+            timer_2.Start();
+            timer_3.Start();
+            timer_4.Start();
+            timer_5.Start();
+            timer_6.Start();
+            timer_7.Start();
+            timer_8.Start();
+
 
         }
 
@@ -289,7 +314,7 @@ namespace XControl
                 {
                     
                    
-                    btnSimInput_1 = false;
+                   
                     lblTState_1.Text = "On";
 
                     isFirstChangeUp_1 = false;
@@ -310,7 +335,7 @@ namespace XControl
                 else if (digitalControlSingal_1 == 0 && isFirstChangeDown_1 == true)
                 {
                    
-                    btnSimInput_1 = true;
+                   
                     isDown_1 = true;
                     isStartPID_1 = true;
 
@@ -468,6 +493,8 @@ namespace XControl
                 isTestByHandClick_1 = true;
                 digitalControlSingal_1 = 0;
             }
+
+            
             isExecuteControlModel_1 = true;
             isFirstChangeUp_1 = true;
             isFirstChangeDown_1 = true;
@@ -650,7 +677,7 @@ namespace XControl
                 if (digitalControlSingal_2 == 1 && isFirstChangeUp_2 == true)
                 {
                     
-                    btnSimInput_2 = false;
+                   
                     lblTState_2.Text = "On";
 
                     isFirstChangeUp_2 = false;
@@ -673,7 +700,7 @@ namespace XControl
                 {
                    
                  
-                    btnSimInput_2 = true;
+                   
                     isDown_2 = true;
                     isStartPID_2 = true;
 
@@ -833,7 +860,7 @@ namespace XControl
                 if (digitalControlSingal_3 == 1 && isFirstChangeUp_3 == true)
                 {
                     
-                    btnSimInput_3 = false;
+                    
                     lblTState_3.Text = "On";
 
                     isFirstChangeUp_3 = false;
@@ -854,7 +881,7 @@ namespace XControl
                 else if (digitalControlSingal_3 == 0 && isFirstChangeDown_3 == true)
                 {
                    
-                    btnSimInput_3 = true;
+                    
                     isDown_3 = true;
                     isStartPID_3 = true;
 
@@ -1013,7 +1040,7 @@ namespace XControl
                 if (digitalControlSingal_4 == 1 && isFirstChangeUp_4 == true)
                 {
                    
-                    btnSimInput_4 = false;
+                   
                     lblTState_4.Text = "On";
 
                     isUp_4 = true;
@@ -1033,7 +1060,7 @@ namespace XControl
                 else if (digitalControlSingal_4 == 0 && isFirstChangeDown_4 == true)
                 {
                    
-                    btnSimInput_4 = true;
+                   
                     isDown_4 = true;
                     isStartPID_4 = true;
                     isFirstChangeDown_4 = false;
@@ -1190,7 +1217,7 @@ namespace XControl
                 if (digitalControlSingal_5 == 1 && isFirstChangeUp_5 == true)
                 {
                    
-                    btnSimInput_5 = false;
+                    
                     lblTState_5.Text = "On";
 
                     isUp_5 = true;
@@ -1210,7 +1237,7 @@ namespace XControl
                 else if (digitalControlSingal_5 == 0 && isFirstChangeDown_5 == true)
                 {
                    
-                    btnSimInput_5 = true;
+                    
                     isDown_5 = true;
                     isStartPID_5 = true;
                     isFirstChangeDown_5 = false;
@@ -1368,7 +1395,7 @@ namespace XControl
                 if (digitalControlSingal_6 == 1 && isFirstChangeUp_6 == true)
                 {
                    
-                    btnSimInput_6 = false;
+                    
                     lblTState_6.Text = "On";
 
                     isUp_6 = true;
@@ -1388,7 +1415,7 @@ namespace XControl
                 else if (digitalControlSingal_6 == 0 && isFirstChangeDown_6 == true)
                 {
                    
-                    btnSimInput_6 = true;
+                   
                     isDown_6 = true;
                     isStartPID_6 = true;
                     isFirstChangeDown_6 = false;
@@ -1545,7 +1572,7 @@ namespace XControl
                 if (digitalControlSingal_7 == 1 && isFirstChangeUp_7 == true)
                 {
 
-                    btnSimInput_7 = false;
+                   
                     lblTState_7.Text = "On";
 
                     isUp_7 = true;
@@ -1565,7 +1592,7 @@ namespace XControl
                 else if (digitalControlSingal_7 == 0 && isFirstChangeDown_7 == true)
                 {
 
-                    btnSimInput_7 = true;
+                    
                     isDown_7 = true;
                     isStartPID_7 = true;
                     isFirstChangeDown_7 = false;
@@ -1723,7 +1750,7 @@ namespace XControl
                 if (digitalControlSingal_8 == 1 && isFirstChangeUp_8 == true)
                 {
                   
-                    btnSimInput_8 = false;
+                    
                     lblTState_8.Text = "On";
 
                     isUp_8 = true;
@@ -1743,7 +1770,7 @@ namespace XControl
                 else if (digitalControlSingal_8 == 0 && isFirstChangeDown_8 == true)
                 {
                    
-                    btnSimInput_8 = true;
+                   
                     isDown_8 = true;
                     isStartPID_8 = true;
                     isFirstChangeDown_8 = false;
@@ -1885,19 +1912,196 @@ namespace XControl
         private void btnClearAll_Click(object sender, EventArgs e)
         {
             Board_1.clearALL();
-            timer_1.Stop();
-            timer_2.Stop();
-            timer_3.Stop();
-            timer_4.Stop();
-            timer_5.Stop();
-            timer_6.Stop();
-            timer_7.Stop();
-            timer_8.Stop();
+            isTotalStartBtnTrue = true;
+            btnTotalStart.Text = "Start";
+
+            
+
+            isExecuteControlModel_1 = false;
+            isExecuteControlModel_2 = false;
+            isExecuteControlModel_3 = false;
+            isExecuteControlModel_4 = false;
+            isExecuteControlModel_5 = false;
+            isExecuteControlModel_6 = false;
+            isExecuteControlModel_7 = false;
+            isExecuteControlModel_8 = false;
+
+            lblTState_1.Text = "NULL";
+            lblTState_2.Text = "NULL";
+            lblTState_3.Text = "NULL";
+            lblTState_4.Text = "NULL";
+            lblTState_5.Text = "NULL";
+            lblTState_6.Text = "NULL";
+            lblTState_7.Text = "NULL";
+            lblTState_8.Text = "NULL";
+
+
+            isUp_1 = false;
+            isUp_2 = false;
+            isUp_3 = false;
+            isUp_4 = false;
+            isUp_5 = false;
+            isUp_6 = false;
+            isUp_7 = false;
+            isUp_8 = false;
+
+            isDown_1 = false;
+            isDown_2 = false;
+            isDown_3 = false;
+            isDown_4 = false;
+            isDown_5 = false;
+            isDown_6 = false;
+            isDown_7 = false;
+            isDown_8 = false;
+
         }
 
         private void btnGetParam_8_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void isByHand_Click(object sender, EventArgs e)
+        {
+            if (isMenuByHandChecked == true)
+            {
+                menuIsByHand.Checked = false;
+                isMenuByHandChecked = false;
+
+                btnTotalStart.Enabled = true;
+
+                btnTestByHand_1.Enabled = false;
+                btnTestByHand_2.Enabled = false;
+                btnTestByHand_3.Enabled = false;
+                btnTestByHand_4.Enabled = false;
+                btnTestByHand_5.Enabled = false;
+                btnTestByHand_6.Enabled = false;
+                btnTestByHand_7.Enabled = false;
+                btnTestByHand_8.Enabled = false;
+
+                
+
+            }
+            else
+            {
+                isMenuByHandChecked = true;
+                menuIsByHand.Checked = true;
+
+                btnTotalStart.Enabled = false;
+
+
+                btnTestByHand_1.Enabled = true;
+                btnTestByHand_2.Enabled = true;
+                btnTestByHand_3.Enabled = true;
+                btnTestByHand_4.Enabled = true;
+                btnTestByHand_5.Enabled = true;
+                btnTestByHand_6.Enabled = true;
+                btnTestByHand_7.Enabled = true;
+                btnTestByHand_8.Enabled = true;
+
+                btnTestByHand_1.Enabled = true;
+                btnTestByHand_2.Enabled = true;
+                btnTestByHand_3.Enabled = true;
+                btnTestByHand_4.Enabled = true;
+                btnTestByHand_5.Enabled = true;
+                btnTestByHand_6.Enabled = true;
+                btnTestByHand_7.Enabled = true;
+                btnTestByHand_8.Enabled = true;
+            }
+        }
+
+        private void btnTotalStart_Click(object sender, EventArgs e)
+        {
+            if (isTotalStartBtnTrue == true)
+            {
+                isTotalStartBtnTrue = false;
+                btnTotalStart.Text = "Stop";
+
+
+                isTestByHand_1 = false;
+                isTestByHand_2 = false;
+                isTestByHand_3 = false;
+                isTestByHand_4 = false;
+                isTestByHand_5 = false;
+                isTestByHand_6 = false;
+                isTestByHand_7 = false;
+                isTestByHand_8 = false;
+
+                isExecuteControlModel_1 = true;
+                isExecuteControlModel_2 = true;
+                isExecuteControlModel_3 = true;
+                isExecuteControlModel_4 = true;
+                isExecuteControlModel_5 = true;
+                isExecuteControlModel_6 = true;
+                isExecuteControlModel_7 = true;
+                isExecuteControlModel_8 = true;
+
+                isFirstChangeUp_1 = true;
+                isFirstChangeUp_2 = true;
+                isFirstChangeUp_3 = true;
+                isFirstChangeUp_4 = true;
+                isFirstChangeUp_5 = true;
+                isFirstChangeUp_6 = true;
+                isFirstChangeUp_7 = true;
+                isFirstChangeUp_8 = true;
+                isFirstChangeDown_1 = true;
+                isFirstChangeDown_2 = true;
+                isFirstChangeDown_3 = true;
+                isFirstChangeDown_4 = true;
+                isFirstChangeDown_5 = true;
+                isFirstChangeDown_6 = true;
+                isFirstChangeDown_7 = true;
+                isFirstChangeDown_8 = true;
+
+
+            }
+            else
+            {
+                isTotalStartBtnTrue = true;
+                btnTotalStart.Text = "Start";
+
+                Board_1.clearALL();
+
+                isExecuteControlModel_1 = false;
+                isExecuteControlModel_2 = false;
+                isExecuteControlModel_3 = false;
+                isExecuteControlModel_4 = false;
+                isExecuteControlModel_5 = false;
+                isExecuteControlModel_6 = false;
+                isExecuteControlModel_7 = false;
+                isExecuteControlModel_8 = false;
+
+                lblTState_1.Text = "NULL";
+                lblTState_2.Text = "NULL";
+                lblTState_3.Text = "NULL";
+                lblTState_4.Text = "NULL";
+                lblTState_5.Text = "NULL";
+                lblTState_6.Text = "NULL";
+                lblTState_7.Text = "NULL";
+                lblTState_8.Text = "NULL";
+
+
+                isUp_1 = false;
+                isUp_2 = false;
+                isUp_3 = false;
+                isUp_4 = false;
+                isUp_5 = false;
+                isUp_6 = false;
+                isUp_7 = false;
+                isUp_8 = false;
+
+                isDown_1 = false;
+                isDown_2 = false;
+                isDown_3 = false;
+                isDown_4 = false;
+                isDown_5 = false;
+                isDown_6 = false;
+                isDown_7 = false;
+                isDown_8 = false;
+                
+
+
+            }
         }
     }
 }
