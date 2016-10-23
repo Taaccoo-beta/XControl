@@ -168,14 +168,14 @@ namespace XControl
         /*
          * if the is tested by hand
          */
-        bool isTestByHand_1;
-        bool isTestByHand_2;
-        bool isTestByHand_3;
-        bool isTestByHand_4;
-        bool isTestByHand_5;
-        bool isTestByHand_6;
-        bool isTestByHand_7;
-        bool isTestByHand_8;
+        bool isTestByHand_1 = true;
+        bool isTestByHand_2 = true;
+        bool isTestByHand_3 = true;
+        bool isTestByHand_4 = true;
+        bool isTestByHand_5 = true;
+        bool isTestByHand_6 = true;
+        bool isTestByHand_7 = true;
+        bool isTestByHand_8 = true;
 
         /*
          * if execute the control moduel
@@ -304,6 +304,7 @@ namespace XControl
             if (isTestByHand_1 == false)
             {
                 digitalControlSingal_1 = Board_2.getSingal(1);
+                
             }
 
 
@@ -2103,5 +2104,7 @@ namespace XControl
 
             }
         }
+
+       
     }
 }
