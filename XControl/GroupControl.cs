@@ -169,16 +169,16 @@ namespace XControl
                         Board.DigitOutput(8, MccDaq.DigitalLogicState.Low);
                         break;
                     case 6:
-                        Board.DigitOutput(12, MccDaq.DigitalLogicState.Low);
                         Board.DigitOutput(11, MccDaq.DigitalLogicState.Low);
+                        Board.DigitOutput(10, MccDaq.DigitalLogicState.Low);
                         break;
                     case 7:
-                        Board.DigitOutput(14, MccDaq.DigitalLogicState.Low);
                         Board.DigitOutput(13, MccDaq.DigitalLogicState.Low);
+                        Board.DigitOutput(12, MccDaq.DigitalLogicState.Low);
                         break;
                     case 8:
-                        Board.DigitOutput(16, MccDaq.DigitalLogicState.Low);
                         Board.DigitOutput(15, MccDaq.DigitalLogicState.Low);
+                        Board.DigitOutput(14, MccDaq.DigitalLogicState.Low);
                         break;
 
                 }

@@ -252,7 +252,8 @@ namespace XControl
             btnSimInput_8 = true;
 
 
-            Board_1.SetTConvertParam(0.26, 480, 0.26, 480, 0.2, 700, 0.2, 700, 0.2, 700, 0.2, 700, 0.2, 700, 0.2, 700);
+            Board_1.SetTConvertParam(0.2,660 , 0.2,660, 0.2, 660, 0.2, 660, 0.2, 660, 0.2, 660, 0.2, 660, 0.2, 660);
+            Board_2.SetTConvertParam(0.2, 660, 0.2, 660, 0.2, 660, 0.2, 660, 0.2, 660, 0.2, 660, 0.2, 660, 0.2, 660);
 
             isTestByHandClick_1 = true;
             isTestByHandClick_2 = true;
@@ -1892,6 +1893,11 @@ namespace XControl
             timer_6.Stop();
             timer_7.Stop();
             timer_8.Stop();
+        }
+
+        private void btnGetParam_8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
