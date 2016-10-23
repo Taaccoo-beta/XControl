@@ -264,6 +264,8 @@ namespace XControl
             isTestByHandClick_7 = true;
             isTestByHandClick_8 = true;
 
+            Board_1.clearALL();
+
         }
 
         private void timer_1_Tick(object sender, EventArgs e)
@@ -607,9 +609,6 @@ namespace XControl
             isExecuteControlModel_7 = true;
             isFirstChangeUp_7 = true;
             isFirstChangeDown_7 = true;
-
-
-
             timer_7.Start();
         }
 
@@ -1530,8 +1529,8 @@ namespace XControl
 
         private void timer_7_Tick(object sender, EventArgs e)
         {
-            //digitalControlSingal_7 = GC.getSingal(7);
-            //lblTState_7.Text = digitalControlSingal_7 == 7 ? "On" : "OFF";
+            //digitalControlSingal_1 = GC.getSingal(1);
+            //lblTState_1.Text = digitalControlSingal_1 == 1 ? "On" : "OFF";
 
             temperatureValue_7 = Board_2.getT(7);
             lblTValue_7.Text = temperatureValue_7.ToString("00.00");
@@ -1541,44 +1540,43 @@ namespace XControl
                 digitalControlSingal_7 = Board_2.getSingal(7);
             }
 
-
             if (isExecuteControlModel_7 == true)
             {
                 if (digitalControlSingal_7 == 1 && isFirstChangeUp_7 == true)
                 {
-                   
+
                     btnSimInput_7 = false;
                     lblTState_7.Text = "On";
 
                     isUp_7 = true;
                     isDown_7 = false;
-                    isFirstChangeUp_7 = false;
-                    isFirstChangeDown_7 = true;
+
                     isStartPID_7 = true;
                     PID_Count_7 = 0;
-                    isFirstChangeDown_7 = false;
-                    isFirstChangeUp_7 = true;
+                    isFirstChangeUp_7 = false;
+                    isFirstChangeDown_7 = true;
                     //isFirstPor = true;
                     Board_1.TUp(7);
                     startPID_7 = false;
                     circle = 10;
-                    PID_7 = new PIDControl(3, 0.1, 0.5, punishmentT);
+                    PID_7 = new PIDControl(3, 0.1, 0.7, punishmentT);
                     //  System.IO.File.AppendAllText("e:\\result_7.txt", "惩罚：" + "Kp:" + tbKp.Text + "  Ki" + tbKi.Text + "  Kd" + tbKd.Text + "\r\n");
                 }
                 else if (digitalControlSingal_7 == 0 && isFirstChangeDown_7 == true)
                 {
-                   
+
                     btnSimInput_7 = true;
                     isDown_7 = true;
                     isStartPID_7 = true;
-
+                    isFirstChangeDown_7 = false;
+                    isFirstChangeUp_7 = true;
                     startPID_7 = false;
                     isUp_7 = false;
                     PID_Count_7 = 0;
                     lblTState_7.Text = "Off";
                     Board_1.TDown(7);
                     circle = 10;
-                    PID_7 = new PIDControl(7, 0.1, 0.5, confortableT);
+                    PID_7 = new PIDControl(7, 0.1, 0.7, confortableT);
                     //   System.IO.File.AppendAllText("e:\\result_7.txt", "舒适：" + "Kp:" + tbDownKp.Text + "  Ki" + tbDownKi.Text + "  Kd" + tbDownKd.Text + "\r\n");
                 }
                 else
@@ -1587,9 +1585,11 @@ namespace XControl
                 }
             }
 
+
+
             if (isUp_7 == true)
             {
-                if ((punishmentT - temperatureValue_7) < 5 && isStartPID_7 == true)
+                if ((punishmentT - temperatureValue_7) < 7 && isStartPID_7 == true)
                 {
                     startPID_7 = true;
                     isStartPID_7 = false;
@@ -1652,7 +1652,7 @@ namespace XControl
 
             if (isDown_7 == true)
             {
-                if ((temperatureValue_7 - confortableT) < 5 && isStartPID_7 == true)
+                if ((temperatureValue_7 - confortableT) < 7 && isStartPID_7 == true)
                 {
                     startPID_7 = true;
                     isStartPID_7 = false;
