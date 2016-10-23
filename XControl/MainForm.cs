@@ -226,6 +226,8 @@ namespace XControl
             //board_2 use to input
             Board_2 = new GroupControl(1, true);
 
+
+           
             punishmentT = float.Parse(tbPunishTValue.Text);
             confortableT = float.Parse(tbConfortTValue.Text);
             /*
@@ -248,6 +250,11 @@ namespace XControl
             btnSimInput_6 = true;
             btnSimInput_7 = true;
             btnSimInput_8 = true;
+
+
+            Board_1.SetTConvertParam(0.26, 480, 0.26, 480, 0.2, 700, 0.2, 700, 0.2, 700, 0.2, 700, 0.2, 700, 0.2, 700);
+
+            isTestByHandClick_1 = true;
 
         }
 
