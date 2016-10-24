@@ -163,8 +163,21 @@ namespace XControl
         int PID_Count_7;
         int PID_Count_8;
 
+        /*
+         * PID start button on/off control vairable
+         */
+        bool isPIDBtnStart_1 = true;
+        bool isPIDBtnStart_2 = true;
+        bool isPIDBtnStart_3 = true;
+        bool isPIDBtnStart_4 = true;
+        bool isPIDBtnStart_5 = true;
+        bool isPIDBtnStart_6 = true;
+        bool isPIDBtnStart_7 = true;
+        bool isPIDBtnStart_8 = true;
 
-       
+
+
+
 
 
         /*
@@ -220,6 +233,151 @@ namespace XControl
         bool isTestByHandClick_6;
         bool isTestByHandClick_7;
         bool isTestByHandClick_8;
+
+
+
+        /*
+         * 
+         * PID paramter test program
+         *
+         */
+
+         //if start PID model
+         
+        bool isExecutePIDModel_1 = false;
+        bool isExecutePIDModel_2 = false;
+        bool isExecutePIDModel_3 = false;
+        bool isExecutePIDModel_4 = false;
+        bool isExecutePIDModel_5 = false;
+        bool isExecutePIDModel_6 = false;
+        bool isExecutePIDModel_7 = false;
+        bool isExecutePIDModel_8 = false;
+
+        int timerCount_1 = 0;
+        int timerCount_2 = 0;
+        int timerCount_3 = 0;
+        int timerCount_4 = 0;
+        int timerCount_5 = 0;
+        int timerCount_6 = 0;
+        int timerCount_7 = 0;
+        int timerCount_8 = 0;
+
+        bool highBalance_1 = false;
+        bool highBalance_2 = false;
+        bool highBalance_3 = false;
+        bool highBalance_4 = false;
+        bool highBalance_5 = false;
+        bool highBalance_6 = false;
+        bool highBalance_7 = false;
+        bool highBalance_8 = false;
+
+        bool lowBalance_1 = false;
+        bool lowBalance_2 = false;
+        bool lowBalance_3 = false;
+        bool lowBalance_4 = false;
+        bool lowBalance_5 = false;
+        bool lowBalance_6 = false;
+        bool lowBalance_7 = false;
+        bool lowBalance_8 = false;
+
+        bool downLine_1 = false;
+        bool downLine_2 = false;
+        bool downLine_3 = false;
+        bool downLine_4 = false;
+        bool downLine_5 = false;
+        bool downLine_6 = false;
+        bool downLine_7 = false;
+        bool downLine_8 = false;
+
+        bool upLine_1 = false;
+        bool upLine_2 = false;
+        bool upLine_3 = false;
+        bool upLine_4 = false;
+        bool upLine_5 = false;
+        bool upLine_6 = false;
+        bool upLine_7 = false;
+        bool upLine_8 = false;
+
+        bool isChangeParam_1 = true;
+        bool isChangeParam_2 = true;
+        bool isChangeParam_3 = true;
+        bool isChangeParam_4 = true;
+        bool isChangeParam_5 = true;
+        bool isChangeParam_6 = true;
+        bool isChangeParam_7 = true;
+        bool isChangeParam_8 = true;
+
+        bool timeNotAccept_1 = false;
+        bool timeNotAccept_2 = false;
+        bool timeNotAccept_3 = false;
+        bool timeNotAccept_4 = false;
+        bool timeNotAccept_5 = false;
+        bool timeNotAccept_6 = false;
+        bool timeNotAccept_7 = false;
+        bool timeNotAccept_8 = false;
+
+        int beyondNum_1 = 0;
+        int beyondNum_2 = 0;
+        int beyondNum_3 = 0;
+        int beyondNum_4 = 0;
+        int beyondNum_5 = 0;
+        int beyondNum_6 = 0;
+        int beyondNum_7 = 0;
+        int beyondNum_8 = 0;
+
+        bool longKeep_1 = false;
+        bool longKeep_2 = false;
+        bool longKeep_3 = false;
+        bool longKeep_4 = false;
+        bool longKeep_5 = false;
+        bool longKeep_6 = false;
+        bool longKeep_7 = false;
+        bool longKeep_8 = false;
+
+        double P_1, I_1, D_1;
+        double P_2, I_2, D_2;
+        double P_3, I_3, D_3;
+        double P_4, I_4, D_4;
+        double P_5, I_5, D_5;
+        double P_6, I_6, D_6;
+        double P_7, I_7, D_7;
+        double P_8, I_8, D_8;
+
+
+        List<double> tempCollection_1 = new List<double>();
+        List<double> tempCollection_2 = new List<double>();
+        List<double> tempCollection_3 = new List<double>();
+        List<double> tempCollection_4 = new List<double>();
+        List<double> tempCollection_5 = new List<double>();
+        List<double> tempCollection_6 = new List<double>();
+        List<double> tempCollection_7 = new List<double>();
+        List<double> tempCollection_8 = new List<double>();
+
+        
+        private void resultAnalyse(List<double> list,double P,double I,double D,out string Result)
+        {
+            double MaxList = list.Max();
+            double MinList = list.Min();
+            double SumList = list.Sum();
+            
+            double average = list.Average();
+
+            double descret = 0;
+            foreach (double i in list)
+            {
+                descret += Math.Pow((i - average), 2);
+            }
+
+            descret = Math.Sqrt(descret);
+
+
+            System.IO.File.AppendAllText("e:\\result_1.txt", P + "   " + I + "   " + D + "   " + MaxList + "   " +
+                MinList + "   " + average + "   " + descret + "   " + "\r\n");
+            Result = string.Format("P:{0},I:{1},D:{2},正常输出", P, I, D);
+        }
+
+
+
 
         public MainForm()
         {
@@ -283,6 +441,34 @@ namespace XControl
             isTestByHandClick_8 = true;
 
 
+            P_1 = double.Parse(tbPIDValueP_1.Text);
+            P_2 = double.Parse(tbPIDValueP_2.Text);
+            P_3 = double.Parse(tbPIDValueP_3.Text);
+            P_4 = double.Parse(tbPIDValueP_4.Text);
+            P_5 = double.Parse(tbPIDValueP_5.Text);
+            P_6 = double.Parse(tbPIDValueP_6.Text);
+            P_7 = double.Parse(tbPIDValueP_7.Text);
+            P_8 = double.Parse(tbPIDValueP_8.Text);
+
+            I_1 = double.Parse(tbPIDValueI_1.Text);
+            I_2 = double.Parse(tbPIDValueI_2.Text);
+            I_3 = double.Parse(tbPIDValueI_3.Text);
+            I_4 = double.Parse(tbPIDValueI_4.Text);
+            I_5 = double.Parse(tbPIDValueI_5.Text);
+            I_6 = double.Parse(tbPIDValueI_6.Text);
+            I_7 = double.Parse(tbPIDValueI_7.Text);
+            I_8 = double.Parse(tbPIDValueI_8.Text);
+
+            D_1 = double.Parse(tbPIDValueD_1.Text);
+            D_2 = double.Parse(tbPIDValueD_2.Text);
+            D_3 = double.Parse(tbPIDValueD_3.Text);
+            D_4 = double.Parse(tbPIDValueD_4.Text);
+            D_5 = double.Parse(tbPIDValueD_5.Text);
+            D_6 = double.Parse(tbPIDValueD_6.Text);
+            D_7 = double.Parse(tbPIDValueD_7.Text);
+            D_8 = double.Parse(tbPIDValueD_8.Text);
+
+
             timer_1.Start();
             timer_2.Start();
             timer_3.Start();
@@ -301,13 +487,21 @@ namespace XControl
             //lblTState_1.Text = digitalControlSingal_1 == 1 ? "On" : "OFF";
             System.Diagnostics.Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();      //  开始监视代码运行时间
-            int RawValue;
 
+            /*
+             * time get module
+             */
+
+            int RawValue;
             temperatureValue_1 = Board_1.getT(1,out RawValue);
             lblRawData_1.Text = RawValue.ToString();
-
             lblTValue_1.Text = temperatureValue_1.ToString("00.00");
+            
 
+
+            /*
+             * Test by hand module
+             */
             if (isTestByHand_1 == false)
             {
                 digitalControlSingal_1 = Board_2.getSingal(1);
@@ -315,9 +509,13 @@ namespace XControl
             }
 
 
-
+            /*
+             *  Up and Down control module
+             */
             if (isExecuteControlModel_1 == true)
             {
+
+                timerCount_1++;
                 if (digitalControlSingal_1 == 1 && isFirstChangeUp_1 == true)
                 {
                     
@@ -364,6 +562,111 @@ namespace XControl
                     ;
                 }
             }
+
+            /*
+             * PID paramete test module
+             */
+
+            if (isExecutePIDModel_1 == true)
+            {
+
+                if (timerCount_1 == 300 && highBalance_1 == true)
+                {
+                    timerCount_1 = 0;
+                    digitalControlSingal_1 = 0;
+                    highBalance_1 = false;
+                    downLine_1 = true;
+                }
+
+                if (timerCount_1 == 200 && downLine_1)
+                {
+                    //System.IO.File.AppendAllText("e:\\result_1.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
+                    isChangeParam_1 = true;
+                    downLine_1 = false;
+                    timeNotAccept_1 = true;
+
+                }
+
+                if (temperatureValue_1 - confortableT <= 0.5 && downLine_1 == true)
+                {
+                    beyondNum_1++;
+                    if (beyondNum_1 == 3)
+                    {
+                        timerCount_1 = 0;
+                        downLine_1 = false;
+                        longKeep_1 = true;
+                        beyondNum_1 = 0;
+
+                    }
+                }
+
+                if (longKeep_1 == true)
+                {
+                    tempCollection_1.Add(temperatureValue_1);
+                    if (timerCount_1 == 300)
+                    {
+                        isChangeParam_1 = true;
+                        longKeep_1 = false;
+                    }
+
+                }
+
+
+
+
+
+
+                if (isChangeParam_1)
+                {
+
+                    if (timeNotAccept_1)
+                    {
+                        lblPIDTestStatus_1.Text = (string.Format("P:{0},I:{1},D{2}--时间超出", P_1, I_1, D_1));
+                        System.IO.File.AppendAllText("e:\\result_1.txt", P_1 + "   " + I_1 + "   " + D_1 + "   " + "Tout" + "\r\n");
+                        //输出PID 时间超出，舍弃参数
+                    }
+                    else
+                    {
+                        string PID_Result_1;
+                        resultAnalyse(tempCollection_1,P_1,I_1,D_1, out PID_Result_1);
+                        tempCollection_1.Clear();
+                        lblPIDTestStatus_1.Text = PID_Result_1;
+                        //执行计算，然后输出
+                    }
+                    if (D_1 == 10)
+                    {
+                        timer_1.Stop();
+                    }
+
+                    digitalControlSingal_1 = 1;
+                    isChangeParam_1 = false;
+                    P_1 += 0.1;
+                    if (P_1 == 10)
+                    {
+                        D_1 += 0.1;
+                        P_1 = 0.1;
+                    }
+
+
+                    timerCount_1 = 0;
+                    beyondNum_1 = 0;
+                    highBalance_1 = true;
+                }
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -488,7 +791,7 @@ namespace XControl
             TimeSpan timespan = stopwatch.Elapsed;
 
 
-            label1.Text = timespan.TotalMilliseconds.ToString();  //  总毫秒数
+            lblPIDTestStatus_2.Text = timespan.TotalMilliseconds.ToString();  //  总毫秒数
         }
 
         private void btnTestByHand_1_Click(object sender, EventArgs e)
@@ -592,6 +895,27 @@ namespace XControl
             confortableT = float.Parse(tbConfortTValue.Text);
 
             timer_4.Start();
+        }
+
+        private void btnStarPIDSingle_1_Click(object sender, EventArgs e)
+        {
+            if (isPIDBtnStart_1)
+            {
+                isExecuteControlModel_1 = true;
+                isExecutePIDModel_1 = true;
+                digitalControlSingal_1 = 1;
+                this.btnStarPIDSingle_1.Text = "Stop";
+                isFirstChangeUp_1 = true;
+                isFirstChangeDown_1 = true;
+            }
+            else
+            {
+                Board_1.clearALL();
+                this.timer_1.Stop();
+                timerCount_1 = 0;
+                beyondNum_1 = 0;
+            }
+            
         }
 
         private void btnTestByHand_5_Click(object sender, EventArgs e)
