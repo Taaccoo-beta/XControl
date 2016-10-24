@@ -298,14 +298,14 @@ namespace XControl
         bool upLine_7 = false;
         bool upLine_8 = false;
 
-        bool isChangeParam_1 = true;
-        bool isChangeParam_2 = true;
-        bool isChangeParam_3 = true;
-        bool isChangeParam_4 = true;
-        bool isChangeParam_5 = true;
-        bool isChangeParam_6 = true;
-        bool isChangeParam_7 = true;
-        bool isChangeParam_8 = true;
+        bool isChangeParam_1 = false;
+        bool isChangeParam_2 = false;
+        bool isChangeParam_3 = false;
+        bool isChangeParam_4 = false;
+        bool isChangeParam_5 = false;
+        bool isChangeParam_6 = false;
+        bool isChangeParam_7 = false;
+        bool isChangeParam_8 = false;
 
         bool timeNotAccept_1 = false;
         bool timeNotAccept_2 = false;
@@ -496,8 +496,11 @@ namespace XControl
             temperatureValue_1 = Board_1.getT(1,out RawValue);
             lblRawData_1.Text = RawValue.ToString();
             lblTValue_1.Text = temperatureValue_1.ToString("00.00");
-            
 
+            if (isExecutePIDModel_1 == true)
+            {
+                lblPIDTValue_1.Text = temperatureValue_1.ToString("00.00");
+            }
 
             /*
              * Test by hand module
@@ -515,7 +518,7 @@ namespace XControl
             if (isExecuteControlModel_1 == true)
             {
 
-                timerCount_1++;
+               
                 if (digitalControlSingal_1 == 1 && isFirstChangeUp_1 == true)
                 {
                     
@@ -569,6 +572,7 @@ namespace XControl
 
             if (isExecutePIDModel_1 == true)
             {
+                timerCount_1++;
 
                 if (timerCount_1 == 300 && highBalance_1 == true)
                 {
@@ -576,6 +580,7 @@ namespace XControl
                     digitalControlSingal_1 = 0;
                     highBalance_1 = false;
                     downLine_1 = true;
+                    lblPIDDebug.Text = "here-1";
                 }
 
                 if (timerCount_1 == 200 && downLine_1)
@@ -584,6 +589,7 @@ namespace XControl
                     isChangeParam_1 = true;
                     downLine_1 = false;
                     timeNotAccept_1 = true;
+
 
                 }
 
@@ -790,8 +796,7 @@ namespace XControl
 
             TimeSpan timespan = stopwatch.Elapsed;
 
-
-            lblPIDTestStatus_2.Text = timespan.TotalMilliseconds.ToString();  //  总毫秒数
+            lblExecuteTimeInPID.Text = timespan.TotalMilliseconds.ToString();  //  总毫秒数
         }
 
         private void btnTestByHand_1_Click(object sender, EventArgs e)
@@ -904,6 +909,7 @@ namespace XControl
                 isExecuteControlModel_1 = true;
                 isExecutePIDModel_1 = true;
                 digitalControlSingal_1 = 1;
+                highBalance_1 = true;
                 this.btnStarPIDSingle_1.Text = "Stop";
                 isFirstChangeUp_1 = true;
                 isFirstChangeDown_1 = true;
@@ -915,7 +921,10 @@ namespace XControl
                 timerCount_1 = 0;
                 beyondNum_1 = 0;
             }
-            
+
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
+
         }
 
         private void btnTestByHand_5_Click(object sender, EventArgs e)
