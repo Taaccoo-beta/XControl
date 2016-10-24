@@ -237,27 +237,37 @@ namespace XControl
         /// </summary>
         /// <param name="groupNumber">the port number</param>
         /// <returns>float type of temperature</returns>
-        public double getT(int groupNumber)
+        public double getT(int groupNumber,out int RawValue)
         {
             switch (groupNumber)
             {
-                case 1:               
-                    return double.Parse(Board.AnalogInput(0)) * p1_1 - p2_1;
+                case 1:
+                    RawValue = int.Parse(Board.AnalogInput(0));
+                    return RawValue * p1_1 - p2_1;
+                   
                 case 2:
-                    return double.Parse(Board.AnalogInput(1)) * p1_2 - p2_2;
+                    RawValue = int.Parse(Board.AnalogInput(0));
+                    return RawValue * p1_1 - p2_1;
                 case 3:
-                    return double.Parse(Board.AnalogInput(2)) * p1_3 - p2_3;
+                    RawValue = int.Parse(Board.AnalogInput(0));
+                    return RawValue * p1_1 - p2_1;
                 case 4:
-                    return double.Parse(Board.AnalogInput(3)) * p1_4 - p2_4;
+                    RawValue = int.Parse(Board.AnalogInput(0));
+                    return RawValue * p1_1 - p2_1;
                 case 5:
-                    return double.Parse(Board.AnalogInput(0)) * p1_5 - p2_5;
+                    RawValue = int.Parse(Board.AnalogInput(0));
+                    return RawValue * p1_1 - p2_1;
                 case 6:
-                    return double.Parse(Board.AnalogInput(1)) * p1_6 - p2_6;
+                    RawValue = int.Parse(Board.AnalogInput(0));
+                    return RawValue * p1_1 - p2_1;
                 case 7:
-                    return double.Parse(Board.AnalogInput(2)) * p1_7 - p2_7;
+                    RawValue = int.Parse(Board.AnalogInput(0));
+                    return RawValue * p1_1 - p2_1;
                 case 8:
-                    return double.Parse(Board.AnalogInput(3)) * p1_8 - p2_8;
+                    RawValue = int.Parse(Board.AnalogInput(0));
+                    return RawValue * p1_1 - p2_1;
                 default:
+                    RawValue = -1;
                     return -1;
             }
             

@@ -101,6 +101,15 @@
             this.lblDebug = new System.Windows.Forms.Label();
             this.btnClearAll = new System.Windows.Forms.Button();
             this.btnTotalStart = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblRawData_1 = new System.Windows.Forms.Label();
+            this.lblRawData_5 = new System.Windows.Forms.Label();
+            this.lblRawData_2 = new System.Windows.Forms.Label();
+            this.lblRawData_6 = new System.Windows.Forms.Label();
+            this.lblRawData_3 = new System.Windows.Forms.Label();
+            this.lblRawData_7 = new System.Windows.Forms.Label();
+            this.lblRawData_4 = new System.Windows.Forms.Label();
+            this.lblRawData_8 = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
             this.gbGroup_1.SuspendLayout();
             this.gbGroup_2.SuspendLayout();
@@ -123,6 +132,7 @@
             this.menuStrip.Size = new System.Drawing.Size(819, 25);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip";
+            this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip_ItemClicked);
             // 
             // menuFile
             // 
@@ -159,6 +169,7 @@
             // 
             // gbGroup_1
             // 
+            this.gbGroup_1.Controls.Add(this.lblRawData_1);
             this.gbGroup_1.Controls.Add(this.btnGetParam_1);
             this.gbGroup_1.Controls.Add(this.btnTestByHand_1);
             this.gbGroup_1.Controls.Add(this.lblTState_1);
@@ -166,7 +177,7 @@
             this.gbGroup_1.Controls.Add(this.lblShowT_1);
             this.gbGroup_1.Location = new System.Drawing.Point(26, 126);
             this.gbGroup_1.Name = "gbGroup_1";
-            this.gbGroup_1.Size = new System.Drawing.Size(155, 78);
+            this.gbGroup_1.Size = new System.Drawing.Size(181, 78);
             this.gbGroup_1.TabIndex = 1;
             this.gbGroup_1.TabStop = false;
             this.gbGroup_1.Text = "Group-1";
@@ -174,9 +185,9 @@
             // btnGetParam_1
             // 
             this.btnGetParam_1.Enabled = false;
-            this.btnGetParam_1.Location = new System.Drawing.Point(81, 51);
+            this.btnGetParam_1.Location = new System.Drawing.Point(106, 51);
             this.btnGetParam_1.Name = "btnGetParam_1";
-            this.btnGetParam_1.Size = new System.Drawing.Size(58, 21);
+            this.btnGetParam_1.Size = new System.Drawing.Size(69, 21);
             this.btnGetParam_1.TabIndex = 3;
             this.btnGetParam_1.Text = "Click";
             this.btnGetParam_1.UseVisualStyleBackColor = true;
@@ -187,7 +198,7 @@
             this.btnTestByHand_1.Enabled = false;
             this.btnTestByHand_1.Location = new System.Drawing.Point(19, 51);
             this.btnTestByHand_1.Name = "btnTestByHand_1";
-            this.btnTestByHand_1.Size = new System.Drawing.Size(56, 21);
+            this.btnTestByHand_1.Size = new System.Drawing.Size(72, 21);
             this.btnTestByHand_1.TabIndex = 2;
             this.btnTestByHand_1.Text = "Click";
             this.btnTestByHand_1.UseVisualStyleBackColor = true;
@@ -196,7 +207,7 @@
             // lblTState_1
             // 
             this.lblTState_1.AutoSize = true;
-            this.lblTState_1.Location = new System.Drawing.Point(104, 29);
+            this.lblTState_1.Location = new System.Drawing.Point(146, 29);
             this.lblTState_1.Name = "lblTState_1";
             this.lblTState_1.Size = new System.Drawing.Size(29, 12);
             this.lblTState_1.TabIndex = 2;
@@ -205,7 +216,7 @@
             // lblTValue_1
             // 
             this.lblTValue_1.AutoSize = true;
-            this.lblTValue_1.Location = new System.Drawing.Point(53, 29);
+            this.lblTValue_1.Location = new System.Drawing.Point(44, 29);
             this.lblTValue_1.Name = "lblTValue_1";
             this.lblTValue_1.Size = new System.Drawing.Size(29, 12);
             this.lblTValue_1.TabIndex = 1;
@@ -222,6 +233,7 @@
             // 
             // gbGroup_2
             // 
+            this.gbGroup_2.Controls.Add(this.lblRawData_2);
             this.gbGroup_2.Controls.Add(this.btnGetParam_2);
             this.gbGroup_2.Controls.Add(this.btnTestByHand_2);
             this.gbGroup_2.Controls.Add(this.lblTState_2);
@@ -229,7 +241,7 @@
             this.gbGroup_2.Controls.Add(this.lblShowT_2);
             this.gbGroup_2.Location = new System.Drawing.Point(210, 126);
             this.gbGroup_2.Name = "gbGroup_2";
-            this.gbGroup_2.Size = new System.Drawing.Size(155, 78);
+            this.gbGroup_2.Size = new System.Drawing.Size(183, 78);
             this.gbGroup_2.TabIndex = 2;
             this.gbGroup_2.TabStop = false;
             this.gbGroup_2.Text = "Group-2";
@@ -237,9 +249,9 @@
             // btnGetParam_2
             // 
             this.btnGetParam_2.Enabled = false;
-            this.btnGetParam_2.Location = new System.Drawing.Point(81, 51);
+            this.btnGetParam_2.Location = new System.Drawing.Point(109, 51);
             this.btnGetParam_2.Name = "btnGetParam_2";
-            this.btnGetParam_2.Size = new System.Drawing.Size(58, 21);
+            this.btnGetParam_2.Size = new System.Drawing.Size(68, 21);
             this.btnGetParam_2.TabIndex = 3;
             this.btnGetParam_2.Text = "Click";
             this.btnGetParam_2.UseVisualStyleBackColor = true;
@@ -249,7 +261,7 @@
             this.btnTestByHand_2.Enabled = false;
             this.btnTestByHand_2.Location = new System.Drawing.Point(19, 51);
             this.btnTestByHand_2.Name = "btnTestByHand_2";
-            this.btnTestByHand_2.Size = new System.Drawing.Size(56, 21);
+            this.btnTestByHand_2.Size = new System.Drawing.Size(71, 21);
             this.btnTestByHand_2.TabIndex = 2;
             this.btnTestByHand_2.Text = "Click";
             this.btnTestByHand_2.UseVisualStyleBackColor = true;
@@ -258,7 +270,7 @@
             // lblTState_2
             // 
             this.lblTState_2.AutoSize = true;
-            this.lblTState_2.Location = new System.Drawing.Point(104, 29);
+            this.lblTState_2.Location = new System.Drawing.Point(148, 29);
             this.lblTState_2.Name = "lblTState_2";
             this.lblTState_2.Size = new System.Drawing.Size(29, 12);
             this.lblTState_2.TabIndex = 2;
@@ -267,7 +279,7 @@
             // lblTValue_2
             // 
             this.lblTValue_2.AutoSize = true;
-            this.lblTValue_2.Location = new System.Drawing.Point(53, 29);
+            this.lblTValue_2.Location = new System.Drawing.Point(44, 29);
             this.lblTValue_2.Name = "lblTValue_2";
             this.lblTValue_2.Size = new System.Drawing.Size(29, 12);
             this.lblTValue_2.TabIndex = 1;
@@ -284,6 +296,7 @@
             // 
             // gbGroup_3
             // 
+            this.gbGroup_3.Controls.Add(this.lblRawData_3);
             this.gbGroup_3.Controls.Add(this.btnGetParam_3);
             this.gbGroup_3.Controls.Add(this.btnTestByHand_3);
             this.gbGroup_3.Controls.Add(this.lblTState_3);
@@ -291,7 +304,7 @@
             this.gbGroup_3.Controls.Add(this.lblShowT_3);
             this.gbGroup_3.Location = new System.Drawing.Point(399, 126);
             this.gbGroup_3.Name = "gbGroup_3";
-            this.gbGroup_3.Size = new System.Drawing.Size(155, 78);
+            this.gbGroup_3.Size = new System.Drawing.Size(181, 78);
             this.gbGroup_3.TabIndex = 4;
             this.gbGroup_3.TabStop = false;
             this.gbGroup_3.Text = "Group-3";
@@ -299,9 +312,9 @@
             // btnGetParam_3
             // 
             this.btnGetParam_3.Enabled = false;
-            this.btnGetParam_3.Location = new System.Drawing.Point(81, 51);
+            this.btnGetParam_3.Location = new System.Drawing.Point(98, 51);
             this.btnGetParam_3.Name = "btnGetParam_3";
-            this.btnGetParam_3.Size = new System.Drawing.Size(58, 21);
+            this.btnGetParam_3.Size = new System.Drawing.Size(77, 21);
             this.btnGetParam_3.TabIndex = 3;
             this.btnGetParam_3.Text = "Click";
             this.btnGetParam_3.UseVisualStyleBackColor = true;
@@ -311,7 +324,7 @@
             this.btnTestByHand_3.Enabled = false;
             this.btnTestByHand_3.Location = new System.Drawing.Point(19, 51);
             this.btnTestByHand_3.Name = "btnTestByHand_3";
-            this.btnTestByHand_3.Size = new System.Drawing.Size(56, 21);
+            this.btnTestByHand_3.Size = new System.Drawing.Size(73, 21);
             this.btnTestByHand_3.TabIndex = 2;
             this.btnTestByHand_3.Text = "Click";
             this.btnTestByHand_3.UseVisualStyleBackColor = true;
@@ -320,7 +333,7 @@
             // lblTState_3
             // 
             this.lblTState_3.AutoSize = true;
-            this.lblTState_3.Location = new System.Drawing.Point(104, 29);
+            this.lblTState_3.Location = new System.Drawing.Point(146, 29);
             this.lblTState_3.Name = "lblTState_3";
             this.lblTState_3.Size = new System.Drawing.Size(29, 12);
             this.lblTState_3.TabIndex = 2;
@@ -329,7 +342,7 @@
             // lblTValue_3
             // 
             this.lblTValue_3.AutoSize = true;
-            this.lblTValue_3.Location = new System.Drawing.Point(53, 29);
+            this.lblTValue_3.Location = new System.Drawing.Point(44, 29);
             this.lblTValue_3.Name = "lblTValue_3";
             this.lblTValue_3.Size = new System.Drawing.Size(29, 12);
             this.lblTValue_3.TabIndex = 1;
@@ -346,6 +359,7 @@
             // 
             // gbGroup_4
             // 
+            this.gbGroup_4.Controls.Add(this.lblRawData_4);
             this.gbGroup_4.Controls.Add(this.btnGetParam_4);
             this.gbGroup_4.Controls.Add(this.btnTestByHand_4);
             this.gbGroup_4.Controls.Add(this.lblTState_4);
@@ -353,7 +367,7 @@
             this.gbGroup_4.Controls.Add(this.lblShowT_4);
             this.gbGroup_4.Location = new System.Drawing.Point(586, 126);
             this.gbGroup_4.Name = "gbGroup_4";
-            this.gbGroup_4.Size = new System.Drawing.Size(155, 78);
+            this.gbGroup_4.Size = new System.Drawing.Size(186, 78);
             this.gbGroup_4.TabIndex = 5;
             this.gbGroup_4.TabStop = false;
             this.gbGroup_4.Text = "Group-4";
@@ -361,9 +375,9 @@
             // btnGetParam_4
             // 
             this.btnGetParam_4.Enabled = false;
-            this.btnGetParam_4.Location = new System.Drawing.Point(81, 51);
+            this.btnGetParam_4.Location = new System.Drawing.Point(112, 51);
             this.btnGetParam_4.Name = "btnGetParam_4";
-            this.btnGetParam_4.Size = new System.Drawing.Size(58, 21);
+            this.btnGetParam_4.Size = new System.Drawing.Size(74, 21);
             this.btnGetParam_4.TabIndex = 3;
             this.btnGetParam_4.Text = "Click";
             this.btnGetParam_4.UseVisualStyleBackColor = true;
@@ -373,7 +387,7 @@
             this.btnTestByHand_4.Enabled = false;
             this.btnTestByHand_4.Location = new System.Drawing.Point(19, 51);
             this.btnTestByHand_4.Name = "btnTestByHand_4";
-            this.btnTestByHand_4.Size = new System.Drawing.Size(56, 21);
+            this.btnTestByHand_4.Size = new System.Drawing.Size(74, 21);
             this.btnTestByHand_4.TabIndex = 2;
             this.btnTestByHand_4.Text = "Click";
             this.btnTestByHand_4.UseVisualStyleBackColor = true;
@@ -382,7 +396,7 @@
             // lblTState_4
             // 
             this.lblTState_4.AutoSize = true;
-            this.lblTState_4.Location = new System.Drawing.Point(104, 29);
+            this.lblTState_4.Location = new System.Drawing.Point(151, 29);
             this.lblTState_4.Name = "lblTState_4";
             this.lblTState_4.Size = new System.Drawing.Size(29, 12);
             this.lblTState_4.TabIndex = 2;
@@ -391,7 +405,7 @@
             // lblTValue_4
             // 
             this.lblTValue_4.AutoSize = true;
-            this.lblTValue_4.Location = new System.Drawing.Point(53, 29);
+            this.lblTValue_4.Location = new System.Drawing.Point(44, 29);
             this.lblTValue_4.Name = "lblTValue_4";
             this.lblTValue_4.Size = new System.Drawing.Size(29, 12);
             this.lblTValue_4.TabIndex = 1;
@@ -408,6 +422,7 @@
             // 
             // gbGroup_8
             // 
+            this.gbGroup_8.Controls.Add(this.lblRawData_8);
             this.gbGroup_8.Controls.Add(this.btnGetParam_8);
             this.gbGroup_8.Controls.Add(this.btnTestByHand_8);
             this.gbGroup_8.Controls.Add(this.lblTState_8);
@@ -415,7 +430,7 @@
             this.gbGroup_8.Controls.Add(this.lblShowT_8);
             this.gbGroup_8.Location = new System.Drawing.Point(586, 234);
             this.gbGroup_8.Name = "gbGroup_8";
-            this.gbGroup_8.Size = new System.Drawing.Size(155, 78);
+            this.gbGroup_8.Size = new System.Drawing.Size(186, 78);
             this.gbGroup_8.TabIndex = 9;
             this.gbGroup_8.TabStop = false;
             this.gbGroup_8.Text = "Group-8";
@@ -423,9 +438,9 @@
             // btnGetParam_8
             // 
             this.btnGetParam_8.Enabled = false;
-            this.btnGetParam_8.Location = new System.Drawing.Point(81, 51);
+            this.btnGetParam_8.Location = new System.Drawing.Point(112, 51);
             this.btnGetParam_8.Name = "btnGetParam_8";
-            this.btnGetParam_8.Size = new System.Drawing.Size(58, 21);
+            this.btnGetParam_8.Size = new System.Drawing.Size(74, 21);
             this.btnGetParam_8.TabIndex = 3;
             this.btnGetParam_8.Text = "Click";
             this.btnGetParam_8.UseVisualStyleBackColor = true;
@@ -436,7 +451,7 @@
             this.btnTestByHand_8.Enabled = false;
             this.btnTestByHand_8.Location = new System.Drawing.Point(19, 51);
             this.btnTestByHand_8.Name = "btnTestByHand_8";
-            this.btnTestByHand_8.Size = new System.Drawing.Size(56, 21);
+            this.btnTestByHand_8.Size = new System.Drawing.Size(74, 21);
             this.btnTestByHand_8.TabIndex = 2;
             this.btnTestByHand_8.Text = "Click";
             this.btnTestByHand_8.UseVisualStyleBackColor = true;
@@ -445,7 +460,7 @@
             // lblTState_8
             // 
             this.lblTState_8.AutoSize = true;
-            this.lblTState_8.Location = new System.Drawing.Point(104, 29);
+            this.lblTState_8.Location = new System.Drawing.Point(151, 29);
             this.lblTState_8.Name = "lblTState_8";
             this.lblTState_8.Size = new System.Drawing.Size(29, 12);
             this.lblTState_8.TabIndex = 2;
@@ -454,7 +469,7 @@
             // lblTValue_8
             // 
             this.lblTValue_8.AutoSize = true;
-            this.lblTValue_8.Location = new System.Drawing.Point(53, 29);
+            this.lblTValue_8.Location = new System.Drawing.Point(44, 29);
             this.lblTValue_8.Name = "lblTValue_8";
             this.lblTValue_8.Size = new System.Drawing.Size(29, 12);
             this.lblTValue_8.TabIndex = 1;
@@ -471,6 +486,7 @@
             // 
             // gbGroup_7
             // 
+            this.gbGroup_7.Controls.Add(this.lblRawData_7);
             this.gbGroup_7.Controls.Add(this.btnGetParam_7);
             this.gbGroup_7.Controls.Add(this.btnTestByHand_7);
             this.gbGroup_7.Controls.Add(this.lblTState_7);
@@ -478,7 +494,7 @@
             this.gbGroup_7.Controls.Add(this.lblShowT_7);
             this.gbGroup_7.Location = new System.Drawing.Point(399, 234);
             this.gbGroup_7.Name = "gbGroup_7";
-            this.gbGroup_7.Size = new System.Drawing.Size(155, 78);
+            this.gbGroup_7.Size = new System.Drawing.Size(181, 78);
             this.gbGroup_7.TabIndex = 8;
             this.gbGroup_7.TabStop = false;
             this.gbGroup_7.Text = "Group-7";
@@ -486,9 +502,9 @@
             // btnGetParam_7
             // 
             this.btnGetParam_7.Enabled = false;
-            this.btnGetParam_7.Location = new System.Drawing.Point(81, 51);
+            this.btnGetParam_7.Location = new System.Drawing.Point(98, 51);
             this.btnGetParam_7.Name = "btnGetParam_7";
-            this.btnGetParam_7.Size = new System.Drawing.Size(58, 21);
+            this.btnGetParam_7.Size = new System.Drawing.Size(77, 21);
             this.btnGetParam_7.TabIndex = 3;
             this.btnGetParam_7.Text = "Click";
             this.btnGetParam_7.UseVisualStyleBackColor = true;
@@ -498,7 +514,7 @@
             this.btnTestByHand_7.Enabled = false;
             this.btnTestByHand_7.Location = new System.Drawing.Point(19, 51);
             this.btnTestByHand_7.Name = "btnTestByHand_7";
-            this.btnTestByHand_7.Size = new System.Drawing.Size(56, 21);
+            this.btnTestByHand_7.Size = new System.Drawing.Size(65, 21);
             this.btnTestByHand_7.TabIndex = 2;
             this.btnTestByHand_7.Text = "Click";
             this.btnTestByHand_7.UseVisualStyleBackColor = true;
@@ -507,7 +523,7 @@
             // lblTState_7
             // 
             this.lblTState_7.AutoSize = true;
-            this.lblTState_7.Location = new System.Drawing.Point(104, 29);
+            this.lblTState_7.Location = new System.Drawing.Point(146, 29);
             this.lblTState_7.Name = "lblTState_7";
             this.lblTState_7.Size = new System.Drawing.Size(29, 12);
             this.lblTState_7.TabIndex = 2;
@@ -516,7 +532,7 @@
             // lblTValue_7
             // 
             this.lblTValue_7.AutoSize = true;
-            this.lblTValue_7.Location = new System.Drawing.Point(53, 29);
+            this.lblTValue_7.Location = new System.Drawing.Point(44, 29);
             this.lblTValue_7.Name = "lblTValue_7";
             this.lblTValue_7.Size = new System.Drawing.Size(29, 12);
             this.lblTValue_7.TabIndex = 1;
@@ -533,6 +549,7 @@
             // 
             // gbGroup_6
             // 
+            this.gbGroup_6.Controls.Add(this.lblRawData_6);
             this.gbGroup_6.Controls.Add(this.btnGetParam_6);
             this.gbGroup_6.Controls.Add(this.btnTestByHand_6);
             this.gbGroup_6.Controls.Add(this.lblTState_6);
@@ -540,7 +557,7 @@
             this.gbGroup_6.Controls.Add(this.lblShowT_6);
             this.gbGroup_6.Location = new System.Drawing.Point(210, 234);
             this.gbGroup_6.Name = "gbGroup_6";
-            this.gbGroup_6.Size = new System.Drawing.Size(155, 78);
+            this.gbGroup_6.Size = new System.Drawing.Size(183, 78);
             this.gbGroup_6.TabIndex = 7;
             this.gbGroup_6.TabStop = false;
             this.gbGroup_6.Text = "Group-6";
@@ -548,9 +565,9 @@
             // btnGetParam_6
             // 
             this.btnGetParam_6.Enabled = false;
-            this.btnGetParam_6.Location = new System.Drawing.Point(81, 51);
+            this.btnGetParam_6.Location = new System.Drawing.Point(109, 51);
             this.btnGetParam_6.Name = "btnGetParam_6";
-            this.btnGetParam_6.Size = new System.Drawing.Size(58, 21);
+            this.btnGetParam_6.Size = new System.Drawing.Size(68, 21);
             this.btnGetParam_6.TabIndex = 3;
             this.btnGetParam_6.Text = "Click";
             this.btnGetParam_6.UseVisualStyleBackColor = true;
@@ -560,7 +577,7 @@
             this.btnTestByHand_6.Enabled = false;
             this.btnTestByHand_6.Location = new System.Drawing.Point(19, 51);
             this.btnTestByHand_6.Name = "btnTestByHand_6";
-            this.btnTestByHand_6.Size = new System.Drawing.Size(56, 21);
+            this.btnTestByHand_6.Size = new System.Drawing.Size(71, 21);
             this.btnTestByHand_6.TabIndex = 2;
             this.btnTestByHand_6.Text = "Click";
             this.btnTestByHand_6.UseVisualStyleBackColor = true;
@@ -569,7 +586,7 @@
             // lblTState_6
             // 
             this.lblTState_6.AutoSize = true;
-            this.lblTState_6.Location = new System.Drawing.Point(104, 29);
+            this.lblTState_6.Location = new System.Drawing.Point(148, 29);
             this.lblTState_6.Name = "lblTState_6";
             this.lblTState_6.Size = new System.Drawing.Size(29, 12);
             this.lblTState_6.TabIndex = 2;
@@ -578,7 +595,7 @@
             // lblTValue_6
             // 
             this.lblTValue_6.AutoSize = true;
-            this.lblTValue_6.Location = new System.Drawing.Point(53, 29);
+            this.lblTValue_6.Location = new System.Drawing.Point(44, 29);
             this.lblTValue_6.Name = "lblTValue_6";
             this.lblTValue_6.Size = new System.Drawing.Size(29, 12);
             this.lblTValue_6.TabIndex = 1;
@@ -595,6 +612,7 @@
             // 
             // gbGroup_5
             // 
+            this.gbGroup_5.Controls.Add(this.lblRawData_5);
             this.gbGroup_5.Controls.Add(this.btnGetParam_5);
             this.gbGroup_5.Controls.Add(this.btnTestByHand_5);
             this.gbGroup_5.Controls.Add(this.lblTState_5);
@@ -602,7 +620,7 @@
             this.gbGroup_5.Controls.Add(this.lblShowT_5);
             this.gbGroup_5.Location = new System.Drawing.Point(26, 234);
             this.gbGroup_5.Name = "gbGroup_5";
-            this.gbGroup_5.Size = new System.Drawing.Size(155, 78);
+            this.gbGroup_5.Size = new System.Drawing.Size(181, 78);
             this.gbGroup_5.TabIndex = 6;
             this.gbGroup_5.TabStop = false;
             this.gbGroup_5.Text = "Group-5";
@@ -610,9 +628,9 @@
             // btnGetParam_5
             // 
             this.btnGetParam_5.Enabled = false;
-            this.btnGetParam_5.Location = new System.Drawing.Point(81, 51);
+            this.btnGetParam_5.Location = new System.Drawing.Point(106, 51);
             this.btnGetParam_5.Name = "btnGetParam_5";
-            this.btnGetParam_5.Size = new System.Drawing.Size(58, 21);
+            this.btnGetParam_5.Size = new System.Drawing.Size(69, 21);
             this.btnGetParam_5.TabIndex = 3;
             this.btnGetParam_5.Text = "Click";
             this.btnGetParam_5.UseVisualStyleBackColor = true;
@@ -622,7 +640,7 @@
             this.btnTestByHand_5.Enabled = false;
             this.btnTestByHand_5.Location = new System.Drawing.Point(19, 51);
             this.btnTestByHand_5.Name = "btnTestByHand_5";
-            this.btnTestByHand_5.Size = new System.Drawing.Size(56, 21);
+            this.btnTestByHand_5.Size = new System.Drawing.Size(72, 21);
             this.btnTestByHand_5.TabIndex = 2;
             this.btnTestByHand_5.Text = "Click";
             this.btnTestByHand_5.UseVisualStyleBackColor = true;
@@ -631,7 +649,7 @@
             // lblTState_5
             // 
             this.lblTState_5.AutoSize = true;
-            this.lblTState_5.Location = new System.Drawing.Point(104, 29);
+            this.lblTState_5.Location = new System.Drawing.Point(146, 29);
             this.lblTState_5.Name = "lblTState_5";
             this.lblTState_5.Size = new System.Drawing.Size(29, 12);
             this.lblTState_5.TabIndex = 2;
@@ -640,7 +658,7 @@
             // lblTValue_5
             // 
             this.lblTValue_5.AutoSize = true;
-            this.lblTValue_5.Location = new System.Drawing.Point(53, 29);
+            this.lblTValue_5.Location = new System.Drawing.Point(41, 29);
             this.lblTValue_5.Name = "lblTValue_5";
             this.lblTValue_5.Size = new System.Drawing.Size(29, 12);
             this.lblTValue_5.TabIndex = 1;
@@ -770,11 +788,93 @@
             this.btnTotalStart.UseVisualStyleBackColor = true;
             this.btnTotalStart.Click += new System.EventHandler(this.btnTotalStart_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(256, 363);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "NULL";
+            // 
+            // lblRawData_1
+            // 
+            this.lblRawData_1.AutoSize = true;
+            this.lblRawData_1.Location = new System.Drawing.Point(95, 29);
+            this.lblRawData_1.Name = "lblRawData_1";
+            this.lblRawData_1.Size = new System.Drawing.Size(29, 12);
+            this.lblRawData_1.TabIndex = 4;
+            this.lblRawData_1.Text = "NULL";
+            // 
+            // lblRawData_5
+            // 
+            this.lblRawData_5.AutoSize = true;
+            this.lblRawData_5.Location = new System.Drawing.Point(95, 29);
+            this.lblRawData_5.Name = "lblRawData_5";
+            this.lblRawData_5.Size = new System.Drawing.Size(29, 12);
+            this.lblRawData_5.TabIndex = 5;
+            this.lblRawData_5.Text = "NULL";
+            // 
+            // lblRawData_2
+            // 
+            this.lblRawData_2.AutoSize = true;
+            this.lblRawData_2.Location = new System.Drawing.Point(93, 29);
+            this.lblRawData_2.Name = "lblRawData_2";
+            this.lblRawData_2.Size = new System.Drawing.Size(29, 12);
+            this.lblRawData_2.TabIndex = 6;
+            this.lblRawData_2.Text = "NULL";
+            // 
+            // lblRawData_6
+            // 
+            this.lblRawData_6.AutoSize = true;
+            this.lblRawData_6.Location = new System.Drawing.Point(93, 29);
+            this.lblRawData_6.Name = "lblRawData_6";
+            this.lblRawData_6.Size = new System.Drawing.Size(29, 12);
+            this.lblRawData_6.TabIndex = 4;
+            this.lblRawData_6.Text = "NULL";
+            // 
+            // lblRawData_3
+            // 
+            this.lblRawData_3.AutoSize = true;
+            this.lblRawData_3.Location = new System.Drawing.Point(96, 29);
+            this.lblRawData_3.Name = "lblRawData_3";
+            this.lblRawData_3.Size = new System.Drawing.Size(29, 12);
+            this.lblRawData_3.TabIndex = 5;
+            this.lblRawData_3.Text = "NULL";
+            // 
+            // lblRawData_7
+            // 
+            this.lblRawData_7.AutoSize = true;
+            this.lblRawData_7.Location = new System.Drawing.Point(96, 29);
+            this.lblRawData_7.Name = "lblRawData_7";
+            this.lblRawData_7.Size = new System.Drawing.Size(29, 12);
+            this.lblRawData_7.TabIndex = 6;
+            this.lblRawData_7.Text = "NULL";
+            // 
+            // lblRawData_4
+            // 
+            this.lblRawData_4.AutoSize = true;
+            this.lblRawData_4.Location = new System.Drawing.Point(95, 29);
+            this.lblRawData_4.Name = "lblRawData_4";
+            this.lblRawData_4.Size = new System.Drawing.Size(29, 12);
+            this.lblRawData_4.TabIndex = 4;
+            this.lblRawData_4.Text = "NULL";
+            // 
+            // lblRawData_8
+            // 
+            this.lblRawData_8.AutoSize = true;
+            this.lblRawData_8.Location = new System.Drawing.Point(95, 29);
+            this.lblRawData_8.Name = "lblRawData_8";
+            this.lblRawData_8.Size = new System.Drawing.Size(29, 12);
+            this.lblRawData_8.TabIndex = 4;
+            this.lblRawData_8.Text = "NULL";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(819, 509);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnTotalStart);
             this.Controls.Add(this.btnClearAll);
             this.Controls.Add(this.lblDebug);
@@ -895,6 +995,15 @@
         private System.Windows.Forms.ToolStripMenuItem menuTest;
         private System.Windows.Forms.ToolStripMenuItem menuIsByHand;
         private System.Windows.Forms.Button btnTotalStart;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblRawData_1;
+        private System.Windows.Forms.Label lblRawData_2;
+        private System.Windows.Forms.Label lblRawData_3;
+        private System.Windows.Forms.Label lblRawData_4;
+        private System.Windows.Forms.Label lblRawData_8;
+        private System.Windows.Forms.Label lblRawData_7;
+        private System.Windows.Forms.Label lblRawData_6;
+        private System.Windows.Forms.Label lblRawData_5;
     }
 }
 

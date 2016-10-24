@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MccDaq;
 using PID_WinForm;
+using System.Diagnostics;
+
 namespace XControl
 {
     public partial class MainForm : Form
@@ -297,8 +299,13 @@ namespace XControl
         {
             //digitalControlSingal_1 = GC.getSingal(1);
             //lblTState_1.Text = digitalControlSingal_1 == 1 ? "On" : "OFF";
+            System.Diagnostics.Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();      //  开始监视代码运行时间
+            int RawValue;
 
-            temperatureValue_1 = Board_1.getT(1);
+            temperatureValue_1 = Board_1.getT(1,out RawValue);
+            lblRawData_1.Text = RawValue.ToString();
+
             lblTValue_1.Text = temperatureValue_1.ToString("00.00");
 
             if (isTestByHand_1 == false)
@@ -475,6 +482,13 @@ namespace XControl
                 
                 System.IO.File.AppendAllText("e:\\result_1.txt", temperatureValue_1.ToString("00.00") + "\r\n");
             }
+
+            stopwatch.Stop(); //  停止监视
+
+            TimeSpan timespan = stopwatch.Elapsed;
+
+
+            label1.Text = timespan.TotalMilliseconds.ToString();  //  总毫秒数
         }
 
         private void btnTestByHand_1_Click(object sender, EventArgs e)
@@ -494,8 +508,9 @@ namespace XControl
                 isTestByHandClick_1 = true;
                 digitalControlSingal_1 = 0;
             }
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
 
-            
             isExecuteControlModel_1 = true;
             isFirstChangeUp_1 = true;
             isFirstChangeDown_1 = true;
@@ -518,8 +533,9 @@ namespace XControl
             isExecuteControlModel_2 = true;
             isFirstChangeUp_2 = true;
             isFirstChangeDown_2 = true;
-            
 
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
 
 
 
@@ -545,7 +561,8 @@ namespace XControl
             isFirstChangeDown_3 = true;
 
 
-
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
 
 
 
@@ -571,7 +588,8 @@ namespace XControl
 
 
 
-
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
 
             timer_4.Start();
         }
@@ -595,7 +613,8 @@ namespace XControl
 
 
 
-
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
 
             timer_5.Start();
         }
@@ -617,7 +636,8 @@ namespace XControl
             isFirstChangeUp_6 = true;
             isFirstChangeDown_6 = true;
 
-
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
             timer_6.Start();
         }
 
@@ -634,6 +654,10 @@ namespace XControl
                 isTestByHandClick_7 = true;
                 digitalControlSingal_7 = 0;
             }
+
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
+
             isExecuteControlModel_7 = true;
             isFirstChangeUp_7 = true;
             isFirstChangeDown_7 = true;
@@ -653,6 +677,12 @@ namespace XControl
                 isTestByHandClick_8 = true;
                 digitalControlSingal_8 = 0;
             }
+
+
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
+
+
             isExecuteControlModel_8 = true;
             isFirstChangeUp_8 = true;
             isFirstChangeDown_8 = true;
@@ -665,7 +695,11 @@ namespace XControl
             //digitalControlSingal_1 = GC.getSingal(1);
             //lblTState_1.Text = digitalControlSingal_1 == 1 ? "On" : "OFF";
 
-            temperatureValue_2 = Board_1.getT(2);
+            int RawValue;
+
+            temperatureValue_2 = Board_1.getT(2, out RawValue);
+            lblRawData_2.Text = RawValue.ToString();
+
             lblTValue_2.Text = temperatureValue_2.ToString("00.00");
 
             if (isTestByHand_2 == false)
@@ -847,7 +881,12 @@ namespace XControl
             //digitalControlSingal_1 = GC.getSingal(1);
             //lblTState_1.Text = digitalControlSingal_1 == 1 ? "On" : "OFF";
 
-            temperatureValue_3 = Board_1.getT(3);
+            int RawValue;
+
+            temperatureValue_3 = Board_1.getT(3, out RawValue);
+            lblRawData_3.Text = RawValue.ToString();
+
+
             lblTValue_3.Text = temperatureValue_3.ToString("00.00");
 
             if (isTestByHand_3 == false)
@@ -1028,7 +1067,12 @@ namespace XControl
             //digitalControlSingal_1 = GC.getSingal(1);
             //lblTState_1.Text = digitalControlSingal_1 == 1 ? "On" : "OFF";
 
-            temperatureValue_4 = Board_1.getT(4);
+            int RawValue;
+
+            temperatureValue_4 = Board_1.getT(4, out RawValue);
+            lblRawData_4.Text = RawValue.ToString();
+
+
             lblTValue_4.Text = temperatureValue_4.ToString("00.00");
 
             if (isTestByHand_4 == false)
@@ -1205,7 +1249,12 @@ namespace XControl
             //digitalControlSingal_1 = GC.getSingal(1);
             //lblTState_1.Text = digitalControlSingal_1 == 1 ? "On" : "OFF";
 
-            temperatureValue_5 = Board_2.getT(5);
+            int RawValue;
+
+            temperatureValue_5 = Board_2.getT(5, out RawValue);
+            lblRawData_5.Text = RawValue.ToString();
+
+
             lblTValue_5.Text = temperatureValue_5.ToString("00.00");
 
             if (isTestByHand_5 == false)
@@ -1382,7 +1431,11 @@ namespace XControl
             //digitalControlSingal_1 = GC.getSingal(1);
             //lblTState_1.Text = digitalControlSingal_1 == 1 ? "On" : "OFF";
 
-            temperatureValue_6 = Board_2.getT(6);
+            int RawValue;
+
+            temperatureValue_6 = Board_2.getT(6, out RawValue);
+            lblRawData_6.Text = RawValue.ToString();
+
             lblTValue_6.Text = temperatureValue_6.ToString("00.00");
 
 
@@ -1560,7 +1613,11 @@ namespace XControl
             //digitalControlSingal_1 = GC.getSingal(1);
             //lblTState_1.Text = digitalControlSingal_1 == 1 ? "On" : "OFF";
 
-            temperatureValue_7 = Board_2.getT(7);
+            int RawValue;
+
+            temperatureValue_7 = Board_2.getT(7, out RawValue);
+            lblRawData_7.Text = RawValue.ToString();
+
             lblTValue_7.Text = temperatureValue_7.ToString("00.00");
 
             if (isTestByHand_7 == false)
@@ -1737,7 +1794,11 @@ namespace XControl
             //digitalControlSingal_1 = GC.getSingal(1);
             //lblTState_1.Text = digitalControlSingal_1 == 1 ? "On" : "OFF";
 
-            temperatureValue_8 = Board_2.getT(8);
+            int RawValue;
+
+            temperatureValue_8 = Board_2.getT(8, out RawValue);
+            lblRawData_8.Text = RawValue.ToString();
+
             lblTValue_8.Text = temperatureValue_8.ToString("00.00");
 
 
@@ -2105,6 +2166,9 @@ namespace XControl
             }
         }
 
-       
+        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }
