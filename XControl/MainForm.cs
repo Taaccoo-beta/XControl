@@ -175,7 +175,14 @@ namespace XControl
         bool isPIDBtnStart_7 = true;
         bool isPIDBtnStart_8 = true;
 
-
+        bool isPIDBtnStartDown_1 = true;
+        bool isPIDBtnStartDown_2 = true;
+        bool isPIDBtnStartDown_3 = true;
+        bool isPIDBtnStartDown_4 = true;
+        bool isPIDBtnStartDown_5 = true;
+        bool isPIDBtnStartDown_6= true;
+        bool isPIDBtnStartDown_7 = true;
+        bool isPIDBtnStartDown_8 = true;
 
 
 
@@ -252,6 +259,15 @@ namespace XControl
         bool isExecutePIDModel_6 = false;
         bool isExecutePIDModel_7 = false;
         bool isExecutePIDModel_8 = false;
+
+        bool isExecutePIDModelDown_1 = false;
+        bool isExecutePIDModelDown_2 = false;
+        bool isExecutePIDModelDown_3 = false;
+        bool isExecutePIDModelDown_4 = false;
+        bool isExecutePIDModelDown_5 = false;
+        bool isExecutePIDModelDown_6 = false;
+        bool isExecutePIDModelDown_7 = false;
+        bool isExecutePIDModelDown_8 = false;
 
         int timerCount_1 = 0;
         int timerCount_2 = 0;
@@ -334,14 +350,15 @@ namespace XControl
         bool longKeep_7 = false;
         bool longKeep_8 = false;
 
-        double P_1, I_1, D_1;
-        double P_2, I_2, D_2;
-        double P_3, I_3, D_3;
-        double P_4, I_4, D_4;
-        double P_5, I_5, D_5;
-        double P_6, I_6, D_6;
-        double P_7, I_7, D_7;
-        double P_8, I_8, D_8;
+        double P_1 = 0.5, I_1 = 0.1, D_1 = 0.5;
+        double P_2 = 0.5, I_2 = 0.1, D_2 = 0.5;
+        double P_3 = 0.5, I_3 = 0.1, D_3 = 0.5;
+        double P_4 = 0.5, I_4 = 0.1, D_4 = 0.5;
+        double P_5 = 0.5, I_5 = 0.1, D_5 = 0.5;
+        double P_6 = 0.5, I_6 = 0.1, D_6 = 0.5;
+        double P_7 = 0.5, I_7 = 0.1, D_7 = 0.5;
+        double P_8 = 0.5, I_8 = 0.1, D_8 = 0.5;
+
 
 
         List<double> tempCollection_1 = new List<double>();
@@ -354,7 +371,7 @@ namespace XControl
         List<double> tempCollection_8 = new List<double>();
 
         
-        private void resultAnalyse(List<double> list,double P,double I,double D,out string Result)
+        private void resultAnalyse(List<double> list,double P,double I,double D,out string Result,int groupNum)
         {
             double MaxList = list.Max();
             double MinList = list.Min();
@@ -370,9 +387,43 @@ namespace XControl
 
             descret = Math.Sqrt(descret);
 
-
-            System.IO.File.AppendAllText("e:\\result_1.txt", P + "   " + I + "   " + D + "   " + MaxList + "   " +
+            switch (groupNum)
+            {
+                case 1:
+                    System.IO.File.AppendAllText("e:\\resultPID_1.txt", P + "   " + I + "   " + D + "   " + MaxList + "   " +
                 MinList + "   " + average + "   " + descret + "   " + "\r\n");
+                    break;
+                case 2:
+                    System.IO.File.AppendAllText("e:\\resultPID_2.txt", P + "   " + I + "   " + D + "   " + MaxList + "   " +
+                MinList + "   " + average + "   " + descret + "   " + "\r\n");
+                    break;
+                case 3:
+                    System.IO.File.AppendAllText("e:\\resultPID_3.txt", P + "   " + I + "   " + D + "   " + MaxList + "   " +
+                MinList + "   " + average + "   " + descret + "   " + "\r\n");
+                    break;
+                case 4:
+                    System.IO.File.AppendAllText("e:\\resultPID_4.txt", P + "   " + I + "   " + D + "   " + MaxList + "   " +
+                MinList + "   " + average + "   " + descret + "   " + "\r\n");
+                    break;
+                case 5:
+                    System.IO.File.AppendAllText("e:\\resultPID_5.txt", P + "   " + I + "   " + D + "   " + MaxList + "   " +
+                MinList + "   " + average + "   " + descret + "   " + "\r\n");
+                    break;
+                case 6:
+                    System.IO.File.AppendAllText("e:\\resultPID_6.txt", P + "   " + I + "   " + D + "   " + MaxList + "   " +
+                MinList + "   " + average + "   " + descret + "   " + "\r\n");
+                    break;
+                case 7:
+                    System.IO.File.AppendAllText("e:\\resultPID_7.txt", P + "   " + I + "   " + D + "   " + MaxList + "   " +
+                MinList + "   " + average + "   " + descret + "   " + "\r\n");
+                    break;
+                case 8:
+                    System.IO.File.AppendAllText("e:\\resultPID_8.txt", P + "   " + I + "   " + D + "   " + MaxList + "   " +
+                MinList + "   " + average + "   " + descret + "   " + "\r\n");
+                    break;
+
+            }
+           
             Result = string.Format("P:{0},I:{1},D:{2},正常输出", P, I, D);
         }
 
@@ -441,32 +492,32 @@ namespace XControl
             isTestByHandClick_8 = true;
 
 
-            P_1 = double.Parse(tbPIDValueP_1.Text);
-            P_2 = double.Parse(tbPIDValueP_2.Text);
-            P_3 = double.Parse(tbPIDValueP_3.Text);
-            P_4 = double.Parse(tbPIDValueP_4.Text);
-            P_5 = double.Parse(tbPIDValueP_5.Text);
-            P_6 = double.Parse(tbPIDValueP_6.Text);
-            P_7 = double.Parse(tbPIDValueP_7.Text);
-            P_8 = double.Parse(tbPIDValueP_8.Text);
+            P_1 = double.Parse(tbPIDValuePUp_1.Text);
+            P_2 = double.Parse(tbPIDValuePUp_2.Text);
+            P_3 = double.Parse(tbPIDValuePUp_3.Text);
+            P_4 = double.Parse(tbPIDValuePUp_4.Text);
+            P_5 = double.Parse(tbPIDValuePUp_5.Text);
+            P_6 = double.Parse(tbPIDValuePUp_6.Text);
+            P_7 = double.Parse(tbPIDValuePUp_7.Text);
+            P_8 = double.Parse(tbPIDValuePUp_8.Text);
 
-            I_1 = double.Parse(tbPIDValueI_1.Text);
-            I_2 = double.Parse(tbPIDValueI_2.Text);
-            I_3 = double.Parse(tbPIDValueI_3.Text);
-            I_4 = double.Parse(tbPIDValueI_4.Text);
-            I_5 = double.Parse(tbPIDValueI_5.Text);
-            I_6 = double.Parse(tbPIDValueI_6.Text);
-            I_7 = double.Parse(tbPIDValueI_7.Text);
-            I_8 = double.Parse(tbPIDValueI_8.Text);
+            I_1 = double.Parse(tbPIDValueIUp_1.Text);
+            I_2 = double.Parse(tbPIDValueIUp_2.Text);
+            I_3 = double.Parse(tbPIDValueIUp_3.Text);
+            I_4 = double.Parse(tbPIDValueIUp_4.Text);
+            I_5 = double.Parse(tbPIDValueIUp_5.Text);
+            I_6 = double.Parse(tbPIDValueIUp_6.Text);
+            I_7 = double.Parse(tbPIDValueIUp_7.Text);
+            I_8 = double.Parse(tbPIDValueIUp_8.Text);
 
-            D_1 = double.Parse(tbPIDValueD_1.Text);
-            D_2 = double.Parse(tbPIDValueD_2.Text);
-            D_3 = double.Parse(tbPIDValueD_3.Text);
+            D_1 = double.Parse(tbPIDValueDUp_1.Text);
+            D_2 = double.Parse(tbPIDValueDUp_2.Text);
+            D_3 = double.Parse(tbPIDValueDUp_3.Text);
             D_4 = double.Parse(tbPIDValueD_4.Text);
-            D_5 = double.Parse(tbPIDValueD_5.Text);
-            D_6 = double.Parse(tbPIDValueD_6.Text);
-            D_7 = double.Parse(tbPIDValueD_7.Text);
-            D_8 = double.Parse(tbPIDValueD_8.Text);
+            D_5 = double.Parse(tbPIDValueDUp_5.Text);
+            D_6 = double.Parse(tbPIDValueDUp_6.Text);
+            D_7 = double.Parse(tbPIDValueDUp_7.Text);
+            D_8 = double.Parse(tbPIDValueDUp_8.Text);
 
 
             timer_1.Start();
@@ -566,6 +617,9 @@ namespace XControl
                 }
             }
 
+
+
+
             /*
              * PID paramete test module
              */
@@ -583,7 +637,7 @@ namespace XControl
                     lblPIDDebug.Text = "here-1";
                 }
 
-                if (timerCount_1 == 200 && downLine_1)
+                if (timerCount_1 == 100 && downLine_1)
                 {
                     //System.IO.File.AppendAllText("e:\\result_1.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
                     isChangeParam_1 = true;
@@ -628,29 +682,31 @@ namespace XControl
                     if (timeNotAccept_1)
                     {
                         lblPIDTestStatus_1.Text = (string.Format("P:{0},I:{1},D{2}--时间超出", P_1, I_1, D_1));
-                        System.IO.File.AppendAllText("e:\\result_1.txt", P_1 + "   " + I_1 + "   " + D_1 + "   " + "Tout" + "\r\n");
+                        //System.IO.File.AppendAllText("e:\\result_1.txt", P_1 + "   " + I_1 + "   " + D_1 + "   " + "Tout" + "\r\n");
                         //输出PID 时间超出，舍弃参数
                     }
                     else
                     {
                         string PID_Result_1;
-                        resultAnalyse(tempCollection_1,P_1,I_1,D_1, out PID_Result_1);
+                        resultAnalyse(tempCollection_1,P_1,I_1,D_1, out PID_Result_1,1);
                         tempCollection_1.Clear();
                         lblPIDTestStatus_1.Text = PID_Result_1;
                         //执行计算，然后输出
                     }
-                    if (D_1 == 10)
+                    if (D_1 == 3)
                     {
                         timer_1.Stop();
+                        Board_1.clearALL();
+                        lblPIDTestStatus_1.Text = "finished!";
                     }
 
                     digitalControlSingal_1 = 1;
                     isChangeParam_1 = false;
-                    P_1 += 0.1;
+                    P_1 += 0.5;
                     if (P_1 == 10)
                     {
-                        D_1 += 0.1;
-                        P_1 = 0.1;
+                        D_1 += 0.5;
+                        P_1 = 0.5;
                     }
 
 
@@ -661,6 +717,106 @@ namespace XControl
 
             }
 
+
+
+
+
+            /*
+             * PID paramete test module
+             */
+
+            if (isExecutePIDModelDown_1 == true)
+            {
+                timerCount_1++;
+
+                if (timerCount_1 == 300 && lowBalance_1 == true)
+                {
+                    timerCount_1 = 0;
+                    digitalControlSingal_1 = 1;
+                    lowBalance_1 = false;
+                    upLine_1 = true;
+                    lblPIDDebug.Text = "here-1";
+                }
+
+                if (timerCount_1 == 100 && upLine_1)
+                {
+                    //System.IO.File.AppendAllText("e:\\result_1.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
+                    isChangeParam_1 = true;
+                    upLine_1 = false;
+                    timeNotAccept_1 = true;
+
+
+                }
+
+                if (punishmentT- temperatureValue_1 <= 0.5 && upLine_1 == true)
+                {
+                    beyondNum_1++;
+                    if (beyondNum_1 == 3)
+                    {
+                        timerCount_1 = 0;
+                        upLine_1 = false;
+                        longKeep_1 = true;
+                        beyondNum_1 = 0;
+
+                    }
+                }
+
+                if (longKeep_1 == true)
+                {
+                    tempCollection_1.Add(temperatureValue_1);
+                    if (timerCount_1 == 300)
+                    {
+                        isChangeParam_1 = true;
+                        longKeep_1 = false;
+                    }
+
+                }
+
+
+
+
+
+
+                if (isChangeParam_1)
+                {
+
+                    if (timeNotAccept_1)
+                    {
+                        lblPIDTestStatus_1.Text = (string.Format("P:{0},I:{1},D{2}--时间超出", P_1, I_1, D_1));
+                        //System.IO.File.AppendAllText("e:\\result_1.txt", P_1 + "   " + I_1 + "   " + D_1 + "   " + "Tout" + "\r\n");
+                        //输出PID 时间超出，舍弃参数
+                    }
+                    else
+                    {
+                        string PID_Result_1;
+                        resultAnalyse(tempCollection_1, P_1, I_1, D_1, out PID_Result_1, 1);
+                        tempCollection_1.Clear();
+                        lblPIDTestStatus_1.Text = PID_Result_1;
+                        //执行计算，然后输出
+                    }
+                    if (D_1 == 10)
+                    {
+                        timer_1.Stop();
+                        Board_1.clearALL();
+                        lblPIDTestStatus_1.Text = "Finished!";
+                    }
+
+                    digitalControlSingal_1 = 0;
+                    isChangeParam_1 = false;
+                    P_1 += 0.5;
+                    if (P_1 == 10)
+                    {
+                        D_1 += 0.5;
+                        P_1 = 0.5;
+                    }
+
+
+                    timerCount_1 = 0;
+                    beyondNum_1 = 0;
+                    lowBalance_1 = true;
+                }
+
+            }
 
 
 
@@ -957,6 +1113,521 @@ namespace XControl
 
         }
 
+        private void btnStarPIDSingleDown_2_Click(object sender, EventArgs e)
+        {
+            if (isPIDBtnStart_2)
+            {
+                isExecuteControlModel_2 = true;
+                isExecutePIDModel_2 = true;
+                digitalControlSingal_2 = 1;
+                highBalance_2 = true;
+                this.btnStarPIDSingleDown_2.Text = "Stop";
+                isFirstChangeUp_2 = true;
+                isFirstChangeDown_2 = true;
+                timerCount_2 = 0;
+                beyondNum_2 = 0;
+                longKeep_2 = false;
+                isChangeParam_2 = false;
+                downLine_2 = false;
+            }
+            else
+            {
+                Board_1.clearALL();
+                isExecuteControlModel_2 = false;
+                isExecutePIDModel_2 = false;
+                this.btnStarPIDSingleDown_2.Text = "Start";
+                lblPIDTestStatus_2.Text = "NULL";
+                lblPIDTValue_2.Text = "NULL";
+                isUp_2 = false;
+                isDown_2 = false;
+
+            }
+
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
+        }
+
+        private void btnStarPIDSingleDown_3_Click(object sender, EventArgs e)
+        {
+            if (isPIDBtnStart_3)
+            {
+                isExecuteControlModel_3 = true;
+                isExecutePIDModel_3 = true;
+                digitalControlSingal_3 = 1;
+                highBalance_3 = true;
+                this.btnStarPIDSingleDown_3.Text = "Stop";
+                isFirstChangeUp_3 = true;
+                isFirstChangeDown_3 = true;
+                timerCount_3 = 0;
+                beyondNum_3 = 0;
+                longKeep_3 = false;
+                isChangeParam_3 = false;
+                downLine_3 = false;
+            }
+            else
+            {
+                Board_1.clearALL();
+                isExecuteControlModel_3 = false;
+                isExecutePIDModel_3 = false;
+                this.btnStarPIDSingleDown_3.Text = "Start";
+                lblPIDTestStatus_3.Text = "NULL";
+                lblPIDTValue_3.Text = "NULL";
+                isUp_3 = false;
+                isDown_3 = false;
+
+            }
+
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
+        }
+
+        private void btnStarPIDSingleDown_4_Click(object sender, EventArgs e)
+        {
+            if (isPIDBtnStart_4)
+            {
+                isExecuteControlModel_4 = true;
+                isExecutePIDModel_4 = true;
+                digitalControlSingal_4 = 1;
+                highBalance_4 = true;
+                this.btnStarPIDSingleDown_4.Text = "Stop";
+                isFirstChangeUp_4 = true;
+                isFirstChangeDown_4 = true;
+                timerCount_4 = 0;
+                beyondNum_4 = 0;
+                longKeep_4 = false;
+                isChangeParam_4 = false;
+                downLine_4 = false;
+            }
+            else
+            {
+                Board_1.clearALL();
+                isExecuteControlModel_4 = false;
+                isExecutePIDModel_4 = false;
+                this.btnStarPIDSingleDown_4.Text = "Start";
+                lblPIDTestStatus_4.Text = "NULL";
+                lblPIDTValue_4.Text = "NULL";
+                isUp_4 = false;
+                isDown_4 = false;
+
+            }
+
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
+        }
+
+        private void btnStarPIDSingleDown_5_Click(object sender, EventArgs e)
+        {
+            if (isPIDBtnStart_5)
+            {
+                isExecuteControlModel_5 = true;
+                isExecutePIDModel_5 = true;
+                digitalControlSingal_5 = 1;
+                highBalance_5 = true;
+                this.btnStarPIDSingleDown_5.Text = "Stop";
+                isFirstChangeUp_5 = true;
+                isFirstChangeDown_5 = true;
+                timerCount_5 = 0;
+                beyondNum_5 = 0;
+                longKeep_5 = false;
+                isChangeParam_5 = false;
+                downLine_5 = false;
+            }
+            else
+            {
+                Board_1.clearALL();
+                isExecuteControlModel_5 = false;
+                isExecutePIDModel_5 = false;
+                this.btnStarPIDSingleDown_5.Text = "Start";
+                lblPIDTestStatus_5.Text = "NULL";
+                lblPIDTValue_5.Text = "NULL";
+                isUp_5 = false;
+                isDown_5 = false;
+
+            }
+
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
+        }
+
+        private void btnStarPIDSingleDown_6_Click(object sender, EventArgs e)
+        {
+            if (isPIDBtnStart_6)
+            {
+                isExecuteControlModel_6 = true;
+                isExecutePIDModel_6 = true;
+                digitalControlSingal_6 = 1;
+                highBalance_6 = true;
+                this.btnStarPIDSingleDown_6.Text = "Stop";
+                isFirstChangeUp_6 = true;
+                isFirstChangeDown_6 = true;
+                timerCount_6 = 0;
+                beyondNum_6 = 0;
+                longKeep_6 = false;
+                isChangeParam_6 = false;
+                downLine_6 = false;
+            }
+            else
+            {
+                Board_1.clearALL();
+                isExecuteControlModel_6 = false;
+                isExecutePIDModel_6 = false;
+                this.btnStarPIDSingleDown_6.Text = "Start";
+                lblPIDTestStatus_6.Text = "NULL";
+                lblPIDTValue_6.Text = "NULL";
+                isUp_6 = false;
+                isDown_6 = false;
+
+            }
+
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
+        }
+
+        private void btnStarPIDSingleDown_7_Click(object sender, EventArgs e)
+        {
+            if (isPIDBtnStart_7)
+            {
+                isExecuteControlModel_7 = true;
+                isExecutePIDModel_7 = true;
+                digitalControlSingal_7 = 1;
+                highBalance_7 = true;
+                this.btnStarPIDSingleDown_7.Text = "Stop";
+                isFirstChangeUp_7 = true;
+                isFirstChangeDown_7 = true;
+                timerCount_7 = 0;
+                beyondNum_7 = 0;
+                longKeep_7 = false;
+                isChangeParam_7 = false;
+                downLine_7 = false;
+            }
+            else
+            {
+                Board_1.clearALL();
+                isExecuteControlModel_7 = false;
+                isExecutePIDModel_7 = false;
+                this.btnStarPIDSingleDown_7.Text = "Start";
+                lblPIDTestStatus_7.Text = "NULL";
+                lblPIDTValue_7.Text = "NULL";
+                isUp_7 = false;
+                isDown_7 = false;
+
+            }
+
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
+        }
+
+        private void btnStarPIDSingleDown_8_Click(object sender, EventArgs e)
+        {
+            if (isPIDBtnStart_8)
+            {
+                isExecuteControlModel_8 = true;
+                isExecutePIDModel_8 = true;
+                digitalControlSingal_8 = 1;
+                highBalance_8 = true;
+                this.btnStarPIDSingleDown_8.Text = "Stop";
+                isFirstChangeUp_8 = true;
+                isFirstChangeDown_8 = true;
+                timerCount_8 = 0;
+                beyondNum_8 = 0;
+                longKeep_8 = false;
+                isChangeParam_8 = false;
+                downLine_8 = false;
+            }
+            else
+            {
+                Board_1.clearALL();
+                isExecuteControlModel_8 = false;
+                isExecutePIDModel_8 = false;
+                this.btnStarPIDSingleDown_8.Text = "Start";
+                lblPIDTestStatus_8.Text = "NULL";
+                lblPIDTValue_8.Text = "NULL";
+                isUp_8 = false;
+                isDown_8 = false;
+
+            }
+
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
+        }
+
+        private void btnPIDClearAll_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnStarPIDSingleUp_1_Click(object sender, EventArgs e)
+        {
+            if (isPIDBtnStartDown_1)
+            {
+                isExecuteControlModel_1 = true;
+                isExecutePIDModelDown_1 = true;
+                digitalControlSingal_1 = 0;
+                highBalance_1 = true;
+                this.btnStarPIDSingleUp_1.Text = "Stop";
+                isFirstChangeUp_1 = true;
+                isFirstChangeDown_1 = true;
+                timerCount_1 = 0;
+                beyondNum_1 = 0;
+                longKeep_1 = false;
+                isChangeParam_1 = false;
+                upLine_1 = false;
+            }
+            else
+            {
+                Board_1.clearALL();
+                isExecuteControlModel_1 = false;
+                isExecutePIDModelDown_1 = false;
+                this.btnStarPIDSingleUp_1.Text = "Start";
+                lblPIDTestStatus_1.Text = "NULL";
+                lblPIDTValue_1.Text = "NULL";
+                isUp_1 = false;
+                isDown_1 = false;
+
+            }
+
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
+        }
+
+        private void btnStarPIDSingleUp_2_Click(object sender, EventArgs e)
+        {
+            if (isPIDBtnStartDown_2)
+            {
+                isExecuteControlModel_2 = true;
+                isExecutePIDModelDown_2 = true;
+                digitalControlSingal_2 = 0;
+                highBalance_2 = true;
+                this.btnStarPIDSingleUp_2.Text = "Stop";
+                isFirstChangeUp_2 = true;
+                isFirstChangeDown_2 = true;
+                timerCount_2 = 0;
+                beyondNum_2 = 0;
+                longKeep_2 = false;
+                isChangeParam_2 = false;
+                upLine_2 = false;
+            }
+            else
+            {
+                Board_1.clearALL();
+                isExecuteControlModel_2 = false;
+                isExecutePIDModelDown_2 = false;
+                this.btnStarPIDSingleUp_2.Text = "Start";
+                lblPIDTestStatus_2.Text = "NULL";
+                lblPIDTValue_2.Text = "NULL";
+                isUp_2 = false;
+                isDown_2 = false;
+
+            }
+
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
+        }
+
+        private void btnStarPIDSingleUp_3_Click(object sender, EventArgs e)
+        {
+            if (isPIDBtnStartDown_3)
+            {
+                isExecuteControlModel_3 = true;
+                isExecutePIDModelDown_3 = true;
+                digitalControlSingal_3 = 0;
+                highBalance_3 = true;
+                this.btnStarPIDSingleUp_3.Text = "Stop";
+                isFirstChangeUp_3 = true;
+                isFirstChangeDown_3 = true;
+                timerCount_3 = 0;
+                beyondNum_3 = 0;
+                longKeep_3 = false;
+                isChangeParam_3 = false;
+                upLine_3 = false;
+            }
+            else
+            {
+                Board_1.clearALL();
+                isExecuteControlModel_3 = false;
+                isExecutePIDModelDown_3 = false;
+                this.btnStarPIDSingleUp_3.Text = "Start";
+                lblPIDTestStatus_3.Text = "NULL";
+                lblPIDTValue_3.Text = "NULL";
+                isUp_3 = false;
+                isDown_3 = false;
+
+            }
+
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
+        }
+
+        private void btnStarPIDSingleUp_4_Click(object sender, EventArgs e)
+        {
+            if (isPIDBtnStartDown_4)
+            {
+                isExecuteControlModel_4 = true;
+                isExecutePIDModelDown_4 = true;
+                digitalControlSingal_4 = 0;
+                highBalance_4 = true;
+                this.btnStarPIDSingleUp_4.Text = "Stop";
+                isFirstChangeUp_4 = true;
+                isFirstChangeDown_4 = true;
+                timerCount_4 = 0;
+                beyondNum_4 = 0;
+                longKeep_4 = false;
+                isChangeParam_4 = false;
+                upLine_4 = false;
+            }
+            else
+            {
+                Board_1.clearALL();
+                isExecuteControlModel_4 = false;
+                isExecutePIDModelDown_4 = false;
+                this.btnStarPIDSingleUp_4.Text = "Start";
+                lblPIDTestStatus_4.Text = "NULL";
+                lblPIDTValue_4.Text = "NULL";
+                isUp_4 = false;
+                isDown_4 = false;
+
+            }
+
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
+        }
+
+        private void btnStarPIDSingleUp_5_Click(object sender, EventArgs e)
+        {
+            if (isPIDBtnStartDown_5)
+            {
+                isExecuteControlModel_5 = true;
+                isExecutePIDModelDown_5 = true;
+                digitalControlSingal_5 = 0;
+                highBalance_5 = true;
+                this.btnStarPIDSingleUp_5.Text = "Stop";
+                isFirstChangeUp_5 = true;
+                isFirstChangeDown_5 = true;
+                timerCount_5 = 0;
+                beyondNum_5 = 0;
+                longKeep_5 = false;
+                isChangeParam_5 = false;
+                upLine_5 = false;
+            }
+            else
+            {
+                Board_1.clearALL();
+                isExecuteControlModel_5 = false;
+                isExecutePIDModelDown_5 = false;
+                this.btnStarPIDSingleUp_5.Text = "Start";
+                lblPIDTestStatus_5.Text = "NULL";
+                lblPIDTValue_5.Text = "NULL";
+                isUp_5 = false;
+                isDown_5 = false;
+
+            }
+
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
+        }
+
+        private void btnStarPIDSingleUp_6_Click(object sender, EventArgs e)
+        {
+            if (isPIDBtnStartDown_6)
+            {
+                isExecuteControlModel_6 = true;
+                isExecutePIDModelDown_6 = true;
+                digitalControlSingal_6 = 0;
+                highBalance_6 = true;
+                this.btnStarPIDSingleUp_6.Text = "Stop";
+                isFirstChangeUp_6 = true;
+                isFirstChangeDown_6 = true;
+                timerCount_6 = 0;
+                beyondNum_6 = 0;
+                longKeep_6 = false;
+                isChangeParam_6 = false;
+                upLine_6 = false;
+            }
+            else
+            {
+                Board_1.clearALL();
+                isExecuteControlModel_6 = false;
+                isExecutePIDModelDown_6 = false;
+                this.btnStarPIDSingleUp_6.Text = "Start";
+                lblPIDTestStatus_6.Text = "NULL";
+                lblPIDTValue_6.Text = "NULL";
+                isUp_6 = false;
+                isDown_6 = false;
+
+            }
+
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
+        }
+
+        private void btnStarPIDSingleUp_7_Click(object sender, EventArgs e)
+        {
+            if (isPIDBtnStartDown_7)
+            {
+                isExecuteControlModel_7 = true;
+                isExecutePIDModelDown_7 = true;
+                digitalControlSingal_7 = 0;
+                highBalance_7 = true;
+                this.btnStarPIDSingleUp_7.Text = "Stop";
+                isFirstChangeUp_7 = true;
+                isFirstChangeDown_7 = true;
+                timerCount_7 = 0;
+                beyondNum_7 = 0;
+                longKeep_7 = false;
+                isChangeParam_7 = false;
+                upLine_7 = false;
+            }
+            else
+            {
+                Board_1.clearALL();
+                isExecuteControlModel_7 = false;
+                isExecutePIDModelDown_7 = false;
+                this.btnStarPIDSingleUp_7.Text = "Start";
+                lblPIDTestStatus_7.Text = "NULL";
+                lblPIDTValue_7.Text = "NULL";
+                isUp_7 = false;
+                isDown_7 = false;
+
+            }
+
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
+        }
+
+        private void btnStarPIDSingleUp_8_Click(object sender, EventArgs e)
+        {
+            if (isPIDBtnStartDown_8)
+            {
+                isExecuteControlModel_8 = true;
+                isExecutePIDModelDown_8 = true;
+                digitalControlSingal_8 = 0;
+                highBalance_8 = true;
+                this.btnStarPIDSingleUp_8.Text = "Stop";
+                isFirstChangeUp_8 = true;
+                isFirstChangeDown_8 = true;
+                timerCount_8 = 0;
+                beyondNum_8 = 0;
+                longKeep_8 = false;
+                isChangeParam_8 = false;
+                upLine_8 = false;
+            }
+            else
+            {
+                Board_1.clearALL();
+                isExecuteControlModel_8 = false;
+                isExecutePIDModelDown_8 = false;
+                this.btnStarPIDSingleUp_8.Text = "Start";
+                lblPIDTestStatus_8.Text = "NULL";
+                lblPIDTValue_8.Text = "NULL";
+                isUp_8 = false;
+                isDown_8 = false;
+
+            }
+
+            punishmentT = float.Parse(tbPunishTValue.Text);
+            confortableT = float.Parse(tbConfortTValue.Text);
+        }
+
         private void btnTestByHand_5_Click(object sender, EventArgs e)
         {
             isTestByHand_5 = true;
@@ -1119,6 +1790,201 @@ namespace XControl
                     ;
                 }
             }
+
+
+
+            /*
+            * PID paramete test module
+            */
+
+            if (isExecutePIDModel_2 == true)
+            {
+                timerCount_2++;
+
+                if (timerCount_2 == 300 && highBalance_2 == true)
+                {
+                    timerCount_2 = 0;
+                    digitalControlSingal_2 = 0;
+                    highBalance_2 = false;
+                    downLine_2 = true;
+                    lblPIDDebug.Text = "here-2";
+                }
+
+                if (timerCount_2 == 100 && downLine_2)
+                {
+                    //System.IO.File.AppendAllText("e:\\result_2.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
+                    isChangeParam_2 = true;
+                    downLine_2 = false;
+                    timeNotAccept_2 = true;
+
+
+                }
+
+                if (temperatureValue_2 - confortableT <= 0.5 && downLine_2 == true)
+                {
+                    beyondNum_2++;
+                    if (beyondNum_2 == 3)
+                    {
+                        timerCount_2 = 0;
+                        downLine_2 = false;
+                        longKeep_2 = true;
+                        beyondNum_2 = 0;
+
+                    }
+                }
+
+                if (longKeep_2 == true)
+                {
+                    tempCollection_2.Add(temperatureValue_2);
+                    if (timerCount_2 == 300)
+                    {
+                        isChangeParam_2 = true;
+                        longKeep_2 = false;
+                    }
+
+                }
+
+
+
+
+
+
+                if (isChangeParam_2)
+                {
+
+                    if (timeNotAccept_2)
+                    {
+                        lblPIDTestStatus_2.Text = (string.Format("P:{0},I:{1},D{2}--时间超出", P_2, I_2, D_2));
+                        //System.IO.File.AppendAllText("e:\\result_2.txt", P_2 + "   " + I_2 + "   " + D_2 + "   " + "Tout" + "\r\n");
+                        //输出PID 时间超出，舍弃参数
+                    }
+                    else
+                    {
+                        string PID_Result_2;
+                        resultAnalyse(tempCollection_2, P_2, I_2, D_2, out PID_Result_2,2);
+                        tempCollection_2.Clear();
+                        lblPIDTestStatus_2.Text = PID_Result_2;
+                        //执行计算，然后输出
+                    }
+                    if (D_2 == 3)
+                    {
+                        timer_2.Stop();
+                        Board_1.clearALL();
+                        lblPIDTestStatus_2.Text = "finished!";
+                    }
+
+                    digitalControlSingal_2 = 1;
+                    isChangeParam_2 = false;
+                    P_2 += 0.5;
+                    if (P_2 == 10)
+                    {
+                        D_2 += 0.5;
+                        P_2 = 0.5;
+                    }
+
+
+                    timerCount_2 = 0;
+                    beyondNum_2 = 0;
+                    highBalance_2 = true;
+                }
+
+            }
+
+
+
+            if (isExecutePIDModelDown_2 == true)
+            {
+                timerCount_2++;
+
+                if (timerCount_2 == 300 && lowBalance_2 == true)
+                {
+                    timerCount_2 = 0;
+                    digitalControlSingal_2 = 1;
+                    lowBalance_2 = false;
+                    upLine_2 = true;
+                    lblPIDDebug.Text = "here-2";
+                }
+
+                if (timerCount_2 == 100 && upLine_2)
+                {
+                    //System.IO.File.AppendAllText("e:\\result_2.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
+                    isChangeParam_2 = true;
+                    upLine_2 = false;
+                    timeNotAccept_2 = true;
+
+
+                }
+
+                if (punishmentT - temperatureValue_2 <= 0.5 && upLine_2 == true)
+                {
+                    beyondNum_2++;
+                    if (beyondNum_2 == 3)
+                    {
+                        timerCount_2 = 0;
+                        upLine_2 = false;
+                        longKeep_2 = true;
+                        beyondNum_2 = 0;
+
+                    }
+                }
+
+                if (longKeep_2 == true)
+                {
+                    tempCollection_2.Add(temperatureValue_2);
+                    if (timerCount_2 == 300)
+                    {
+                        isChangeParam_2 = true;
+                        longKeep_2 = false;
+                    }
+
+                }
+
+
+
+
+
+
+                if (isChangeParam_2)
+                {
+
+                    if (timeNotAccept_2)
+                    {
+                        lblPIDTestStatus_2.Text = (string.Format("P:{0},I:{1},D{2}--时间超出", P_2, I_2, D_2));
+                        //System.IO.File.AppendAllText("e:\\result_2.txt", P_2 + "   " + I_2 + "   " + D_2 + "   " + "Tout" + "\r\n");
+                        //输出PID 时间超出，舍弃参数
+                    }
+                    else
+                    {
+                        string PID_Result_2;
+                        resultAnalyse(tempCollection_2, P_2, I_2, D_2, out PID_Result_2, 2);
+                        tempCollection_2.Clear();
+                        lblPIDTestStatus_2.Text = PID_Result_2;
+                        //执行计算，然后输出
+                    }
+                    if (D_2 == 10)
+                    {
+                        timer_2.Stop();
+                        Board_1.clearALL();
+                        lblPIDTestStatus_2.Text = "Finished!";
+                    }
+
+                    digitalControlSingal_2 = 0;
+                    isChangeParam_2 = false;
+                    P_2 += 0.5;
+                    if (P_2 == 10)
+                    {
+                        D_2 += 0.5;
+                        P_2 = 0.5;
+                    }
+
+
+                    timerCount_2 = 0;
+                    beyondNum_2 = 0;
+                    lowBalance_2 = true;
+                }
+
+            }
+
 
 
 
@@ -1308,6 +2174,202 @@ namespace XControl
 
 
 
+            /*
+            * PID paramete test module
+            */
+
+            if (isExecutePIDModel_3 == true)
+            {
+                timerCount_3++;
+
+                if (timerCount_3 == 300 && highBalance_3 == true)
+                {
+                    timerCount_3 = 0;
+                    digitalControlSingal_3 = 0;
+                    highBalance_3 = false;
+                    downLine_3 = true;
+                    lblPIDDebug.Text = "here-3";
+                }
+
+                if (timerCount_3 == 100 && downLine_3)
+                {
+                    //System.IO.File.AppendAllText("e:\\result_3.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
+                    isChangeParam_3 = true;
+                    downLine_3 = false;
+                    timeNotAccept_3 = true;
+
+
+                }
+
+                if (temperatureValue_3 - confortableT <= 0.5 && downLine_3 == true)
+                {
+                    beyondNum_3++;
+                    if (beyondNum_3 == 3)
+                    {
+                        timerCount_3 = 0;
+                        downLine_3 = false;
+                        longKeep_3 = true;
+                        beyondNum_3 = 0;
+
+                    }
+                }
+
+                if (longKeep_3 == true)
+                {
+                    tempCollection_3.Add(temperatureValue_3);
+                    if (timerCount_3 == 300)
+                    {
+                        isChangeParam_3 = true;
+                        longKeep_3 = false;
+                    }
+
+                }
+
+
+
+
+
+
+                if (isChangeParam_3)
+                {
+
+                    if (timeNotAccept_3)
+                    {
+                        lblPIDTestStatus_3.Text = (string.Format("P:{0},I:{1},D{2}--时间超出", P_3, I_3, D_3));
+                       // System.IO.File.AppendAllText("e:\\result_3.txt", P_3 + "   " + I_3 + "   " + D_3 + "   " + "Tout" + "\r\n");
+                        //输出PID 时间超出，舍弃参数
+                    }
+                    else
+                    {
+                        string PID_Result_3;
+                        resultAnalyse(tempCollection_3, P_3, I_3, D_3, out PID_Result_3,3);
+                        tempCollection_3.Clear();
+                        lblPIDTestStatus_3.Text = PID_Result_3;
+                        //执行计算，然后输出
+                    }
+                    if (D_3 == 3)
+                    {
+                        timer_3.Stop();
+                        Board_1.clearALL();
+                        lblPIDTestStatus_3.Text = "finished!";
+                    }
+
+                    digitalControlSingal_3 = 1;
+                    isChangeParam_3 = false;
+                    P_3 += 0.5;
+                    if (P_3 == 10)
+                    {
+                        D_3 += 0.5;
+                        P_3 = 0.5;
+                    }
+
+
+                    timerCount_3 = 0;
+                    beyondNum_3 = 0;
+                    highBalance_3 = true;
+                }
+
+            }
+
+
+            if (isExecutePIDModelDown_3 == true)
+            {
+                timerCount_3++;
+
+                if (timerCount_3 == 300 && lowBalance_3 == true)
+                {
+                    timerCount_3 = 0;
+                    digitalControlSingal_3 = 1;
+                    lowBalance_3 = false;
+                    upLine_3 = true;
+                    lblPIDDebug.Text = "here-3";
+                }
+
+                if (timerCount_3 == 100 && upLine_3)
+                {
+                    //System.IO.File.AppendAllText("e:\\result_3.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
+                    isChangeParam_3 = true;
+                    upLine_3 = false;
+                    timeNotAccept_3 = true;
+
+
+                }
+
+                if (punishmentT - temperatureValue_3 <= 0.5 && upLine_3 == true)
+                {
+                    beyondNum_3++;
+                    if (beyondNum_3 == 3)
+                    {
+                        timerCount_3 = 0;
+                        upLine_3 = false;
+                        longKeep_3 = true;
+                        beyondNum_3 = 0;
+
+                    }
+                }
+
+                if (longKeep_3 == true)
+                {
+                    tempCollection_3.Add(temperatureValue_3);
+                    if (timerCount_3 == 300)
+                    {
+                        isChangeParam_3 = true;
+                        longKeep_3 = false;
+                    }
+
+                }
+
+
+
+
+
+
+                if (isChangeParam_3)
+                {
+
+                    if (timeNotAccept_3)
+                    {
+                        lblPIDTestStatus_3.Text = (string.Format("P:{0},I:{1},D{2}--时间超出", P_3, I_3, D_3));
+                        //System.IO.File.AppendAllText("e:\\result_3.txt", P_3 + "   " + I_3 + "   " + D_3 + "   " + "Tout" + "\r\n");
+                        //输出PID 时间超出，舍弃参数
+                    }
+                    else
+                    {
+                        string PID_Result_3;
+                        resultAnalyse(tempCollection_3, P_3, I_3, D_3, out PID_Result_3, 3);
+                        tempCollection_3.Clear();
+                        lblPIDTestStatus_3.Text = PID_Result_3;
+                        //执行计算，然后输出
+                    }
+                    if (D_3 == 10)
+                    {
+                        timer_3.Stop();
+                        Board_1.clearALL();
+                        lblPIDTestStatus_3.Text = "Finished!";
+                    }
+
+                    digitalControlSingal_3 = 0;
+                    isChangeParam_3 = false;
+                    P_3 += 0.5;
+                    if (P_3 == 10)
+                    {
+                        D_3 += 0.5;
+                        P_3 = 0.5;
+                    }
+
+
+                    timerCount_3 = 0;
+                    beyondNum_3 = 0;
+                    lowBalance_3 = true;
+                }
+
+            }
+
+
+
+
+
+
             if (isUp_3 == true)
             {
                 if ((punishmentT - temperatureValue_3) < 5 && isStartPID_3 == true)
@@ -1486,6 +2548,198 @@ namespace XControl
                 {
                     ;
                 }
+            }
+
+
+            /*
+            * PID paramete test module
+            */
+
+            if (isExecutePIDModel_4 == true)
+            {
+                timerCount_4++;
+
+                if (timerCount_4 == 300 && highBalance_4 == true)
+                {
+                    timerCount_4 = 0;
+                    digitalControlSingal_4 = 0;
+                    highBalance_4 = false;
+                    downLine_4 = true;
+                    lblPIDDebug.Text = "here-4";
+                }
+
+                if (timerCount_4 == 200 && downLine_4)
+                {
+                    //System.IO.File.AppendAllText("e:\\result_4.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
+                    isChangeParam_4 = true;
+                    downLine_4 = false;
+                    timeNotAccept_4 = true;
+
+
+                }
+
+                if (temperatureValue_4 - confortableT <= 0.5 && downLine_4 == true)
+                {
+                    beyondNum_4++;
+                    if (beyondNum_4 == 3)
+                    {
+                        timerCount_4 = 0;
+                        downLine_4 = false;
+                        longKeep_4 = true;
+                        beyondNum_4 = 0;
+
+                    }
+                }
+
+                if (longKeep_4 == true)
+                {
+                    tempCollection_4.Add(temperatureValue_4);
+                    if (timerCount_4 == 300)
+                    {
+                        isChangeParam_4 = true;
+                        longKeep_4 = false;
+                    }
+
+                }
+
+
+
+
+
+
+                if (isChangeParam_4)
+                {
+
+                    if (timeNotAccept_4)
+                    {
+                        lblPIDTestStatus_4.Text = (string.Format("P:{0},I:{1},D{2}--时间超出", P_4, I_4, D_4));
+                        //System.IO.File.AppendAllText("e:\\result_4.txt", P_4 + "   " + I_4 + "   " + D_4 + "   " + "Tout" + "\r\n");
+                        //输出PID 时间超出，舍弃参数
+                    }
+                    else
+                    {
+                        string PID_Result_4;
+                        resultAnalyse(tempCollection_4, P_4, I_4, D_4, out PID_Result_4,4);
+                        tempCollection_4.Clear();
+                        lblPIDTestStatus_4.Text = PID_Result_4;
+                        //执行计算，然后输出
+                    }
+                    if (D_4 == 3)
+                    {
+                        timer_4.Stop();
+                        Board_1.clearALL();
+                        lblPIDTestStatus_4.Text = "finished!";
+                    }
+
+                    digitalControlSingal_4 = 1;
+                    isChangeParam_4 = false;
+                    P_4 += 0.5;
+                    if (P_4 == 10)
+                    {
+                        D_4 += 0.5;
+                        P_4 = 0.5;
+                    }
+
+
+                    timerCount_4 = 0;
+                    beyondNum_4 = 0;
+                    highBalance_4 = true;
+                }
+
+            }
+
+
+            if (isExecutePIDModelDown_4 == true)
+            {
+                timerCount_4++;
+
+                if (timerCount_4 == 300 && lowBalance_4 == true)
+                {
+                    timerCount_4 = 0;
+                    digitalControlSingal_4 = 1;
+                    lowBalance_4 = false;
+                    upLine_4 = true;
+                    lblPIDDebug.Text = "here-4";
+                }
+
+                if (timerCount_4 == 100 && upLine_4)
+                {
+                    //System.IO.File.AppendAllText("e:\\result_4.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
+                    isChangeParam_4 = true;
+                    upLine_4 = false;
+                    timeNotAccept_4 = true;
+
+
+                }
+
+                if (punishmentT - temperatureValue_4 <= 0.5 && upLine_4 == true)
+                {
+                    beyondNum_4++;
+                    if (beyondNum_4 == 3)
+                    {
+                        timerCount_4 = 0;
+                        upLine_4 = false;
+                        longKeep_4 = true;
+                        beyondNum_4 = 0;
+
+                    }
+                }
+
+                if (longKeep_4 == true)
+                {
+                    tempCollection_4.Add(temperatureValue_4);
+                    if (timerCount_4 == 300)
+                    {
+                        isChangeParam_4 = true;
+                        longKeep_4 = false;
+                    }
+
+                }
+
+
+
+
+
+
+                if (isChangeParam_4)
+                {
+
+                    if (timeNotAccept_4)
+                    {
+                        lblPIDTestStatus_4.Text = (string.Format("P:{0},I:{1},D{2}--时间超出", P_4, I_4, D_4));
+                        //System.IO.File.AppendAllText("e:\\result_4.txt", P_4 + "   " + I_4 + "   " + D_4 + "   " + "Tout" + "\r\n");
+                        //输出PID 时间超出，舍弃参数
+                    }
+                    else
+                    {
+                        string PID_Result_4;
+                        resultAnalyse(tempCollection_4, P_4, I_4, D_4, out PID_Result_4, 4);
+                        tempCollection_4.Clear();
+                        lblPIDTestStatus_4.Text = PID_Result_4;
+                        //执行计算，然后输出
+                    }
+                    if (D_4 == 10)
+                    {
+                        timer_4.Stop();
+                        Board_1.clearALL();
+                        lblPIDTestStatus_4.Text = "Finished!";
+                    }
+
+                    digitalControlSingal_4 = 0;
+                    isChangeParam_4 = false;
+                    P_4 += 0.5;
+                    if (P_4 == 10)
+                    {
+                        D_4 += 0.5;
+                        P_4 = 0.5;
+                    }
+
+
+                    timerCount_4 = 0;
+                    beyondNum_4 = 0;
+                    lowBalance_4 = true;
+                }
+
             }
 
 
@@ -1672,6 +2926,203 @@ namespace XControl
 
 
 
+
+            /*
+            * PID paramete test module
+            */
+
+            if (isExecutePIDModel_5 == true)
+            {
+                timerCount_5++;
+
+                if (timerCount_5 == 300 && highBalance_5 == true)
+                {
+                    timerCount_5 = 0;
+                    digitalControlSingal_5 = 0;
+                    highBalance_5 = false;
+                    downLine_5 = true;
+                    lblPIDDebug.Text = "here-5";
+                }
+
+                if (timerCount_5 == 200 && downLine_5)
+                {
+                    //System.IO.File.AppendAllText("e:\\result_5.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
+                    isChangeParam_5 = true;
+                    downLine_5 = false;
+                    timeNotAccept_5 = true;
+
+
+                }
+
+                if (temperatureValue_5 - confortableT <= 0.5 && downLine_5 == true)
+                {
+                    beyondNum_5++;
+                    if (beyondNum_5 == 3)
+                    {
+                        timerCount_5 = 0;
+                        downLine_5 = false;
+                        longKeep_5 = true;
+                        beyondNum_5 = 0;
+
+                    }
+                }
+
+                if (longKeep_5 == true)
+                {
+                    tempCollection_5.Add(temperatureValue_5);
+                    if (timerCount_5 == 300)
+                    {
+                        isChangeParam_5 = true;
+                        longKeep_5 = false;
+                    }
+
+                }
+
+
+
+
+
+
+                if (isChangeParam_5)
+                {
+
+                    if (timeNotAccept_5)
+                    {
+                        lblPIDTestStatus_5.Text = (string.Format("P:{0},I:{1},D{2}--时间超出", P_5, I_5, D_5));
+                        //System.IO.File.AppendAllText("e:\\result_5.txt", P_5 + "   " + I_5 + "   " + D_5 + "   " + "Tout" + "\r\n");
+                        //输出PID 时间超出，舍弃参数
+                    }
+                    else
+                    {
+                        string PID_Result_5;
+                        resultAnalyse(tempCollection_5, P_5, I_5, D_5, out PID_Result_5,5);
+                        tempCollection_5.Clear();
+                        lblPIDTestStatus_5.Text = PID_Result_5;
+                        //执行计算，然后输出
+                    }
+                    if (D_5 == 3)
+                    {
+                        timer_5.Stop();
+                        Board_1.clearALL();
+                        lblPIDTestStatus_5.Text = "finished!";
+                    }
+
+                    digitalControlSingal_5 = 1;
+                    isChangeParam_5 = false;
+                    P_5 += 0.5;
+                    if (P_5 == 10)
+                    {
+                        D_5 += 0.5;
+                        P_5 = 0.5;
+                    }
+
+
+                    timerCount_5 = 0;
+                    beyondNum_5 = 0;
+                    highBalance_5 = true;
+                }
+
+            }
+
+
+
+            if (isExecutePIDModelDown_5 == true)
+            {
+                timerCount_5++;
+
+                if (timerCount_5 == 300 && lowBalance_5 == true)
+                {
+                    timerCount_5 = 0;
+                    digitalControlSingal_5 = 1;
+                    lowBalance_5 = false;
+                    upLine_5 = true;
+                    lblPIDDebug.Text = "here-5";
+                }
+
+                if (timerCount_5 == 100 && upLine_5)
+                {
+                    //System.IO.File.AppendAllText("e:\\result_5.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
+                    isChangeParam_5 = true;
+                    upLine_5 = false;
+                    timeNotAccept_5 = true;
+
+
+                }
+
+                if (punishmentT - temperatureValue_5 <= 0.5 && upLine_5 == true)
+                {
+                    beyondNum_5++;
+                    if (beyondNum_5 == 3)
+                    {
+                        timerCount_5 = 0;
+                        upLine_5 = false;
+                        longKeep_5 = true;
+                        beyondNum_5 = 0;
+
+                    }
+                }
+
+                if (longKeep_5 == true)
+                {
+                    tempCollection_5.Add(temperatureValue_5);
+                    if (timerCount_5 == 300)
+                    {
+                        isChangeParam_5 = true;
+                        longKeep_5 = false;
+                    }
+
+                }
+
+
+
+
+
+
+                if (isChangeParam_5)
+                {
+
+                    if (timeNotAccept_5)
+                    {
+                        lblPIDTestStatus_5.Text = (string.Format("P:{0},I:{1},D{2}--时间超出", P_5, I_5, D_5));
+                        //System.IO.File.AppendAllText("e:\\result_5.txt", P_5 + "   " + I_5 + "   " + D_5 + "   " + "Tout" + "\r\n");
+                        //输出PID 时间超出，舍弃参数
+                    }
+                    else
+                    {
+                        string PID_Result_5;
+                        resultAnalyse(tempCollection_5, P_5, I_5, D_5, out PID_Result_5, 5);
+                        tempCollection_5.Clear();
+                        lblPIDTestStatus_5.Text = PID_Result_5;
+                        //执行计算，然后输出
+                    }
+                    if (D_5 == 10)
+                    {
+                        timer_5.Stop();
+                        Board_1.clearALL();
+                        lblPIDTestStatus_5.Text = "Finished!";
+                    }
+
+                    digitalControlSingal_5 = 0;
+                    isChangeParam_5 = false;
+                    P_5 += 0.5;
+                    if (P_5 == 10)
+                    {
+                        D_5 += 0.5;
+                        P_5 = 0.5;
+                    }
+
+
+                    timerCount_5 = 0;
+                    beyondNum_5 = 0;
+                    lowBalance_5 = true;
+                }
+
+            }
+
+
+
+
+
             if (isUp_5 == true)
             {
                 if ((punishmentT - temperatureValue_5) < 5 && isStartPID_5 == true)
@@ -1850,6 +3301,199 @@ namespace XControl
                 {
                     ;
                 }
+            }
+
+
+
+            /*
+            * PID paramete test module
+            */
+
+            if (isExecutePIDModel_6 == true)
+            {
+                timerCount_6++;
+
+                if (timerCount_6 == 300 && highBalance_6 == true)
+                {
+                    timerCount_6 = 0;
+                    digitalControlSingal_6 = 0;
+                    highBalance_6 = false;
+                    downLine_6 = true;
+                    lblPIDDebug.Text = "here-6";
+                }
+
+                if (timerCount_6 == 200 && downLine_6)
+                {
+                    //System.IO.File.AppendAllText("e:\\result_6.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
+                    isChangeParam_6 = true;
+                    downLine_6 = false;
+                    timeNotAccept_6 = true;
+
+
+                }
+
+                if (temperatureValue_6 - confortableT <= 0.5 && downLine_6 == true)
+                {
+                    beyondNum_6++;
+                    if (beyondNum_6 == 3)
+                    {
+                        timerCount_6 = 0;
+                        downLine_6 = false;
+                        longKeep_6 = true;
+                        beyondNum_6 = 0;
+
+                    }
+                }
+
+                if (longKeep_6 == true)
+                {
+                    tempCollection_6.Add(temperatureValue_6);
+                    if (timerCount_6 == 300)
+                    {
+                        isChangeParam_6 = true;
+                        longKeep_6 = false;
+                    }
+
+                }
+
+
+
+
+
+
+                if (isChangeParam_6)
+                {
+
+                    if (timeNotAccept_6)
+                    {
+                        lblPIDTestStatus_6.Text = (string.Format("P:{0},I:{1},D{2}--时间超出", P_6, I_6, D_6));
+                        //System.IO.File.AppendAllText("e:\\result_6.txt", P_6 + "   " + I_6 + "   " + D_6 + "   " + "Tout" + "\r\n");
+                        //输出PID 时间超出，舍弃参数
+                    }
+                    else
+                    {
+                        string PID_Result_6;
+                        resultAnalyse(tempCollection_6, P_6, I_6, D_6, out PID_Result_6,6);
+                        tempCollection_6.Clear();
+                        lblPIDTestStatus_6.Text = PID_Result_6;
+                        //执行计算，然后输出
+                    }
+                    if (D_6 == 3)
+                    {
+                        timer_6.Stop();
+                        Board_1.clearALL();
+                        lblPIDTestStatus_6.Text = "finished!";
+                    }
+
+                    digitalControlSingal_6 = 1;
+                    isChangeParam_6 = false;
+                    P_6 += 0.5;
+                    if (P_6 == 10)
+                    {
+                        D_6 += 0.5;
+                        P_6 = 0.5;
+                    }
+
+
+                    timerCount_6 = 0;
+                    beyondNum_6 = 0;
+                    highBalance_6 = true;
+                }
+
+            }
+
+
+            if (isExecutePIDModelDown_6 == true)
+            {
+                timerCount_6++;
+
+                if (timerCount_6 == 300 && lowBalance_6 == true)
+                {
+                    timerCount_6 = 0;
+                    digitalControlSingal_6 = 1;
+                    lowBalance_6 = false;
+                    upLine_6 = true;
+                    lblPIDDebug.Text = "here-6";
+                }
+
+                if (timerCount_6 == 100 && upLine_6)
+                {
+                    //System.IO.File.AppendAllText("e:\\result_6.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
+                    isChangeParam_6 = true;
+                    upLine_6 = false;
+                    timeNotAccept_6 = true;
+
+
+                }
+
+                if (punishmentT - temperatureValue_6 <= 0.5 && upLine_6 == true)
+                {
+                    beyondNum_6++;
+                    if (beyondNum_6 == 3)
+                    {
+                        timerCount_6 = 0;
+                        upLine_6 = false;
+                        longKeep_6 = true;
+                        beyondNum_6 = 0;
+
+                    }
+                }
+
+                if (longKeep_6 == true)
+                {
+                    tempCollection_6.Add(temperatureValue_6);
+                    if (timerCount_6 == 300)
+                    {
+                        isChangeParam_6 = true;
+                        longKeep_6 = false;
+                    }
+
+                }
+
+
+
+
+
+
+                if (isChangeParam_6)
+                {
+
+                    if (timeNotAccept_6)
+                    {
+                        lblPIDTestStatus_6.Text = (string.Format("P:{0},I:{1},D{2}--时间超出", P_6, I_6, D_6));
+                        //System.IO.File.AppendAllText("e:\\result_6.txt", P_6 + "   " + I_6 + "   " + D_6 + "   " + "Tout" + "\r\n");
+                        //输出PID 时间超出，舍弃参数
+                    }
+                    else
+                    {
+                        string PID_Result_6;
+                        resultAnalyse(tempCollection_6, P_6, I_6, D_6, out PID_Result_6, 6);
+                        tempCollection_6.Clear();
+                        lblPIDTestStatus_6.Text = PID_Result_6;
+                        //执行计算，然后输出
+                    }
+                    if (D_6 == 10)
+                    {
+                        timer_6.Stop();
+                        Board_1.clearALL();
+                        lblPIDTestStatus_6.Text = "Finished!";
+                    }
+
+                    digitalControlSingal_6 = 0;
+                    isChangeParam_6 = false;
+                    P_6 += 0.5;
+                    if (P_6 == 10)
+                    {
+                        D_6 += 0.5;
+                        P_6 = 0.5;
+                    }
+
+
+                    timerCount_6 = 0;
+                    beyondNum_6 = 0;
+                    lowBalance_6 = true;
+                }
+
             }
 
 
@@ -2035,6 +3679,200 @@ namespace XControl
 
 
 
+
+            /*
+            * PID paramete test module
+            */
+
+            if (isExecutePIDModel_7 == true)
+            {
+                timerCount_7++;
+
+                if (timerCount_7 == 300 && highBalance_7 == true)
+                {
+                    timerCount_7 = 0;
+                    digitalControlSingal_7 = 0;
+                    highBalance_7 = false;
+                    downLine_7 = true;
+                    lblPIDDebug.Text = "here-7";
+                }
+
+                if (timerCount_7 == 200 && downLine_7)
+                {
+                    //System.IO.File.AppendAllText("e:\\result_7.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
+                    isChangeParam_7 = true;
+                    downLine_7 = false;
+                    timeNotAccept_7 = true;
+
+
+                }
+
+                if (temperatureValue_7 - confortableT <= 0.5 && downLine_7 == true)
+                {
+                    beyondNum_7++;
+                    if (beyondNum_7 == 3)
+                    {
+                        timerCount_7 = 0;
+                        downLine_7 = false;
+                        longKeep_7 = true;
+                        beyondNum_7 = 0;
+
+                    }
+                }
+
+                if (longKeep_7 == true)
+                {
+                    tempCollection_7.Add(temperatureValue_7);
+                    if (timerCount_7 == 300)
+                    {
+                        isChangeParam_7 = true;
+                        longKeep_7 = false;
+                    }
+
+                }
+
+
+
+
+
+
+                if (isChangeParam_7)
+                {
+
+                    if (timeNotAccept_7)
+                    {
+                        lblPIDTestStatus_7.Text = (string.Format("P:{0},I:{1},D{2}--时间超出", P_7, I_7, D_7));
+                        //System.IO.File.AppendAllText("e:\\result_7.txt", P_7 + "   " + I_7 + "   " + D_7 + "   " + "Tout" + "\r\n");
+                        //输出PID 时间超出，舍弃参数
+                    }
+                    else
+                    {
+                        string PID_Result_7;
+                        resultAnalyse(tempCollection_7, P_7, I_7, D_7, out PID_Result_7,7);
+                        tempCollection_7.Clear();
+                        lblPIDTestStatus_7.Text = PID_Result_7;
+                        //执行计算，然后输出
+                    }
+                    if (D_7 == 3)
+                    {
+                        timer_7.Stop();
+                        Board_1.clearALL();
+                        lblPIDTestStatus_7.Text = "finished!";
+                    }
+
+                    digitalControlSingal_7 = 1;
+                    isChangeParam_7 = false;
+                    P_7 += 0.5;
+                    if (P_7 == 10)
+                    {
+                        D_7 += 0.5;
+                        P_7 = 0.5;
+                    }
+
+
+                    timerCount_7 = 0;
+                    beyondNum_7 = 0;
+                    highBalance_7 = true;
+                }
+
+            }
+
+
+            if (isExecutePIDModelDown_7 == true)
+            {
+                timerCount_7++;
+
+                if (timerCount_7 == 300 && lowBalance_7 == true)
+                {
+                    timerCount_7 = 0;
+                    digitalControlSingal_7 = 1;
+                    lowBalance_7 = false;
+                    upLine_7 = true;
+                    lblPIDDebug.Text = "here-7";
+                }
+
+                if (timerCount_7 == 100 && upLine_7)
+                {
+                    //System.IO.File.AppendAllText("e:\\result_7.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
+                    isChangeParam_7 = true;
+                    upLine_7 = false;
+                    timeNotAccept_7 = true;
+
+
+                }
+
+                if (punishmentT - temperatureValue_7 <= 0.5 && upLine_7 == true)
+                {
+                    beyondNum_7++;
+                    if (beyondNum_7 == 3)
+                    {
+                        timerCount_7 = 0;
+                        upLine_7 = false;
+                        longKeep_7 = true;
+                        beyondNum_7 = 0;
+
+                    }
+                }
+
+                if (longKeep_7 == true)
+                {
+                    tempCollection_7.Add(temperatureValue_7);
+                    if (timerCount_7 == 300)
+                    {
+                        isChangeParam_7 = true;
+                        longKeep_7 = false;
+                    }
+
+                }
+
+
+
+
+
+
+                if (isChangeParam_7)
+                {
+
+                    if (timeNotAccept_7)
+                    {
+                        lblPIDTestStatus_7.Text = (string.Format("P:{0},I:{1},D{2}--时间超出", P_7, I_7, D_7));
+                        //System.IO.File.AppendAllText("e:\\result_7.txt", P_7 + "   " + I_7 + "   " + D_7 + "   " + "Tout" + "\r\n");
+                        //输出PID 时间超出，舍弃参数
+                    }
+                    else
+                    {
+                        string PID_Result_7;
+                        resultAnalyse(tempCollection_7, P_7, I_7, D_7, out PID_Result_7, 7);
+                        tempCollection_7.Clear();
+                        lblPIDTestStatus_7.Text = PID_Result_7;
+                        //执行计算，然后输出
+                    }
+                    if (D_7 == 10)
+                    {
+                        timer_7.Stop();
+                        Board_1.clearALL();
+                        lblPIDTestStatus_7.Text = "Finished!";
+                    }
+
+                    digitalControlSingal_7 = 0;
+                    isChangeParam_7 = false;
+                    P_7 += 0.5;
+                    if (P_7 == 10)
+                    {
+                        D_7 += 0.5;
+                        P_7 = 0.5;
+                    }
+
+
+                    timerCount_7 = 0;
+                    beyondNum_7 = 0;
+                    lowBalance_7 = true;
+                }
+
+            }
+
+
+
             if (isUp_7 == true)
             {
                 if ((punishmentT - temperatureValue_7) < 7 && isStartPID_7 == true)
@@ -2213,6 +4051,201 @@ namespace XControl
                 {
                     ;
                 }
+            }
+
+
+
+            /*
+            * PID paramete test module
+            */
+
+            if (isExecutePIDModel_8 == true)
+            {
+                timerCount_8++;
+
+                if (timerCount_8 == 300 && highBalance_8 == true)
+                {
+                    timerCount_8 = 0;
+                    digitalControlSingal_8 = 0;
+                    highBalance_8 = false;
+                    downLine_8 = true;
+                    lblPIDDebug.Text = "here-8";
+                }
+
+                if (timerCount_8 == 200 && downLine_8)
+                {
+                    //System.IO.File.AppendAllText("e:\\result_8.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
+                    isChangeParam_8 = true;
+                    downLine_8 = false;
+                    timeNotAccept_8 = true;
+
+
+                }
+
+                if (temperatureValue_8 - confortableT <= 0.5 && downLine_8 == true)
+                {
+                    beyondNum_8++;
+                    if (beyondNum_8 == 3)
+                    {
+                        timerCount_8 = 0;
+                        downLine_8 = false;
+                        longKeep_8 = true;
+                        beyondNum_8 = 0;
+
+                    }
+                }
+
+                if (longKeep_8 == true)
+                {
+                    tempCollection_8.Add(temperatureValue_8);
+                    if (timerCount_8 == 300)
+                    {
+                        isChangeParam_8 = true;
+                        longKeep_8 = false;
+                    }
+
+                }
+
+
+
+
+
+
+                if (isChangeParam_8)
+                {
+
+                    if (timeNotAccept_8)
+                    {
+                        lblPIDTestStatus_8.Text = (string.Format("P:{0},I:{1},D{2}--时间超出", P_8, I_8, D_8));
+                        //System.IO.File.AppendAllText("e:\\result_8.txt", P_8 + "   " + I_8 + "   " + D_8 + "   " + "Tout" + "\r\n");
+                        //输出PID 时间超出，舍弃参数
+                    }
+                    else
+                    {
+                        string PID_Result_8;
+                        resultAnalyse(tempCollection_8, P_8, I_8, D_8, out PID_Result_8,8);
+                        tempCollection_8.Clear();
+                        lblPIDTestStatus_8.Text = PID_Result_8;
+                        //执行计算，然后输出
+                    }
+                    if (D_8 == 3)
+                    {
+                        timer_8.Stop();
+                        Board_1.clearALL();
+                        lblPIDTestStatus_8.Text = "finished!";
+                    }
+
+                    digitalControlSingal_8 = 1;
+                    isChangeParam_8 = false;
+                    P_8 += 0.5;
+                    if (P_8 == 10)
+                    {
+                        D_8 += 0.5;
+                        P_8 = 0.5;
+                    }
+
+
+                    timerCount_8 = 0;
+                    beyondNum_8 = 0;
+                    highBalance_8 = true;
+                }
+
+            }
+
+
+
+
+            if (isExecutePIDModelDown_8 == true)
+            {
+                timerCount_8++;
+
+                if (timerCount_8 == 300 && lowBalance_8 == true)
+                {
+                    timerCount_8 = 0;
+                    digitalControlSingal_8 = 1;
+                    lowBalance_8 = false;
+                    upLine_8 = true;
+                    lblPIDDebug.Text = "here-8";
+                }
+
+                if (timerCount_8 == 100 && upLine_8)
+                {
+                    //System.IO.File.AppendAllText("e:\\result_8.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
+                    isChangeParam_8 = true;
+                    upLine_8 = false;
+                    timeNotAccept_8 = true;
+
+
+                }
+
+                if (punishmentT - temperatureValue_8 <= 0.5 && upLine_8 == true)
+                {
+                    beyondNum_8++;
+                    if (beyondNum_8 == 3)
+                    {
+                        timerCount_8 = 0;
+                        upLine_8 = false;
+                        longKeep_8 = true;
+                        beyondNum_8 = 0;
+
+                    }
+                }
+
+                if (longKeep_8 == true)
+                {
+                    tempCollection_8.Add(temperatureValue_8);
+                    if (timerCount_8 == 300)
+                    {
+                        isChangeParam_8 = true;
+                        longKeep_8 = false;
+                    }
+
+                }
+
+
+
+
+
+
+                if (isChangeParam_8)
+                {
+
+                    if (timeNotAccept_8)
+                    {
+                        lblPIDTestStatus_8.Text = (string.Format("P:{0},I:{1},D{2}--时间超出", P_8, I_8, D_8));
+                        //System.IO.File.AppendAllText("e:\\result_8.txt", P_8 + "   " + I_8 + "   " + D_8 + "   " + "Tout" + "\r\n");
+                        //输出PID 时间超出，舍弃参数
+                    }
+                    else
+                    {
+                        string PID_Result_8;
+                        resultAnalyse(tempCollection_8, P_8, I_8, D_8, out PID_Result_8, 8);
+                        tempCollection_8.Clear();
+                        lblPIDTestStatus_8.Text = PID_Result_8;
+                        //执行计算，然后输出
+                    }
+                    if (D_8 == 10)
+                    {
+                        timer_8.Stop();
+                        Board_1.clearALL();
+                        lblPIDTestStatus_8.Text = "Finished!";
+                    }
+
+                    digitalControlSingal_8 = 0;
+                    isChangeParam_8 = false;
+                    P_8 += 0.5;
+                    if (P_8 == 10)
+                    {
+                        D_8 += 0.5;
+                        P_8 = 0.5;
+                    }
+
+
+                    timerCount_8 = 0;
+                    beyondNum_8 = 0;
+                    lowBalance_8 = true;
+                }
+
             }
 
 
