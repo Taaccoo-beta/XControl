@@ -910,20 +910,50 @@ namespace XControl
                 isExecutePIDModel_1 = true;
                 digitalControlSingal_1 = 1;
                 highBalance_1 = true;
-                this.btnStarPIDSingle_1.Text = "Stop";
+                this.btnStarPIDSingleDown_1.Text = "Stop";
                 isFirstChangeUp_1 = true;
                 isFirstChangeDown_1 = true;
+                timerCount_1 = 0;
+                beyondNum_1 = 0;
+                longKeep_1 = false;
+                isChangeParam_1 = false;
+                downLine_1 = false;
             }
             else
             {
                 Board_1.clearALL();
-                this.timer_1.Stop();
-                timerCount_1 = 0;
-                beyondNum_1 = 0;
+                isExecuteControlModel_1 = false;
+                isExecutePIDModel_1 = false;
+                this.btnStarPIDSingleDown_1.Text = "Start";
+                lblPIDTestStatus_1.Text = "NULL";
+                lblPIDTValue_1.Text = "NULL";
+                isUp_1 = false;
+                isDown_1 = false;
+                
             }
 
             punishmentT = float.Parse(tbPunishTValue.Text);
             confortableT = float.Parse(tbConfortTValue.Text);
+
+        }
+
+        private void btnPIDStartAll_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox18_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox17_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox16_TextChanged(object sender, EventArgs e)
+        {
 
         }
 
