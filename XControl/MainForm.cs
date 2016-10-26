@@ -373,6 +373,7 @@ namespace XControl
         
         private void resultAnalyse(List<double> list,double P,double I,double D,out string Result,int groupNum)
         {
+            lblPIDDebug.Text = P.ToString();
             double MaxList = list.Max();
             double MinList = list.Min();
             double SumList = list.Sum();
@@ -492,32 +493,32 @@ namespace XControl
             isTestByHandClick_8 = true;
 
 
-            P_1 = double.Parse(tbPIDValuePUp_1.Text);
-            P_2 = double.Parse(tbPIDValuePUp_2.Text);
-            P_3 = double.Parse(tbPIDValuePUp_3.Text);
-            P_4 = double.Parse(tbPIDValuePUp_4.Text);
-            P_5 = double.Parse(tbPIDValuePUp_5.Text);
-            P_6 = double.Parse(tbPIDValuePUp_6.Text);
-            P_7 = double.Parse(tbPIDValuePUp_7.Text);
-            P_8 = double.Parse(tbPIDValuePUp_8.Text);
+            //P_1 = double.Parse(tbPIDValuePUp_1.Text);
+            //P_2 = double.Parse(tbPIDValuePUp_2.Text);
+            //P_3 = double.Parse(tbPIDValuePUp_3.Text);
+            //P_4 = double.Parse(tbPIDValuePUp_4.Text);
+            //P_5 = double.Parse(tbPIDValuePUp_5.Text);
+            //P_6 = double.Parse(tbPIDValuePUp_6.Text);
+            //P_7 = double.Parse(tbPIDValuePUp_7.Text);
+            //P_8 = double.Parse(tbPIDValuePUp_8.Text);
 
-            I_1 = double.Parse(tbPIDValueIUp_1.Text);
-            I_2 = double.Parse(tbPIDValueIUp_2.Text);
-            I_3 = double.Parse(tbPIDValueIUp_3.Text);
-            I_4 = double.Parse(tbPIDValueIUp_4.Text);
-            I_5 = double.Parse(tbPIDValueIUp_5.Text);
-            I_6 = double.Parse(tbPIDValueIUp_6.Text);
-            I_7 = double.Parse(tbPIDValueIUp_7.Text);
-            I_8 = double.Parse(tbPIDValueIUp_8.Text);
+            //I_1 = double.Parse(tbPIDValueIUp_1.Text);
+            //I_2 = double.Parse(tbPIDValueIUp_2.Text);
+            //I_3 = double.Parse(tbPIDValueIUp_3.Text);
+            //I_4 = double.Parse(tbPIDValueIUp_4.Text);
+            //I_5 = double.Parse(tbPIDValueIUp_5.Text);
+            //I_6 = double.Parse(tbPIDValueIUp_6.Text);
+            //I_7 = double.Parse(tbPIDValueIUp_7.Text);
+            //I_8 = double.Parse(tbPIDValueIUp_8.Text);
 
-            D_1 = double.Parse(tbPIDValueDUp_1.Text);
-            D_2 = double.Parse(tbPIDValueDUp_2.Text);
-            D_3 = double.Parse(tbPIDValueDUp_3.Text);
-            D_4 = double.Parse(tbPIDValueD_4.Text);
-            D_5 = double.Parse(tbPIDValueDUp_5.Text);
-            D_6 = double.Parse(tbPIDValueDUp_6.Text);
-            D_7 = double.Parse(tbPIDValueDUp_7.Text);
-            D_8 = double.Parse(tbPIDValueDUp_8.Text);
+            //D_1 = double.Parse(tbPIDValueDUp_1.Text);
+            //D_2 = double.Parse(tbPIDValueDUp_2.Text);
+            //D_3 = double.Parse(tbPIDValueDUp_3.Text);
+            //D_4 = double.Parse(tbPIDValueD_4.Text);
+            //D_5 = double.Parse(tbPIDValueDUp_5.Text);
+            //D_6 = double.Parse(tbPIDValueDUp_6.Text);
+            //D_7 = double.Parse(tbPIDValueDUp_7.Text);
+            //D_8 = double.Parse(tbPIDValueDUp_8.Text);
 
 
             timer_1.Start();
@@ -548,11 +549,11 @@ namespace XControl
             lblRawData_1.Text = RawValue.ToString();
             lblTValue_1.Text = temperatureValue_1.ToString("00.00");
 
-            if (isExecutePIDModel_1 == true)
+            if (isExecutePIDModel_1 == true || isExecutePIDModelDown_1==true)
             {
                 lblPIDTValue_1.Text = temperatureValue_1.ToString("00.00");
             }
-
+            
             /*
              * Test by hand module
              */
@@ -634,17 +635,16 @@ namespace XControl
                     digitalControlSingal_1 = 0;
                     highBalance_1 = false;
                     downLine_1 = true;
-                    lblPIDDebug.Text = "here-1";
+                   
                 }
 
-                if (timerCount_1 == 100 && downLine_1)
+                if (timerCount_1 == 150 && downLine_1)
                 {
                     //System.IO.File.AppendAllText("e:\\result_1.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
                     isChangeParam_1 = true;
                     downLine_1 = false;
                     timeNotAccept_1 = true;
-
-
+                   
                 }
 
                 if (temperatureValue_1 - confortableT <= 0.5 && downLine_1 == true)
@@ -679,6 +679,7 @@ namespace XControl
                 if (isChangeParam_1)
                 {
 
+                    lblPIDDebug.Text = P_1.ToString();
                     if (timeNotAccept_1)
                     {
                         lblPIDTestStatus_1.Text = (string.Format("P:{0},I:{1},D{2}--时间超出", P_1, I_1, D_1));
@@ -693,7 +694,7 @@ namespace XControl
                         lblPIDTestStatus_1.Text = PID_Result_1;
                         //执行计算，然后输出
                     }
-                    if (D_1 == 3)
+                    if (D_1 == 10)
                     {
                         timer_1.Stop();
                         Board_1.clearALL();
@@ -703,6 +704,7 @@ namespace XControl
                     digitalControlSingal_1 = 1;
                     isChangeParam_1 = false;
                     P_1 += 0.5;
+                  
                     if (P_1 == 10)
                     {
                         D_1 += 0.5;
@@ -1074,6 +1076,7 @@ namespace XControl
                 longKeep_1 = false;
                 isChangeParam_1 = false;
                 downLine_1 = false;
+                System.IO.File.AppendAllText("e:\\resultPID_1.txt", "降温PID测试+++++++++++++++++++++++++++++" + "\r\n");
             }
             else
             {
@@ -1129,6 +1132,7 @@ namespace XControl
                 longKeep_2 = false;
                 isChangeParam_2 = false;
                 downLine_2 = false;
+                System.IO.File.AppendAllText("e:\\resultPID_2.txt", "降温PID测试+++++++++++++++++++++++++++++" + "\r\n");
             }
             else
             {
@@ -1163,6 +1167,7 @@ namespace XControl
                 longKeep_3 = false;
                 isChangeParam_3 = false;
                 downLine_3 = false;
+                System.IO.File.AppendAllText("e:\\resultPID_3.txt", "降温PID测试+++++++++++++++++++++++++++++" + "\r\n");
             }
             else
             {
@@ -1197,6 +1202,8 @@ namespace XControl
                 longKeep_4 = false;
                 isChangeParam_4 = false;
                 downLine_4 = false;
+
+                System.IO.File.AppendAllText("e:\\resultPID_4.txt", "降温PID测试+++++++++++++++++++++++++++++" + "\r\n");
             }
             else
             {
@@ -1231,6 +1238,7 @@ namespace XControl
                 longKeep_5 = false;
                 isChangeParam_5 = false;
                 downLine_5 = false;
+                System.IO.File.AppendAllText("e:\\resultPID_5.txt", "降温PID测试+++++++++++++++++++++++++++++" + "\r\n");
             }
             else
             {
@@ -1265,6 +1273,7 @@ namespace XControl
                 longKeep_6 = false;
                 isChangeParam_6 = false;
                 downLine_6 = false;
+                System.IO.File.AppendAllText("e:\\resultPID_6.txt", "降温PID测试+++++++++++++++++++++++++++++" + "\r\n");
             }
             else
             {
@@ -1299,6 +1308,7 @@ namespace XControl
                 longKeep_7 = false;
                 isChangeParam_7 = false;
                 downLine_7 = false;
+                System.IO.File.AppendAllText("e:\\resultPID_7.txt", "降温PID测试+++++++++++++++++++++++++++++" + "\r\n");
             }
             else
             {
@@ -1333,6 +1343,8 @@ namespace XControl
                 longKeep_8 = false;
                 isChangeParam_8 = false;
                 downLine_8 = false;
+
+                System.IO.File.AppendAllText("e:\\resultPID_8.txt", "降温PID测试+++++++++++++++++++++++++++++" + "\r\n");
             }
             else
             {
@@ -1367,6 +1379,25 @@ namespace XControl
             isExecuteControlModel_6 = false;
             isExecuteControlModel_7 = false;
             isExecuteControlModel_8 = false;
+
+
+            isExecutePIDModelDown_1 = false;
+            isExecuteControlModel_1 = false;
+            isExecutePIDModelDown_2 = false;
+            isExecuteControlModel_2 = false;
+            isExecutePIDModelDown_3 = false;
+            isExecuteControlModel_3 = false;
+            isExecutePIDModelDown_4 = false;
+            isExecuteControlModel_4 = false;
+            isExecutePIDModelDown_5 = false;
+            isExecuteControlModel_5 = false;
+            isExecutePIDModelDown_6 = false;
+            isExecuteControlModel_6 = false;
+            isExecutePIDModelDown_7 = false;
+            isExecuteControlModel_7 = false;
+            isExecutePIDModelDown_8 = false;
+            isExecuteControlModel_8 = false;
+
 
             lblTState_1.Text = "NULL";
             lblTState_2.Text = "NULL";
@@ -1406,7 +1437,7 @@ namespace XControl
                 isExecuteControlModel_1 = true;
                 isExecutePIDModelDown_1 = true;
                 digitalControlSingal_1 = 0;
-                highBalance_1 = true;
+                lowBalance_1 = true;
                 this.btnStarPIDSingleUp_1.Text = "Stop";
                 isFirstChangeUp_1 = true;
                 isFirstChangeDown_1 = true;
@@ -1415,6 +1446,7 @@ namespace XControl
                 longKeep_1 = false;
                 isChangeParam_1 = false;
                 upLine_1 = false;
+                System.IO.File.AppendAllText("e:\\resultPID_1.txt", "升温PID测试+++++++++++++++++++++++++++++" + "\r\n");
             }
             else
             {
@@ -1440,7 +1472,7 @@ namespace XControl
                 isExecuteControlModel_2 = true;
                 isExecutePIDModelDown_2 = true;
                 digitalControlSingal_2 = 0;
-                highBalance_2 = true;
+                lowBalance_2 = true;
                 this.btnStarPIDSingleUp_2.Text = "Stop";
                 isFirstChangeUp_2 = true;
                 isFirstChangeDown_2 = true;
@@ -1449,6 +1481,7 @@ namespace XControl
                 longKeep_2 = false;
                 isChangeParam_2 = false;
                 upLine_2 = false;
+                System.IO.File.AppendAllText("e:\\resultPID_2.txt", "升温PID测试+++++++++++++++++++++++++++++" + "\r\n");
             }
             else
             {
@@ -1474,7 +1507,7 @@ namespace XControl
                 isExecuteControlModel_3 = true;
                 isExecutePIDModelDown_3 = true;
                 digitalControlSingal_3 = 0;
-                highBalance_3 = true;
+                lowBalance_3 = true;
                 this.btnStarPIDSingleUp_3.Text = "Stop";
                 isFirstChangeUp_3 = true;
                 isFirstChangeDown_3 = true;
@@ -1483,6 +1516,7 @@ namespace XControl
                 longKeep_3 = false;
                 isChangeParam_3 = false;
                 upLine_3 = false;
+                System.IO.File.AppendAllText("e:\\resultPID_3.txt", "升温PID测试+++++++++++++++++++++++++++++" + "\r\n");
             }
             else
             {
@@ -1508,7 +1542,7 @@ namespace XControl
                 isExecuteControlModel_4 = true;
                 isExecutePIDModelDown_4 = true;
                 digitalControlSingal_4 = 0;
-                highBalance_4 = true;
+                lowBalance_4 = true;
                 this.btnStarPIDSingleUp_4.Text = "Stop";
                 isFirstChangeUp_4 = true;
                 isFirstChangeDown_4 = true;
@@ -1517,6 +1551,8 @@ namespace XControl
                 longKeep_4 = false;
                 isChangeParam_4 = false;
                 upLine_4 = false;
+
+                System.IO.File.AppendAllText("e:\\resultPID_4.txt", "升温PID测试+++++++++++++++++++++++++++++" + "\r\n");
             }
             else
             {
@@ -1542,7 +1578,7 @@ namespace XControl
                 isExecuteControlModel_5 = true;
                 isExecutePIDModelDown_5 = true;
                 digitalControlSingal_5 = 0;
-                highBalance_5 = true;
+                lowBalance_5 = true;
                 this.btnStarPIDSingleUp_5.Text = "Stop";
                 isFirstChangeUp_5 = true;
                 isFirstChangeDown_5 = true;
@@ -1551,6 +1587,7 @@ namespace XControl
                 longKeep_5 = false;
                 isChangeParam_5 = false;
                 upLine_5 = false;
+                System.IO.File.AppendAllText("e:\\resultPID_5.txt", "升温PID测试+++++++++++++++++++++++++++++" + "\r\n");
             }
             else
             {
@@ -1576,7 +1613,7 @@ namespace XControl
                 isExecuteControlModel_6 = true;
                 isExecutePIDModelDown_6 = true;
                 digitalControlSingal_6 = 0;
-                highBalance_6 = true;
+                lowBalance_6 = true;
                 this.btnStarPIDSingleUp_6.Text = "Stop";
                 isFirstChangeUp_6 = true;
                 isFirstChangeDown_6 = true;
@@ -1585,6 +1622,7 @@ namespace XControl
                 longKeep_6 = false;
                 isChangeParam_6 = false;
                 upLine_6 = false;
+                System.IO.File.AppendAllText("e:\\resultPID_6.txt", "升温PID测试+++++++++++++++++++++++++++++" + "\r\n");
             }
             else
             {
@@ -1610,7 +1648,7 @@ namespace XControl
                 isExecuteControlModel_7 = true;
                 isExecutePIDModelDown_7 = true;
                 digitalControlSingal_7 = 0;
-                highBalance_7 = true;
+                lowBalance_7 = true;
                 this.btnStarPIDSingleUp_7.Text = "Stop";
                 isFirstChangeUp_7 = true;
                 isFirstChangeDown_7 = true;
@@ -1619,6 +1657,7 @@ namespace XControl
                 longKeep_7 = false;
                 isChangeParam_7 = false;
                 upLine_7 = false;
+                System.IO.File.AppendAllText("e:\\resultPID_7.txt", "升温PID测试+++++++++++++++++++++++++++++" + "\r\n");
             }
             else
             {
@@ -1644,7 +1683,7 @@ namespace XControl
                 isExecuteControlModel_8 = true;
                 isExecutePIDModelDown_8 = true;
                 digitalControlSingal_8 = 0;
-                highBalance_8 = true;
+                lowBalance_8 = true;
                 this.btnStarPIDSingleUp_8.Text = "Stop";
                 isFirstChangeUp_8 = true;
                 isFirstChangeDown_8 = true;
@@ -1653,6 +1692,7 @@ namespace XControl
                 longKeep_8 = false;
                 isChangeParam_8 = false;
                 upLine_8 = false;
+                System.IO.File.AppendAllText("e:\\resultPID_8.txt", "升温PID测试+++++++++++++++++++++++++++++" + "\r\n");
             }
             else
             {
@@ -1779,6 +1819,13 @@ namespace XControl
 
             lblTValue_2.Text = temperatureValue_2.ToString("00.00");
 
+
+            if (isExecutePIDModel_2 == true || isExecutePIDModelDown_2 == true)
+            {
+                lblPIDTValue_2.Text = temperatureValue_2.ToString("00.00");
+            }
+
+
             if (isTestByHand_2 == false)
             {
                 digitalControlSingal_2 = Board_2.getSingal(2);
@@ -1853,7 +1900,7 @@ namespace XControl
                     lblPIDDebug.Text = "here-2";
                 }
 
-                if (timerCount_2 == 100 && downLine_2)
+                if (timerCount_2 == 150 && downLine_2)
                 {
                     //System.IO.File.AppendAllText("e:\\result_2.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
                     isChangeParam_2 = true;
@@ -2161,6 +2208,13 @@ namespace XControl
 
             lblTValue_3.Text = temperatureValue_3.ToString("00.00");
 
+
+            if (isExecutePIDModel_3 == true || isExecutePIDModelDown_3 == true)
+            {
+                lblPIDTValue_3.Text = temperatureValue_3.ToString("00.00");
+            }
+
+
             if (isTestByHand_3 == false)
             {
                 digitalControlSingal_3 = Board_2.getSingal(3);
@@ -2234,7 +2288,7 @@ namespace XControl
                     lblPIDDebug.Text = "here-3";
                 }
 
-                if (timerCount_3 == 100 && downLine_3)
+                if (timerCount_3 == 150 && downLine_3)
                 {
                     //System.IO.File.AppendAllText("e:\\result_3.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
                     isChangeParam_3 = true;
@@ -2543,6 +2597,13 @@ namespace XControl
 
             lblTValue_4.Text = temperatureValue_4.ToString("00.00");
 
+
+            if (isExecutePIDModel_4 == true || isExecutePIDModelDown_4 == true)
+            {
+                lblPIDTValue_4.Text = temperatureValue_4.ToString("00.00");
+            }
+
+
             if (isTestByHand_4 == false)
             {
                 digitalControlSingal_4 = Board_2.getSingal(4);
@@ -2611,7 +2672,7 @@ namespace XControl
                     lblPIDDebug.Text = "here-4";
                 }
 
-                if (timerCount_4 == 200 && downLine_4)
+                if (timerCount_4 == 150 && downLine_4)
                 {
                     //System.IO.File.AppendAllText("e:\\result_4.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
                     isChangeParam_4 = true;
@@ -2917,6 +2978,12 @@ namespace XControl
 
             lblTValue_5.Text = temperatureValue_5.ToString("00.00");
 
+
+            if (isExecutePIDModel_5 == true || isExecutePIDModelDown_5 == true)
+            {
+                lblPIDTValue_5.Text = temperatureValue_5.ToString("00.00");
+            }
+
             if (isTestByHand_5 == false)
             {
                 digitalControlSingal_5 = Board_2.getSingal(5);
@@ -2987,7 +3054,7 @@ namespace XControl
                     lblPIDDebug.Text = "here-5";
                 }
 
-                if (timerCount_5 == 200 && downLine_5)
+                if (timerCount_5 ==150 && downLine_5)
                 {
                     //System.IO.File.AppendAllText("e:\\result_5.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
                     isChangeParam_5 = true;
@@ -3296,6 +3363,12 @@ namespace XControl
             lblTValue_6.Text = temperatureValue_6.ToString("00.00");
 
 
+            if (isExecutePIDModel_6 == true || isExecutePIDModelDown_6 == true)
+            {
+                lblPIDTValue_6.Text = temperatureValue_6.ToString("00.00");
+            }
+
+
             if (isTestByHand_6 == false)
             {
                 digitalControlSingal_6 = Board_2.getSingal(6);
@@ -3365,7 +3438,7 @@ namespace XControl
                     lblPIDDebug.Text = "here-6";
                 }
 
-                if (timerCount_6 == 200 && downLine_6)
+                if (timerCount_6 == 150 && downLine_6)
                 {
                     //System.IO.File.AppendAllText("e:\\result_6.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
                     isChangeParam_6 = true;
@@ -3670,6 +3743,13 @@ namespace XControl
 
             lblTValue_7.Text = temperatureValue_7.ToString("00.00");
 
+
+            if (isExecutePIDModel_7 == true || isExecutePIDModelDown_7 == true)
+            {
+                lblPIDTValue_7.Text = temperatureValue_7.ToString("00.00");
+            }
+
+
             if (isTestByHand_7 == false)
             {
                 digitalControlSingal_7 = Board_2.getSingal(7);
@@ -3740,7 +3820,7 @@ namespace XControl
                     lblPIDDebug.Text = "here-7";
                 }
 
-                if (timerCount_7 == 200 && downLine_7)
+                if (timerCount_7 == 150 && downLine_7)
                 {
                     //System.IO.File.AppendAllText("e:\\result_7.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
                     isChangeParam_7 = true;
@@ -4046,6 +4126,13 @@ namespace XControl
             lblTValue_8.Text = temperatureValue_8.ToString("00.00");
 
 
+            if (isExecutePIDModel_8 == true || isExecutePIDModelDown_8 == true)
+            {
+                lblPIDTValue_8.Text = temperatureValue_8.ToString("00.00");
+            }
+
+
+
             if (isTestByHand_8 == false)
             {
                 digitalControlSingal_8 = Board_2.getSingal(8);
@@ -4115,7 +4202,7 @@ namespace XControl
                     lblPIDDebug.Text = "here-8";
                 }
 
-                if (timerCount_8 == 200 && downLine_8)
+                if (timerCount_8 == 150 && downLine_8)
                 {
                     //System.IO.File.AppendAllText("e:\\result_8.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
                     isChangeParam_8 = true;

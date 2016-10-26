@@ -246,25 +246,25 @@ namespace XControl
                     return RawValue * p1_1 - p2_1;
                    
                 case 2:
-                    RawValue = int.Parse(Board.AnalogInput(0));
+                    RawValue = int.Parse(Board.AnalogInput(1));
                     return RawValue * p1_1 - p2_1;
                 case 3:
-                    RawValue = int.Parse(Board.AnalogInput(0));
+                    RawValue = int.Parse(Board.AnalogInput(2));
                     return RawValue * p1_1 - p2_1;
                 case 4:
-                    RawValue = int.Parse(Board.AnalogInput(0));
+                    RawValue = int.Parse(Board.AnalogInput(3));
                     return RawValue * p1_1 - p2_1;
                 case 5:
                     RawValue = int.Parse(Board.AnalogInput(0));
                     return RawValue * p1_1 - p2_1;
                 case 6:
-                    RawValue = int.Parse(Board.AnalogInput(0));
+                    RawValue = int.Parse(Board.AnalogInput(1));
                     return RawValue * p1_1 - p2_1;
                 case 7:
-                    RawValue = int.Parse(Board.AnalogInput(0));
+                    RawValue = int.Parse(Board.AnalogInput(2));
                     return RawValue * p1_1 - p2_1;
                 case 8:
-                    RawValue = int.Parse(Board.AnalogInput(0));
+                    RawValue = int.Parse(Board.AnalogInput(3));
                     return RawValue * p1_1 - p2_1;
                 default:
                     RawValue = -1;
