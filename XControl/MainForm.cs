@@ -1353,6 +1353,49 @@ namespace XControl
 
         private void btnPIDClearAll_Click(object sender, EventArgs e)
         {
+            Board_1.clearALL();
+            isTotalStartBtnTrue = true;
+            btnTotalStart.Text = "Start";
+
+
+
+            isExecuteControlModel_1 = false;
+            isExecuteControlModel_2 = false;
+            isExecuteControlModel_3 = false;
+            isExecuteControlModel_4 = false;
+            isExecuteControlModel_5 = false;
+            isExecuteControlModel_6 = false;
+            isExecuteControlModel_7 = false;
+            isExecuteControlModel_8 = false;
+
+            lblTState_1.Text = "NULL";
+            lblTState_2.Text = "NULL";
+            lblTState_3.Text = "NULL";
+            lblTState_4.Text = "NULL";
+            lblTState_5.Text = "NULL";
+            lblTState_6.Text = "NULL";
+            lblTState_7.Text = "NULL";
+            lblTState_8.Text = "NULL";
+
+
+            isUp_1 = false;
+            isUp_2 = false;
+            isUp_3 = false;
+            isUp_4 = false;
+            isUp_5 = false;
+            isUp_6 = false;
+            isUp_7 = false;
+            isUp_8 = false;
+
+            isDown_1 = false;
+            isDown_2 = false;
+            isDown_3 = false;
+            isDown_4 = false;
+            isDown_5 = false;
+            isDown_6 = false;
+            isDown_7 = false;
+            isDown_8 = false;
+
 
         }
 
