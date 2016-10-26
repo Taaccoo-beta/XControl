@@ -118,7 +118,7 @@
             this.btnPIDClearAll = new System.Windows.Forms.Button();
             this.btnPIDStartAll = new System.Windows.Forms.Button();
             this.btnStartPIDTest_8 = new System.Windows.Forms.GroupBox();
-            this.textBox22 = new System.Windows.Forms.TextBox();
+            this.tbPIDValueDDown_8 = new System.Windows.Forms.TextBox();
             this.btnStarPIDSingleUp_8 = new System.Windows.Forms.Button();
             this.tbPIDValueIDown_8 = new System.Windows.Forms.TextBox();
             this.lblPIDTValue_8 = new System.Windows.Forms.Label();
@@ -132,7 +132,7 @@
             this.tbPIDValuePUp_8 = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
             this.btnStartPIDTest_7 = new System.Windows.Forms.GroupBox();
-            this.textBox19 = new System.Windows.Forms.TextBox();
+            this.tbPIDValueDDown_7 = new System.Windows.Forms.TextBox();
             this.tbPIDValueIDown_7 = new System.Windows.Forms.TextBox();
             this.tbPIDValuePDown_7 = new System.Windows.Forms.TextBox();
             this.btnStarPIDSingleUp_7 = new System.Windows.Forms.Button();
@@ -146,7 +146,7 @@
             this.tbPIDValuePUp_7 = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.btnStartPIDTest_6 = new System.Windows.Forms.GroupBox();
-            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.tbPIDValueDDown_6 = new System.Windows.Forms.TextBox();
             this.tbPIDValueIDown_6 = new System.Windows.Forms.TextBox();
             this.tbPIDValuePDown_6 = new System.Windows.Forms.TextBox();
             this.btnStarPIDSingleUp_6 = new System.Windows.Forms.Button();
@@ -160,7 +160,7 @@
             this.tbPIDValuePUp_6 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.btnStartPIDTest_5 = new System.Windows.Forms.GroupBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.tbPIDValueDDown_5 = new System.Windows.Forms.TextBox();
             this.tbPIDValueIDown_5 = new System.Windows.Forms.TextBox();
             this.tbPIDValuePDown_5 = new System.Windows.Forms.TextBox();
             this.btnStarPIDSingleUp_5 = new System.Windows.Forms.Button();
@@ -181,7 +181,7 @@
             this.lblPIDTValue_4 = new System.Windows.Forms.Label();
             this.btnStarPIDSingleDown_4 = new System.Windows.Forms.Button();
             this.lblPIDTestStatus_4 = new System.Windows.Forms.Label();
-            this.tbPIDValueD_4 = new System.Windows.Forms.TextBox();
+            this.tbPIDValueDUp_4 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.tbPIDValueIUp_4 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -1056,6 +1056,7 @@
             this.tpPID.TabIndex = 2;
             this.tpPID.Text = "PID-Paramete";
             this.tpPID.UseVisualStyleBackColor = true;
+            this.tpPID.Click += new System.EventHandler(this.tpPID_Click);
             // 
             // lblPIDDebug
             // 
@@ -1097,7 +1098,7 @@
             // 
             // btnStartPIDTest_8
             // 
-            this.btnStartPIDTest_8.Controls.Add(this.textBox22);
+            this.btnStartPIDTest_8.Controls.Add(this.tbPIDValueDDown_8);
             this.btnStartPIDTest_8.Controls.Add(this.btnStarPIDSingleUp_8);
             this.btnStartPIDTest_8.Controls.Add(this.tbPIDValueIDown_8);
             this.btnStartPIDTest_8.Controls.Add(this.lblPIDTValue_8);
@@ -1117,13 +1118,13 @@
             this.btnStartPIDTest_8.TabStop = false;
             this.btnStartPIDTest_8.Text = "Group-8";
             // 
-            // textBox22
+            // tbPIDValueDDown_8
             // 
-            this.textBox22.Location = new System.Drawing.Point(119, 71);
-            this.textBox22.Name = "textBox22";
-            this.textBox22.Size = new System.Drawing.Size(43, 20);
-            this.textBox22.TabIndex = 19;
-            this.textBox22.Text = "0.5";
+            this.tbPIDValueDDown_8.Location = new System.Drawing.Point(119, 71);
+            this.tbPIDValueDDown_8.Name = "tbPIDValueDDown_8";
+            this.tbPIDValueDDown_8.Size = new System.Drawing.Size(43, 20);
+            this.tbPIDValueDDown_8.TabIndex = 19;
+            this.tbPIDValueDDown_8.Text = "0.5";
             // 
             // btnStarPIDSingleUp_8
             // 
@@ -1158,7 +1159,7 @@
             this.tbPIDValuePDown_8.Name = "tbPIDValuePDown_8";
             this.tbPIDValuePDown_8.Size = new System.Drawing.Size(43, 20);
             this.tbPIDValuePDown_8.TabIndex = 17;
-            this.tbPIDValuePDown_8.Text = "2";
+            this.tbPIDValuePDown_8.Text = "7";
             // 
             // btnStarPIDSingleDown_8
             // 
@@ -1219,7 +1220,7 @@
             this.tbPIDValuePUp_8.Name = "tbPIDValuePUp_8";
             this.tbPIDValuePUp_8.Size = new System.Drawing.Size(43, 20);
             this.tbPIDValuePUp_8.TabIndex = 1;
-            this.tbPIDValuePUp_8.Text = "2";
+            this.tbPIDValuePUp_8.Text = "3";
             // 
             // label28
             // 
@@ -1232,7 +1233,7 @@
             // 
             // btnStartPIDTest_7
             // 
-            this.btnStartPIDTest_7.Controls.Add(this.textBox19);
+            this.btnStartPIDTest_7.Controls.Add(this.tbPIDValueDDown_7);
             this.btnStartPIDTest_7.Controls.Add(this.tbPIDValueIDown_7);
             this.btnStartPIDTest_7.Controls.Add(this.tbPIDValuePDown_7);
             this.btnStartPIDTest_7.Controls.Add(this.btnStarPIDSingleUp_7);
@@ -1252,13 +1253,13 @@
             this.btnStartPIDTest_7.TabStop = false;
             this.btnStartPIDTest_7.Text = "Group-7";
             // 
-            // textBox19
+            // tbPIDValueDDown_7
             // 
-            this.textBox19.Location = new System.Drawing.Point(119, 72);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(43, 20);
-            this.textBox19.TabIndex = 16;
-            this.textBox19.Text = "0.5";
+            this.tbPIDValueDDown_7.Location = new System.Drawing.Point(119, 72);
+            this.tbPIDValueDDown_7.Name = "tbPIDValueDDown_7";
+            this.tbPIDValueDDown_7.Size = new System.Drawing.Size(43, 20);
+            this.tbPIDValueDDown_7.TabIndex = 16;
+            this.tbPIDValueDDown_7.Text = "0.5";
             // 
             // tbPIDValueIDown_7
             // 
@@ -1274,7 +1275,7 @@
             this.tbPIDValuePDown_7.Name = "tbPIDValuePDown_7";
             this.tbPIDValuePDown_7.Size = new System.Drawing.Size(43, 20);
             this.tbPIDValuePDown_7.TabIndex = 14;
-            this.tbPIDValuePDown_7.Text = "2";
+            this.tbPIDValuePDown_7.Text = "7";
             // 
             // btnStarPIDSingleUp_7
             // 
@@ -1354,7 +1355,7 @@
             this.tbPIDValuePUp_7.Name = "tbPIDValuePUp_7";
             this.tbPIDValuePUp_7.Size = new System.Drawing.Size(43, 20);
             this.tbPIDValuePUp_7.TabIndex = 1;
-            this.tbPIDValuePUp_7.Text = "2";
+            this.tbPIDValuePUp_7.Text = "3";
             // 
             // label24
             // 
@@ -1367,7 +1368,7 @@
             // 
             // btnStartPIDTest_6
             // 
-            this.btnStartPIDTest_6.Controls.Add(this.textBox16);
+            this.btnStartPIDTest_6.Controls.Add(this.tbPIDValueDDown_6);
             this.btnStartPIDTest_6.Controls.Add(this.tbPIDValueIDown_6);
             this.btnStartPIDTest_6.Controls.Add(this.tbPIDValuePDown_6);
             this.btnStartPIDTest_6.Controls.Add(this.btnStarPIDSingleUp_6);
@@ -1387,14 +1388,14 @@
             this.btnStartPIDTest_6.TabStop = false;
             this.btnStartPIDTest_6.Text = "Group-6";
             // 
-            // textBox16
+            // tbPIDValueDDown_6
             // 
-            this.textBox16.Location = new System.Drawing.Point(119, 72);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(43, 20);
-            this.textBox16.TabIndex = 15;
-            this.textBox16.Text = "0.5";
-            this.textBox16.TextChanged += new System.EventHandler(this.textBox16_TextChanged);
+            this.tbPIDValueDDown_6.Location = new System.Drawing.Point(119, 72);
+            this.tbPIDValueDDown_6.Name = "tbPIDValueDDown_6";
+            this.tbPIDValueDDown_6.Size = new System.Drawing.Size(43, 20);
+            this.tbPIDValueDDown_6.TabIndex = 15;
+            this.tbPIDValueDDown_6.Text = "0.5";
+            this.tbPIDValueDDown_6.TextChanged += new System.EventHandler(this.textBox16_TextChanged);
             // 
             // tbPIDValueIDown_6
             // 
@@ -1411,7 +1412,7 @@
             this.tbPIDValuePDown_6.Name = "tbPIDValuePDown_6";
             this.tbPIDValuePDown_6.Size = new System.Drawing.Size(43, 20);
             this.tbPIDValuePDown_6.TabIndex = 13;
-            this.tbPIDValuePDown_6.Text = "2";
+            this.tbPIDValuePDown_6.Text = "7";
             this.tbPIDValuePDown_6.TextChanged += new System.EventHandler(this.textBox18_TextChanged);
             // 
             // btnStarPIDSingleUp_6
@@ -1492,7 +1493,7 @@
             this.tbPIDValuePUp_6.Name = "tbPIDValuePUp_6";
             this.tbPIDValuePUp_6.Size = new System.Drawing.Size(43, 20);
             this.tbPIDValuePUp_6.TabIndex = 1;
-            this.tbPIDValuePUp_6.Text = "2";
+            this.tbPIDValuePUp_6.Text = "3";
             // 
             // label20
             // 
@@ -1505,7 +1506,7 @@
             // 
             // btnStartPIDTest_5
             // 
-            this.btnStartPIDTest_5.Controls.Add(this.textBox13);
+            this.btnStartPIDTest_5.Controls.Add(this.tbPIDValueDDown_5);
             this.btnStartPIDTest_5.Controls.Add(this.tbPIDValueIDown_5);
             this.btnStartPIDTest_5.Controls.Add(this.tbPIDValuePDown_5);
             this.btnStartPIDTest_5.Controls.Add(this.btnStarPIDSingleUp_5);
@@ -1525,13 +1526,13 @@
             this.btnStartPIDTest_5.TabStop = false;
             this.btnStartPIDTest_5.Text = "Group-5";
             // 
-            // textBox13
+            // tbPIDValueDDown_5
             // 
-            this.textBox13.Location = new System.Drawing.Point(118, 77);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(44, 20);
-            this.textBox13.TabIndex = 15;
-            this.textBox13.Text = "0.5";
+            this.tbPIDValueDDown_5.Location = new System.Drawing.Point(118, 77);
+            this.tbPIDValueDDown_5.Name = "tbPIDValueDDown_5";
+            this.tbPIDValueDDown_5.Size = new System.Drawing.Size(44, 20);
+            this.tbPIDValueDDown_5.TabIndex = 15;
+            this.tbPIDValueDDown_5.Text = "0.5";
             // 
             // tbPIDValueIDown_5
             // 
@@ -1547,7 +1548,7 @@
             this.tbPIDValuePDown_5.Name = "tbPIDValuePDown_5";
             this.tbPIDValuePDown_5.Size = new System.Drawing.Size(44, 20);
             this.tbPIDValuePDown_5.TabIndex = 13;
-            this.tbPIDValuePDown_5.Text = "2";
+            this.tbPIDValuePDown_5.Text = "7";
             // 
             // btnStarPIDSingleUp_5
             // 
@@ -1627,7 +1628,7 @@
             this.tbPIDValuePUp_5.Name = "tbPIDValuePUp_5";
             this.tbPIDValuePUp_5.Size = new System.Drawing.Size(44, 20);
             this.tbPIDValuePUp_5.TabIndex = 1;
-            this.tbPIDValuePUp_5.Text = "2";
+            this.tbPIDValuePUp_5.Text = "3";
             // 
             // label16
             // 
@@ -1647,7 +1648,7 @@
             this.btnStartPIDTest_4.Controls.Add(this.lblPIDTValue_4);
             this.btnStartPIDTest_4.Controls.Add(this.btnStarPIDSingleDown_4);
             this.btnStartPIDTest_4.Controls.Add(this.lblPIDTestStatus_4);
-            this.btnStartPIDTest_4.Controls.Add(this.tbPIDValueD_4);
+            this.btnStartPIDTest_4.Controls.Add(this.tbPIDValueDUp_4);
             this.btnStartPIDTest_4.Controls.Add(this.label10);
             this.btnStartPIDTest_4.Controls.Add(this.tbPIDValueIUp_4);
             this.btnStartPIDTest_4.Controls.Add(this.label11);
@@ -1682,7 +1683,7 @@
             this.tbPIDValuePDown_4.Name = "tbPIDValuePDown_4";
             this.tbPIDValuePDown_4.Size = new System.Drawing.Size(43, 20);
             this.tbPIDValuePDown_4.TabIndex = 13;
-            this.tbPIDValuePDown_4.Text = "2";
+            this.tbPIDValuePDown_4.Text = "7";
             // 
             // btnStarPIDSingleUp_4
             // 
@@ -1722,13 +1723,13 @@
             this.lblPIDTestStatus_4.TabIndex = 6;
             this.lblPIDTestStatus_4.Text = "NULL";
             // 
-            // tbPIDValueD_4
+            // tbPIDValueDUp_4
             // 
-            this.tbPIDValueD_4.Location = new System.Drawing.Point(55, 72);
-            this.tbPIDValueD_4.Name = "tbPIDValueD_4";
-            this.tbPIDValueD_4.Size = new System.Drawing.Size(43, 20);
-            this.tbPIDValueD_4.TabIndex = 5;
-            this.tbPIDValueD_4.Text = "0.5";
+            this.tbPIDValueDUp_4.Location = new System.Drawing.Point(55, 72);
+            this.tbPIDValueDUp_4.Name = "tbPIDValueDUp_4";
+            this.tbPIDValueDUp_4.Size = new System.Drawing.Size(43, 20);
+            this.tbPIDValueDUp_4.TabIndex = 5;
+            this.tbPIDValueDUp_4.Text = "0.5";
             // 
             // label10
             // 
@@ -1762,7 +1763,7 @@
             this.tbPIDValuePUp_4.Name = "tbPIDValuePUp_4";
             this.tbPIDValuePUp_4.Size = new System.Drawing.Size(43, 20);
             this.tbPIDValuePUp_4.TabIndex = 1;
-            this.tbPIDValuePUp_4.Text = "2";
+            this.tbPIDValuePUp_4.Text = "3";
             // 
             // label12
             // 
@@ -1817,7 +1818,7 @@
             this.tbPIDValuePDown_3.Name = "tbPIDValuePDown_3";
             this.tbPIDValuePDown_3.Size = new System.Drawing.Size(43, 20);
             this.tbPIDValuePDown_3.TabIndex = 13;
-            this.tbPIDValuePDown_3.Text = "2";
+            this.tbPIDValuePDown_3.Text = "7";
             // 
             // btnStarPIDSingleUp_3
             // 
@@ -1897,7 +1898,7 @@
             this.tbPIDValuePUp_3.Name = "tbPIDValuePUp_3";
             this.tbPIDValuePUp_3.Size = new System.Drawing.Size(43, 20);
             this.tbPIDValuePUp_3.TabIndex = 1;
-            this.tbPIDValuePUp_3.Text = "2";
+            this.tbPIDValuePUp_3.Text = "3";
             // 
             // label8
             // 
@@ -1952,7 +1953,7 @@
             this.tbPIDValuePDown_2.Name = "tbPIDValuePDown_2";
             this.tbPIDValuePDown_2.Size = new System.Drawing.Size(43, 20);
             this.tbPIDValuePDown_2.TabIndex = 12;
-            this.tbPIDValuePDown_2.Text = "2";
+            this.tbPIDValuePDown_2.Text = "7";
             // 
             // btnStarPIDSingleUp_2
             // 
@@ -2032,7 +2033,7 @@
             this.tbPIDValuePUp_2.Name = "tbPIDValuePUp_2";
             this.tbPIDValuePUp_2.Size = new System.Drawing.Size(43, 20);
             this.tbPIDValuePUp_2.TabIndex = 1;
-            this.tbPIDValuePUp_2.Text = "2";
+            this.tbPIDValuePUp_2.Text = "3";
             // 
             // label4
             // 
@@ -2087,7 +2088,7 @@
             this.tbPIDValuePDown_1.Name = "tbPIDValuePDown_1";
             this.tbPIDValuePDown_1.Size = new System.Drawing.Size(44, 20);
             this.tbPIDValuePDown_1.TabIndex = 10;
-            this.tbPIDValuePDown_1.Text = "2";
+            this.tbPIDValuePDown_1.Text = "7";
             // 
             // btnStarPIDSingleUp_1
             // 
@@ -2167,7 +2168,7 @@
             this.tbPIDValuePUp_1.Name = "tbPIDValuePUp_1";
             this.tbPIDValuePUp_1.Size = new System.Drawing.Size(44, 20);
             this.tbPIDValuePUp_1.TabIndex = 1;
-            this.tbPIDValuePUp_1.Text = "2";
+            this.tbPIDValuePUp_1.Text = "3";
             // 
             // lblPIDShowValueP_1
             // 
@@ -2363,7 +2364,7 @@
         private System.Windows.Forms.GroupBox btnStartPIDTest_4;
         private System.Windows.Forms.Button btnStarPIDSingleDown_4;
         private System.Windows.Forms.Label lblPIDTestStatus_4;
-        private System.Windows.Forms.TextBox tbPIDValueD_4;
+        private System.Windows.Forms.TextBox tbPIDValueDUp_4;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox tbPIDValueIUp_4;
         private System.Windows.Forms.Label label11;
@@ -2426,16 +2427,16 @@
         private System.Windows.Forms.TextBox tbPIDValueDDown_1;
         private System.Windows.Forms.TextBox tbPIDValueIDown_1;
         private System.Windows.Forms.TextBox tbPIDValuePDown_1;
-        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.TextBox tbPIDValueDDown_6;
         private System.Windows.Forms.TextBox tbPIDValueIDown_6;
         private System.Windows.Forms.TextBox tbPIDValuePDown_6;
-        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox tbPIDValueDDown_5;
         private System.Windows.Forms.TextBox tbPIDValueIDown_5;
         private System.Windows.Forms.TextBox tbPIDValuePDown_5;
-        private System.Windows.Forms.TextBox textBox22;
+        private System.Windows.Forms.TextBox tbPIDValueDDown_8;
         private System.Windows.Forms.TextBox tbPIDValueIDown_8;
         private System.Windows.Forms.TextBox tbPIDValuePDown_8;
-        private System.Windows.Forms.TextBox textBox19;
+        private System.Windows.Forms.TextBox tbPIDValueDDown_7;
         private System.Windows.Forms.TextBox tbPIDValueIDown_7;
         private System.Windows.Forms.TextBox tbPIDValuePDown_7;
     }
