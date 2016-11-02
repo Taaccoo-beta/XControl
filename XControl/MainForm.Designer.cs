@@ -229,6 +229,55 @@
             this.lblPIDShowValueI_1 = new System.Windows.Forms.Label();
             this.tbPIDValuePUp_1 = new System.Windows.Forms.TextBox();
             this.lblPIDShowValueP_1 = new System.Windows.Forms.Label();
+            this.lblP1_1 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblP2_1 = new System.Windows.Forms.Label();
+            this.tbP1_1 = new System.Windows.Forms.TextBox();
+            this.tbP2_1 = new System.Windows.Forms.TextBox();
+            this.lblTparameterDescriptor = new System.Windows.Forms.Label();
+            this.btnResetTParam_1 = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnResetTParam_2 = new System.Windows.Forms.Button();
+            this.tbP2_2 = new System.Windows.Forms.TextBox();
+            this.tbP1_2 = new System.Windows.Forms.TextBox();
+            this.lblP2_2 = new System.Windows.Forms.Label();
+            this.lblP1_2 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnResetTParam_3 = new System.Windows.Forms.Button();
+            this.tbP2_3 = new System.Windows.Forms.TextBox();
+            this.tbP1_3 = new System.Windows.Forms.TextBox();
+            this.lblP2_3 = new System.Windows.Forms.Label();
+            this.lblP1_3 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnResetTParam_4 = new System.Windows.Forms.Button();
+            this.tbP2_4 = new System.Windows.Forms.TextBox();
+            this.tbP1_4 = new System.Windows.Forms.TextBox();
+            this.lblP2_4 = new System.Windows.Forms.Label();
+            this.lblP1_4 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnResetTParam_5 = new System.Windows.Forms.Button();
+            this.tbP2_5 = new System.Windows.Forms.TextBox();
+            this.tbP1_5 = new System.Windows.Forms.TextBox();
+            this.lblP2_5 = new System.Windows.Forms.Label();
+            this.lblP1_5 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnResetTParam_6 = new System.Windows.Forms.Button();
+            this.tbP2_6 = new System.Windows.Forms.TextBox();
+            this.tbP1_6 = new System.Windows.Forms.TextBox();
+            this.lblP2_6 = new System.Windows.Forms.Label();
+            this.lblP1_6 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.btnResetTParam_7 = new System.Windows.Forms.Button();
+            this.tbP2_7 = new System.Windows.Forms.TextBox();
+            this.tbP1_7 = new System.Windows.Forms.TextBox();
+            this.lblP2_7 = new System.Windows.Forms.Label();
+            this.lblP1_7 = new System.Windows.Forms.Label();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.btnResetTParam_8 = new System.Windows.Forms.Button();
+            this.tbP2_8 = new System.Windows.Forms.TextBox();
+            this.tbP1_8 = new System.Windows.Forms.TextBox();
+            this.lblP2_8 = new System.Windows.Forms.Label();
+            this.lblP1_8 = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
             this.gbGroup_1.SuspendLayout();
             this.gbGroup_2.SuspendLayout();
@@ -241,6 +290,7 @@
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tP_Main.SuspendLayout();
+            this.tP_T.SuspendLayout();
             this.tpPID.SuspendLayout();
             this.btnStartPIDTest_8.SuspendLayout();
             this.btnStartPIDTest_7.SuspendLayout();
@@ -250,6 +300,14 @@
             this.btnStartPIDTest_3.SuspendLayout();
             this.btnStartPIDTest_2.SuspendLayout();
             this.btnStartPIDTest_1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -1028,6 +1086,15 @@
             // 
             // tP_T
             // 
+            this.tP_T.Controls.Add(this.groupBox8);
+            this.tP_T.Controls.Add(this.groupBox7);
+            this.tP_T.Controls.Add(this.groupBox6);
+            this.tP_T.Controls.Add(this.groupBox5);
+            this.tP_T.Controls.Add(this.groupBox4);
+            this.tP_T.Controls.Add(this.groupBox3);
+            this.tP_T.Controls.Add(this.groupBox2);
+            this.tP_T.Controls.Add(this.lblTparameterDescriptor);
+            this.tP_T.Controls.Add(this.groupBox1);
             this.tP_T.Location = new System.Drawing.Point(4, 22);
             this.tP_T.Name = "tP_T";
             this.tP_T.Padding = new System.Windows.Forms.Padding(3);
@@ -2179,6 +2246,455 @@
             this.lblPIDShowValueP_1.TabIndex = 0;
             this.lblPIDShowValueP_1.Text = "P:";
             // 
+            // lblP1_1
+            // 
+            this.lblP1_1.AutoSize = true;
+            this.lblP1_1.Location = new System.Drawing.Point(15, 25);
+            this.lblP1_1.Name = "lblP1_1";
+            this.lblP1_1.Size = new System.Drawing.Size(20, 13);
+            this.lblP1_1.TabIndex = 0;
+            this.lblP1_1.Text = "P1";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnResetTParam_1);
+            this.groupBox1.Controls.Add(this.tbP2_1);
+            this.groupBox1.Controls.Add(this.tbP1_1);
+            this.groupBox1.Controls.Add(this.lblP2_1);
+            this.groupBox1.Controls.Add(this.lblP1_1);
+            this.groupBox1.Location = new System.Drawing.Point(90, 82);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(110, 100);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Group-1";
+            // 
+            // lblP2_1
+            // 
+            this.lblP2_1.AutoSize = true;
+            this.lblP2_1.Location = new System.Drawing.Point(15, 48);
+            this.lblP2_1.Name = "lblP2_1";
+            this.lblP2_1.Size = new System.Drawing.Size(20, 13);
+            this.lblP2_1.TabIndex = 1;
+            this.lblP2_1.Text = "P2";
+            // 
+            // tbP1_1
+            // 
+            this.tbP1_1.Location = new System.Drawing.Point(41, 22);
+            this.tbP1_1.Name = "tbP1_1";
+            this.tbP1_1.Size = new System.Drawing.Size(50, 20);
+            this.tbP1_1.TabIndex = 2;
+            // 
+            // tbP2_1
+            // 
+            this.tbP2_1.Location = new System.Drawing.Point(41, 45);
+            this.tbP2_1.Name = "tbP2_1";
+            this.tbP2_1.Size = new System.Drawing.Size(50, 20);
+            this.tbP2_1.TabIndex = 3;
+            // 
+            // lblTparameterDescriptor
+            // 
+            this.lblTparameterDescriptor.AutoSize = true;
+            this.lblTparameterDescriptor.Location = new System.Drawing.Point(291, 24);
+            this.lblTparameterDescriptor.Name = "lblTparameterDescriptor";
+            this.lblTparameterDescriptor.Size = new System.Drawing.Size(71, 13);
+            this.lblTparameterDescriptor.TabIndex = 4;
+            this.lblTparameterDescriptor.Text = "Y = P1 X - P2";
+            // 
+            // btnResetTParam_1
+            // 
+            this.btnResetTParam_1.Location = new System.Drawing.Point(41, 71);
+            this.btnResetTParam_1.Name = "btnResetTParam_1";
+            this.btnResetTParam_1.Size = new System.Drawing.Size(50, 23);
+            this.btnResetTParam_1.TabIndex = 4;
+            this.btnResetTParam_1.Text = "Set";
+            this.btnResetTParam_1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnResetTParam_2);
+            this.groupBox2.Controls.Add(this.tbP2_2);
+            this.groupBox2.Controls.Add(this.tbP1_2);
+            this.groupBox2.Controls.Add(this.lblP2_2);
+            this.groupBox2.Controls.Add(this.lblP1_2);
+            this.groupBox2.Location = new System.Drawing.Point(237, 82);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(110, 100);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Group-2";
+            // 
+            // btnResetTParam_2
+            // 
+            this.btnResetTParam_2.Location = new System.Drawing.Point(41, 71);
+            this.btnResetTParam_2.Name = "btnResetTParam_2";
+            this.btnResetTParam_2.Size = new System.Drawing.Size(50, 23);
+            this.btnResetTParam_2.TabIndex = 4;
+            this.btnResetTParam_2.Text = "Set";
+            this.btnResetTParam_2.UseVisualStyleBackColor = true;
+            // 
+            // tbP2_2
+            // 
+            this.tbP2_2.Location = new System.Drawing.Point(41, 45);
+            this.tbP2_2.Name = "tbP2_2";
+            this.tbP2_2.Size = new System.Drawing.Size(50, 20);
+            this.tbP2_2.TabIndex = 3;
+            // 
+            // tbP1_2
+            // 
+            this.tbP1_2.Location = new System.Drawing.Point(41, 22);
+            this.tbP1_2.Name = "tbP1_2";
+            this.tbP1_2.Size = new System.Drawing.Size(50, 20);
+            this.tbP1_2.TabIndex = 2;
+            // 
+            // lblP2_2
+            // 
+            this.lblP2_2.AutoSize = true;
+            this.lblP2_2.Location = new System.Drawing.Point(15, 48);
+            this.lblP2_2.Name = "lblP2_2";
+            this.lblP2_2.Size = new System.Drawing.Size(20, 13);
+            this.lblP2_2.TabIndex = 1;
+            this.lblP2_2.Text = "P2";
+            // 
+            // lblP1_2
+            // 
+            this.lblP1_2.AutoSize = true;
+            this.lblP1_2.Location = new System.Drawing.Point(15, 25);
+            this.lblP1_2.Name = "lblP1_2";
+            this.lblP1_2.Size = new System.Drawing.Size(20, 13);
+            this.lblP1_2.TabIndex = 0;
+            this.lblP1_2.Text = "P1";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnResetTParam_3);
+            this.groupBox3.Controls.Add(this.tbP2_3);
+            this.groupBox3.Controls.Add(this.tbP1_3);
+            this.groupBox3.Controls.Add(this.lblP2_3);
+            this.groupBox3.Controls.Add(this.lblP1_3);
+            this.groupBox3.Location = new System.Drawing.Point(403, 82);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(110, 100);
+            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Group-3";
+            // 
+            // btnResetTParam_3
+            // 
+            this.btnResetTParam_3.Location = new System.Drawing.Point(41, 71);
+            this.btnResetTParam_3.Name = "btnResetTParam_3";
+            this.btnResetTParam_3.Size = new System.Drawing.Size(50, 23);
+            this.btnResetTParam_3.TabIndex = 4;
+            this.btnResetTParam_3.Text = "Set";
+            this.btnResetTParam_3.UseVisualStyleBackColor = true;
+            // 
+            // tbP2_3
+            // 
+            this.tbP2_3.Location = new System.Drawing.Point(41, 45);
+            this.tbP2_3.Name = "tbP2_3";
+            this.tbP2_3.Size = new System.Drawing.Size(50, 20);
+            this.tbP2_3.TabIndex = 3;
+            // 
+            // tbP1_3
+            // 
+            this.tbP1_3.Location = new System.Drawing.Point(41, 22);
+            this.tbP1_3.Name = "tbP1_3";
+            this.tbP1_3.Size = new System.Drawing.Size(50, 20);
+            this.tbP1_3.TabIndex = 2;
+            // 
+            // lblP2_3
+            // 
+            this.lblP2_3.AutoSize = true;
+            this.lblP2_3.Location = new System.Drawing.Point(15, 48);
+            this.lblP2_3.Name = "lblP2_3";
+            this.lblP2_3.Size = new System.Drawing.Size(20, 13);
+            this.lblP2_3.TabIndex = 1;
+            this.lblP2_3.Text = "P2";
+            // 
+            // lblP1_3
+            // 
+            this.lblP1_3.AutoSize = true;
+            this.lblP1_3.Location = new System.Drawing.Point(15, 25);
+            this.lblP1_3.Name = "lblP1_3";
+            this.lblP1_3.Size = new System.Drawing.Size(20, 13);
+            this.lblP1_3.TabIndex = 0;
+            this.lblP1_3.Text = "P1";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.btnResetTParam_4);
+            this.groupBox4.Controls.Add(this.tbP2_4);
+            this.groupBox4.Controls.Add(this.tbP1_4);
+            this.groupBox4.Controls.Add(this.lblP2_4);
+            this.groupBox4.Controls.Add(this.lblP1_4);
+            this.groupBox4.Location = new System.Drawing.Point(572, 82);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(110, 100);
+            this.groupBox4.TabIndex = 5;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Group-4";
+            // 
+            // btnResetTParam_4
+            // 
+            this.btnResetTParam_4.Location = new System.Drawing.Point(41, 71);
+            this.btnResetTParam_4.Name = "btnResetTParam_4";
+            this.btnResetTParam_4.Size = new System.Drawing.Size(50, 23);
+            this.btnResetTParam_4.TabIndex = 4;
+            this.btnResetTParam_4.Text = "Set";
+            this.btnResetTParam_4.UseVisualStyleBackColor = true;
+            // 
+            // tbP2_4
+            // 
+            this.tbP2_4.Location = new System.Drawing.Point(41, 45);
+            this.tbP2_4.Name = "tbP2_4";
+            this.tbP2_4.Size = new System.Drawing.Size(50, 20);
+            this.tbP2_4.TabIndex = 3;
+            // 
+            // tbP1_4
+            // 
+            this.tbP1_4.Location = new System.Drawing.Point(41, 22);
+            this.tbP1_4.Name = "tbP1_4";
+            this.tbP1_4.Size = new System.Drawing.Size(50, 20);
+            this.tbP1_4.TabIndex = 2;
+            // 
+            // lblP2_4
+            // 
+            this.lblP2_4.AutoSize = true;
+            this.lblP2_4.Location = new System.Drawing.Point(15, 48);
+            this.lblP2_4.Name = "lblP2_4";
+            this.lblP2_4.Size = new System.Drawing.Size(20, 13);
+            this.lblP2_4.TabIndex = 1;
+            this.lblP2_4.Text = "P2";
+            // 
+            // lblP1_4
+            // 
+            this.lblP1_4.AutoSize = true;
+            this.lblP1_4.Location = new System.Drawing.Point(15, 25);
+            this.lblP1_4.Name = "lblP1_4";
+            this.lblP1_4.Size = new System.Drawing.Size(20, 13);
+            this.lblP1_4.TabIndex = 0;
+            this.lblP1_4.Text = "P1";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnResetTParam_5);
+            this.groupBox5.Controls.Add(this.tbP2_5);
+            this.groupBox5.Controls.Add(this.tbP1_5);
+            this.groupBox5.Controls.Add(this.lblP2_5);
+            this.groupBox5.Controls.Add(this.lblP1_5);
+            this.groupBox5.Location = new System.Drawing.Point(90, 241);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(110, 100);
+            this.groupBox5.TabIndex = 5;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Group-5";
+            // 
+            // btnResetTParam_5
+            // 
+            this.btnResetTParam_5.Location = new System.Drawing.Point(41, 71);
+            this.btnResetTParam_5.Name = "btnResetTParam_5";
+            this.btnResetTParam_5.Size = new System.Drawing.Size(50, 23);
+            this.btnResetTParam_5.TabIndex = 4;
+            this.btnResetTParam_5.Text = "Set";
+            this.btnResetTParam_5.UseVisualStyleBackColor = true;
+            // 
+            // tbP2_5
+            // 
+            this.tbP2_5.Location = new System.Drawing.Point(41, 45);
+            this.tbP2_5.Name = "tbP2_5";
+            this.tbP2_5.Size = new System.Drawing.Size(50, 20);
+            this.tbP2_5.TabIndex = 3;
+            // 
+            // tbP1_5
+            // 
+            this.tbP1_5.Location = new System.Drawing.Point(41, 22);
+            this.tbP1_5.Name = "tbP1_5";
+            this.tbP1_5.Size = new System.Drawing.Size(50, 20);
+            this.tbP1_5.TabIndex = 2;
+            // 
+            // lblP2_5
+            // 
+            this.lblP2_5.AutoSize = true;
+            this.lblP2_5.Location = new System.Drawing.Point(15, 48);
+            this.lblP2_5.Name = "lblP2_5";
+            this.lblP2_5.Size = new System.Drawing.Size(20, 13);
+            this.lblP2_5.TabIndex = 1;
+            this.lblP2_5.Text = "P2";
+            // 
+            // lblP1_5
+            // 
+            this.lblP1_5.AutoSize = true;
+            this.lblP1_5.Location = new System.Drawing.Point(15, 25);
+            this.lblP1_5.Name = "lblP1_5";
+            this.lblP1_5.Size = new System.Drawing.Size(20, 13);
+            this.lblP1_5.TabIndex = 0;
+            this.lblP1_5.Text = "P1";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.btnResetTParam_6);
+            this.groupBox6.Controls.Add(this.tbP2_6);
+            this.groupBox6.Controls.Add(this.tbP1_6);
+            this.groupBox6.Controls.Add(this.lblP2_6);
+            this.groupBox6.Controls.Add(this.lblP1_6);
+            this.groupBox6.Location = new System.Drawing.Point(237, 241);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(110, 100);
+            this.groupBox6.TabIndex = 5;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Group-6";
+            // 
+            // btnResetTParam_6
+            // 
+            this.btnResetTParam_6.Location = new System.Drawing.Point(41, 71);
+            this.btnResetTParam_6.Name = "btnResetTParam_6";
+            this.btnResetTParam_6.Size = new System.Drawing.Size(50, 23);
+            this.btnResetTParam_6.TabIndex = 4;
+            this.btnResetTParam_6.Text = "Set";
+            this.btnResetTParam_6.UseVisualStyleBackColor = true;
+            // 
+            // tbP2_6
+            // 
+            this.tbP2_6.Location = new System.Drawing.Point(41, 45);
+            this.tbP2_6.Name = "tbP2_6";
+            this.tbP2_6.Size = new System.Drawing.Size(50, 20);
+            this.tbP2_6.TabIndex = 3;
+            // 
+            // tbP1_6
+            // 
+            this.tbP1_6.Location = new System.Drawing.Point(41, 22);
+            this.tbP1_6.Name = "tbP1_6";
+            this.tbP1_6.Size = new System.Drawing.Size(50, 20);
+            this.tbP1_6.TabIndex = 2;
+            // 
+            // lblP2_6
+            // 
+            this.lblP2_6.AutoSize = true;
+            this.lblP2_6.Location = new System.Drawing.Point(15, 48);
+            this.lblP2_6.Name = "lblP2_6";
+            this.lblP2_6.Size = new System.Drawing.Size(20, 13);
+            this.lblP2_6.TabIndex = 1;
+            this.lblP2_6.Text = "P2";
+            // 
+            // lblP1_6
+            // 
+            this.lblP1_6.AutoSize = true;
+            this.lblP1_6.Location = new System.Drawing.Point(15, 25);
+            this.lblP1_6.Name = "lblP1_6";
+            this.lblP1_6.Size = new System.Drawing.Size(20, 13);
+            this.lblP1_6.TabIndex = 0;
+            this.lblP1_6.Text = "P1";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.btnResetTParam_7);
+            this.groupBox7.Controls.Add(this.tbP2_7);
+            this.groupBox7.Controls.Add(this.tbP1_7);
+            this.groupBox7.Controls.Add(this.lblP2_7);
+            this.groupBox7.Controls.Add(this.lblP1_7);
+            this.groupBox7.Location = new System.Drawing.Point(403, 241);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(110, 100);
+            this.groupBox7.TabIndex = 5;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Group-7";
+            // 
+            // btnResetTParam_7
+            // 
+            this.btnResetTParam_7.Location = new System.Drawing.Point(41, 71);
+            this.btnResetTParam_7.Name = "btnResetTParam_7";
+            this.btnResetTParam_7.Size = new System.Drawing.Size(50, 23);
+            this.btnResetTParam_7.TabIndex = 4;
+            this.btnResetTParam_7.Text = "Set";
+            this.btnResetTParam_7.UseVisualStyleBackColor = true;
+            // 
+            // tbP2_7
+            // 
+            this.tbP2_7.Location = new System.Drawing.Point(41, 45);
+            this.tbP2_7.Name = "tbP2_7";
+            this.tbP2_7.Size = new System.Drawing.Size(50, 20);
+            this.tbP2_7.TabIndex = 3;
+            // 
+            // tbP1_7
+            // 
+            this.tbP1_7.Location = new System.Drawing.Point(41, 22);
+            this.tbP1_7.Name = "tbP1_7";
+            this.tbP1_7.Size = new System.Drawing.Size(50, 20);
+            this.tbP1_7.TabIndex = 2;
+            // 
+            // lblP2_7
+            // 
+            this.lblP2_7.AutoSize = true;
+            this.lblP2_7.Location = new System.Drawing.Point(15, 48);
+            this.lblP2_7.Name = "lblP2_7";
+            this.lblP2_7.Size = new System.Drawing.Size(20, 13);
+            this.lblP2_7.TabIndex = 1;
+            this.lblP2_7.Text = "P2";
+            // 
+            // lblP1_7
+            // 
+            this.lblP1_7.AutoSize = true;
+            this.lblP1_7.Location = new System.Drawing.Point(15, 25);
+            this.lblP1_7.Name = "lblP1_7";
+            this.lblP1_7.Size = new System.Drawing.Size(20, 13);
+            this.lblP1_7.TabIndex = 0;
+            this.lblP1_7.Text = "P1";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.btnResetTParam_8);
+            this.groupBox8.Controls.Add(this.tbP2_8);
+            this.groupBox8.Controls.Add(this.tbP1_8);
+            this.groupBox8.Controls.Add(this.lblP2_8);
+            this.groupBox8.Controls.Add(this.lblP1_8);
+            this.groupBox8.Location = new System.Drawing.Point(572, 241);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(110, 100);
+            this.groupBox8.TabIndex = 5;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Group-8";
+            // 
+            // btnResetTParam_8
+            // 
+            this.btnResetTParam_8.Location = new System.Drawing.Point(41, 71);
+            this.btnResetTParam_8.Name = "btnResetTParam_8";
+            this.btnResetTParam_8.Size = new System.Drawing.Size(50, 23);
+            this.btnResetTParam_8.TabIndex = 4;
+            this.btnResetTParam_8.Text = "Set";
+            this.btnResetTParam_8.UseVisualStyleBackColor = true;
+            // 
+            // tbP2_8
+            // 
+            this.tbP2_8.Location = new System.Drawing.Point(41, 45);
+            this.tbP2_8.Name = "tbP2_8";
+            this.tbP2_8.Size = new System.Drawing.Size(50, 20);
+            this.tbP2_8.TabIndex = 3;
+            // 
+            // tbP1_8
+            // 
+            this.tbP1_8.Location = new System.Drawing.Point(41, 22);
+            this.tbP1_8.Name = "tbP1_8";
+            this.tbP1_8.Size = new System.Drawing.Size(50, 20);
+            this.tbP1_8.TabIndex = 2;
+            // 
+            // lblP2_8
+            // 
+            this.lblP2_8.AutoSize = true;
+            this.lblP2_8.Location = new System.Drawing.Point(15, 48);
+            this.lblP2_8.Name = "lblP2_8";
+            this.lblP2_8.Size = new System.Drawing.Size(20, 13);
+            this.lblP2_8.TabIndex = 1;
+            this.lblP2_8.Text = "P2";
+            // 
+            // lblP1_8
+            // 
+            this.lblP1_8.AutoSize = true;
+            this.lblP1_8.Location = new System.Drawing.Point(15, 25);
+            this.lblP1_8.Name = "lblP1_8";
+            this.lblP1_8.Size = new System.Drawing.Size(20, 13);
+            this.lblP1_8.TabIndex = 0;
+            this.lblP1_8.Text = "P1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2215,6 +2731,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tP_Main.ResumeLayout(false);
             this.tP_Main.PerformLayout();
+            this.tP_T.ResumeLayout(false);
+            this.tP_T.PerformLayout();
             this.tpPID.ResumeLayout(false);
             this.tpPID.PerformLayout();
             this.btnStartPIDTest_8.ResumeLayout(false);
@@ -2233,6 +2751,22 @@
             this.btnStartPIDTest_2.PerformLayout();
             this.btnStartPIDTest_1.ResumeLayout(false);
             this.btnStartPIDTest_1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2439,6 +2973,55 @@
         private System.Windows.Forms.TextBox tbPIDValueDDown_7;
         private System.Windows.Forms.TextBox tbPIDValueIDown_7;
         private System.Windows.Forms.TextBox tbPIDValuePDown_7;
+        private System.Windows.Forms.Label lblTparameterDescriptor;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox tbP2_1;
+        private System.Windows.Forms.TextBox tbP1_1;
+        private System.Windows.Forms.Label lblP2_1;
+        private System.Windows.Forms.Label lblP1_1;
+        private System.Windows.Forms.Button btnResetTParam_1;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Button btnResetTParam_8;
+        private System.Windows.Forms.TextBox tbP2_8;
+        private System.Windows.Forms.TextBox tbP1_8;
+        private System.Windows.Forms.Label lblP2_8;
+        private System.Windows.Forms.Label lblP1_8;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Button btnResetTParam_7;
+        private System.Windows.Forms.TextBox tbP2_7;
+        private System.Windows.Forms.TextBox tbP1_7;
+        private System.Windows.Forms.Label lblP2_7;
+        private System.Windows.Forms.Label lblP1_7;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button btnResetTParam_6;
+        private System.Windows.Forms.TextBox tbP2_6;
+        private System.Windows.Forms.TextBox tbP1_6;
+        private System.Windows.Forms.Label lblP2_6;
+        private System.Windows.Forms.Label lblP1_6;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button btnResetTParam_5;
+        private System.Windows.Forms.TextBox tbP2_5;
+        private System.Windows.Forms.TextBox tbP1_5;
+        private System.Windows.Forms.Label lblP2_5;
+        private System.Windows.Forms.Label lblP1_5;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button btnResetTParam_4;
+        private System.Windows.Forms.TextBox tbP2_4;
+        private System.Windows.Forms.TextBox tbP1_4;
+        private System.Windows.Forms.Label lblP2_4;
+        private System.Windows.Forms.Label lblP1_4;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnResetTParam_3;
+        private System.Windows.Forms.TextBox tbP2_3;
+        private System.Windows.Forms.TextBox tbP1_3;
+        private System.Windows.Forms.Label lblP2_3;
+        private System.Windows.Forms.Label lblP1_3;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnResetTParam_2;
+        private System.Windows.Forms.TextBox tbP2_2;
+        private System.Windows.Forms.TextBox tbP1_2;
+        private System.Windows.Forms.Label lblP2_2;
+        private System.Windows.Forms.Label lblP1_2;
     }
 }
 

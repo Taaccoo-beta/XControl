@@ -200,7 +200,7 @@ namespace XControl
 
                         break;
                     case 2:
-                        Board.DigitOutput(2, MccDaq.DigitalLogicState.High);
+                        Board.DigitOutput(3, MccDaq.DigitalLogicState.High);
 
                         break;
                     case 3:
@@ -247,25 +247,25 @@ namespace XControl
                    
                 case 2:
                     RawValue = int.Parse(Board.AnalogInput(1));
-                    return RawValue * p1_1 - p2_1;
+                    return RawValue * p1_2 - p2_2;
                 case 3:
                     RawValue = int.Parse(Board.AnalogInput(2));
-                    return RawValue * p1_1 - p2_1;
+                    return RawValue * p1_3 - p2_3;
                 case 4:
                     RawValue = int.Parse(Board.AnalogInput(3));
-                    return RawValue * p1_1 - p2_1;
+                    return RawValue * p1_4 - p2_4;
                 case 5:
                     RawValue = int.Parse(Board.AnalogInput(0));
-                    return RawValue * p1_1 - p2_1;
+                    return RawValue * p1_5 - p2_5;
                 case 6:
                     RawValue = int.Parse(Board.AnalogInput(1));
-                    return RawValue * p1_1 - p2_1;
+                    return RawValue * p1_6 - p2_6;
                 case 7:
                     RawValue = int.Parse(Board.AnalogInput(2));
-                    return RawValue * p1_1 - p2_1;
+                    return RawValue * p1_7 - p2_7;
                 case 8:
                     RawValue = int.Parse(Board.AnalogInput(3));
-                    return RawValue * p1_1 - p2_1;
+                    return RawValue * p1_8 - p2_8;
                 default:
                     RawValue = -1;
                     return -1;
