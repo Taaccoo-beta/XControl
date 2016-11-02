@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using MccDaq;
 using PID_WinForm;
 using System.Diagnostics;
+using SerieslizeControlModule;
+
 
 namespace XControl
 {
@@ -38,6 +40,25 @@ namespace XControl
         int digitalControlSingal_8;
 
 
+
+
+        double p1_1;
+        double p2_1;
+        double p1_2;
+        double p2_2;
+        double p1_3;
+        double p2_3;
+        double p1_4;
+        double p2_4;
+        double p1_5;
+        double p2_5;
+        double p1_6;
+        double p2_6;
+        double p1_7;
+        double p2_7;
+        double p1_8;
+        double p2_8;
+
         /*
          * variable which store the Temperature
          */
@@ -63,6 +84,11 @@ namespace XControl
         bool isTotalStartBtnTrue = true;
 
 
+        /*
+         *  setting button turn off switch
+         */
+        bool isSettingTParam = true;
+        bool isSettingPIDParam = true;
 
         /*
          * high T and low T
@@ -278,6 +304,16 @@ namespace XControl
         int timerCount_7 = 0;
         int timerCount_8 = 0;
 
+        int timeResult_1 = 0;
+        int timeResult_2 = 0;
+        int timeResult_3 = 0;
+        int timeResult_4 = 0;
+        int timeResult_5 = 0;
+        int timeResult_6 = 0;
+        int timeResult_7 = 0;
+        int timeResult_8 = 0;
+
+
         bool highBalance_1 = false;
         bool highBalance_2 = false;
         bool highBalance_3 = false;
@@ -389,6 +425,349 @@ namespace XControl
         List<double> tempCollection_4 = new List<double>();
         List<double> tempCollection_5 = new List<double>();
         List<double> tempCollection_6 = new List<double>();
+
+        private void btnTparameterSet_Click(object sender, EventArgs e)
+        {
+
+            if (isSettingTParam)
+            {
+                isSettingTParam = false;
+                btnTparameterSet.Text = "Finish";
+                tbP1_1.Enabled = true;
+                tbP2_1.Enabled = true;
+                tbP1_2.Enabled = true;
+                tbP2_2.Enabled = true;
+                tbP1_3.Enabled = true;
+                tbP2_3.Enabled = true;
+                tbP1_4.Enabled = true;
+                tbP2_4.Enabled = true;
+                tbP1_5.Enabled = true;
+                tbP2_5.Enabled = true;
+                tbP1_6.Enabled = true;
+                tbP2_6.Enabled = true;
+                tbP1_7.Enabled = true;
+                tbP2_7.Enabled = true;
+                tbP1_8.Enabled = true;
+                tbP2_8.Enabled = true;
+            }
+            else
+            {
+                isSettingTParam = true;
+                btnTparameterSet.Text = "Set";
+                tbP1_1.Enabled = false;
+                tbP2_1.Enabled = false;
+                tbP1_2.Enabled = false;
+                tbP2_2.Enabled = false;
+                tbP1_3.Enabled = false;
+                tbP2_3.Enabled = false;
+                tbP1_4.Enabled = false;
+                tbP2_4.Enabled = false;
+                tbP1_5.Enabled = false;
+                tbP2_5.Enabled = false;
+                tbP1_6.Enabled = false;
+                tbP2_6.Enabled = false;
+                tbP1_7.Enabled = false;
+                tbP2_7.Enabled = false;
+                tbP1_8.Enabled = false;
+                tbP2_8.Enabled = false;
+
+                CoreSerialize cs = new CoreSerialize();
+
+                TParameters tp = new TParameters()
+                {
+                    p1_1 = double.Parse(tbP1_1.Text),
+                    p1_2 = double.Parse(tbP1_2.Text),
+                    p1_3 = double.Parse(tbP1_3.Text),
+                    p1_4 = double.Parse(tbP1_4.Text),
+                    p1_5 = double.Parse(tbP1_5.Text),
+                    p1_6 = double.Parse(tbP1_6.Text),
+                    p1_7 = double.Parse(tbP1_7.Text),
+                    p1_8 = double.Parse(tbP1_8.Text),
+
+                    p2_1 = double.Parse(tbP2_1.Text),
+                    p2_2 = double.Parse(tbP2_2.Text),
+                    p2_3 = double.Parse(tbP2_3.Text),
+                    p2_4 = double.Parse(tbP2_4.Text),
+                    p2_5 = double.Parse(tbP2_5.Text),
+                    p2_6 = double.Parse(tbP2_6.Text),
+                    p2_7 = double.Parse(tbP2_7.Text),
+                    p2_8 = double.Parse(tbP2_8.Text)
+
+
+
+                };
+                cs.TParammSerializeNow(tp);
+
+                p1_1 = double.Parse(tbP1_1.Text);
+                p1_2 = double.Parse(tbP1_2.Text);
+                p1_3 = double.Parse(tbP1_3.Text);
+                p1_4 = double.Parse(tbP1_4.Text);
+                p1_5 = double.Parse(tbP1_5.Text);
+                p1_6 = double.Parse(tbP1_6.Text);
+                p1_7 = double.Parse(tbP1_7.Text);
+                p1_8 = double.Parse(tbP1_8.Text);
+
+                p2_1 = double.Parse(tbP2_1.Text);
+                p2_2 = double.Parse(tbP2_2.Text);
+                p2_3 = double.Parse(tbP2_3.Text);
+                p2_4 = double.Parse(tbP2_4.Text);
+                p2_5 = double.Parse(tbP2_5.Text);
+                p2_6 = double.Parse(tbP2_6.Text);
+                p2_7 = double.Parse(tbP2_7.Text);
+                p2_8 = double.Parse(tbP2_8.Text);
+
+            }
+
+
+
+
+
+        
+        }
+
+        private void btnSetPIDParam_Click(object sender, EventArgs e)
+        {
+            if (isSettingPIDParam)
+            {
+                isSettingPIDParam = false;
+                btnSetPIDParam.Text = "Finish";
+
+                tbPIDValuePUp_1.Enabled = true;
+                tbPIDValueIUp_1.Enabled = true;
+                tbPIDValueDUp_1.Enabled = true;
+                tbPIDValuePUp_2.Enabled = true;
+                tbPIDValueIUp_2.Enabled = true;
+                tbPIDValueDUp_2.Enabled = true;
+                tbPIDValuePUp_3.Enabled = true;
+                tbPIDValueIUp_3.Enabled = true;
+                tbPIDValueDUp_3.Enabled = true;
+                tbPIDValuePUp_4.Enabled = true;
+                tbPIDValueIUp_4.Enabled = true;
+                tbPIDValueDUp_4.Enabled = true;
+                tbPIDValuePUp_5.Enabled = true;
+                tbPIDValueIUp_5.Enabled = true;
+                tbPIDValueDUp_5.Enabled = true;
+                tbPIDValuePUp_6.Enabled = true;
+                tbPIDValueIUp_6.Enabled = true;
+                tbPIDValueDUp_6.Enabled = true;
+                tbPIDValuePUp_7.Enabled = true;
+                tbPIDValueIUp_7.Enabled = true;
+                tbPIDValueDUp_7.Enabled = true;
+                tbPIDValuePUp_8.Enabled = true;
+                tbPIDValueIUp_8.Enabled = true;
+                tbPIDValueDUp_8.Enabled = true;
+
+                tbPIDValuePDown_1.Enabled = true;
+                tbPIDValueIDown_1.Enabled = true;
+                tbPIDValueDDown_1.Enabled = true;
+                tbPIDValuePDown_2.Enabled = true;
+                tbPIDValueIDown_2.Enabled = true;
+                tbPIDValueDDown_2.Enabled = true;
+                tbPIDValuePDown_3.Enabled = true;
+                tbPIDValueIDown_3.Enabled = true;
+                tbPIDValueDDown_3.Enabled = true;
+                tbPIDValuePDown_4.Enabled = true;
+                tbPIDValueIDown_4.Enabled = true;
+                tbPIDValueDDown_4.Enabled = true;
+                tbPIDValuePDown_5.Enabled = true;
+                tbPIDValueIDown_5.Enabled = true;
+                tbPIDValueDDown_5.Enabled = true;
+                tbPIDValuePDown_6.Enabled = true;
+                tbPIDValueIDown_6.Enabled = true;
+                tbPIDValueDDown_6.Enabled = true;
+                tbPIDValuePDown_7.Enabled = true;
+                tbPIDValueIDown_7.Enabled = true;
+                tbPIDValueDDown_7.Enabled = true;
+                tbPIDValuePDown_8.Enabled = true;
+                tbPIDValueIDown_8.Enabled = true;
+                tbPIDValueDDown_8.Enabled = true;
+
+
+
+            }
+            else
+            {
+                isSettingPIDParam = true;
+                btnSetPIDParam.Text = "Set";
+
+                tbPIDValuePUp_1.Enabled = false;
+                tbPIDValueIUp_1.Enabled = false;
+                tbPIDValueDUp_1.Enabled = false;
+                tbPIDValuePUp_2.Enabled = false;
+                tbPIDValueIUp_2.Enabled = false;
+                tbPIDValueDUp_2.Enabled = false;
+                tbPIDValuePUp_3.Enabled = false;
+                tbPIDValueIUp_3.Enabled = false;
+                tbPIDValueDUp_3.Enabled = false;
+                tbPIDValuePUp_4.Enabled = false;
+                tbPIDValueIUp_4.Enabled = false;
+                tbPIDValueDUp_4.Enabled = false;
+                tbPIDValuePUp_5.Enabled = false;
+                tbPIDValueIUp_5.Enabled = false;
+                tbPIDValueDUp_5.Enabled = false;
+                tbPIDValuePUp_6.Enabled = false;
+                tbPIDValueIUp_6.Enabled = false;
+                tbPIDValueDUp_6.Enabled = false;
+                tbPIDValuePUp_7.Enabled = false;
+                tbPIDValueIUp_7.Enabled = false;
+                tbPIDValueDUp_7.Enabled = false;
+                tbPIDValuePUp_8.Enabled = false;
+                tbPIDValueIUp_8.Enabled = false;
+                tbPIDValueDUp_8.Enabled = false;
+
+                tbPIDValuePDown_1.Enabled = false;
+                tbPIDValueIDown_1.Enabled = false;
+                tbPIDValueDDown_1.Enabled = false;
+                tbPIDValuePDown_2.Enabled = false;
+                tbPIDValueIDown_2.Enabled = false;
+                tbPIDValueDDown_2.Enabled = false;
+                tbPIDValuePDown_3.Enabled = false;
+                tbPIDValueIDown_3.Enabled = false;
+                tbPIDValueDDown_3.Enabled = false;
+                tbPIDValuePDown_4.Enabled = false;
+                tbPIDValueIDown_4.Enabled = false;
+                tbPIDValueDDown_4.Enabled = false;
+                tbPIDValuePDown_5.Enabled = false;
+                tbPIDValueIDown_5.Enabled = false;
+                tbPIDValueDDown_5.Enabled = false;
+                tbPIDValuePDown_6.Enabled = false;
+                tbPIDValueIDown_6.Enabled = false;
+                tbPIDValueDDown_6.Enabled = false;
+                tbPIDValuePDown_7.Enabled = false;
+                tbPIDValueIDown_7.Enabled = false;
+                tbPIDValueDDown_7.Enabled = false;
+                tbPIDValuePDown_8.Enabled = false;
+                tbPIDValueIDown_8.Enabled = false;
+                tbPIDValueDDown_8.Enabled = false;
+
+
+                CoreSerialize cs = new CoreSerialize();
+
+                PIDParameters pp = new PIDParameters()
+                {
+                    kp_up_1 = double.Parse(tbPIDValuePUp_1.Text),
+                    ki_up_1 = double.Parse(tbPIDValueIUp_1.Text),
+                    kd_up_1 = double.Parse(tbPIDValueDUp_1.Text),
+                    kp_up_2 = double.Parse(tbPIDValuePUp_2.Text),
+                    ki_up_2 = double.Parse(tbPIDValueIUp_2.Text),
+                    kd_up_2 = double.Parse(tbPIDValueDUp_2.Text),
+                    kp_up_3 = double.Parse(tbPIDValuePUp_3.Text),
+                    ki_up_3 = double.Parse(tbPIDValueIUp_3.Text),
+                    kd_up_3 = double.Parse(tbPIDValueDUp_3.Text),
+                    kp_up_4 = double.Parse(tbPIDValuePUp_4.Text),
+                    ki_up_4 = double.Parse(tbPIDValueIUp_4.Text),
+                    kd_up_4 = double.Parse(tbPIDValueDUp_4.Text),
+                    kp_up_5 = double.Parse(tbPIDValuePUp_5.Text),
+                    ki_up_5 = double.Parse(tbPIDValueIUp_5.Text),
+                    kd_up_5 = double.Parse(tbPIDValueDUp_5.Text),
+                    kp_up_6 = double.Parse(tbPIDValuePUp_6.Text),
+                    ki_up_6 = double.Parse(tbPIDValueIUp_6.Text),
+                    kd_up_6 = double.Parse(tbPIDValueDUp_6.Text),
+                    kp_up_7 = double.Parse(tbPIDValuePUp_7.Text),
+                    ki_up_7 = double.Parse(tbPIDValueIUp_7.Text),
+                    kd_up_7 = double.Parse(tbPIDValueDUp_7.Text),
+                    kp_up_8 = double.Parse(tbPIDValuePUp_8.Text),
+                    ki_up_8 = double.Parse(tbPIDValueIUp_8.Text),
+                    kd_up_8 = double.Parse(tbPIDValueDUp_8.Text),
+
+                    kp_down_1 = double.Parse(tbPIDValuePDown_1.Text),
+                    ki_down_1 = double.Parse(tbPIDValueIDown_1.Text),
+                    kd_down_1 = double.Parse(tbPIDValueDDown_1.Text),
+                    kp_down_2 = double.Parse(tbPIDValuePDown_2.Text),
+                    ki_down_2 = double.Parse(tbPIDValueIDown_2.Text),
+                    kd_down_2 = double.Parse(tbPIDValueDDown_2.Text),
+                    kp_down_3 = double.Parse(tbPIDValuePDown_3.Text),
+                    ki_down_3 = double.Parse(tbPIDValueIDown_3.Text),
+                    kd_down_3 = double.Parse(tbPIDValueDDown_3.Text),
+                    kp_down_4 = double.Parse(tbPIDValuePDown_4.Text),
+                    ki_down_4 = double.Parse(tbPIDValueIDown_4.Text),
+                    kd_down_4 = double.Parse(tbPIDValueDDown_4.Text),
+                    kp_down_5 = double.Parse(tbPIDValuePDown_5.Text),
+                    ki_down_5 = double.Parse(tbPIDValueIDown_5.Text),
+                    kd_down_5 = double.Parse(tbPIDValueDDown_5.Text),
+                    kp_down_6 = double.Parse(tbPIDValuePDown_6.Text),
+                    ki_down_6 = double.Parse(tbPIDValueIDown_6.Text),
+                    kd_down_6 = double.Parse(tbPIDValueDDown_6.Text),
+                    kp_down_7 = double.Parse(tbPIDValuePDown_7.Text),
+                    ki_down_7 = double.Parse(tbPIDValueIDown_7.Text),
+                    kd_down_7 = double.Parse(tbPIDValueDDown_7.Text),
+                    kp_down_8 = double.Parse(tbPIDValuePDown_8.Text),
+                    ki_down_8 = double.Parse(tbPIDValueIDown_8.Text),
+                    kd_down_8 = double.Parse(tbPIDValueDDown_8.Text),
+
+                };
+
+
+                cs.PIDSerializeNow(pp);
+
+
+
+
+
+
+                Kp_up_1 = double.Parse(tbPIDValuePUp_1.Text);
+                Kp_up_2 = double.Parse(tbPIDValuePUp_2.Text);
+                Kp_up_3 = double.Parse(tbPIDValuePUp_3.Text);
+                Kp_up_4 = double.Parse(tbPIDValuePUp_4.Text);
+                Kp_up_5 = double.Parse(tbPIDValuePUp_5.Text);
+                Kp_up_6 = double.Parse(tbPIDValuePUp_6.Text);
+                Kp_up_7 = double.Parse(tbPIDValuePUp_7.Text);
+                Kp_up_8 = double.Parse(tbPIDValuePUp_8.Text);
+
+                Ki_up_1 = double.Parse(tbPIDValueIUp_1.Text);
+                Ki_up_2 = double.Parse(tbPIDValueIUp_2.Text);
+                Ki_up_3 = double.Parse(tbPIDValueIUp_3.Text);
+                Ki_up_4 = double.Parse(tbPIDValueIUp_4.Text);
+                Ki_up_5 = double.Parse(tbPIDValueIUp_5.Text);
+                Ki_up_6 = double.Parse(tbPIDValueIUp_6.Text);
+                Ki_up_7 = double.Parse(tbPIDValueIUp_7.Text);
+                Ki_up_8 = double.Parse(tbPIDValueIUp_8.Text);
+
+                Kd_up_1 = double.Parse(tbPIDValueDUp_1.Text);
+                Kd_up_2 = double.Parse(tbPIDValueDUp_2.Text);
+                Kd_up_3 = double.Parse(tbPIDValueDUp_3.Text);
+                Kd_up_4 = double.Parse(tbPIDValueDUp_4.Text);
+                Kd_up_5 = double.Parse(tbPIDValueDUp_5.Text);
+                Kd_up_6 = double.Parse(tbPIDValueDUp_6.Text);
+                Kd_up_7 = double.Parse(tbPIDValueDUp_7.Text);
+                Kd_up_8 = double.Parse(tbPIDValueDUp_8.Text);
+
+
+
+
+                Kp_down_1 = double.Parse(tbPIDValuePDown_1.Text);
+                Kp_down_2 = double.Parse(tbPIDValuePDown_2.Text);
+                Kp_down_3 = double.Parse(tbPIDValuePDown_3.Text);
+                Kp_down_4 = double.Parse(tbPIDValuePDown_4.Text);
+                Kp_down_5 = double.Parse(tbPIDValuePDown_5.Text);
+                Kp_down_6 = double.Parse(tbPIDValuePDown_6.Text);
+                Kp_down_7 = double.Parse(tbPIDValuePDown_7.Text);
+                Kp_down_8 = double.Parse(tbPIDValuePDown_8.Text);
+
+                Ki_down_1 = double.Parse(tbPIDValueIDown_1.Text);
+                Ki_down_2 = double.Parse(tbPIDValueIDown_2.Text);
+                Ki_down_3 = double.Parse(tbPIDValueIDown_3.Text);
+                Ki_down_4 = double.Parse(tbPIDValueIDown_4.Text);
+                Ki_down_5 = double.Parse(tbPIDValueIDown_5.Text);
+                Ki_down_6 = double.Parse(tbPIDValueIDown_6.Text);
+                Ki_down_7 = double.Parse(tbPIDValueIDown_7.Text);
+                Ki_down_8 = double.Parse(tbPIDValueIDown_8.Text);
+
+                Kd_down_1 = double.Parse(tbPIDValueDDown_1.Text);
+                Kd_down_2 = double.Parse(tbPIDValueDDown_2.Text);
+                Kd_down_3 = double.Parse(tbPIDValueDDown_3.Text);
+                Kd_down_4 = double.Parse(tbPIDValueDDown_4.Text);
+                Kd_down_5 = double.Parse(tbPIDValueDDown_5.Text);
+                Kd_down_6 = double.Parse(tbPIDValueDDown_6.Text);
+                Kd_down_7 = double.Parse(tbPIDValueDDown_7.Text);
+                Kd_down_8 = double.Parse(tbPIDValueDDown_8.Text);
+
+
+
+
+            }
+        }
+
         List<double> tempCollection_7 = new List<double>();
         List<double> tempCollection_8 = new List<double>();
 
@@ -414,35 +793,35 @@ namespace XControl
             {
                 case 1:
                     System.IO.File.AppendAllText("e:\\resultPID_1.txt", P + "   " + I + "   " + D + "   " + MaxList + "   " +
-                MinList + "   " + average + "   " + descret + "   " + "\r\n");
+                MinList + "   " + average + "   " + descret + "   " +timeResult_1 +"\r\n");
                     break;
                 case 2:
                     System.IO.File.AppendAllText("e:\\resultPID_2.txt", P + "   " + I + "   " + D + "   " + MaxList + "   " +
-                MinList + "   " + average + "   " + descret + "   " + "\r\n");
+                MinList + "   " + average + "   " + descret + "   " + timeResult_2 + "\r\n");
                     break;
                 case 3:
                     System.IO.File.AppendAllText("e:\\resultPID_3.txt", P + "   " + I + "   " + D + "   " + MaxList + "   " +
-                MinList + "   " + average + "   " + descret + "   " + "\r\n");
+                MinList + "   " + average + "   " + descret + "   " + timeResult_3 + "\r\n");
                     break;
                 case 4:
                     System.IO.File.AppendAllText("e:\\resultPID_4.txt", P + "   " + I + "   " + D + "   " + MaxList + "   " +
-                MinList + "   " + average + "   " + descret + "   " + "\r\n");
+                MinList + "   " + average + "   " + descret + "   " + timeResult_4 + "\r\n");
                     break;
                 case 5:
                     System.IO.File.AppendAllText("e:\\resultPID_5.txt", P + "   " + I + "   " + D + "   " + MaxList + "   " +
-                MinList + "   " + average + "   " + descret + "   " + "\r\n");
+                MinList + "   " + average + "   " + descret + "   " + timeResult_5 + "\r\n");
                     break;
                 case 6:
                     System.IO.File.AppendAllText("e:\\resultPID_6.txt", P + "   " + I + "   " + D + "   " + MaxList + "   " +
-                MinList + "   " + average + "   " + descret + "   " + "\r\n");
+                MinList + "   " + average + "   " + descret + "   " + timeResult_6 + "\r\n");
                     break;
                 case 7:
                     System.IO.File.AppendAllText("e:\\resultPID_7.txt", P + "   " + I + "   " + D + "   " + MaxList + "   " +
-                MinList + "   " + average + "   " + descret + "   " + "\r\n");
+                MinList + "   " + average + "   " + descret + "   " + timeResult_7 + "\r\n");
                     break;
                 case 8:
                     System.IO.File.AppendAllText("e:\\resultPID_8.txt", P + "   " + I + "   " + D + "   " + MaxList + "   " +
-                MinList + "   " + average + "   " + descret + "   " + "\r\n");
+                MinList + "   " + average + "   " + descret + "   " + timeResult_8 + "\r\n");
                     break;
 
             }
@@ -457,6 +836,11 @@ namespace XControl
         {
             InitializeComponent();
         }
+
+
+
+
+
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -515,63 +899,398 @@ namespace XControl
             isTestByHandClick_8 = true;
 
 
-            Kp_up_1 = double.Parse(tbPIDValuePUp_1.Text);
-            Kp_up_2 = double.Parse(tbPIDValuePUp_2.Text);
-            Kp_up_3 = double.Parse(tbPIDValuePUp_3.Text);
-            Kp_up_4 = double.Parse(tbPIDValuePUp_4.Text);
-            Kp_up_5 = double.Parse(tbPIDValuePUp_5.Text);
-            Kp_up_6 = double.Parse(tbPIDValuePUp_6.Text);
-            Kp_up_7 = double.Parse(tbPIDValuePUp_7.Text);
-            Kp_up_8 = double.Parse(tbPIDValuePUp_8.Text);
-
-            Ki_up_1 = double.Parse(tbPIDValueIUp_1.Text);
-            Ki_up_2 = double.Parse(tbPIDValueIUp_2.Text);
-            Ki_up_3 = double.Parse(tbPIDValueIUp_3.Text);
-            Ki_up_4 = double.Parse(tbPIDValueIUp_4.Text);
-            Ki_up_5 = double.Parse(tbPIDValueIUp_5.Text);
-            Ki_up_6 = double.Parse(tbPIDValueIUp_6.Text);
-            Ki_up_7 = double.Parse(tbPIDValueIUp_7.Text);
-            Ki_up_8 = double.Parse(tbPIDValueIUp_8.Text);
-
-            Kd_up_1 = double.Parse(tbPIDValueDUp_1.Text);
-            Kd_up_2 = double.Parse(tbPIDValueDUp_2.Text);
-            Kd_up_3 = double.Parse(tbPIDValueDUp_3.Text);
-            Kd_up_4 = double.Parse(tbPIDValueDUp_4.Text);
-            Kd_up_5 = double.Parse(tbPIDValueDUp_5.Text);
-            Kd_up_6 = double.Parse(tbPIDValueDUp_6.Text);
-            Kd_up_7 = double.Parse(tbPIDValueDUp_7.Text);
-            Kd_up_8 = double.Parse(tbPIDValueDUp_8.Text);
-
-
-
-
-            Kp_down_1 = double.Parse(tbPIDValuePDown_1.Text);
-            Kp_down_2 = double.Parse(tbPIDValuePDown_2.Text);
-            Kp_down_3 = double.Parse(tbPIDValuePDown_3.Text);
-            Kp_down_4 = double.Parse(tbPIDValuePDown_4.Text);
-            Kp_down_5 = double.Parse(tbPIDValuePDown_5.Text);
-            Kp_down_6 = double.Parse(tbPIDValuePDown_6.Text);
-            Kp_down_7 = double.Parse(tbPIDValuePDown_7.Text);
-            Kp_down_8 = double.Parse(tbPIDValuePDown_8.Text);
-
-            Ki_down_1 = double.Parse(tbPIDValueIDown_1.Text);
-            Ki_down_2 = double.Parse(tbPIDValueIDown_2.Text);
-            Ki_down_3 = double.Parse(tbPIDValueIDown_3.Text);
-            Ki_down_4 = double.Parse(tbPIDValueIDown_4.Text);
-            Ki_down_5 = double.Parse(tbPIDValueIDown_5.Text);
-            Ki_down_6 = double.Parse(tbPIDValueIDown_6.Text);
-            Ki_down_7 = double.Parse(tbPIDValueIDown_7.Text);
-            Ki_down_8 = double.Parse(tbPIDValueIDown_8.Text);
-
-            Kd_down_1 = double.Parse(tbPIDValueDDown_1.Text);
-            Kd_down_2 = double.Parse(tbPIDValueDDown_2.Text);
-            Kd_down_3 = double.Parse(tbPIDValueDDown_3.Text);
-            Kd_down_4 = double.Parse(tbPIDValueDDown_4.Text);
-            Kd_down_5 = double.Parse(tbPIDValueDDown_5.Text);
-            Kd_down_6 = double.Parse(tbPIDValueDDown_6.Text);
-            Kd_down_7 = double.Parse(tbPIDValueDDown_7.Text);
-            Kd_down_8 = double.Parse(tbPIDValueDDown_8.Text);
             
+
+            //p1_1 = double.Parse(tbP1_1.Text);
+            //p1_2 = double.Parse(tbP1_2.Text);
+            //p1_3 = double.Parse(tbP1_3.Text);
+            //p1_4 = double.Parse(tbP1_4.Text);
+            //p1_5 = double.Parse(tbP1_5.Text);
+            //p1_6 = double.Parse(tbP1_6.Text);
+            //p1_7 = double.Parse(tbP1_7.Text);
+            //p1_8 = double.Parse(tbP1_8.Text);
+
+            //p2_1 = double.Parse(tbP2_1.Text);
+            //p2_2 = double.Parse(tbP2_2.Text);
+            //p2_3 = double.Parse(tbP2_3.Text);
+            //p2_4 = double.Parse(tbP2_4.Text);
+            //p2_5 = double.Parse(tbP2_5.Text);
+            //p2_6 = double.Parse(tbP2_6.Text);
+            //p2_7 = double.Parse(tbP2_7.Text);
+            //p2_8 = double.Parse(tbP2_8.Text);
+          
+
+            //Kp_up_1 = double.Parse(tbPIDValuePUp_1.Text);
+            //Kp_up_2 = double.Parse(tbPIDValuePUp_2.Text);
+            //Kp_up_3 = double.Parse(tbPIDValuePUp_3.Text);
+            //Kp_up_4 = double.Parse(tbPIDValuePUp_4.Text);
+            //Kp_up_5 = double.Parse(tbPIDValuePUp_5.Text);
+            //Kp_up_6 = double.Parse(tbPIDValuePUp_6.Text);
+            //Kp_up_7 = double.Parse(tbPIDValuePUp_7.Text);
+            //Kp_up_8 = double.Parse(tbPIDValuePUp_8.Text);
+
+            //Ki_up_1 = double.Parse(tbPIDValueIUp_1.Text);
+            //Ki_up_2 = double.Parse(tbPIDValueIUp_2.Text);
+            //Ki_up_3 = double.Parse(tbPIDValueIUp_3.Text);
+            //Ki_up_4 = double.Parse(tbPIDValueIUp_4.Text);
+            //Ki_up_5 = double.Parse(tbPIDValueIUp_5.Text);
+            //Ki_up_6 = double.Parse(tbPIDValueIUp_6.Text);
+            //Ki_up_7 = double.Parse(tbPIDValueIUp_7.Text);
+            //Ki_up_8 = double.Parse(tbPIDValueIUp_8.Text);
+
+            //Kd_up_1 = double.Parse(tbPIDValueDUp_1.Text);
+            //Kd_up_2 = double.Parse(tbPIDValueDUp_2.Text);
+            //Kd_up_3 = double.Parse(tbPIDValueDUp_3.Text);
+            //Kd_up_4 = double.Parse(tbPIDValueDUp_4.Text);
+            //Kd_up_5 = double.Parse(tbPIDValueDUp_5.Text);
+            //Kd_up_6 = double.Parse(tbPIDValueDUp_6.Text);
+            //Kd_up_7 = double.Parse(tbPIDValueDUp_7.Text);
+            //Kd_up_8 = double.Parse(tbPIDValueDUp_8.Text);
+
+
+
+
+            //Kp_down_1 = double.Parse(tbPIDValuePDown_1.Text);
+            //Kp_down_2 = double.Parse(tbPIDValuePDown_2.Text);
+            //Kp_down_3 = double.Parse(tbPIDValuePDown_3.Text);
+            //Kp_down_4 = double.Parse(tbPIDValuePDown_4.Text);
+            //Kp_down_5 = double.Parse(tbPIDValuePDown_5.Text);
+            //Kp_down_6 = double.Parse(tbPIDValuePDown_6.Text);
+            //Kp_down_7 = double.Parse(tbPIDValuePDown_7.Text);
+            //Kp_down_8 = double.Parse(tbPIDValuePDown_8.Text);
+
+            //Ki_down_1 = double.Parse(tbPIDValueIDown_1.Text);
+            //Ki_down_2 = double.Parse(tbPIDValueIDown_2.Text);
+            //Ki_down_3 = double.Parse(tbPIDValueIDown_3.Text);
+            //Ki_down_4 = double.Parse(tbPIDValueIDown_4.Text);
+            //Ki_down_5 = double.Parse(tbPIDValueIDown_5.Text);
+            //Ki_down_6 = double.Parse(tbPIDValueIDown_6.Text);
+            //Ki_down_7 = double.Parse(tbPIDValueIDown_7.Text);
+            //Ki_down_8 = double.Parse(tbPIDValueIDown_8.Text);
+
+            //Kd_down_1 = double.Parse(tbPIDValueDDown_1.Text);
+            //Kd_down_2 = double.Parse(tbPIDValueDDown_2.Text);
+            //Kd_down_3 = double.Parse(tbPIDValueDDown_3.Text);
+            //Kd_down_4 = double.Parse(tbPIDValueDDown_4.Text);
+            //Kd_down_5 = double.Parse(tbPIDValueDDown_5.Text);
+            //Kd_down_6 = double.Parse(tbPIDValueDDown_6.Text);
+            //Kd_down_7 = double.Parse(tbPIDValueDDown_7.Text);
+            //Kd_down_8 = double.Parse(tbPIDValueDDown_8.Text);
+
+
+
+
+            /*
+             * data serialize
+             */
+            
+
+            CoreSerialize cs = new CoreSerialize();
+            PIDParameters dataPID = new PIDParameters();
+            TParameters dataT = new TParameters();
+            try
+            {
+                dataPID = cs.PIDDeSerializeNow();
+                dataT = cs.TParamDeSerializeNow();
+                p1_1 = dataT.p1_1;
+                p2_1 = dataT.p2_1;
+                p1_2 = dataT.p1_2;
+                p2_2 = dataT.p2_2;
+                p1_3 = dataT.p1_3;
+                p2_3 = dataT.p2_3;
+                p1_4 = dataT.p1_4;
+                p2_4 = dataT.p2_4;
+                p1_5 = dataT.p1_5;
+                p2_5 = dataT.p2_5;
+                p1_6 = dataT.p1_6;
+                p2_6 = dataT.p2_6;
+                p1_7 = dataT.p1_7;
+                p2_7 = dataT.p2_7;
+                p1_8 = dataT.p1_8;
+                p2_8 = dataT.p2_8;
+
+                Kp_up_1 = dataPID.kp_up_1;
+                Ki_up_1 = dataPID.ki_up_1;
+                Kd_up_1 = dataPID.kd_up_1;
+                Kp_up_2 = dataPID.kp_up_2;
+                Ki_up_2 = dataPID.ki_up_2;
+                Kd_up_2 = dataPID.kd_up_2;
+                Kp_up_3 = dataPID.kp_up_3;
+                Ki_up_3 = dataPID.ki_up_3;
+                Kd_up_3 = dataPID.kd_up_3;
+                Kp_up_4 = dataPID.kp_up_4;
+                Ki_up_4 = dataPID.ki_up_4;
+                Kd_up_4 = dataPID.kd_up_4;
+                Kp_up_5 = dataPID.kp_up_5;
+                Ki_up_5 = dataPID.ki_up_5;
+                Kd_up_5 = dataPID.kd_up_5;
+                Kp_up_6 = dataPID.kp_up_6;
+                Ki_up_6 = dataPID.ki_up_6;
+                Kd_up_6 = dataPID.kd_up_6;
+                Kp_up_7 = dataPID.kp_up_7;
+                Ki_up_7 = dataPID.ki_up_7;
+                Kd_up_7 = dataPID.kd_up_7;
+                Kp_up_8 = dataPID.kp_up_8;
+                Ki_up_8 = dataPID.ki_up_8;
+                Kd_up_8 = dataPID.kd_up_8;
+
+                Kp_down_1 = dataPID.kp_down_1;
+                Ki_down_1 = dataPID.ki_down_1;
+                Kd_down_1 = dataPID.kd_down_1;
+                Kp_down_2 = dataPID.kp_down_2;
+                Ki_down_2 = dataPID.ki_down_2;
+                Kd_down_2 = dataPID.kd_down_2;
+                Kp_down_3 = dataPID.kp_down_3;
+                Ki_down_3 = dataPID.ki_down_3;
+                Kd_down_3 = dataPID.kd_down_3;
+                Kp_down_4 = dataPID.kp_down_4;
+                Ki_down_4 = dataPID.ki_down_4;
+                Kd_down_4 = dataPID.kd_down_4;
+                Kp_down_5 = dataPID.kp_down_5;
+                Ki_down_5 = dataPID.ki_down_5;
+                Kd_down_5 = dataPID.kd_down_5;
+                Kp_down_6 = dataPID.kp_down_6;
+                Ki_down_6 = dataPID.ki_down_6;
+                Kd_down_6 = dataPID.kd_down_6;
+                Kp_down_7 = dataPID.kp_down_7;
+                Ki_down_7 = dataPID.ki_down_7;
+                Kd_down_7 = dataPID.kd_down_7;
+                Kp_down_8 = dataPID.kp_down_8;
+                Ki_down_8 = dataPID.ki_down_8;
+                Kd_down_8 = dataPID.kd_down_8;
+
+
+
+                tbP1_1.Text = p1_1.ToString();
+                tbP2_1.Text = p2_1.ToString();
+                tbP1_2.Text = p1_2.ToString();
+                tbP2_2.Text = p2_2.ToString();
+                tbP1_3.Text = p1_3.ToString();
+                tbP2_3.Text = p2_3.ToString();
+                tbP1_4.Text = p1_4.ToString();
+                tbP2_4.Text = p2_4.ToString();
+                tbP1_5.Text = p1_5.ToString();
+                tbP2_5.Text = p2_5.ToString();
+                tbP1_6.Text = p1_6.ToString();
+                tbP2_6.Text = p2_6.ToString();
+                tbP1_7.Text = p1_7.ToString();
+                tbP2_7.Text = p2_7.ToString();
+                tbP1_8.Text = p1_8.ToString();
+                tbP2_8.Text = p2_8.ToString();
+
+                tbPIDValuePUp_1.Text = Kp_up_1.ToString();
+                tbPIDValueIUp_1.Text = Ki_up_1.ToString();
+                tbPIDValueDUp_1.Text = Kd_up_1.ToString();
+                tbPIDValuePUp_2.Text = Kp_up_2.ToString();
+                tbPIDValueIUp_2.Text = Ki_up_2.ToString();
+                tbPIDValueDUp_2.Text = Kd_up_2.ToString();
+                tbPIDValuePUp_3.Text = Kp_up_3.ToString();
+                tbPIDValueIUp_3.Text = Ki_up_3.ToString();
+                tbPIDValueDUp_3.Text = Kd_up_3.ToString();
+                tbPIDValuePUp_4.Text = Kp_up_4.ToString();
+                tbPIDValueIUp_4.Text = Ki_up_4.ToString();
+                tbPIDValueDUp_4.Text = Kd_up_4.ToString();
+                tbPIDValuePUp_5.Text = Kp_up_5.ToString();
+                tbPIDValueIUp_5.Text = Ki_up_5.ToString();
+                tbPIDValueDUp_5.Text = Kd_up_5.ToString();
+                tbPIDValuePUp_6.Text = Kp_up_6.ToString();
+                tbPIDValueIUp_6.Text = Ki_up_6.ToString();
+                tbPIDValueDUp_6.Text = Kd_up_6.ToString();
+                tbPIDValuePUp_7.Text = Kp_up_7.ToString();
+                tbPIDValueIUp_7.Text = Ki_up_7.ToString();
+                tbPIDValueDUp_7.Text = Kd_up_7.ToString();
+                tbPIDValuePUp_8.Text = Kp_up_8.ToString();
+                tbPIDValueIUp_8.Text = Ki_up_8.ToString();
+                tbPIDValueDUp_8.Text = Kd_up_8.ToString();
+
+                tbPIDValuePDown_1.Text = Kp_down_1.ToString();
+                tbPIDValueIDown_1.Text = Ki_down_1.ToString();
+                tbPIDValueDDown_1.Text = Kd_down_1.ToString();
+                tbPIDValuePDown_2.Text = Kp_down_2.ToString();
+                tbPIDValueIDown_2.Text = Ki_down_2.ToString();
+                tbPIDValueDDown_2.Text = Kd_down_2.ToString();
+                tbPIDValuePDown_3.Text = Kp_down_3.ToString();
+                tbPIDValueIDown_3.Text = Ki_down_3.ToString();
+                tbPIDValueDDown_3.Text = Kd_down_3.ToString();
+                tbPIDValuePDown_4.Text = Kp_down_4.ToString();
+                tbPIDValueIDown_4.Text = Ki_down_4.ToString();
+                tbPIDValueDDown_4.Text = Kd_down_4.ToString();
+                tbPIDValuePDown_5.Text = Kp_down_5.ToString();
+                tbPIDValueIDown_5.Text = Ki_down_5.ToString();
+                tbPIDValueDDown_5.Text = Kd_down_5.ToString();
+                tbPIDValuePDown_6.Text = Kp_down_6.ToString();
+                tbPIDValueIDown_6.Text = Ki_down_6.ToString();
+                tbPIDValueDDown_6.Text = Kd_down_6.ToString();
+                tbPIDValuePDown_7.Text = Kp_down_7.ToString();
+                tbPIDValueIDown_7.Text = Ki_down_7.ToString();
+                tbPIDValueDDown_7.Text = Kd_down_7.ToString();
+                tbPIDValuePDown_8.Text = Kp_down_8.ToString();
+                tbPIDValueIDown_8.Text = Ki_down_8.ToString();
+                tbPIDValueDDown_8.Text = Kd_down_8.ToString();
+
+
+
+
+            }
+            catch
+            {
+                TParameters tp = new TParameters()
+                {
+                    p1_1 = double.Parse(tbP1_1.Text),
+                    p1_2 = double.Parse(tbP1_2.Text),
+                    p1_3 = double.Parse(tbP1_3.Text),
+                    p1_4 = double.Parse(tbP1_4.Text),
+                    p1_5 = double.Parse(tbP1_5.Text),
+                    p1_6 = double.Parse(tbP1_6.Text),
+                    p1_7 = double.Parse(tbP1_7.Text),
+                    p1_8 = double.Parse(tbP1_8.Text),
+
+                    p2_1 = double.Parse(tbP2_1.Text),
+                    p2_2 = double.Parse(tbP2_2.Text),
+                    p2_3 = double.Parse(tbP2_3.Text),
+                    p2_4 = double.Parse(tbP2_4.Text),
+                    p2_5 = double.Parse(tbP2_5.Text),
+                    p2_6 = double.Parse(tbP2_6.Text),
+                    p2_7 = double.Parse(tbP2_7.Text),
+                    p2_8 = double.Parse(tbP2_8.Text)
+
+
+
+                };
+
+                PIDParameters pp = new PIDParameters()
+                {
+                    kp_up_1 = double.Parse(tbPIDValuePUp_1.Text),
+                    ki_up_1 = double.Parse(tbPIDValueIUp_1.Text),
+                    kd_up_1 = double.Parse(tbPIDValueDUp_1.Text),
+                    kp_up_2 = double.Parse(tbPIDValuePUp_2.Text),
+                    ki_up_2 = double.Parse(tbPIDValueIUp_2.Text),
+                    kd_up_2 = double.Parse(tbPIDValueDUp_2.Text),
+                    kp_up_3 = double.Parse(tbPIDValuePUp_3.Text),
+                    ki_up_3 = double.Parse(tbPIDValueIUp_3.Text),
+                    kd_up_3 = double.Parse(tbPIDValueDUp_3.Text),
+                    kp_up_4 = double.Parse(tbPIDValuePUp_4.Text),
+                    ki_up_4 = double.Parse(tbPIDValueIUp_4.Text),
+                    kd_up_4 = double.Parse(tbPIDValueDUp_4.Text),
+                    kp_up_5 = double.Parse(tbPIDValuePUp_5.Text),
+                    ki_up_5 = double.Parse(tbPIDValueIUp_5.Text),
+                    kd_up_5 = double.Parse(tbPIDValueDUp_5.Text),
+                    kp_up_6 = double.Parse(tbPIDValuePUp_6.Text),
+                    ki_up_6 = double.Parse(tbPIDValueIUp_6.Text),
+                    kd_up_6 = double.Parse(tbPIDValueDUp_6.Text),
+                    kp_up_7 = double.Parse(tbPIDValuePUp_7.Text),
+                    ki_up_7 = double.Parse(tbPIDValueIUp_7.Text),
+                    kd_up_7 = double.Parse(tbPIDValueDUp_7.Text),
+                    kp_up_8 = double.Parse(tbPIDValuePUp_8.Text),
+                    ki_up_8 = double.Parse(tbPIDValueIUp_8.Text),
+                    kd_up_8 = double.Parse(tbPIDValueDUp_8.Text),
+
+                    kp_down_1 = double.Parse(tbPIDValuePDown_1.Text),
+                    ki_down_1 = double.Parse(tbPIDValueIDown_1.Text),
+                    kd_down_1 = double.Parse(tbPIDValueDDown_1.Text),
+                    kp_down_2 = double.Parse(tbPIDValuePDown_2.Text),
+                    ki_down_2 = double.Parse(tbPIDValueIDown_2.Text),
+                    kd_down_2 = double.Parse(tbPIDValueDDown_2.Text),
+                    kp_down_3 = double.Parse(tbPIDValuePDown_3.Text),
+                    ki_down_3 = double.Parse(tbPIDValueIDown_3.Text),
+                    kd_down_3 = double.Parse(tbPIDValueDDown_3.Text),
+                    kp_down_4 = double.Parse(tbPIDValuePDown_4.Text),
+                    ki_down_4 = double.Parse(tbPIDValueIDown_4.Text),
+                    kd_down_4 = double.Parse(tbPIDValueDDown_4.Text),
+                    kp_down_5 = double.Parse(tbPIDValuePDown_5.Text),
+                    ki_down_5 = double.Parse(tbPIDValueIDown_5.Text),
+                    kd_down_5 = double.Parse(tbPIDValueDDown_5.Text),
+                    kp_down_6 = double.Parse(tbPIDValuePDown_6.Text),
+                    ki_down_6 = double.Parse(tbPIDValueIDown_6.Text),
+                    kd_down_6 = double.Parse(tbPIDValueDDown_6.Text),
+                    kp_down_7 = double.Parse(tbPIDValuePDown_7.Text),
+                    ki_down_7 = double.Parse(tbPIDValueIDown_7.Text),
+                    kd_down_7 = double.Parse(tbPIDValueDDown_7.Text),
+                    kp_down_8 = double.Parse(tbPIDValuePDown_8.Text),
+                    ki_down_8 = double.Parse(tbPIDValueIDown_8.Text),
+                    kd_down_8 = double.Parse(tbPIDValueDDown_8.Text),
+
+                };
+
+
+                cs.PIDSerializeNow(pp);
+                cs.TParammSerializeNow(tp);
+
+
+
+
+                dataPID = cs.PIDDeSerializeNow();
+                dataT = cs.TParamDeSerializeNow();
+                p1_1 = dataT.p1_1;
+                p2_1 = dataT.p2_1;
+                p1_2 = dataT.p1_2;
+                p2_2 = dataT.p2_2;
+                p1_3 = dataT.p1_3;
+                p2_3 = dataT.p2_3;
+                p1_4 = dataT.p1_4;
+                p2_4 = dataT.p2_4;
+                p1_5 = dataT.p1_5;
+                p2_5 = dataT.p2_5;
+                p1_6 = dataT.p1_6;
+                p2_6 = dataT.p2_6;
+                p1_7 = dataT.p1_7;
+                p2_7 = dataT.p2_7;
+                p1_8 = dataT.p1_8;
+                p2_8 = dataT.p2_8;
+
+                Kp_up_1 = dataPID.kp_up_1;
+                Ki_up_1 = dataPID.ki_up_1;
+                Kd_up_1 = dataPID.kd_up_1;
+                Kp_up_2 = dataPID.kp_up_2;
+                Ki_up_2 = dataPID.ki_up_2;
+                Kd_up_2 = dataPID.kd_up_2;
+                Kp_up_3 = dataPID.kp_up_3;
+                Ki_up_3 = dataPID.ki_up_3;
+                Kd_up_3 = dataPID.kd_up_3;
+                Kp_up_4 = dataPID.kp_up_4;
+                Ki_up_4 = dataPID.ki_up_4;
+                Kd_up_4 = dataPID.kd_up_4;
+                Kp_up_5 = dataPID.kp_up_5;
+                Ki_up_5 = dataPID.ki_up_5;
+                Kd_up_5 = dataPID.kd_up_5;
+                Kp_up_6 = dataPID.kp_up_6;
+                Ki_up_6 = dataPID.ki_up_6;
+                Kd_up_6 = dataPID.kd_up_6;
+                Kp_up_7 = dataPID.kp_up_7;
+                Ki_up_7 = dataPID.ki_up_7;
+                Kd_up_7 = dataPID.kd_up_7;
+                Kp_up_8 = dataPID.kp_up_8;
+                Ki_up_8 = dataPID.ki_up_8;
+                Kd_up_8 = dataPID.kd_up_8;
+
+                Kp_down_1 = dataPID.kp_down_1;
+                Ki_down_1 = dataPID.ki_down_1;
+                Kd_down_1 = dataPID.kd_down_1;
+                Kp_down_2 = dataPID.kp_down_2;
+                Ki_down_2 = dataPID.ki_down_2;
+                Kd_down_2 = dataPID.kd_down_2;
+                Kp_down_3 = dataPID.kp_down_3;
+                Ki_down_3 = dataPID.ki_down_3;
+                Kd_down_3 = dataPID.kd_down_3;
+                Kp_down_4 = dataPID.kp_down_4;
+                Ki_down_4 = dataPID.ki_down_4;
+                Kd_down_4 = dataPID.kd_down_4;
+                Kp_down_5 = dataPID.kp_down_5;
+                Ki_down_5 = dataPID.ki_down_5;
+                Kd_down_5 = dataPID.kd_down_5;
+                Kp_down_6 = dataPID.kp_down_6;
+                Ki_down_6 = dataPID.ki_down_6;
+                Kd_down_6 = dataPID.kd_down_6;
+                Kp_down_7 = dataPID.kp_down_7;
+                Ki_down_7 = dataPID.ki_down_7;
+                Kd_down_7 = dataPID.kd_down_7;
+                Kp_down_8 = dataPID.kp_down_8;
+                Ki_down_8 = dataPID.ki_down_8;
+                Kd_down_8 = dataPID.kd_down_8;
+            }
+
+
+
 
             timer_1.Start();
             timer_2.Start();
@@ -710,6 +1429,9 @@ namespace XControl
                     beyondNum_1++;
                     if (beyondNum_1 == 3)
                     {
+
+                       
+                        timeResult_1 = timerCount_1;
                         timerCount_1 = 0;
                         downLine_1 = false;
                         longKeep_1 = true;
@@ -813,6 +1535,7 @@ namespace XControl
                     beyondNum_1++;
                     if (beyondNum_1 == 3)
                     {
+                        timeResult_1 = timerCount_1;
                         timerCount_1 = 0;
                         upLine_1 = false;
                         longKeep_1 = true;
@@ -1990,6 +2713,7 @@ namespace XControl
                     beyondNum_2++;
                     if (beyondNum_2 == 3)
                     {
+                        timeResult_2 = timerCount_2;
                         timerCount_2 = 0;
                         downLine_2 = false;
                         longKeep_2 = true;
@@ -2085,6 +2809,7 @@ namespace XControl
                     beyondNum_2++;
                     if (beyondNum_2 == 3)
                     {
+                        timeResult_2 = timerCount_2;
                         timerCount_2 = 0;
                         upLine_2 = false;
                         longKeep_2 = true;
@@ -2389,6 +3114,7 @@ namespace XControl
                     beyondNum_3++;
                     if (beyondNum_3 == 3)
                     {
+                        timeResult_3 = timerCount_3;
                         timerCount_3 = 0;
                         downLine_3 = false;
                         longKeep_3 = true;
@@ -2483,6 +3209,7 @@ namespace XControl
                     beyondNum_3++;
                     if (beyondNum_3 == 3)
                     {
+                        timeResult_3 = timerCount_3;
                         timerCount_3 = 0;
                         upLine_3 = false;
                         longKeep_3 = true;
@@ -2784,6 +3511,7 @@ namespace XControl
                     beyondNum_4++;
                     if (beyondNum_4 == 3)
                     {
+                        timeResult_4 = timerCount_4;
                         timerCount_4 = 0;
                         downLine_4 = false;
                         longKeep_4 = true;
@@ -2878,6 +3606,7 @@ namespace XControl
                     beyondNum_4++;
                     if (beyondNum_4 == 3)
                     {
+                        timeResult_4 = timerCount_4;
                         timerCount_4 = 0;
                         upLine_4 = false;
                         longKeep_4 = true;
@@ -3176,6 +3905,7 @@ namespace XControl
                     beyondNum_5++;
                     if (beyondNum_5 == 3)
                     {
+                        timeResult_5 = timerCount_5;
                         timerCount_5 = 0;
                         downLine_5 = false;
                         longKeep_5 = true;
@@ -3271,6 +4001,7 @@ namespace XControl
                     beyondNum_5++;
                     if (beyondNum_5 == 3)
                     {
+                        timeResult_5 = timerCount_5;
                         timerCount_5 = 0;
                         upLine_5 = false;
                         longKeep_5 = true;
@@ -3571,6 +4302,7 @@ namespace XControl
                     beyondNum_6++;
                     if (beyondNum_6 == 3)
                     {
+                        timeResult_6 = timerCount_6;
                         timerCount_6 = 0;
                         downLine_6 = false;
                         longKeep_6 = true;
@@ -3665,6 +4397,7 @@ namespace XControl
                     beyondNum_6++;
                     if (beyondNum_6 == 3)
                     {
+                        timeResult_6 = timerCount_6;
                         timerCount_6 = 0;
                         upLine_6 = false;
                         longKeep_6 = true;
@@ -3964,6 +4697,7 @@ namespace XControl
                     beyondNum_7++;
                     if (beyondNum_7 == 3)
                     {
+                        timeResult_7 = timerCount_7;
                         timerCount_7 = 0;
                         downLine_7 = false;
                         longKeep_7 = true;
@@ -4058,6 +4792,7 @@ namespace XControl
                     beyondNum_7++;
                     if (beyondNum_7 == 3)
                     {
+                        timeResult_7 = timerCount_7;
                         timerCount_7 = 0;
                         upLine_7 = false;
                         longKeep_7 = true;
@@ -4357,6 +5092,7 @@ namespace XControl
                     beyondNum_8++;
                     if (beyondNum_8 == 3)
                     {
+                        timeResult_8 = timerCount_8;
                         timerCount_8 = 0;
                         downLine_8 = false;
                         longKeep_8 = true;
@@ -4453,6 +5189,7 @@ namespace XControl
                     beyondNum_8++;
                     if (beyondNum_8 == 3)
                     {
+                        timeResult_8 = timerCount_8;
                         timerCount_8 = 0;
                         upLine_8 = false;
                         longKeep_8 = true;
