@@ -27,4 +27,3 @@ D:\GitHub\xcontrol\XControl\obj\Debug\XControl.csprojResolveAssemblyReference.ca
 D:\GitHub\xcontrol\XControl\obj\Debug\XControl.MainForm.resources
 D:\GitHub\xcontrol\XControl\obj\Debug\XControl.Properties.Resources.resources
 D:\GitHub\xcontrol\XControl\obj\Debug\XControl.csproj.GenerateResource.Cache
-H:\github\xcontrol\XControl\obj\Debug\XControl.csprojResolveAssemblyReference.cache

@@ -886,8 +886,7 @@ namespace XControl
 
             
 
-            Board_1.SetTConvertParam(0.2,660 , 0.2,660, 0.2, 660, 0.2, 660, 0.2, 660, 0.2, 660, 0.2, 660, 0.2, 660);
-            Board_2.SetTConvertParam(0.2, 660, 0.2, 660, 0.2, 660, 0.2, 660, 0.2, 660, 0.2, 660, 0.2, 660, 0.2, 660);
+          
 
             isTestByHandClick_1 = true;
             isTestByHandClick_2 = true;
@@ -1128,7 +1127,8 @@ namespace XControl
                 tbPIDValueIDown_8.Text = Ki_down_8.ToString();
                 tbPIDValueDDown_8.Text = Kd_down_8.ToString();
 
-
+                Board_1.SetTConvertParam(p1_1,p2_1, p1_2, p2_2, p1_3, p2_3, p1_4, p2_4, p1_5, p2_5, p1_6, p2_6, p1_7, p2_7, p1_8, p2_8);
+                Board_1.SetTConvertParam(p1_1, p2_1, p1_2, p2_2, p1_3, p2_3, p1_4, p2_4, p1_5, p2_5, p1_6, p2_6, p1_7, p2_7, p1_8, p2_8);
 
 
             }
