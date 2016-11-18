@@ -216,14 +216,14 @@ namespace XControl
         /*
          * if the is tested by hand
          */
-        bool isTestByHand_1 = true;
-        bool isTestByHand_2 = true;
-        bool isTestByHand_3 = true;
-        bool isTestByHand_4 = true;
-        bool isTestByHand_5 = true;
-        bool isTestByHand_6 = true;
-        bool isTestByHand_7 = true;
-        bool isTestByHand_8 = true;
+        bool isTestByHand_1 = false;
+        bool isTestByHand_2 = false;
+        bool isTestByHand_3 = false;
+        bool isTestByHand_4 = false;
+        bool isTestByHand_5 = false;
+        bool isTestByHand_6 = false;
+        bool isTestByHand_7 = false;
+        bool isTestByHand_8 = false;
 
         /*
          * if execute the control moduel
@@ -1644,7 +1644,7 @@ namespace XControl
 
             if (isUp_1 == true)
             {
-                if ((punishmentT - temperatureValue_1) < 5 && isStartPID_1 == true)
+                if ((punishmentT - temperatureValue_1) < 10 && isStartPID_1 == true)
                 {
                     startPID_1 = true;
                     isStartPID_1 = false;
@@ -2923,7 +2923,7 @@ namespace XControl
 
             if (isUp_2 == true)
             {
-                if ((punishmentT - temperatureValue_2) < 5 && isStartPID_2 == true)
+                if ((punishmentT - temperatureValue_2) < 10 && isStartPID_2 == true)
                 {
                     startPID_2 = true;
                     isStartPID_2 = false;
@@ -3341,7 +3341,7 @@ namespace XControl
 
             if (isUp_3 == true)
             {
-                if ((punishmentT - temperatureValue_3) < 5 && isStartPID_3 == true)
+                if ((punishmentT - temperatureValue_3) < 10 && isStartPID_3 == true)
                 {
                     startPID_3 = true;
                     isStartPID_3 = false;
@@ -4574,7 +4574,7 @@ namespace XControl
 
             if (isUp_6 == true)
             {
-                if ((punishmentT - temperatureValue_6) < 5 && isStartPID_6 == true)
+                if ((punishmentT - temperatureValue_6) < 10 && isStartPID_6 == true)
                 {
                     startPID_6 = true;
                     isStartPID_6 = false;
@@ -4985,7 +4985,7 @@ namespace XControl
 
             if (isUp_7 == true)
             {
-                if ((punishmentT - temperatureValue_7) < 7 && isStartPID_7 == true)
+                if ((punishmentT - temperatureValue_7) <10 && isStartPID_7 == true)
                 {
                     startPID_7 = true;
                     isStartPID_7 = false;
