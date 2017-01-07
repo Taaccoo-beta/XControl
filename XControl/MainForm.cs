@@ -59,6 +59,23 @@ namespace XControl
         double p1_8;
         double p2_8;
 
+
+
+        /*
+         * the sign about temperature up and down
+         */
+
+        int UpDownSing_1 = 0;
+        int UpDownSing_2 = 0;
+        int UpDownSing_3 = 0;
+        int UpDownSing_4 = 0;
+        int UpDownSing_5 = 0;
+        int UpDownSing_6 = 0;
+        int UpDownSing_7 = 0;
+        int UpDownSing_8 = 0;
+
+        
+
         /*
          * variable which store the Temperature
          */
@@ -73,6 +90,27 @@ namespace XControl
 
 
 
+        /*
+         * define leastsquremethod variable
+         */
+        LeastSquareMethod lsm_1;
+        LeastSquareMethod lsm_2;
+        LeastSquareMethod lsm_3;
+        LeastSquareMethod lsm_4;
+        LeastSquareMethod lsm_5;
+        LeastSquareMethod lsm_6;
+        LeastSquareMethod lsm_7;
+        LeastSquareMethod lsm_8;
+
+
+        int tFitCount_1 = 0;
+        int tFitCount_2 = 0;
+        int tFitCount_3 = 0;
+        int tFitCount_4 = 0;
+        int tFitCount_5 = 0;
+        int tFitCount_6 = 0;
+        int tFitCount_7 = 0;
+        int tFitCount_8 = 0;
 
 
         /*
@@ -81,6 +119,7 @@ namespace XControl
          * and many turn of control variable
          */
         bool isMenuByHandChecked = false;
+        bool isMenuTFitChecked = false;
         bool isTotalStartBtnTrue = true;
 
 
@@ -428,7 +467,7 @@ namespace XControl
 
         private void btnTparameterSet_Click(object sender, EventArgs e)
         {
-
+           
             if (isSettingTParam)
             {
                 isSettingTParam = false;
@@ -770,6 +809,312 @@ namespace XControl
 
         private void tP_Main_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnGetParam_1_Click(object sender, EventArgs e)
+        {
+            lsm_1.AddValueToX(double.Parse(lblRawData_1.Text));
+            lsm_1.AddValueToY(double.Parse(tbTFit.Text));
+            lblTfitXTempValue.Text = lsm_1.X_temp.ToString();
+            lblTfitYTempValue.Text = lsm_1.Y_temp.ToString();
+            
+            lblTFitCount_1.Text = lsm_1.Count.ToString();
+        }
+
+        private void tToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (isMenuByHandChecked == true)
+            {
+                isMenuTFitChecked = false;
+                menTFit.Checked = false;
+
+                btnTotalStart.Enabled = true;
+
+                btnTestByHand_1.Enabled = false;
+                btnTestByHand_2.Enabled = false;
+                btnTestByHand_3.Enabled = false;
+                btnTestByHand_4.Enabled = false;
+                btnTestByHand_5.Enabled = false;
+                btnTestByHand_6.Enabled = false;
+                btnTestByHand_7.Enabled = false;
+                btnTestByHand_8.Enabled = false;
+
+                btnGetParam_1.Enabled = false;
+                btnGetParam_2.Enabled = false;
+                btnGetParam_3.Enabled = false;
+                btnGetParam_4.Enabled = false;
+                btnGetParam_5.Enabled = false;
+                btnGetParam_6.Enabled = false;
+                btnGetParam_7.Enabled = false;
+                btnGetParam_8.Enabled = false;
+                tbTFit.Visible = true;
+                btnSetFit.Visible = true;
+
+
+            }
+            else
+            {
+                isMenuTFitChecked = true;
+                menTFit.Checked = true;
+
+                btnTotalStart.Enabled = false;
+                
+
+                btnTestByHand_1.Enabled = true;
+                btnTestByHand_2.Enabled = true;
+                btnTestByHand_3.Enabled = true;
+                btnTestByHand_4.Enabled = true;
+                btnTestByHand_5.Enabled = true;
+                btnTestByHand_6.Enabled = true;
+                btnTestByHand_7.Enabled = true;
+                btnTestByHand_8.Enabled = true;
+
+                
+
+
+                btnGetParam_1.Enabled = true;
+                btnGetParam_2.Enabled = true;
+                btnGetParam_3.Enabled = true;
+                btnGetParam_4.Enabled = true;
+                btnGetParam_5.Enabled = true;
+                btnGetParam_6.Enabled = true;
+                btnGetParam_7.Enabled = true;
+                btnGetParam_8.Enabled = true;
+
+
+
+                tbTFit.Visible = true;
+                btnSetFit.Visible = true;
+
+                lblTfitXTempValue.Visible = true;
+                lblTfitYTempValue.Visible = true;
+                lsm_1 = new LeastSquareMethod();
+                lsm_2 = new LeastSquareMethod();
+                lsm_3 = new LeastSquareMethod();
+                lsm_4 = new LeastSquareMethod();
+                lsm_5 = new LeastSquareMethod();
+                lsm_6 = new LeastSquareMethod();
+                lsm_7 = new LeastSquareMethod();
+                lsm_8 = new LeastSquareMethod();
+
+
+
+
+
+
+
+
+            }
+        }
+
+        private void btnGetParam_2_Click(object sender, EventArgs e)
+        {
+            lsm_2.AddValueToX(double.Parse(lblRawData_2.Text));
+            lsm_2.AddValueToY(double.Parse(tbTFit.Text));
+            lblTfitXTempValue.Text = lsm_2.X_temp.ToString();
+            lblTfitYTempValue.Text = lsm_2.Y_temp.ToString();
+            lblTFitCount_2.Text = lsm_2.Count.ToString();
+        }
+
+        private void btnGetParam_3_Click(object sender, EventArgs e)
+        {
+            lsm_3.AddValueToX(double.Parse(lblRawData_3.Text));
+            lsm_3.AddValueToY(double.Parse(tbTFit.Text));
+            lblTfitXTempValue.Text = lsm_3.X_temp.ToString();
+            lblTfitYTempValue.Text = lsm_3.Y_temp.ToString();
+            lblTFitCount_3.Text = lsm_3.Count.ToString();
+        }
+
+        private void btnGetParam_4_Click(object sender, EventArgs e)
+        {
+            lsm_4.AddValueToX(double.Parse(lblRawData_4.Text));
+            lsm_4.AddValueToY(double.Parse(tbTFit.Text));
+            lblTfitXTempValue.Text = lsm_4.X_temp.ToString();
+            lblTfitYTempValue.Text = lsm_4.Y_temp.ToString();
+            lblTFitCount_4.Text = lsm_4.Count.ToString();
+        }
+
+        private void btnGetParam_5_Click(object sender, EventArgs e)
+        {
+            lsm_5.AddValueToX(double.Parse(lblRawData_5.Text));
+            lsm_5.AddValueToY(double.Parse(tbTFit.Text));
+            lblTfitXTempValue.Text = lsm_5.X_temp.ToString();
+            lblTfitYTempValue.Text = lsm_5.Y_temp.ToString();
+            lblTFitCount_5.Text = lsm_5.Count.ToString();
+        }
+
+        private void btnGetParam_6_Click(object sender, EventArgs e)
+        {
+            lsm_6.AddValueToX(double.Parse(lblRawData_6.Text));
+            lsm_6.AddValueToY(double.Parse(tbTFit.Text));
+            lblTfitXTempValue.Text = lsm_6.X_temp.ToString();
+            lblTfitYTempValue.Text = lsm_6.Y_temp.ToString();
+            lblTFitCount_6.Text = lsm_6.Count.ToString();
+        }
+
+        private void btnGetParam_7_Click(object sender, EventArgs e)
+        {
+            lsm_7.AddValueToX(double.Parse(lblRawData_7.Text));
+            lsm_7.AddValueToY(double.Parse(tbTFit.Text));
+            lblTfitXTempValue.Text = lsm_7.X_temp.ToString();
+            lblTfitYTempValue.Text = lsm_7.Y_temp.ToString();
+            lblTFitCount_7.Text = lsm_7.Count.ToString();
+        }
+
+        private void btnSetFit_Click(object sender, EventArgs e)
+        {
+         
+
+            TParameters tp = new TParameters();
+            if (lsm_1.Count == 0)
+            {
+                tp.p1_1 = double.Parse(tbP1_1.Text);
+                tp.p2_1 = double.Parse(tbP2_1.Text);
+            }
+            else
+            {
+                lsm_1.getParameter(ref tp.p1_1, ref tp.p2_1);
+                tp.p2_1 = -tp.p2_1;
+            }
+
+
+
+            if (lsm_2.Count == 0)
+            {
+                tp.p1_2 = double.Parse(tbP1_2.Text);
+                tp.p2_2 = double.Parse(tbP2_2.Text);
+            }
+            else
+            {
+                lsm_2.getParameter(ref tp.p1_2, ref tp.p2_2);
+                tp.p2_2 = -tp.p2_2;
+            }
+
+            if (lsm_3.Count == 0)
+            {
+                tp.p1_3 = double.Parse(tbP1_3.Text);
+                tp.p2_3 = double.Parse(tbP2_3.Text);
+            }
+            else
+            {
+                lsm_3.getParameter(ref tp.p1_3, ref tp.p2_3);
+                tp.p2_3 = -tp.p2_3;
+            }
+
+
+
+            if (lsm_4.Count == 0)
+            {
+                tp.p1_4 = double.Parse(tbP1_4.Text);
+                tp.p2_4 = double.Parse(tbP2_4.Text);
+            }
+            else
+            {
+                lsm_4.getParameter(ref tp.p1_4, ref tp.p2_4);
+                tp.p2_4 = -tp.p2_4;
+            }
+
+
+
+            if (lsm_5.Count == 0)
+            {
+                tp.p1_5 = double.Parse(tbP1_5.Text);
+                tp.p2_5 = double.Parse(tbP2_5.Text);
+            }
+            else
+            {
+                lsm_5.getParameter(ref tp.p1_5, ref tp.p2_5);
+                tp.p2_5 = -tp.p2_5;
+            }
+
+
+            if (lsm_6.Count == 0)
+            {
+                tp.p1_6 = double.Parse(tbP1_6.Text);
+                tp.p2_6 = double.Parse(tbP2_6.Text);
+            }
+            else
+            {
+                lsm_6.getParameter(ref tp.p1_6, ref tp.p2_6);
+                tp.p2_6 = -tp.p2_6;
+            }
+
+
+
+            if (lsm_7.Count == 0)
+            {
+                tp.p1_7 = double.Parse(tbP1_7.Text);
+                tp.p2_7 = double.Parse(tbP2_7.Text);
+            }
+            else
+            {
+                lsm_7.getParameter(ref tp.p1_7, ref tp.p2_7);
+                tp.p2_7 = -tp.p2_7;
+            }
+
+
+
+            if (lsm_8.Count == 0)
+            {
+                tp.p1_8 = double.Parse(tbP1_8.Text);
+                tp.p2_8 = double.Parse(tbP2_8.Text);
+            }
+            else
+            {
+                lsm_8.getParameter(ref tp.p1_8, ref tp.p2_8);
+                tp.p2_8 = -tp.p2_8;
+            }
+
+
+         
+
+
+            CoreSerialize cs = new CoreSerialize();
+            cs.TParammSerializeNow(tp);
+
+
+
+            p1_1 = tp.p1_1;
+            p2_1 = tp.p2_1;
+            p1_2 = tp.p1_2;
+            p2_2 = tp.p2_2;
+            p1_3 = tp.p1_3;
+            p2_3 = tp.p2_3;
+            p1_4 = tp.p1_4;
+            p2_4 = tp.p2_4;
+            p1_5 = tp.p1_5;
+            p2_5 = tp.p2_5;
+            p1_6 = tp.p1_6;
+            p2_6 = tp.p2_6;
+            p1_7 = tp.p1_7;
+            p2_7 = tp.p2_7;
+            p1_8 = tp.p1_8;
+            p2_8 = tp.p2_8;
+
+            
+            tbP1_1.Text = p1_1.ToString();
+            tbP2_1.Text = p2_1.ToString();
+            tbP1_2.Text = p1_2.ToString();
+            tbP2_2.Text = p2_2.ToString();
+            tbP1_3.Text = p1_3.ToString();
+            tbP2_3.Text = p2_3.ToString();
+            tbP1_4.Text = p1_4.ToString();
+            tbP2_4.Text = p2_4.ToString();
+            tbP1_5.Text = p1_5.ToString();
+            tbP2_5.Text = p2_5.ToString();
+            tbP1_6.Text = p1_6.ToString();
+            tbP2_6.Text = p2_6.ToString();
+            tbP1_7.Text = p1_7.ToString();
+            tbP2_7.Text = p2_7.ToString();
+            tbP1_8.Text = p1_8.ToString();
+            tbP2_8.Text = p2_8.ToString();
+
+
+            Board_1.SetTConvertParam(p1_1, p2_1, p1_2, p2_2, p1_3, p2_3, p1_4, p2_4, p1_5, p2_5, p1_6, p2_6, p1_7, p2_7, p1_8, p2_8);
+            Board_2.SetTConvertParam(p1_1, p2_1, p1_2, p2_2, p1_3, p2_3, p1_4, p2_4, p1_5, p2_5, p1_6, p2_6, p1_7, p2_7, p1_8, p2_8);
+
+
 
         }
 
@@ -1359,6 +1704,9 @@ namespace XControl
                    
                    
                     lblTState_1.Text = "On";
+                    UpDownSing_1 = 1;
+                    punishmentT = float.Parse(tbPunishTValue.Text);
+                    confortableT = float.Parse(tbConfortTValue.Text);
 
                     isFirstChangeUp_1 = false;
                     isFirstChangeDown_1 = true;
@@ -1388,8 +1736,9 @@ namespace XControl
                 }
                 else if (digitalControlSingal_1 == 0 && isFirstChangeDown_1 == true)
                 {
-                   
-                   
+                    punishmentT = float.Parse(tbPunishTValue.Text);
+                    confortableT = float.Parse(tbConfortTValue.Text);
+
                     isDown_1 = true;
                     isStartPID_1 = true;
 
@@ -1400,6 +1749,7 @@ namespace XControl
                     isUp_1 = false;
                     PID_Count_1 = 0;
                     lblTState_1.Text = "Off";
+                    UpDownSing_1 = -1;
                     Board_1.TDown(1);
                     circle = 10;
                     if (isExecutePIDModel_1)
@@ -1656,7 +2006,7 @@ namespace XControl
 
                     PID_Count_1 = 0;
                     Board_1.TUp(1);
-                    lblDebug.Text = "up-";
+                    
 
                 }
 
@@ -1703,7 +2053,7 @@ namespace XControl
 
                 if (!isExecuteControlModel_1 || !isExecutePIDModelDown_1)
                 {
-                    System.IO.File.AppendAllText("e:\\result_1.txt", temperatureValue_1.ToString("00.00") + "\r\n");
+                    System.IO.File.AppendAllText("e:\\result_1.txt", temperatureValue_1.ToString("00.00") +"   "+UpDownSing_1.ToString()+ "\r\n");
                 }
             }
 
@@ -1721,7 +2071,7 @@ namespace XControl
                     proportion_1 = PID_1.ConvertAccordToPropotation(proportion_1,circle,FirstProportion_1);
                     PID_Count_1 = 0;
                     Board_1.TDown(1);
-                    lblDebug.Text = "down-";
+                    
                 }
 
 
@@ -1759,7 +2109,7 @@ namespace XControl
                 }
                 if (!isExecuteControlModel_1 || !isExecutePIDModelDown_1)
                 {
-                    System.IO.File.AppendAllText("e:\\result_1.txt", temperatureValue_1.ToString("00.00") + "\r\n");
+                    System.IO.File.AppendAllText("e:\\result_1.txt", temperatureValue_1.ToString("00.00") + "   " + UpDownSing_1.ToString()+ "\r\n");
                 }
             }
 
@@ -2660,10 +3010,11 @@ namespace XControl
             {
                 if (digitalControlSingal_2 == 1 && isFirstChangeUp_2 == true)
                 {
-                    
-                   
-                    lblTState_2.Text = "On";
 
+                    punishmentT = float.Parse(tbPunishTValue.Text);
+                    confortableT = float.Parse(tbConfortTValue.Text);
+                    lblTState_2.Text = "On";
+                    UpDownSing_2 = 1;
                     isFirstChangeUp_2 = false;
                     isFirstChangeDown_2 = true;
 
@@ -2690,9 +3041,10 @@ namespace XControl
                 }
                 else if (digitalControlSingal_2 == 0 && isFirstChangeDown_2 == true)
                 {
-                   
-                 
-                   
+
+
+                    punishmentT = float.Parse(tbPunishTValue.Text);
+                    confortableT = float.Parse(tbConfortTValue.Text);
                     isDown_2 = true;
                     isStartPID_2 = true;
 
@@ -2703,6 +3055,7 @@ namespace XControl
                     isUp_2 = false;
                     PID_Count_2 = 0;
                     lblTState_2.Text = "Off";
+                    UpDownSing_2 = -1;
                     Board_1.TDown(2);
                     circle = 10;
                     if (isExecutePIDModel_2)
@@ -2935,7 +3288,7 @@ namespace XControl
 
                     PID_Count_2 = 0;
                     Board_1.TUp(2);
-                    lblDebug.Text = "up-";
+                   
 
                 }
 
@@ -2981,7 +3334,7 @@ namespace XControl
                 }
                 if (!isExecuteControlModel_2 || !isExecutePIDModelDown_2)
                 {
-                    System.IO.File.AppendAllText("e:\\result_2.txt", temperatureValue_2.ToString("00.00") + "\r\n");
+                    System.IO.File.AppendAllText("e:\\result_2.txt", temperatureValue_2.ToString("00.00") + "   " + UpDownSing_2.ToString()+ "\r\n");
                 }
             }
 
@@ -2999,7 +3352,7 @@ namespace XControl
                     proportion_2 = PID_2.ConvertAccordToPropotation(proportion_2, circle, FirstProportion_2);
                     PID_Count_2 = 0;
                     Board_1.TDown(2);
-                    lblDebug.Text = "down-";
+                    
                 }
 
 
@@ -3038,7 +3391,7 @@ namespace XControl
 
                 if (!isExecuteControlModel_2 || !isExecutePIDModelDown_2)
                 {
-                    System.IO.File.AppendAllText("e:\\result_2.txt", temperatureValue_2.ToString("00.00") + "\r\n");
+                    System.IO.File.AppendAllText("e:\\result_2.txt", temperatureValue_2.ToString("00.00") + "   " + UpDownSing_2.ToString() + "\r\n");
                 }
             }
         }
@@ -3079,10 +3432,11 @@ namespace XControl
             {
                 if (digitalControlSingal_3 == 1 && isFirstChangeUp_3 == true)
                 {
-                    
-                    
-                    lblTState_3.Text = "On";
 
+                    punishmentT = float.Parse(tbPunishTValue.Text);
+                    confortableT = float.Parse(tbConfortTValue.Text);
+                    lblTState_3.Text = "On";
+                    UpDownSing_3 = 1;
                     isFirstChangeUp_3 = false;
                     isFirstChangeDown_3 = true;
                     isUp_3 = true;
@@ -3108,11 +3462,12 @@ namespace XControl
                 }
                 else if (digitalControlSingal_3 == 0 && isFirstChangeDown_3 == true)
                 {
-                   
-                    
+
+                    punishmentT = float.Parse(tbPunishTValue.Text);
+                    confortableT = float.Parse(tbConfortTValue.Text);
                     isDown_3 = true;
                     isStartPID_3 = true;
-
+                    UpDownSing_3 = -1;
                     isFirstChangeDown_3 = false;
                     isFirstChangeUp_3 = true;
 
@@ -3353,7 +3708,7 @@ namespace XControl
 
                     PID_Count_3 = 0;
                     Board_1.TUp(3);
-                    lblDebug.Text = "up-";
+                   
 
                 }
 
@@ -3400,7 +3755,7 @@ namespace XControl
 
                 if (!isExecuteControlModel_3 || !isExecutePIDModelDown_3)
                 {
-                    System.IO.File.AppendAllText("e:\\result_3.txt", temperatureValue_3.ToString("00.00") + "\r\n");
+                    System.IO.File.AppendAllText("e:\\result_3.txt", temperatureValue_3.ToString("00.00") + "   " + UpDownSing_3.ToString() + "\r\n");
                 }
             }
 
@@ -3418,7 +3773,7 @@ namespace XControl
                     proportion_3 = PID_3.ConvertAccordToPropotation(proportion_3, circle, FirstProportion_3);
                     PID_Count_3 = 0;
                     Board_1.TDown(3);
-                    lblDebug.Text = "down-";
+                    
                 }
 
 
@@ -3457,7 +3812,7 @@ namespace XControl
 
                 if (!isExecuteControlModel_3 || !isExecutePIDModelDown_3)
                 {
-                    System.IO.File.AppendAllText("e:\\result_3.txt", temperatureValue_3.ToString("00.00") + "\r\n");
+                    System.IO.File.AppendAllText("e:\\result_3.txt", temperatureValue_3.ToString("00.00") + "   " + UpDownSing_3.ToString() + "\r\n");
                 }
             }
         }
@@ -3496,10 +3851,11 @@ namespace XControl
             {
                 if (digitalControlSingal_4 == 1 && isFirstChangeUp_4 == true)
                 {
-                   
-                   
-                    lblTState_4.Text = "On";
 
+                    punishmentT = float.Parse(tbPunishTValue.Text);
+                    confortableT = float.Parse(tbConfortTValue.Text);
+                    lblTState_4.Text = "On";
+                    UpDownSing_4 = 1;
                     isUp_4 = true;
                     isDown_4 = false;
                     isFirstChangeUp_4 = false;
@@ -3524,8 +3880,9 @@ namespace XControl
                 }
                 else if (digitalControlSingal_4 == 0 && isFirstChangeDown_4 == true)
                 {
-                   
-                   
+
+                    punishmentT = float.Parse(tbPunishTValue.Text);
+                    confortableT = float.Parse(tbConfortTValue.Text);
                     isDown_4 = true;
                     isStartPID_4 = true;
                     isFirstChangeDown_4 = false;
@@ -3534,6 +3891,7 @@ namespace XControl
                     isUp_4 = false;
                     PID_Count_4 = 0;
                     lblTState_4.Text = "Off";
+                    UpDownSing_4 = -1;
                     Board_1.TDown(4);
                     circle = 10;
                     if (isExecutePIDModel_4)
@@ -3763,7 +4121,7 @@ namespace XControl
 
                     PID_Count_4 = 0;
                     Board_1.TUp(4);
-                    lblDebug.Text = "up-";
+                   
 
                 }
 
@@ -3810,7 +4168,7 @@ namespace XControl
 
                 if (!isExecuteControlModel_4 || !isExecutePIDModelDown_4)
                 {
-                    System.IO.File.AppendAllText("e:\\result_4.txt", temperatureValue_4.ToString("00.00") + "\r\n");
+                    System.IO.File.AppendAllText("e:\\result_4.txt", temperatureValue_4.ToString("00.00") + "   " + UpDownSing_4.ToString() + "\r\n");
                 }
             }
 
@@ -3828,7 +4186,7 @@ namespace XControl
                     proportion_4 = PID_4.ConvertAccordToPropotation(proportion_4, circle, FirstProportion_4);
                     PID_Count_4 = 0;
                     Board_1.TDown(4);
-                    lblDebug.Text = "down-";
+                   
                 }
 
 
@@ -3866,7 +4224,7 @@ namespace XControl
                 }
                 if (!isExecuteControlModel_4 || !isExecutePIDModelDown_4)
                 {
-                    System.IO.File.AppendAllText("e:\\result_4.txt", temperatureValue_4.ToString("00.00") + "\r\n");
+                    System.IO.File.AppendAllText("e:\\result_4.txt", temperatureValue_4.ToString("00.00") + "   " + UpDownSing_4.ToString() + "\r\n");
                 }
             }
         }
@@ -3904,10 +4262,11 @@ namespace XControl
             {
                 if (digitalControlSingal_5 == 1 && isFirstChangeUp_5 == true)
                 {
-                   
-                    
-                    lblTState_5.Text = "On";
 
+                    punishmentT = float.Parse(tbPunishTValue.Text);
+                    confortableT = float.Parse(tbConfortTValue.Text);
+                    lblTState_5.Text = "On";
+                    UpDownSing_5 = 1;
                     isUp_5 = true;
                     isDown_5 = false;
 
@@ -3932,8 +4291,9 @@ namespace XControl
                 }
                 else if (digitalControlSingal_5 == 0 && isFirstChangeDown_5 == true)
                 {
-                   
-                    
+
+                    punishmentT = float.Parse(tbPunishTValue.Text);
+                    confortableT = float.Parse(tbConfortTValue.Text);
                     isDown_5 = true;
                     isStartPID_5 = true;
                     isFirstChangeDown_5 = false;
@@ -3942,6 +4302,7 @@ namespace XControl
                     isUp_5 = false;
                     PID_Count_5 = 0;
                     lblTState_5.Text = "Off";
+                    UpDownSing_5 = -1;
                     Board_1.TDown(5);
                     circle = 10;
                     if (isExecutePIDModel_5)
@@ -4176,7 +4537,7 @@ namespace XControl
 
                     PID_Count_5 = 0;
                     Board_1.TUp(5);
-                    lblDebug.Text = "up-";
+                   
 
                 }
 
@@ -4223,7 +4584,7 @@ namespace XControl
 
                 if (!isExecuteControlModel_5 || !isExecutePIDModelDown_5)
                 {
-                    System.IO.File.AppendAllText("e:\\result_5.txt", temperatureValue_5.ToString("00.00") + "\r\n");
+                    System.IO.File.AppendAllText("e:\\result_5.txt", temperatureValue_5.ToString("00.00") + "   " + UpDownSing_5.ToString() + "\r\n");
                 }
             }
 
@@ -4241,7 +4602,7 @@ namespace XControl
                     proportion_5 = PID_5.ConvertAccordToPropotation(proportion_5, circle, FirstProportion_5);
                     PID_Count_5 = 0;
                     Board_1.TDown(5);
-                    lblDebug.Text = "down-";
+                    
                 }
 
 
@@ -4280,7 +4641,7 @@ namespace XControl
 
                 if (!isExecuteControlModel_5 || !isExecutePIDModelDown_5)
                 {
-                    System.IO.File.AppendAllText("e:\\result_5.txt", temperatureValue_5.ToString("00.00") + "\r\n");
+                    System.IO.File.AppendAllText("e:\\result_5.txt", temperatureValue_5.ToString("00.00") + "   " + UpDownSing_5.ToString() + "\r\n");
                 }
             }
         }
@@ -4318,10 +4679,11 @@ namespace XControl
             {
                 if (digitalControlSingal_6 == 1 && isFirstChangeUp_6 == true)
                 {
-                   
-                    
-                    lblTState_6.Text = "On";
 
+                    punishmentT = float.Parse(tbPunishTValue.Text);
+                    confortableT = float.Parse(tbConfortTValue.Text);
+                    lblTState_6.Text = "On";
+                    UpDownSing_6 = 1;
                     isUp_6 = true;
                     isDown_6 = false;
                     isFirstChangeUp_6 = false;
@@ -4346,8 +4708,9 @@ namespace XControl
                 }
                 else if (digitalControlSingal_6 == 0 && isFirstChangeDown_6 == true)
                 {
-                   
-                   
+
+                    punishmentT = float.Parse(tbPunishTValue.Text);
+                    confortableT = float.Parse(tbConfortTValue.Text);
                     isDown_6 = true;
                     isStartPID_6 = true;
                     isFirstChangeDown_6 = false;
@@ -4356,6 +4719,8 @@ namespace XControl
                     isUp_6 = false;
                     PID_Count_6 = 0;
                     lblTState_6.Text = "Off";
+                    UpDownSing_6 = -1;
+                    
                     Board_1.TDown(6);
                     circle = 10;
                     if (isExecutePIDModel_6)
@@ -4586,7 +4951,7 @@ namespace XControl
 
                     PID_Count_6 = 0;
                     Board_1.TUp(6);
-                    lblDebug.Text = "up-";
+                  
 
                 }
 
@@ -4633,7 +4998,7 @@ namespace XControl
 
                 if (!isExecuteControlModel_6 || !isExecutePIDModelDown_6)
                 {
-                    System.IO.File.AppendAllText("e:\\result_6.txt", temperatureValue_6.ToString("00.00") + "\r\n");
+                    System.IO.File.AppendAllText("e:\\result_6.txt", temperatureValue_6.ToString("00.00") + "   " + UpDownSing_6.ToString() + "\r\n");
                 }
             }
 
@@ -4651,7 +5016,7 @@ namespace XControl
                     proportion_6 = PID_6.ConvertAccordToPropotation(proportion_6, circle, FirstProportion_6);
                     PID_Count_6 = 0;
                     Board_1.TDown(6);
-                    lblDebug.Text = "down-";
+                  
                 }
 
 
@@ -4690,7 +5055,7 @@ namespace XControl
 
                 if (!isExecuteControlModel_6 || !isExecutePIDModelDown_6)
                 {
-                    System.IO.File.AppendAllText("e:\\result_6.txt", temperatureValue_6.ToString("00.00") + "\r\n");
+                    System.IO.File.AppendAllText("e:\\result_6.txt", temperatureValue_6.ToString("00.00") + "   " + UpDownSing_6.ToString() + "\r\n");
                 }
             }
         }
@@ -4729,9 +5094,10 @@ namespace XControl
                 if (digitalControlSingal_7 == 1 && isFirstChangeUp_7 == true)
                 {
 
-                   
+                    punishmentT = float.Parse(tbPunishTValue.Text);
+                    confortableT = float.Parse(tbConfortTValue.Text);
                     lblTState_7.Text = "On";
-
+                    UpDownSing_7 = 1;
                     isUp_7 = true;
                     isDown_7 = false;
 
@@ -4757,7 +5123,8 @@ namespace XControl
                 else if (digitalControlSingal_7 == 0 && isFirstChangeDown_7 == true)
                 {
 
-                    
+                    punishmentT = float.Parse(tbPunishTValue.Text);
+                    confortableT = float.Parse(tbConfortTValue.Text);
                     isDown_7 = true;
                     isStartPID_7 = true;
                     isFirstChangeDown_7 = false;
@@ -4766,6 +5133,7 @@ namespace XControl
                     isUp_7 = false;
                     PID_Count_7 = 0;
                     lblTState_7.Text = "Off";
+                    UpDownSing_7 = -1;
                     Board_1.TDown(7);
                     circle = 10;
                     if (isExecutePIDModel_7)
@@ -4997,7 +5365,7 @@ namespace XControl
 
                     PID_Count_7 = 0;
                     Board_1.TUp(7);
-                    lblDebug.Text = "up-";
+                  
 
                 }
 
@@ -5044,7 +5412,7 @@ namespace XControl
 
                 if (!isExecuteControlModel_7 || !isExecutePIDModelDown_7)
                 {
-                    System.IO.File.AppendAllText("e:\\result_7.txt", temperatureValue_7.ToString("00.00") + "\r\n");
+                    System.IO.File.AppendAllText("e:\\result_7.txt", temperatureValue_7.ToString("00.00") + "   " + UpDownSing_7.ToString() + "\r\n");
                 }
             }
 
@@ -5062,7 +5430,7 @@ namespace XControl
                     proportion_7 = PID_7.ConvertAccordToPropotation(proportion_7, circle, FirstProportion_7);
                     PID_Count_7 = 0;
                     Board_1.TDown(7);
-                    lblDebug.Text = "down-";
+                   
                 }
 
 
@@ -5101,7 +5469,7 @@ namespace XControl
 
                 if (!isExecuteControlModel_7 || !isExecutePIDModelDown_7)
                 {
-                    System.IO.File.AppendAllText("e:\\result_7.txt", temperatureValue_7.ToString("00.00") + "\r\n");
+                    System.IO.File.AppendAllText("e:\\result_7.txt", temperatureValue_7.ToString("00.00") + "   " + UpDownSing_7.ToString() + "\r\n");
                 }
             }
         }
@@ -5140,10 +5508,11 @@ namespace XControl
             {
                 if (digitalControlSingal_8 == 1 && isFirstChangeUp_8 == true)
                 {
-                  
-                    
-                    lblTState_8.Text = "On";
 
+                    punishmentT = float.Parse(tbPunishTValue.Text);
+                    confortableT = float.Parse(tbConfortTValue.Text);
+                    lblTState_8.Text = "On";
+                    UpDownSing_8 = 1;
                     isUp_8 = true;
                     isDown_8 = false;
 
@@ -5168,8 +5537,9 @@ namespace XControl
                 }
                 else if (digitalControlSingal_8 == 0 && isFirstChangeDown_8 == true)
                 {
-                   
-                   
+
+                    punishmentT = float.Parse(tbPunishTValue.Text);
+                    confortableT = float.Parse(tbConfortTValue.Text);
                     isDown_8 = true;
                     isStartPID_8 = true;
                     isFirstChangeDown_8 = false;
@@ -5178,6 +5548,7 @@ namespace XControl
                     isUp_8 = false;
                     PID_Count_8 = 0;
                     lblTState_8.Text = "Off";
+                    UpDownSing_8 = -1;
                     Board_1.TDown(8);
                     circle = 10;
                     if (isExecutePIDModel_8)
@@ -5410,7 +5781,7 @@ namespace XControl
 
                     PID_Count_8 = 0;
                     Board_1.TUp(8);
-                    lblDebug.Text = "up-";
+                 
 
                 }
 
@@ -5457,7 +5828,7 @@ namespace XControl
 
                 if (!isExecuteControlModel_8 || !isExecutePIDModelDown_8)
                 {
-                    System.IO.File.AppendAllText("e:\\result_8.txt", temperatureValue_8.ToString("00.00") + "\r\n");
+                    System.IO.File.AppendAllText("e:\\result_8.txt", temperatureValue_8.ToString("00.00") + "   " + UpDownSing_8.ToString() + "\r\n");
                 }
             }
 
@@ -5475,7 +5846,7 @@ namespace XControl
                     proportion_8 = PID_8.ConvertAccordToPropotation(proportion_8, circle, FirstProportion_8);
                     PID_Count_8 = 0;
                     Board_1.TDown(8);
-                    lblDebug.Text = "down-";
+                    
                 }
 
 
@@ -5514,7 +5885,7 @@ namespace XControl
 
                 if (!isExecuteControlModel_8 || !isExecutePIDModelDown_8)
                 {
-                    System.IO.File.AppendAllText("e:\\result_8.txt", temperatureValue_8.ToString("00.00") + "\r\n");
+                    System.IO.File.AppendAllText("e:\\result_8.txt", temperatureValue_8.ToString("00.00") + "   " + UpDownSing_8.ToString() + "\r\n");
                 }
             }
         }
@@ -5568,7 +5939,11 @@ namespace XControl
 
         private void btnGetParam_8_Click(object sender, EventArgs e)
         {
-
+            lsm_8.AddValueToX(double.Parse(lblRawData_8.Text));
+            lsm_8.AddValueToY(double.Parse(tbTFit.Text));
+            lblTfitXTempValue.Text = lsm_8.X_temp.ToString();
+            lblTfitYTempValue.Text = lsm_8.Y_temp.ToString();
+            lblTFitCount_8.Text = lsm_8.Count.ToString();
         }
 
         private void isByHand_Click(object sender, EventArgs e)

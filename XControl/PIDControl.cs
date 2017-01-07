@@ -79,7 +79,7 @@ namespace PID_WinForm
             catch
             {
                 num = num * circle / 1;
-                MessageBox.Show("PID error");
+               
             }
 
 

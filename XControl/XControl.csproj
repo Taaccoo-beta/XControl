@@ -56,6 +56,7 @@
     <Compile Include="Digital.cs" />
     <Compile Include="ErrorDefs.cs" />
     <Compile Include="EventSupport.cs" />
+    <Compile Include="LeastSquareMethod.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
