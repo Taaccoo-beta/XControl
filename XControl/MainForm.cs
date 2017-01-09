@@ -22,13 +22,12 @@ namespace XControl
         private GroupControl Board_2;
 
 
-        //PID period
+        //PID 周期
         int circle;
         
         
         /*
-         * receive control singal from digital port 
-         * from port 0 to port 7
+         * 接受控制信号变量 
          */ 
         int digitalControlSingal_1;
         int digitalControlSingal_2;
@@ -41,7 +40,9 @@ namespace XControl
 
 
 
-
+        /*
+         * 温度拟合系数
+         */ 
         double p1_1;
         double p2_1;
         double p1_2;
@@ -62,7 +63,7 @@ namespace XControl
 
 
         /*
-         * the sign about temperature up and down
+         * 升降温信号
          */
 
         int UpDownSing_1 = 0;
@@ -77,7 +78,7 @@ namespace XControl
         
 
         /*
-         * variable which store the Temperature
+         * 温度值
          */
         double temperatureValue_1;
         double temperatureValue_2;
@@ -91,7 +92,7 @@ namespace XControl
 
 
         /*
-         * define leastsquremethod variable
+         * 最小二乘法对象，用于温度拟合
          */
         LeastSquareMethod lsm_1;
         LeastSquareMethod lsm_2;
@@ -102,7 +103,9 @@ namespace XControl
         LeastSquareMethod lsm_7;
         LeastSquareMethod lsm_8;
 
-
+        /*
+         * 温度拟合数据量
+         */ 
         int tFitCount_1 = 0;
         int tFitCount_2 = 0;
         int tFitCount_3 = 0;
@@ -130,14 +133,14 @@ namespace XControl
         bool isSettingPIDParam = true;
 
         /*
-         * high T and low T
+         *  目标温度，高温和低温
          */
         float punishmentT;
         float confortableT;
 
 
         /*
-         * PID control model
+         * PID控制模块对象
          */
         PIDControl PID_1;
         PIDControl PID_2;
@@ -151,8 +154,8 @@ namespace XControl
 
 
         /*
-         * temperature control variable in up or down 
-         * of the temperature
+         * 
+         * 升降温逻辑控制变量
          * 
          */
 
@@ -229,7 +232,7 @@ namespace XControl
         int PID_Count_8;
 
         /*
-         * PID start button on/off control vairable
+         * 是否开启PID控制的变量
          */
         bool isPIDBtnStart_1 = true;
         bool isPIDBtnStart_2 = true;
@@ -253,7 +256,7 @@ namespace XControl
 
 
         /*
-         * if the is tested by hand
+         * 开启手动模式变量
          */
         bool isTestByHand_1 = false;
         bool isTestByHand_2 = false;
@@ -265,7 +268,7 @@ namespace XControl
         bool isTestByHand_8 = false;
 
         /*
-         * if execute the control moduel
+         * 是否执行控制模块变量
          */
 
         bool isExecuteControlModel_1;
@@ -294,8 +297,10 @@ namespace XControl
         bool isFirstChangeDown_7;
         bool isFirstChangeUp_8;
         bool isFirstChangeDown_8;
+        
+        
         /*
-         * if the isTestByHand button is clicked
+         *  手动测试按钮逻辑控制
          */
         bool isTestByHandClick_1;
         bool isTestByHandClick_2;
@@ -310,11 +315,9 @@ namespace XControl
 
         /*
          * 
-         * PID paramter test program
+         * PID 控制变量
          *
          */
-
-         //if start PID model
          
         bool isExecutePIDModel_1 = false;
         bool isExecutePIDModel_2 = false;
@@ -426,7 +429,11 @@ namespace XControl
         bool longKeep_8 = false;
 
 
-        //PID using to search a better PID
+
+        /*
+         * 最佳PID寻找模块变量
+         */
+          
         double P_1 = 0.5, I_1 = 0.1, D_1 = 0.5;
         double P_2 = 0.5, I_2 = 0.1, D_2 = 0.5;
         double P_3 = 0.5, I_3 = 0.1, D_3 = 0.5;
@@ -437,7 +444,7 @@ namespace XControl
         double P_8 = 0.5, I_8 = 0.1, D_8 = 0.5;
 
 
-        //PID in temperature control module
+       
         double Kp_up_1,Ki_up_1,Kd_up_1;
         double Kp_up_2, Ki_up_2, Kd_up_2;
         double Kp_up_3, Ki_up_3, Kd_up_3;
@@ -465,6 +472,12 @@ namespace XControl
         List<double> tempCollection_5 = new List<double>();
         List<double> tempCollection_6 = new List<double>();
 
+
+        /// <summary>
+        /// 设置温度拟合参数
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnTparameterSet_Click(object sender, EventArgs e)
         {
            
@@ -564,6 +577,12 @@ namespace XControl
         
         }
 
+
+        /// <summary>
+        /// 设置PID参数
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSetPIDParam_Click(object sender, EventArgs e)
         {
             if (isSettingPIDParam)
@@ -807,21 +826,25 @@ namespace XControl
             }
         }
 
+
+        /// <summary>
+        /// 暂不用
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tP_Main_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnGetParam_1_Click(object sender, EventArgs e)
-        {
-            lsm_1.AddValueToX(double.Parse(lblRawData_1.Text));
-            lsm_1.AddValueToY(double.Parse(tbTFit.Text));
-            lblTfitXTempValue.Text = lsm_1.X_temp.ToString();
-            lblTfitYTempValue.Text = lsm_1.Y_temp.ToString();
-            
-            lblTFitCount_1.Text = lsm_1.Count.ToString();
-        }
 
+        
+
+        /// <summary>
+        /// 菜单控制按钮，控制开启温度拟合模式
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (isMenuByHandChecked == true)
@@ -908,6 +931,23 @@ namespace XControl
             }
         }
 
+
+        /// <summary>
+        /// 温度拟合专用，下面8个函数分别控制1-8的温度
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnGetParam_1_Click(object sender, EventArgs e)
+        {
+            lsm_1.AddValueToX(double.Parse(lblRawData_1.Text));
+            lsm_1.AddValueToY(double.Parse(tbTFit.Text));
+            lblTfitXTempValue.Text = lsm_1.X_temp.ToString();
+            lblTfitYTempValue.Text = lsm_1.Y_temp.ToString();
+
+            lblTFitCount_1.Text = lsm_1.Count.ToString();
+        }
+
         private void btnGetParam_2_Click(object sender, EventArgs e)
         {
             lsm_2.AddValueToX(double.Parse(lblRawData_2.Text));
@@ -962,6 +1002,22 @@ namespace XControl
             lblTFitCount_7.Text = lsm_7.Count.ToString();
         }
 
+        private void btnGetParam_8_Click(object sender, EventArgs e)
+        {
+            lsm_8.AddValueToX(double.Parse(lblRawData_8.Text));
+            lsm_8.AddValueToY(double.Parse(tbTFit.Text));
+            lblTfitXTempValue.Text = lsm_8.X_temp.ToString();
+            lblTfitYTempValue.Text = lsm_8.Y_temp.ToString();
+            lblTFitCount_8.Text = lsm_8.Count.ToString();
+        }
+
+
+
+        /// <summary>
+        /// 添加完温度拟合参数之后，进行计算并设置温度拟合参数
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSetFit_Click(object sender, EventArgs e)
         {
          
@@ -1122,6 +1178,17 @@ namespace XControl
         List<double> tempCollection_8 = new List<double>();
 
         
+
+
+        /// <summary>
+        /// PID参数自检测
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="P"></param>
+        /// <param name="I"></param>
+        /// <param name="D"></param>
+        /// <param name="Result"></param>
+        /// <param name="groupNum"></param>
         private void resultAnalyse(List<double> list,double P,double I,double D,out string Result,int groupNum)
         {
            
@@ -1181,7 +1248,9 @@ namespace XControl
 
 
 
-
+        /// <summary>
+        /// 入口程序
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
@@ -1191,7 +1260,11 @@ namespace XControl
 
 
 
-
+        /// <summary>
+        /// 程序初始化工作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
                 //board_1 use to output
@@ -1250,82 +1323,7 @@ namespace XControl
 
             
 
-            //p1_1 = double.Parse(tbP1_1.Text);
-            //p1_2 = double.Parse(tbP1_2.Text);
-            //p1_3 = double.Parse(tbP1_3.Text);
-            //p1_4 = double.Parse(tbP1_4.Text);
-            //p1_5 = double.Parse(tbP1_5.Text);
-            //p1_6 = double.Parse(tbP1_6.Text);
-            //p1_7 = double.Parse(tbP1_7.Text);
-            //p1_8 = double.Parse(tbP1_8.Text);
-
-            //p2_1 = double.Parse(tbP2_1.Text);
-            //p2_2 = double.Parse(tbP2_2.Text);
-            //p2_3 = double.Parse(tbP2_3.Text);
-            //p2_4 = double.Parse(tbP2_4.Text);
-            //p2_5 = double.Parse(tbP2_5.Text);
-            //p2_6 = double.Parse(tbP2_6.Text);
-            //p2_7 = double.Parse(tbP2_7.Text);
-            //p2_8 = double.Parse(tbP2_8.Text);
           
-
-            //Kp_up_1 = double.Parse(tbPIDValuePUp_1.Text);
-            //Kp_up_2 = double.Parse(tbPIDValuePUp_2.Text);
-            //Kp_up_3 = double.Parse(tbPIDValuePUp_3.Text);
-            //Kp_up_4 = double.Parse(tbPIDValuePUp_4.Text);
-            //Kp_up_5 = double.Parse(tbPIDValuePUp_5.Text);
-            //Kp_up_6 = double.Parse(tbPIDValuePUp_6.Text);
-            //Kp_up_7 = double.Parse(tbPIDValuePUp_7.Text);
-            //Kp_up_8 = double.Parse(tbPIDValuePUp_8.Text);
-
-            //Ki_up_1 = double.Parse(tbPIDValueIUp_1.Text);
-            //Ki_up_2 = double.Parse(tbPIDValueIUp_2.Text);
-            //Ki_up_3 = double.Parse(tbPIDValueIUp_3.Text);
-            //Ki_up_4 = double.Parse(tbPIDValueIUp_4.Text);
-            //Ki_up_5 = double.Parse(tbPIDValueIUp_5.Text);
-            //Ki_up_6 = double.Parse(tbPIDValueIUp_6.Text);
-            //Ki_up_7 = double.Parse(tbPIDValueIUp_7.Text);
-            //Ki_up_8 = double.Parse(tbPIDValueIUp_8.Text);
-
-            //Kd_up_1 = double.Parse(tbPIDValueDUp_1.Text);
-            //Kd_up_2 = double.Parse(tbPIDValueDUp_2.Text);
-            //Kd_up_3 = double.Parse(tbPIDValueDUp_3.Text);
-            //Kd_up_4 = double.Parse(tbPIDValueDUp_4.Text);
-            //Kd_up_5 = double.Parse(tbPIDValueDUp_5.Text);
-            //Kd_up_6 = double.Parse(tbPIDValueDUp_6.Text);
-            //Kd_up_7 = double.Parse(tbPIDValueDUp_7.Text);
-            //Kd_up_8 = double.Parse(tbPIDValueDUp_8.Text);
-
-
-
-
-            //Kp_down_1 = double.Parse(tbPIDValuePDown_1.Text);
-            //Kp_down_2 = double.Parse(tbPIDValuePDown_2.Text);
-            //Kp_down_3 = double.Parse(tbPIDValuePDown_3.Text);
-            //Kp_down_4 = double.Parse(tbPIDValuePDown_4.Text);
-            //Kp_down_5 = double.Parse(tbPIDValuePDown_5.Text);
-            //Kp_down_6 = double.Parse(tbPIDValuePDown_6.Text);
-            //Kp_down_7 = double.Parse(tbPIDValuePDown_7.Text);
-            //Kp_down_8 = double.Parse(tbPIDValuePDown_8.Text);
-
-            //Ki_down_1 = double.Parse(tbPIDValueIDown_1.Text);
-            //Ki_down_2 = double.Parse(tbPIDValueIDown_2.Text);
-            //Ki_down_3 = double.Parse(tbPIDValueIDown_3.Text);
-            //Ki_down_4 = double.Parse(tbPIDValueIDown_4.Text);
-            //Ki_down_5 = double.Parse(tbPIDValueIDown_5.Text);
-            //Ki_down_6 = double.Parse(tbPIDValueIDown_6.Text);
-            //Ki_down_7 = double.Parse(tbPIDValueIDown_7.Text);
-            //Ki_down_8 = double.Parse(tbPIDValueIDown_8.Text);
-
-            //Kd_down_1 = double.Parse(tbPIDValueDDown_1.Text);
-            //Kd_down_2 = double.Parse(tbPIDValueDDown_2.Text);
-            //Kd_down_3 = double.Parse(tbPIDValueDDown_3.Text);
-            //Kd_down_4 = double.Parse(tbPIDValueDDown_4.Text);
-            //Kd_down_5 = double.Parse(tbPIDValueDDown_5.Text);
-            //Kd_down_6 = double.Parse(tbPIDValueDDown_6.Text);
-            //Kd_down_7 = double.Parse(tbPIDValueDDown_7.Text);
-            //Kd_down_8 = double.Parse(tbPIDValueDDown_8.Text);
-
 
 
 
@@ -1654,472 +1652,15 @@ namespace XControl
 
         }
 
-        private void timer_1_Tick(object sender, EventArgs e)
-        {
-            //digitalControlSingal_1 = GC.getSingal(1);
-            //lblTState_1.Text = digitalControlSingal_1 == 1 ? "On" : "OFF";
-            System.Diagnostics.Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();      //  开始监视代码运行时间
 
-            /*
-             * time get module
-             */
 
-            int RawValue;
-            temperatureValue_1 = Board_1.getT(1,out RawValue);
-            lblRawData_1.Text = RawValue.ToString();
-            lblTValue_1.Text = temperatureValue_1.ToString("00.00");
+       
 
-            if (isExecutePIDModel_1 == true || isExecutePIDModelDown_1==true)
-            {
-                lblPIDTValue_1.Text = temperatureValue_1.ToString("00.00");
-            }
-            
-            /*
-             * Test by hand module
-             */
-            if (isTestByHand_1 == false)
-            {
-                digitalControlSingal_1 = Board_2.getSingal(1);
-                
-            }
-
-            if (temperatureValue_1 > 60 || temperatureValue_1 < 0)
-            {
-                Board_1.TNature(1);
-                timer_1.Stop();
-                lblTState_1.Text = "Error";                
-            }
-
-            /*
-             *  Up and Down control module
-             */
-            if (isExecuteControlModel_1 == true)
-            {
-
-               
-                if (digitalControlSingal_1 == 1 && isFirstChangeUp_1 == true)
-                {
-                    
-                   
-                   
-                    lblTState_1.Text = "On";
-                    UpDownSing_1 = 1;
-                    punishmentT = float.Parse(tbPunishTValue.Text);
-                    confortableT = float.Parse(tbConfortTValue.Text);
-
-                    isFirstChangeUp_1 = false;
-                    isFirstChangeDown_1 = true;
-                    isUp_1 = true;
-                    isDown_1 = false;
-
-                    isStartPID_1 = true;
-                    PID_Count_1 = 0;
-
-                    //isFirstPor = true;
-                    Board_1.TUp(1);
-                    startPID_1 = false;
-                    circle = 10;
-                    if (isExecutePIDModelDown_1)
-                    {
-                        PID_1 = new PIDControl(P_1, D_1, I_1, punishmentT);
-                       
-                    }
-                    else
-                    {
-                        PID_1 = new PIDControl(Kp_up_1, Ki_up_1, Kd_up_1, punishmentT);
-                        
-                    }
-                    
-                    
-                    System.IO.File.AppendAllText("e:\\result_1.txt", "惩罚：" + "Kp:" + Kp_up_1.ToString() + "  Ki" + Ki_up_1.ToString() + "  Kd" + Kp_up_1.ToString() + "\r\n");
-                }
-                else if (digitalControlSingal_1 == 0 && isFirstChangeDown_1 == true)
-                {
-                    punishmentT = float.Parse(tbPunishTValue.Text);
-                    confortableT = float.Parse(tbConfortTValue.Text);
-
-                    isDown_1 = true;
-                    isStartPID_1 = true;
-
-                    isFirstChangeDown_1 = false;
-                    isFirstChangeUp_1 = true;
-
-                    startPID_1 = false;
-                    isUp_1 = false;
-                    PID_Count_1 = 0;
-                    lblTState_1.Text = "Off";
-                    UpDownSing_1 = -1;
-                    Board_1.TDown(1);
-                    circle = 10;
-                    if (isExecutePIDModel_1)
-                    {
-                        PID_1 = new PIDControl(P_1, D_1, I_1, confortableT);
-                       
-                    }
-                    else
-                    {
-                        PID_1 = new PIDControl(Kp_down_1, Ki_down_1, Kd_down_1, confortableT);
-                        
-                    }
-                   
-                    System.IO.File.AppendAllText("e:\\result_1.txt", "舒适：" + "Kp:" + Kp_down_1.ToString() + "  Ki" + Ki_down_1.ToString() + "  Kd" + Kp_down_1.ToString() + "\r\n");
-                }
-                else
-                {
-                    ;
-                }
-            }
-
-
-
-
-            /*
-             * PID paramete test module
-             */
-
-            if (isExecutePIDModel_1 == true)
-            {
-                timerCount_1++;
-
-                if (timerCount_1 == 300 && highBalance_1 == true)
-                {
-                    timerCount_1 = 0;
-                    digitalControlSingal_1 = 0;
-                    highBalance_1 = false;
-                    downLine_1 = true;
-                   
-                }
-
-                if (timerCount_1 == 150 && downLine_1)
-                {
-                    //System.IO.File.AppendAllText("e:\\result_1.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
-                    isChangeParam_1 = true;
-                    downLine_1 = false;
-                    timeNotAccept_1 = true;
-                   
-                }
-
-                if (temperatureValue_1 - confortableT <= 0.5 && downLine_1 == true)
-                {
-                    beyondNum_1++;
-                    if (beyondNum_1 == 3)
-                    {
-
-                       
-                        timeResult_1 = timerCount_1;
-                        timerCount_1 = 0;
-                        downLine_1 = false;
-                        longKeep_1 = true;
-                        beyondNum_1 = 0;
-
-                    }
-                }
-
-                if (longKeep_1 == true)
-                {
-                    tempCollection_1.Add(temperatureValue_1);
-                    if (timerCount_1 == 300)
-                    {
-                        isChangeParam_1 = true;
-                        longKeep_1 = false;
-                    }
-
-                }
-
-
-
-
-
-
-                if (isChangeParam_1)
-                {
-
-                  //  lblPIDDebug.Text = isExecutePIDModel_1.ToString();
-                    if (timeNotAccept_1)
-                    {
-                        lblPIDTestStatus_1.Text = (string.Format("P:{0},I:{1},D{2}--时间超出", P_1, I_1, D_1));
-                        //System.IO.File.AppendAllText("e:\\result_1.txt", P_1 + "   " + I_1 + "   " + D_1 + "   " + "Tout" + "\r\n");
-                        //输出PID 时间超出，舍弃参数
-                        
-                    }
-                    else
-                    {
-                        string PID_Result_1;
-                        resultAnalyse(tempCollection_1,P_1,I_1,D_1, out PID_Result_1,1);
-                        tempCollection_1.Clear();
-                        lblPIDTestStatus_1.Text = PID_Result_1;
-                        //执行计算，然后输出
-                    }
-                    if (D_1 == 3)
-                    {
-                        timer_1.Stop();
-                        Board_1.clearALL();
-                        lblPIDTestStatus_1.Text = "finished!";
-                    }
-
-                    digitalControlSingal_1 = 1;
-                    isChangeParam_1 = false;
-                    P_1 += 0.5;
-                  
-                    if (P_1 == 10)
-                    {
-                        D_1 += 0.5;
-                        P_1 = 0.5;
-                    }
-
-
-                    timerCount_1 = 0;
-                    beyondNum_1 = 0;
-                    highBalance_1 = true;
-                }
-
-            }
-
-
-
-
-
-            /*
-             * PID paramete test module
-             */
-
-            if (isExecutePIDModelDown_1 == true)
-            {
-                timerCount_1++;
-
-                if (timerCount_1 == 300 && lowBalance_1 == true)
-                {
-                    timerCount_1 = 0;
-                    digitalControlSingal_1 = 1;
-                    lowBalance_1 = false;
-                    upLine_1 = true;
-                   
-                }
-
-                if (timerCount_1 == 100 && upLine_1)
-                {
-                    //System.IO.File.AppendAllText("e:\\result_1.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
-                    isChangeParam_1 = true;
-                    upLine_1 = false;
-                    timeNotAccept_1 = true;
-
-
-                }
-
-                if (punishmentT- temperatureValue_1 <= 0.5 && upLine_1 == true)
-                {
-                    beyondNum_1++;
-                    if (beyondNum_1 == 3)
-                    {
-                        timeResult_1 = timerCount_1;
-                        timerCount_1 = 0;
-                        upLine_1 = false;
-                        longKeep_1 = true;
-                        beyondNum_1 = 0;
-
-                    }
-                }
-
-                if (longKeep_1 == true)
-                {
-                    tempCollection_1.Add(temperatureValue_1);
-                    if (timerCount_1 == 300)
-                    {
-                        isChangeParam_1 = true;
-                        longKeep_1 = false;
-                    }
-
-                }
-
-
-
-
-
-
-                if (isChangeParam_1)
-                {
-
-                    if (timeNotAccept_1)
-                    {
-                        lblPIDTestStatus_1.Text = (string.Format("P:{0},I:{1},D{2}--时间超出", P_1, I_1, D_1));
-                        //System.IO.File.AppendAllText("e:\\result_1.txt", P_1 + "   " + I_1 + "   " + D_1 + "   " + "Tout" + "\r\n");
-                        //输出PID 时间超出，舍弃参数
-                    }
-                    else
-                    {
-                        string PID_Result_1;
-                        resultAnalyse(tempCollection_1, P_1, I_1, D_1, out PID_Result_1, 1);
-                        tempCollection_1.Clear();
-                        lblPIDTestStatus_1.Text = PID_Result_1;
-                        //执行计算，然后输出
-                    }
-                    if (D_1 == 10)
-                    {
-                        timer_1.Stop();
-                        Board_1.clearALL();
-                        lblPIDTestStatus_1.Text = "Finished!";
-                    }
-
-                    digitalControlSingal_1 = 0;
-                    isChangeParam_1 = false;
-                    P_1 += 0.5;
-                    if (P_1 == 10)
-                    {
-                        D_1 += 0.5;
-                        P_1 = 0.5;
-                    }
-
-
-                    timerCount_1 = 0;
-                    beyondNum_1 = 0;
-                    lowBalance_1 = true;
-                }
-
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            if (isUp_1 == true)
-            {
-                if ((punishmentT - temperatureValue_1) < 10 && isStartPID_1 == true)
-                {
-                    startPID_1 = true;
-                    isStartPID_1 = false;
-
-                    result_1 = PID_1.PIDCalcDirect(temperatureValue_1);
-                    FirstProportion_1 = Convert.ToInt32(result_1);
-                    proportion_1 = Convert.ToInt32(result_1);
-                    proportion_1 = PID_1.ConvertAccordToPropotation(proportion_1, circle, FirstProportion_1);
-
-                    PID_Count_1 = 0;
-                    Board_1.TUp(1);
-                    
-
-                }
-
-
-
-
-
-                if (PID_Count_1 == proportion_1 && startPID_1 == true)
-                {
-                    Board_1.TNature(1);
-                }
-
-
-                if (startPID_1 == true)
-                {
-                    PID_Count_1++;
-
-                }
-
-
-                if (startPID_1 == true && PID_Count_1 == circle)
-                {
-                    result_1 = PID_1.PIDCalcDirect(temperatureValue_1);
-
-                    proportion_1 = Convert.ToInt32(result_1);
-                    PID_Count_1 = 0;
-
-
-
-                    if (result_1 > 0)
-                    {
-
-                        Board_1.TUp(1);
-
-                    }
-                    else
-                    {
-                        Board_1.TDown(1);
-                    }
-
-                    proportion_1 = PID_1.ConvertAccordToPropotation(proportion_1, circle, FirstProportion_1);
-
-                }
-
-                if (!isExecuteControlModel_1 || !isExecutePIDModelDown_1)
-                {
-                    System.IO.File.AppendAllText("e:\\result_1.txt", temperatureValue_1.ToString("00.00") +"   "+UpDownSing_1.ToString()+ "\r\n");
-                }
-            }
-
-
-            if (isDown_1 == true)
-            {
-                if ((temperatureValue_1 - confortableT) < 5 && isStartPID_1 == true)
-                {
-                    startPID_1 = true;
-                    isStartPID_1 = false;
-
-                    result_1 = PID_1.PIDCalcDirect(temperatureValue_1);
-                    FirstProportion_1 = Convert.ToInt32(result_1);
-                    proportion_1 = Convert.ToInt32(result_1);
-                    proportion_1 = PID_1.ConvertAccordToPropotation(proportion_1,circle,FirstProportion_1);
-                    PID_Count_1 = 0;
-                    Board_1.TDown(1);
-                    
-                }
-
-
-
-
-
-                if (PID_Count_1 == proportion_1 && startPID_1 == true)
-                {
-                    Board_1.TNature(1);
-                }
-
-                if (startPID_1 == true)
-                {
-                    PID_Count_1++;
-
-                }
-
-                if (startPID_1 == true && PID_Count_1 == circle)
-                {
-                    double result_1 = PID_1.PIDCalcDirect(temperatureValue_1);
-                    proportion_1 = Convert.ToInt32(result_1);
-                    PID_Count_1 = 0;
-                    if (result_1 > 0)
-                    {
-                        Board_1.TUp(1);
-                    }
-                    else
-                    {
-                        Board_1.TDown(1);
-                    }
-
-                    proportion_1 = PID_1.ConvertAccordToPropotation(proportion_1,circle,FirstProportion_1);
-
-
-                }
-                if (!isExecuteControlModel_1 || !isExecutePIDModelDown_1)
-                {
-                    System.IO.File.AppendAllText("e:\\result_1.txt", temperatureValue_1.ToString("00.00") + "   " + UpDownSing_1.ToString()+ "\r\n");
-                }
-            }
-
-            stopwatch.Stop(); //  停止监视
-
-            TimeSpan timespan = stopwatch.Elapsed;
-
-            lblExecuteTimeInPID.Text = timespan.TotalMilliseconds.ToString();  //  总毫秒数
-        }
-
+        /// <summary>
+        /// 手动控制升降温函数
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnTestByHand_1_Click(object sender, EventArgs e)
         {
 
@@ -2223,6 +1764,31 @@ namespace XControl
             timer_4.Start();
         }
 
+
+
+
+       
+        private void btnPIDStartAll_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox18_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox17_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox16_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
         private void btnStarPIDSingle_1_Click(object sender, EventArgs e)
         {
             if (isPIDBtnStart_1)
@@ -2251,31 +1817,11 @@ namespace XControl
                 lblPIDTValue_1.Text = "NULL";
                 isUp_1 = false;
                 isDown_1 = false;
-                
+
             }
 
             punishmentT = float.Parse(tbPunishTValue.Text);
             confortableT = float.Parse(tbConfortTValue.Text);
-
-        }
-
-        private void btnPIDStartAll_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox18_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox17_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox16_TextChanged(object sender, EventArgs e)
-        {
 
         }
 
@@ -2526,6 +2072,12 @@ namespace XControl
             confortableT = float.Parse(tbConfortTValue.Text);
         }
 
+
+        /// <summary>
+        /// 清空函数，清空所有控制信号
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPIDClearAll_Click(object sender, EventArgs e)
         {
             Board_1.clearALL();
@@ -2974,6 +2526,490 @@ namespace XControl
             
             timer_8.Start();
         }
+
+
+
+        /*
+         * 核心温度控制模块，下面八个函数分别对应八块板子
+         * 
+         * 
+         */ 
+
+
+
+        /// <summary>
+        /// 核心温度控制模块
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timer_1_Tick(object sender, EventArgs e)
+        {
+            //digitalControlSingal_1 = GC.getSingal(1);
+            //lblTState_1.Text = digitalControlSingal_1 == 1 ? "On" : "OFF";
+            System.Diagnostics.Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();      //  开始监视代码运行时间
+
+            /*
+             * time get module
+             */
+
+            int RawValue;
+            temperatureValue_1 = Board_1.getT(1, out RawValue);
+            lblRawData_1.Text = RawValue.ToString();
+            lblTValue_1.Text = temperatureValue_1.ToString("00.00");
+
+            if (isExecutePIDModel_1 == true || isExecutePIDModelDown_1 == true)
+            {
+                lblPIDTValue_1.Text = temperatureValue_1.ToString("00.00");
+            }
+
+            /*
+             * Test by hand module
+             */
+            if (isTestByHand_1 == false)
+            {
+                digitalControlSingal_1 = Board_2.getSingal(1);
+
+            }
+
+            if (temperatureValue_1 > 60 || temperatureValue_1 < 0)
+            {
+                Board_1.TNature(1);
+                timer_1.Stop();
+                lblTState_1.Text = "Error";
+            }
+
+            /*
+             *  Up and Down control module
+             */
+            if (isExecuteControlModel_1 == true)
+            {
+
+
+                if (digitalControlSingal_1 == 1 && isFirstChangeUp_1 == true)
+                {
+
+
+
+                    lblTState_1.Text = "On";
+                    UpDownSing_1 = 1;
+                    punishmentT = float.Parse(tbPunishTValue.Text);
+                    confortableT = float.Parse(tbConfortTValue.Text);
+
+                    isFirstChangeUp_1 = false;
+                    isFirstChangeDown_1 = true;
+                    isUp_1 = true;
+                    isDown_1 = false;
+
+                    isStartPID_1 = true;
+                    PID_Count_1 = 0;
+
+                    //isFirstPor = true;
+                    Board_1.TUp(1);
+                    startPID_1 = false;
+                    circle = 10;
+                    if (isExecutePIDModelDown_1)
+                    {
+                        PID_1 = new PIDControl(P_1, D_1, I_1, punishmentT);
+
+                    }
+                    else
+                    {
+                        PID_1 = new PIDControl(Kp_up_1, Ki_up_1, Kd_up_1, punishmentT);
+
+                    }
+
+
+                    System.IO.File.AppendAllText("e:\\result_1.txt", "惩罚：" + "Kp:" + Kp_up_1.ToString() + "  Ki" + Ki_up_1.ToString() + "  Kd" + Kp_up_1.ToString() + "\r\n");
+                }
+                else if (digitalControlSingal_1 == 0 && isFirstChangeDown_1 == true)
+                {
+                    punishmentT = float.Parse(tbPunishTValue.Text);
+                    confortableT = float.Parse(tbConfortTValue.Text);
+
+                    isDown_1 = true;
+                    isStartPID_1 = true;
+
+                    isFirstChangeDown_1 = false;
+                    isFirstChangeUp_1 = true;
+
+                    startPID_1 = false;
+                    isUp_1 = false;
+                    PID_Count_1 = 0;
+                    lblTState_1.Text = "Off";
+                    UpDownSing_1 = -1;
+                    Board_1.TDown(1);
+                    circle = 10;
+                    if (isExecutePIDModel_1)
+                    {
+                        PID_1 = new PIDControl(P_1, D_1, I_1, confortableT);
+
+                    }
+                    else
+                    {
+                        PID_1 = new PIDControl(Kp_down_1, Ki_down_1, Kd_down_1, confortableT);
+
+                    }
+
+                    System.IO.File.AppendAllText("e:\\result_1.txt", "舒适：" + "Kp:" + Kp_down_1.ToString() + "  Ki" + Ki_down_1.ToString() + "  Kd" + Kp_down_1.ToString() + "\r\n");
+                }
+                else
+                {
+                    ;
+                }
+            }
+
+
+
+
+            /*
+             * PID paramete test module
+             */
+
+            if (isExecutePIDModel_1 == true)
+            {
+                timerCount_1++;
+
+                if (timerCount_1 == 300 && highBalance_1 == true)
+                {
+                    timerCount_1 = 0;
+                    digitalControlSingal_1 = 0;
+                    highBalance_1 = false;
+                    downLine_1 = true;
+
+                }
+
+                if (timerCount_1 == 150 && downLine_1)
+                {
+                    //System.IO.File.AppendAllText("e:\\result_1.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
+                    isChangeParam_1 = true;
+                    downLine_1 = false;
+                    timeNotAccept_1 = true;
+
+                }
+
+                if (temperatureValue_1 - confortableT <= 0.5 && downLine_1 == true)
+                {
+                    beyondNum_1++;
+                    if (beyondNum_1 == 3)
+                    {
+
+
+                        timeResult_1 = timerCount_1;
+                        timerCount_1 = 0;
+                        downLine_1 = false;
+                        longKeep_1 = true;
+                        beyondNum_1 = 0;
+
+                    }
+                }
+
+                if (longKeep_1 == true)
+                {
+                    tempCollection_1.Add(temperatureValue_1);
+                    if (timerCount_1 == 300)
+                    {
+                        isChangeParam_1 = true;
+                        longKeep_1 = false;
+                    }
+
+                }
+
+
+
+
+
+
+                if (isChangeParam_1)
+                {
+
+                    //  lblPIDDebug.Text = isExecutePIDModel_1.ToString();
+                    if (timeNotAccept_1)
+                    {
+                        lblPIDTestStatus_1.Text = (string.Format("P:{0},I:{1},D{2}--时间超出", P_1, I_1, D_1));
+                        //System.IO.File.AppendAllText("e:\\result_1.txt", P_1 + "   " + I_1 + "   " + D_1 + "   " + "Tout" + "\r\n");
+                        //输出PID 时间超出，舍弃参数
+
+                    }
+                    else
+                    {
+                        string PID_Result_1;
+                        resultAnalyse(tempCollection_1, P_1, I_1, D_1, out PID_Result_1, 1);
+                        tempCollection_1.Clear();
+                        lblPIDTestStatus_1.Text = PID_Result_1;
+                        //执行计算，然后输出
+                    }
+                    if (D_1 == 3)
+                    {
+                        timer_1.Stop();
+                        Board_1.clearALL();
+                        lblPIDTestStatus_1.Text = "finished!";
+                    }
+
+                    digitalControlSingal_1 = 1;
+                    isChangeParam_1 = false;
+                    P_1 += 0.5;
+
+                    if (P_1 == 10)
+                    {
+                        D_1 += 0.5;
+                        P_1 = 0.5;
+                    }
+
+
+                    timerCount_1 = 0;
+                    beyondNum_1 = 0;
+                    highBalance_1 = true;
+                }
+
+            }
+
+
+
+
+
+            /*
+             * PID paramete test module
+             */
+
+            if (isExecutePIDModelDown_1 == true)
+            {
+                timerCount_1++;
+
+                if (timerCount_1 == 300 && lowBalance_1 == true)
+                {
+                    timerCount_1 = 0;
+                    digitalControlSingal_1 = 1;
+                    lowBalance_1 = false;
+                    upLine_1 = true;
+
+                }
+
+                if (timerCount_1 == 100 && upLine_1)
+                {
+                    //System.IO.File.AppendAllText("e:\\result_1.txt", "舒适：" + "Kp:" + 8 + "  Ki" + 0 + "  Kd" + 3 + "\r\n");
+                    isChangeParam_1 = true;
+                    upLine_1 = false;
+                    timeNotAccept_1 = true;
+
+
+                }
+
+                if (punishmentT - temperatureValue_1 <= 0.5 && upLine_1 == true)
+                {
+                    beyondNum_1++;
+                    if (beyondNum_1 == 3)
+                    {
+                        timeResult_1 = timerCount_1;
+                        timerCount_1 = 0;
+                        upLine_1 = false;
+                        longKeep_1 = true;
+                        beyondNum_1 = 0;
+
+                    }
+                }
+
+                if (longKeep_1 == true)
+                {
+                    tempCollection_1.Add(temperatureValue_1);
+                    if (timerCount_1 == 300)
+                    {
+                        isChangeParam_1 = true;
+                        longKeep_1 = false;
+                    }
+
+                }
+
+
+
+
+
+
+                if (isChangeParam_1)
+                {
+
+                    if (timeNotAccept_1)
+                    {
+                        lblPIDTestStatus_1.Text = (string.Format("P:{0},I:{1},D{2}--时间超出", P_1, I_1, D_1));
+                        //System.IO.File.AppendAllText("e:\\result_1.txt", P_1 + "   " + I_1 + "   " + D_1 + "   " + "Tout" + "\r\n");
+                        //输出PID 时间超出，舍弃参数
+                    }
+                    else
+                    {
+                        string PID_Result_1;
+                        resultAnalyse(tempCollection_1, P_1, I_1, D_1, out PID_Result_1, 1);
+                        tempCollection_1.Clear();
+                        lblPIDTestStatus_1.Text = PID_Result_1;
+                        //执行计算，然后输出
+                    }
+                    if (D_1 == 10)
+                    {
+                        timer_1.Stop();
+                        Board_1.clearALL();
+                        lblPIDTestStatus_1.Text = "Finished!";
+                    }
+
+                    digitalControlSingal_1 = 0;
+                    isChangeParam_1 = false;
+                    P_1 += 0.5;
+                    if (P_1 == 10)
+                    {
+                        D_1 += 0.5;
+                        P_1 = 0.5;
+                    }
+
+
+                    timerCount_1 = 0;
+                    beyondNum_1 = 0;
+                    lowBalance_1 = true;
+                }
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            if (isUp_1 == true)
+            {
+                if ((punishmentT - temperatureValue_1) < 10 && isStartPID_1 == true)
+                {
+                    startPID_1 = true;
+                    isStartPID_1 = false;
+
+                    result_1 = PID_1.PIDCalcDirect(temperatureValue_1);
+                    FirstProportion_1 = Convert.ToInt32(result_1);
+                    proportion_1 = Convert.ToInt32(result_1);
+                    proportion_1 = PID_1.ConvertAccordToPropotation(proportion_1, circle, FirstProportion_1);
+
+                    PID_Count_1 = 0;
+                    Board_1.TUp(1);
+
+
+                }
+
+
+
+
+
+                if (PID_Count_1 == proportion_1 && startPID_1 == true)
+                {
+                    Board_1.TNature(1);
+                }
+
+
+                if (startPID_1 == true)
+                {
+                    PID_Count_1++;
+
+                }
+
+
+                if (startPID_1 == true && PID_Count_1 == circle)
+                {
+                    result_1 = PID_1.PIDCalcDirect(temperatureValue_1);
+
+                    proportion_1 = Convert.ToInt32(result_1);
+                    PID_Count_1 = 0;
+
+
+
+                    if (result_1 > 0)
+                    {
+
+                        Board_1.TUp(1);
+
+                    }
+                    else
+                    {
+                        Board_1.TDown(1);
+                    }
+
+                    proportion_1 = PID_1.ConvertAccordToPropotation(proportion_1, circle, FirstProportion_1);
+
+                }
+
+                if (!isExecuteControlModel_1 || !isExecutePIDModelDown_1)
+                {
+                    System.IO.File.AppendAllText("e:\\result_1.txt", temperatureValue_1.ToString("00.00") + "   " + UpDownSing_1.ToString() + "\r\n");
+                }
+            }
+
+
+            if (isDown_1 == true)
+            {
+                if ((temperatureValue_1 - confortableT) < 5 && isStartPID_1 == true)
+                {
+                    startPID_1 = true;
+                    isStartPID_1 = false;
+
+                    result_1 = PID_1.PIDCalcDirect(temperatureValue_1);
+                    FirstProportion_1 = Convert.ToInt32(result_1);
+                    proportion_1 = Convert.ToInt32(result_1);
+                    proportion_1 = PID_1.ConvertAccordToPropotation(proportion_1, circle, FirstProportion_1);
+                    PID_Count_1 = 0;
+                    Board_1.TDown(1);
+
+                }
+
+
+
+
+
+                if (PID_Count_1 == proportion_1 && startPID_1 == true)
+                {
+                    Board_1.TNature(1);
+                }
+
+                if (startPID_1 == true)
+                {
+                    PID_Count_1++;
+
+                }
+
+                if (startPID_1 == true && PID_Count_1 == circle)
+                {
+                    double result_1 = PID_1.PIDCalcDirect(temperatureValue_1);
+                    proportion_1 = Convert.ToInt32(result_1);
+                    PID_Count_1 = 0;
+                    if (result_1 > 0)
+                    {
+                        Board_1.TUp(1);
+                    }
+                    else
+                    {
+                        Board_1.TDown(1);
+                    }
+
+                    proportion_1 = PID_1.ConvertAccordToPropotation(proportion_1, circle, FirstProportion_1);
+
+
+                }
+                if (!isExecuteControlModel_1 || !isExecutePIDModelDown_1)
+                {
+                    System.IO.File.AppendAllText("e:\\result_1.txt", temperatureValue_1.ToString("00.00") + "   " + UpDownSing_1.ToString() + "\r\n");
+                }
+            }
+
+            stopwatch.Stop(); //  停止监视
+
+            TimeSpan timespan = stopwatch.Elapsed;
+
+            lblExecuteTimeInPID.Text = timespan.TotalMilliseconds.ToString();  //  总毫秒数
+        }
+
+
+
 
         private void timer_2_Tick(object sender, EventArgs e)
         {
@@ -5890,6 +5926,12 @@ namespace XControl
             }
         }
 
+
+        /// <summary>
+        /// 清空函数，信号重置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClearAll_Click(object sender, EventArgs e)
         {
             Board_1.clearALL();
@@ -5937,15 +5979,12 @@ namespace XControl
 
         }
 
-        private void btnGetParam_8_Click(object sender, EventArgs e)
-        {
-            lsm_8.AddValueToX(double.Parse(lblRawData_8.Text));
-            lsm_8.AddValueToY(double.Parse(tbTFit.Text));
-            lblTfitXTempValue.Text = lsm_8.X_temp.ToString();
-            lblTfitYTempValue.Text = lsm_8.Y_temp.ToString();
-            lblTFitCount_8.Text = lsm_8.Count.ToString();
-        }
-
+        
+        /// <summary>
+        /// 开始手动控制模式
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void isByHand_Click(object sender, EventArgs e)
         {
             if (isMenuByHandChecked == true)
@@ -5995,6 +6034,11 @@ namespace XControl
             }
         }
 
+        /// <summary>
+        /// 同时开启八块板子一起运行的按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnTotalStart_Click(object sender, EventArgs e)
         {
             if (isTotalStartBtnTrue == true)
@@ -6089,6 +6133,11 @@ namespace XControl
             }
         }
 
+        /// <summary>
+        /// 暂留不用
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 

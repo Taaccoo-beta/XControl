@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
+
+
+/// <summary>
+/// 序列化参数：包括温度拟合系数，PID控制参数
+/// 对这些参数进行存储
+/// 温度系数存放在 tempPID.dat 文件中         
+/// PID系数存放在 tempTParameters.dat 文件中
+/// </summary>
 namespace SerieslizeControlModule
 {
 

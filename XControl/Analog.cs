@@ -10,7 +10,9 @@ using PID_WinForm;
 
 
 
-
+/// <summary>
+/// 官方库，操纵数模转换器必须引用的库
+/// </summary>
 namespace AnalogIO
 {
     public class clsAnalogIO

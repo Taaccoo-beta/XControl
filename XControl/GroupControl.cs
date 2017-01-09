@@ -11,6 +11,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+/// <summary>
+/// 对protControl进行高层封装，直接控制8块数模转换器
+/// 实现升降温，温度获取以及信号获取
+/// </summary>
 namespace XControl
 {
     class GroupControl
@@ -73,7 +78,7 @@ namespace XControl
 
 
         /// <summary>
-        /// initial a board
+        /// 初始化
         /// </summary>
         /// <param name="boardNum"></param>
         /// <param name="isIn">true means digital input
@@ -95,7 +100,7 @@ namespace XControl
         }
 
         /// <summary>
-        /// group number
+        /// 控制温度升降
         /// </summary>
         /// <param name="groupNumber">from 1 to 8</param>
         public void TUp(int groupNumber)
@@ -140,7 +145,7 @@ namespace XControl
 
 
         /// <summary>
-        /// temperature down 
+        /// 控制温度下降 
         /// </summary>
         /// <param name="groupNumber">protNumber form 1 to 8</param>
         public void TDown(int groupNumber)
@@ -186,6 +191,7 @@ namespace XControl
         }
 
         /// <summary>
+        /// 将端口清0，不控制温度升降，让其处于自然状态
         /// when PortINH form 9 to 23 is low
         /// the temperature will not control by computer
         /// </summary>
@@ -233,7 +239,7 @@ namespace XControl
         }
 
         /// <summary>
-        /// get teh Temperature
+        /// 获取相应端口号的温度输入参数为board号和相应端口号
         /// </summary>
         /// <param name="groupNumber">the port number</param>
         /// <returns>float type of temperature</returns>
@@ -277,7 +283,7 @@ namespace XControl
 
 
         /// <summary>
-        /// get the sinnal from the digital port from 0 to 7
+        /// 获取升降温的控制信号
         /// </summary>
         /// <param name="groupNumber"></param>
         /// <param name="isIn">you can get input only isIn is true</param>
@@ -311,7 +317,7 @@ namespace XControl
         }
 
         /// <summary>
-        /// make all of temperature sensor to a nature state
+        /// 将所有端口置为高电平，清空控制信号
         /// </summary>
         public void clearALL()
         {

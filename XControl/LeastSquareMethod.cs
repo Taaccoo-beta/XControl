@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace XControl
 {
+
+    /// <summary>
+    /// 最小二乘法进行温度拟合的类
+    /// </summary>
     class LeastSquareMethod
     {
         private List<double> x;

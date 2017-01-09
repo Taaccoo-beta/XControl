@@ -8,7 +8,8 @@ using System.Windows.Forms;
 namespace PID_WinForm
 {
     /// <summary>
-    /// PID control using two kind of PID Algorithms
+    /// PID控制算法模块，内置了两种PID算法
+    /// 这里主要采取累加是算法
     /// PIDCalcDirect and PIDCalc
     /// </summary>
     class PIDControl

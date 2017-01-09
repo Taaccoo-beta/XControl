@@ -9,6 +9,11 @@ using System.Windows.Forms;
 using DigitalIO;
 using AnalogIO;
 
+
+/// <summary>
+/// 端口控制函数，对底层的数模转换其控制函数
+/// 进行了封装
+/// </summary>
 namespace XControl
 {
 
@@ -134,7 +139,9 @@ namespace XControl
 
 
 
-        
+        /// <summary>
+        /// 配置模拟端口为输入模式
+        /// </summary>
         public void AnalogPortConfiguration()
         {
             int ChannelType = clsAnalogIO.ANALOGINPUT;
@@ -144,7 +151,12 @@ namespace XControl
         }
 
 
-
+        /// <summary>
+        /// 获取模拟端口的输入，端口号(差分模式)从0-4对应数模转换器0 2 4 8
+        /// 返回一个string类型，实际是数字
+        /// </summary>
+        /// <param name="portNumber"></param>
+        /// <returns></returns>
         public string AnalogInput(int portNumber)
         {
             if (ADResolution > 16)
@@ -160,7 +172,11 @@ namespace XControl
             }
         }
 
-
+        /// <summary>
+        /// 直接读取温度，小数模转换器不可以使用
+        /// </summary>
+        /// <param name="Chan"></param>
+        /// <returns></returns>
         public float ReadTemperature(int Chan)
         {
             MccDaq.TempScale MccScale = MccDaq.TempScale.Celsius;
@@ -172,7 +188,9 @@ namespace XControl
 
         }
 
-
+        /// <summary>
+        /// 对数模转换其进行初始化
+        /// </summary>
         private void InitUL()
         {
 
